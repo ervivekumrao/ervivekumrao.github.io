@@ -3,7 +3,7 @@
   "name": "ChildSafe",
   "type": "app",
   "order": 10,
-  "published": true,
+  "published": false,
   "tagline": "Parental control and device-owner child safety.",
   "description": "ChildSafe helps parents manage a child's device.\n\nReplace this text with the real description.",
   "tags": ["Android", "Java", "Device Owner"],

@@ -3,7 +3,7 @@
   "name": "TimeSpanSelectorView",
   "type": "library",
   "order": 50,
-  "published": true,
+  "published": false,
   "tagline": "Android custom view for selecting time spans.",
   "description": "Replace with the real description.",
   "tags": ["Android", "Java", "Library"],
