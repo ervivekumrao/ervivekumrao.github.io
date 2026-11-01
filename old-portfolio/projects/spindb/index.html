@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpinDB | Fast Containerized Database & Lakehouse CLI</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="../../" class="nav-back"><span>&larr;</span> Back to Portfolio</a>
+            <div class="nav-logo">SpinDB</div>
+            <a href="privacy/" class="btn btn-secondary">Privacy</a>
+        </nav>
+
+        <header class="project-hero" data-reveal>
+            <div class="project-hero-icon" style="background: #0ea5e9; padding: 25px;">
+                <img src="../../assets/icons/database_creator.svg" alt="SpinDB" style="width: 100%;">
+            </div>
+            <h1>SpinDB</h1>
+            <p>A fast, unified developer CLI (<code>spinctl</code>) for spinning up 13 containerized databases, in-memory caches, and lakehouse engines using <b>Podman</b> (default, secure, rootless) with seamless automatic fallback to <b>Docker</b>.</p>
+
+            <div class="comp-tags" style="justify-content: center; margin-bottom: 2rem; max-width: 800px;">
+                <span>spinctl CLI</span>
+                <span>Rootless Podman</span>
+                <span>Docker Fallback</span>
+                <span>13 Database Engines</span>
+                <span>pgvector & AI</span>
+                <span>ClickHouse OLAP</span>
+                <span>DuckDB / Spark Emulators</span>
+                <span>OCI Healthchecks</span>
+            </div>
+
+            <div class="hero-links">
+                <a href="https://github.com/ervivekumrao/SpinDB" class="btn btn-primary" style="background: #0ea5e9;" target="_blank">View on GitHub</a>
+            </div>
+        </header>
+
+        <section id="features">
+            <h2 class="section-title" data-reveal>Developer Productivity & Multi-Engine Power</h2>
+            <div class="feature-grid">
+                <div class="feature-card glass" data-reveal>
+                    <h3>🦭 Rootless Podman & Docker Fallback</h3>
+                    <p>Daemonless and rootless by default for superior system security. Automatically falls back to Docker if Podman is absent. Built-in <code>--preflight</code> checks output exact OS package installation commands.</p>
+                </div>
+                <div class="feature-card glass" data-reveal>
+                    <h3>🏢 13 Engines Supported</h3>
+                    <p>Spin up <b>PostgreSQL, pgvector (AI embeddings), MySQL, MariaDB, SQL Server 2022, Oracle Free, IBM DB2, MongoDB, Redis/Valkey, ClickHouse (OLAP), CockroachDB, Snowflake Emulator (DuckDB), and Databricks (Spark + Delta Lake)</b>.</p>
+                </div>
+                <div class="feature-card glass" data-reveal>
+                    <h3>🩺 Port-Aware OCI Healthchecks</h3>
+                    <p>Monitors internal container readiness via port-aware OCI health probes, tracking <code>starting</code> and <code>healthy</code> status transitions so applications never connect to an unready socket.</p>
+                </div>
+                <div class="feature-card glass" data-reveal>
+                    <h3>🔌 Auto Port Allocation & Sequential Naming</h3>
+                    <p>Automatically discovers free host ports to eliminate port collision errors. Generates clear, collision-free container instance identifiers linked to the allocated port (e.g., <code>mysql-3306</code>, <code>postgres-5432</code>).</p>
+                </div>
+                <div class="feature-card glass" data-reveal>
+                    <h3>🔄 Multi-Variant & Version Discovery</h3>
+                    <p>Dynamic container version discovery (<code>--list-versions</code>) backed by TTL caching. Launch specific database major and minor versions effortlessly without manual tag hunting.</p>
+                </div>
+                <div class="feature-card glass" data-reveal>
+                    <h3>🛡️ Localhost Security & Storage Volumes</h3>
+                    <p>Binds to <code>127.0.0.1</code> by default to prevent unauthorized network exposure on shared Wi-Fi. Easily switch to ephemeral container storage or persistent host mount directories with <code>-d</code>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quickstart CLI Guide -->
+        <section class="usage-section" style="margin-top: 4rem;" data-reveal>
+            <div class="section-header">
+                <h2 class="section-title">Quickstart with spinctl</h2>
+                <p class="section-subtitle">Run a single command to spin up any database environment instantly.</p>
+            </div>
+
+            <div class="guide-container glass" data-reveal>
+                <div class="guide-step">
+                    <div class="step-number">1</div>
+                    <div class="guide-content">
+                        <h4>Preflight System Verification</h4>
+                        <pre style="background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; font-family: var(--font-mono), monospace; font-size: 0.85rem; color: var(--accent); overflow-x: auto;">./bin/spinctl --preflight</pre>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="step-number">2</div>
+                    <div class="guide-content">
+                        <h4>Spin Up PostgreSQL with pgvector AI Embeddings</h4>
+                        <pre style="background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; font-family: var(--font-mono), monospace; font-size: 0.85rem; color: var(--accent); overflow-x: auto;">./bin/spinctl -t pgvector -p 5432 -n dev-pgvector</pre>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="step-number">3</div>
+                    <div class="guide-content">
+                        <h4>Spin Up Redis Cache or ClickHouse Analytics</h4>
+                        <pre style="background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; font-family: var(--font-mono), monospace; font-size: 0.85rem; color: var(--accent); overflow-x: auto;">./bin/spinctl -t redis -p 6379 -n dev-redis
+./bin/spinctl -t clickhouse -p 8123 -n dev-olap</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Vivek Umrao. Principal Software Engineer & Systems Architect.</p>
+        </footer>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!-- Copyright 2025 Vivek Umrao -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup Master | High-Fidelity Mock Data Injector</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="../../" class="nav-back"><span>&larr;</span> Back to Portfolio</a>
+            <div class="nav-logo">Mockup Master</div>
+            <a href="privacy/" class="btn btn-secondary" style="padding: 0.5rem 1.5rem;">Privacy Policy</a>
+        </nav>
+
+        <header class="project-hero" data-reveal>
+            <div class="feature-graphic-container">
+                <img src="../../assets/graphics/mockup_master_fg.png" alt="Mockup Master Feature Graphic">
+            </div>
+
+            <div class="project-hero-icon" style="background: white;">
+                <img src="../../assets/icons/mockup_master.png" alt="Mockup Master Icon">
+            </div>
+
+            <h1>Mockup Master</h1>
+            <p>The ultimate developer utility for Android. Instantly populate any emulator or physical device with realistic, high-quality mock data including Contacts, SMS threads, and Call Logs.</p>
+
+            <div class="hero-links">
+                <a href="https://play.google.com/store/apps/details?id=com.vivekumrao.mockupmaster" class="btn btn-primary" target="_blank">
+                    Available on Google Play
+                </a>
+            </div>
+        </header>
+
+        <section id="features">
+            <div style="text-align: center; margin-bottom: 3rem;" data-reveal>
+                <h2 class="section-title">Developer Superpowers</h2>
+                <p style="color: var(--text-muted);">Build better, test faster, and stress-test your UI with ease.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card glass" data-reveal style="--primary: #10b981;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">📱</span>
+                    <h3>Contact Injection</h3>
+                    <p>Bulk create contacts with full names, multiple phone numbers, emails, and placeholder avatars. Perfect for testing contact lists and search logic.</p>
+                </div>
+                <div class="feature-card glass" data-reveal style="--primary: #3b82f6;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">💬</span>
+                    <h3>SMS Simulation</h3>
+                    <p>Create entire conversation histories between different numbers. Supports Sent, Received, Draft statuses and even MMS simulation.</p>
+                </div>
+                <div class="feature-card glass" data-reveal style="--primary: #f59e0b;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">📞</span>
+                    <h3>Call Log Factory</h3>
+                    <p>Generate Incoming, Outgoing, and Missed call entries with randomized durations to simulate years of device usage in seconds.</p>
+                </div>
+                <div class="feature-card glass" data-reveal style="--primary: #ef4444;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">🧹</span>
+                    <h3>One-Tap Cleanup</h3>
+                    <p>Safe, surgical wipe of all mock data. Tracks every entry it creates so your personal or other test data remains completely untouched.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="usage-section">
+            <div style="text-align: center; margin-bottom: 4rem;" data-reveal>
+                <h2 class="section-title">Developer User Guide</h2>
+                <p style="color: var(--text-muted);">Set up your testing environment in four simple steps.</p>
+            </div>
+
+            <div class="guide-container glass" data-reveal>
+                <div class="guide-step">
+                    <div class="step-number">1</div>
+                    <div class="guide-content">
+                        <h4>Grant Data Access</h4>
+                        <p>Launch the app and grant permissions for Contacts, SMS, and Call Logs. To mock SMS data, you must temporarily set Mockup Master as your default SMS app.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">2</div>
+                    <div class="guide-content">
+                        <h4>Configure Datasets</h4>
+                        <p>Choose the quantity of entries (10, 50, 100+) and select presets like "Corporate" or "Social" to tailor the data to your app's specific needs.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">3</div>
+                    <div class="guide-content">
+                        <h4>Generate & Test</h4>
+                        <p>Hit <strong>"Generate"</strong>. Watch as your system databases populate in real-time. Now, switch back to your own app to see how it handles the load.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">4</div>
+                    <div class="guide-content">
+                        <h4>Export & Share</h4>
+                        <p>Save your mock scenarios as <strong>JSON</strong> or <strong>CSV</strong> files to share with your QA team for consistent testing across multiple emulators.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-tagline">Built for Android Devs by <span class="highlight">Vivek Umrao</span></div>
+            <div class="footer-meta">
+                &copy; 2025 <span class="dot">•</span> Mockup Master <span class="dot">•</span> v1.4.2
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

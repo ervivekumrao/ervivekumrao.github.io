@@ -1,0 +1,129 @@
+<!-- Copyright 2025 Vivek Umrao -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Med Reminder | Your Intelligent Health Companion</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        :root {
+            --primary: #00897B;
+            --primary-glow: rgba(0, 137, 123, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="../../" class="nav-back"><span>&larr;</span> Back to Portfolio</a>
+            <div class="nav-logo">Med Reminder</div>
+            <a href="privacy/" class="btn btn-secondary" style="padding: 0.5rem 1.5rem;">Privacy Policy</a>
+        </nav>
+
+        <header class="project-hero" data-reveal>
+            <div class="feature-graphic-container">
+                <img src="../../assets/graphics/med_reminder_fg.png" alt="Med Reminder Feature Graphic">
+            </div>
+
+            <div class="project-hero-icon" style="background: white;">
+                <img src="../../assets/icons/med_reminder.png" alt="Med Reminder Icon">
+            </div>
+
+            <h1>Intelligent Health Companion</h1>
+            <p>Never miss a dose again. Manage medications for you and your family with our modern reminder system featuring OCR label scanning and biometric security.</p>
+
+            <div class="hero-links">
+                <a href="https://play.google.com/store/apps/details?id=med.reminder" class="btn btn-primary" style="background: #00897B;" target="_blank">
+                    Available on Google Play
+                </a>
+            </div>
+        </header>
+
+        <section id="features">
+            <div style="text-align: center; margin-bottom: 3rem;" data-reveal>
+                <h2 class="section-title">Health Intelligence</h2>
+                <p style="color: var(--text-muted);">Designed for clinical accuracy with a human touch.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card glass" data-reveal style="--primary: #00897B;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">📅</span>
+                    <h3>Smart Scheduling</h3>
+                    <p>Easily add medications with specific dosages, frequencies, and recurring intervals. Handles everything from antibiotics to chronic prescriptions.</p>
+                </div>
+                <div class="feature-card glass" data-reveal style="--primary: #D81B60;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">📷</span>
+                    <h3>OCR Label Scanning</h3>
+                    <p>Point your camera at the medication label. Our AI-driven OCR (ML Kit) extracts names and schedules automatically for error-free entry.</p>
+                </div>
+                <div class="feature-card glass" data-reveal style="--primary: #263238;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">👨‍👩‍👧‍👦</span>
+                    <h3>Family Profiles</h3>
+                    <p>Create separate profiles for children, parents, or elderly relatives. Monitor the entire family's adherence from a single dashboard.</p>
+                </div>
+                <div class="feature-card glass" data-reveal style="--primary: #00897B;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">🛡️</span>
+                    <h3>Biometric Security</h3>
+                    <p>Protect sensitive medical data with industry-standard biometric authentication (Fingerprint, Face Unlock, or PIN).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="usage-section">
+            <div style="text-align: center; margin-bottom: 4rem;" data-reveal>
+                <h2 class="section-title">Patient Setup Guide</h2>
+                <p style="color: var(--text-muted);">Take control of your health journey in four simple steps.</p>
+            </div>
+
+            <div class="guide-container glass" data-reveal>
+                <div class="guide-step">
+                    <div class="step-number">1</div>
+                    <div class="guide-content">
+                        <h4>Create Your Profile</h4>
+                        <p>Open the app and set up your primary profile. You can also add family members with custom icons for easy identification.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">2</div>
+                    <div class="guide-content">
+                        <h4>Add Medications</h4>
+                        <p>Tap <strong>"Add Medicine"</strong>. Use the camera to scan the label or manually enter the details using our intelligent auto-complete.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">3</div>
+                    <div class="guide-content">
+                        <h4>Configure Reminders</h4>
+                        <p>Set precise alarm times. Enable "Post-Reboot Execution" to ensure your schedule is never interrupted by device restarts.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">4</div>
+                    <div class="guide-content">
+                        <h4>Track & Adjust</h4>
+                        <p>Log your doses as you take them. View the <strong>Adherence Log</strong> to see your progress and identify patterns over time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-tagline">Healing Technology by <span class="highlight">Vivek Umrao</span></div>
+            <div class="footer-meta">
+                &copy; 2025 <span class="dot">•</span> Med Reminder <span class="dot">•</span> v1.0.0
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

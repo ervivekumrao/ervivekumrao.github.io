@@ -1,0 +1,136 @@
+<!-- Copyright 2025 Vivek Umrao -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Companion | AI-Driven Educational Assistant</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="../../" class="nav-back"><span>&larr;</span> Back to Portfolio</a>
+            <div class="nav-logo">Study Companion</div>
+            <a href="privacy/" class="btn btn-secondary" style="padding: 0.5rem 1.5rem;">Privacy Policy</a>
+        </nav>
+
+        <header class="project-hero" data-reveal>
+            <div class="feature-graphic-container">
+                <img src="../../assets/graphics/study_companion_fg.png" alt="Study Companion Feature Graphic">
+            </div>
+
+            <div class="project-hero-icon">
+                <img src="../../assets/icons/study_companion.png" alt="Study Companion Icon">
+            </div>
+
+            <h1>Smart Study Companion</h1>
+            <p>Empower your learning with AI. Convert physical textbooks into interactive digital study materials using cutting-edge Google ML Kit OCR, personalized question generation, Leitner flashcards, and an AI Text-to-Speech tutor.</p>
+
+            <div class="comp-tags" style="justify-content: center; margin-bottom: 2rem; max-width: 800px;">
+                <span>Android App</span>
+                <span>Jetpack Compose</span>
+                <span>Google ML Kit OCR</span>
+                <span>AI Question Generator</span>
+                <span>Leitner Flashcards</span>
+                <span>TTS Audio Tutor</span>
+                <span>Room Database</span>
+            </div>
+
+            <div class="hero-links">
+                <a href="https://play.google.com/store/apps/details?id=study.companion" class="btn btn-primary" style="background: #6366f1;" target="_blank">
+                    Available on Google Play
+                </a>
+                <a href="https://github.com/ervivekumrao/StudyCompanion" class="btn btn-secondary" target="_blank">
+                    View on GitHub
+                </a>
+            </div>
+        </header>
+
+        <section id="features">
+            <div style="text-align: center; margin-bottom: 3rem;" data-reveal>
+                <h2 class="section-title">Intelligent Learning</h2>
+                <p style="color: var(--text-muted);">Harness AI to transform how you study and retain information.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card glass" data-reveal style="--primary: #6366f1;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">🔍</span>
+                    <h3>Precision OCR</h3>
+                    <p>Extract text from photos of textbooks or handwritten notes with high accuracy using Google ML Kit. Digitizing notes has never been easier.</p>
+                </div>
+                <div class="feature-card glass" data-reveal style="--primary: #10b981;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">🤖</span>
+                    <h3>AI Question Gen</h3>
+                    <p>Instantly generate practice quizzes (MCQs, Essay, Short Answer) directly from your scanned materials to test your knowledge.</p>
+                </div>
+                <div class="feature-card glass" data-reveal style="--primary: #f59e0b;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">📝</span>
+                    <h3>Auto-Flashcards</h3>
+                    <p>Convert your notes into Leitner-style flashcards for active recall and spaced repetition study, optimized for long-term retention.</p>
+                </div>
+                <div class="feature-card glass" data-reveal style="--primary: #8b5cf6;">
+                    <span style="font-size: 3rem; margin-bottom: 1.5rem; display: block;">🎧</span>
+                    <h3>AI Tutor Mode</h3>
+                    <p>Built-in Text-to-Speech (TTS) allows you to listen to your study material or notes while on the move. Listen and learn anywhere.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="usage-section">
+            <div style="text-align: center; margin-bottom: 4rem;" data-reveal>
+                <h2 class="section-title">Student User Guide</h2>
+                <p style="color: var(--text-muted);">Transform your study sessions in four easy steps.</p>
+            </div>
+
+            <div class="guide-container glass" data-reveal>
+                <div class="guide-step">
+                    <div class="step-number">1</div>
+                    <div class="guide-content">
+                        <h4>Scan Your Material</h4>
+                        <p>Open the app and tap <strong>"Scan"</strong>. Take photos of your textbook pages or handwritten notes. The app will extract the text in real-time.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">2</div>
+                    <div class="guide-content">
+                        <h4>Generate Study Sets</h4>
+                        <p>Tap <strong>"Confirm & Generate"</strong>. The AI will process your text, perform web research, and create personalized tests, notes, and flashcards.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">3</div>
+                    <div class="guide-content">
+                        <h4>Practice & Master</h4>
+                        <p>Take a timed MCQ test to verify your knowledge, or use the flashcard deck for active recall. Use Tutor mode to listen to the content.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">4</div>
+                    <div class="guide-content">
+                        <h4>Track Your Progress</h4>
+                        <p>Check the <strong>Analytics</strong> screen to see your study streak, XP, and badges. Use Revision Mode to focus on areas where you missed questions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-tagline">Educational Innovation by <span class="highlight">Vivek Umrao</span></div>
+            <div class="footer-meta">
+                &copy; 2025 <span class="dot">•</span> Study Companion <span class="dot">•</span> v3.1.0
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

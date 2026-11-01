@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Career Crox</title>
+    <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        .policy-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 3rem;
+            line-height: 1.8;
+        }
+        .policy-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .last-updated {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .policy-section {
+            margin-bottom: 3rem;
+        }
+        .policy-section h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .policy-section p {
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        .highlight-box {
+            background: rgba(99, 102, 241, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0 1rem 1rem 0;
+            margin: 1.5rem 0;
+        }
+        .policy-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .policy-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .policy-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="../" class="nav-back"><span>&larr;</span> Back to App Details</a>
+            <div class="nav-logo">Privacy Center</div>
+            <a href="mailto:manuscriptcode@gmail.com" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Support</a>
+        </nav>
+
+        <main class="policy-container glass" data-reveal>
+            <header>
+                <h1>Privacy Policy</h1>
+                <p class="last-updated">Last Updated: June 25, 2026</p>
+            </header>
+
+            <section class="policy-section">
+                <p>Welcome to <strong>Career Crox – Calling Assistant</strong>. This application is designed to help recruitment professionals manage and track candidate interactions. We are committed to protecting your privacy and being transparent about the data we access.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>1. Sensitive Data Access Disclosure</h2>
+                <p>To function as an effective recruitment calling assistant, the app requires access to several sensitive device features:</p>
+
+                <div class="highlight-box">
+                    <strong>Comprehensive Disclosure:</strong> The app accesses <strong>Call Logs</strong> (READ_CALL_LOG) and <strong>Phone State</strong> (READ_PHONE_STATE) to automate recruitment tracking.
+                </div>
+
+                <h3>How we use your data:</h3>
+                <ul class="policy-list">
+                    <li><strong>Call Outcome Sync:</strong> The app reads call logs to identify recruitment-related calls and synchronizes call details (timestamp, duration, and status) with your linked Career Crox CRM.</li>
+                    <li><strong>Caller Identification:</strong> Access to phone state allows the app to identify incoming/outgoing calls from candidates in your recruitment queue to provide real-time assistant features.</li>
+                    <li><strong>Contact Matching:</strong> If granted, contact access is used solely to match CRM candidate profiles with your local contact list for better identification.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>2. Data Transmission & Security</h2>
+                <p>We prioritize the security of your professional data during transmission.</p>
+                <ul class="policy-list">
+                    <li><strong>Secure CRM Pairing:</strong> Data is only transmitted to the Career Crox CRM instance that you have securely paired with your device using a unique 6-digit pairing code.</li>
+                    <li><strong>End-to-End Encryption:</strong> All data sent to your CRM is encrypted using industry-standard protocols.</li>
+                    <li><strong>No Third-Party Sharing:</strong> We do not sell or share your call logs or candidate data with any third-party advertisers or data brokers.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>3. User Control</h2>
+                <p>You maintain full control over the app's data access:</p>
+                <ul class="policy-list">
+                    <li>Permissions can be revoked at any time through Android System Settings.</li>
+                    <li>The app only tracks calls related to your recruitment activities as defined in your CRM configuration.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>4. Contact Us</h2>
+                <p>If you have any questions regarding this privacy policy, please contact us at:</p>
+                <p><strong>Email:</strong> manuscriptcode@gmail.com</p>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-tagline">Developed by <span class="highlight">Vivek Umrao</span></div>
+            <div class="footer-meta">
+                &copy; 2026 <span class="dot">•</span> Career Crox <span class="dot">•</span> All Rights Reserved
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

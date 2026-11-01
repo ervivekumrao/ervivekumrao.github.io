@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | JitForge</title>
+    <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+    <div class="container">
+        <nav style="margin-bottom: 2rem;">
+            <a href="../" style="text-decoration: none; color: var(--primary); font-weight: 600;">&larr; Back to Tool Details</a>
+        </nav>
+
+        <header>
+            <h1>Privacy Policy</h1>
+            <p>Last updated: June 10, 2026</p>
+        </header>
+
+        <section>
+            <p>JitForge ("the Engine") is a high-performance in-memory runtime compilation, JIT execution, and bytecode synthesis engine.</p>
+
+            <h2 class="section-title">1. No Data Collection</h2>
+            <p>The Engine does not collect, store, or transmit any user source code or compiled bytecode to external third-party tracking services. All compilation and execution tasks are performed in-memory within your JVM or containerized microservice instance.</p>
+
+            <h2 class="section-title">2. Sandboxed Execution Safety</h2>
+            <p>JitForge incorporates lexical AST security rules and execution timeouts via <code>SandboxedExecutor</code> to proactively reject forbidden APIs and runaway execution.</p>
+
+            <h2 class="section-title">3. Tiered Bytecode Storage</h2>
+            <p>When persistence tiers (Redis, local disk volumes, PostgreSQL) are configured, bytecode is stored strictly within the developer's designated infrastructure boundaries.</p>
+
+            <h2 class="section-title">4. Contact Us</h2>
+            <p>For any questions, please contact vivekumraomain@gmail.com.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Vivek Umrao. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+# Reusable workflow: build -> sign -> verify -> publish APK to this hub repo's Releases.
+# Called from app repos (public OR private) with `uses: <owner>/<hub>/.github/workflows/android-release.yml@main`.
+# The hub repo MUST be public so private repos can call this file.
+name: Android release (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      app-id:        { required: true,  type: string, description: "Slug, lowercase, e.g. childsafe. Used in tags and file names." }
+      display-name:  { required: true,  type: string }
+      module:        { required: false, type: string, default: app }
+      gradle-task:   { required: false, type: string, default: assembleRelease }
+      java-version:  { required: false, type: string, default: "17" }
+      device-owner:  { required: false, type: boolean, default: false }
+      hub-repo:      { required: false, type: string, default: "ervivekumrao/ervivekumrao.github.io" }
+    secrets:
+      KEYSTORE_B64:      { required: true }
+      KEYSTORE_PASSWORD: { required: true }
+      KEY_ALIAS:         { required: true }
+      KEY_PASSWORD:      { required: true }
+      HUB_TOKEN:         { required: true }
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      APP_ID: ${{ inputs.app-id }}
+      APP_NAME: ${{ inputs.display-name }}
+      HUB: ${{ inputs.hub-repo }}
+      DEVICE_OWNER: ${{ inputs.device-owner }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ inputs.java-version }}
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Build (unsigned release)
+        run: |
+          chmod +x ./gradlew
+          ./gradlew ":${{ inputs.module }}:${{ inputs.gradle-task }}" --no-daemon --stacktrace
+
+      - name: Locate APK
+        run: |
+          APK=$(find "${{ inputs.module }}/build/outputs/apk/release" -name '*.apk' | sort | head -n1)
+          test -n "$APK" || { echo "::error::No release APK found"; exit 1; }
+          echo "BUILT_APK=$APK" >> "$GITHUB_ENV"
+
+      - name: Align and sign
+        env:
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+        run: |
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -n1)
+          echo "BUILD_TOOLS=$BT" >> "$GITHUB_ENV"
+          echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+          "$BT/zipalign" -p -f 4 "$BUILT_APK" "$RUNNER_TEMP/aligned.apk"
+          "$BT/apksigner" sign --ks "$RUNNER_TEMP/release.jks" --ks-key-alias "$KEY_ALIAS" \
+            --ks-pass env:KEYSTORE_PASSWORD --key-pass env:KEY_PASSWORD \
+            --out "$RUNNER_TEMP/signed.apk" "$RUNNER_TEMP/aligned.apk"
+          "$BT/apksigner" verify --verbose --print-certs "$RUNNER_TEMP/signed.apk" | tee "$RUNNER_TEMP/certs.txt"
+
+      - name: Build manifest, checksums, release notes
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, json, os, re, subprocess, datetime
+          t = os.environ["RUNNER_TEMP"]; bt = os.environ["BUILD_TOOLS"]
+          apk = f"{t}/signed.apk"
+          badging = subprocess.check_output([f"{bt}/aapt2", "dump", "badging", apk], text=True)
+          g = lambda rx: (re.search(rx, badging) or [None, ""])[1]
+          pkg, vcode, vname = g(r"package: name='([^']+)'"), g(r"versionCode='(\d+)'"), g(r"versionName='([^']*)'")
+          minsdk = g(r"sdkVersion:'(\d+)'")
+          certs = open(f"{t}/certs.txt").read()
+          cert_hex = re.search(r"certificate SHA-256 digest: ([0-9a-f]+)", certs).group(1)
+          cert_b64 = base64.urlsafe_b64encode(bytes.fromhex(cert_hex)).rstrip(b"=").decode()
+          data = open(apk, "rb").read()
+          sha = hashlib.sha256(data).hexdigest()
+          app, hub = os.environ["APP_ID"], os.environ["HUB"]
+          base = f"https://github.com/{hub}/releases/download"
+          m = {
+            "schema": 1, "app_id": app, "name": os.environ["APP_NAME"], "package": pkg,
+            "version_name": vname, "version_code": int(vcode), "min_sdk": int(minsdk or 0),
+            "sha256": sha, "size_bytes": len(data),
+            "cert_sha256_hex": cert_hex, "cert_sha256_b64url": cert_b64,
+            "device_owner": os.environ["DEVICE_OWNER"] == "true",
+            "url_versioned": f"{base}/{app}-v{vname}/{app}-{vname}.apk",
+            "url_latest": f"{base}/{app}-latest/{app}.apk",
+            "released_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+          }
+          os.makedirs("out", exist_ok=True); os.makedirs("latest", exist_ok=True)
+          open("out/manifest.json", "w").write(json.dumps(m, indent=2))
+          open("latest/manifest.json", "w").write(json.dumps(m, indent=2))
+          for d, name in (("out", f"{app}-{vname}.apk"), ("latest", f"{app}.apk")):
+              open(f"{d}/{name}", "wb").write(data)
+          open("out/SHA256SUMS", "w").write(f"{sha}  {app}-{vname}.apk\n")
+          with open(os.environ["GITHUB_ENV"], "a") as e:
+              e.write(f"VERSION={vname}\nTAG={app}-v{vname}\n")
+          print(json.dumps(m, indent=2))
+          PY
+          PREV=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || git rev-list --max-parents=0 HEAD | tail -n1)
+          { echo "Changes since ${PREV}:"; git log --pretty='- %s' "${PREV}..HEAD" | head -n 40; } > notes.md
+
+      - name: Publish to hub Releases
+        env:
+          GH_TOKEN: ${{ secrets.HUB_TOKEN }}
+        run: |
+          # 1) rolling "latest" release (stable URL for QR codes), assets are overwritten
+          if ! gh release view "${APP_ID}-latest" --repo "$HUB" >/dev/null 2>&1; then
+            gh release create "${APP_ID}-latest" --repo "$HUB" --title "${APP_NAME} (rolling latest)" \
+              --notes "Always the newest build of ${APP_NAME}. Do not delete." --prerelease --latest=false
+          fi
+          gh release upload "${APP_ID}-latest" latest/* --repo "$HUB" --clobber
+          # 2) immutable versioned release
+          if gh release view "$TAG" --repo "$HUB" >/dev/null 2>&1; then
+            gh release upload "$TAG" out/* --repo "$HUB" --clobber
+          else
+            gh release create "$TAG" --repo "$HUB" --title "${APP_NAME} ${VERSION}" --notes-file notes.md out/*
+          fi
+          # 3) refresh the website
+          gh workflow run site.yml --repo "$HUB" --ref main
+
+      - name: Remove keystore
+        if: always()
+        run: rm -f "$RUNNER_TEMP/release.jks"

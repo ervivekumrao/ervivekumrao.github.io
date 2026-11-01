@@ -1,0 +1,13 @@
+{
+  "id": "timespanselectorview",
+  "name": "TimeSpanSelectorView",
+  "type": "library",
+  "order": 50,
+  "published": true,
+  "tagline": "Android custom view for selecting time spans.",
+  "description": "Replace with the real description.",
+  "tags": ["Android", "Java", "Library"],
+  "visibility": "public",
+  "repo": "ervivekumrao/TimeSpanSelectorView",
+  "library": { "jitpack": "com.github.ervivekumrao:TimeSpanSelectorView", "latest_version": "1.0.0", "docs_url": "" }
+}

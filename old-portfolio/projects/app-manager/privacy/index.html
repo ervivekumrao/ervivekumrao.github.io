@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | App Manager</title>
+    <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        .policy-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 3rem;
+            line-height: 1.8;
+        }
+        .policy-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .last-updated {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .policy-section {
+            margin-bottom: 3rem;
+        }
+        .policy-section h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .policy-section p {
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        .highlight-box {
+            background: rgba(99, 102, 241, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0 1rem 1rem 0;
+            margin: 1.5rem 0;
+        }
+        .policy-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .policy-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .policy-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="../" class="nav-back"><span>&larr;</span> Back to App Details</a>
+            <div class="nav-logo">Privacy Center</div>
+            <a href="mailto:manuscriptcode@gmail.com" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Support</a>
+        </nav>
+
+        <main class="policy-container glass" data-reveal>
+            <header>
+                <h1>Privacy Policy</h1>
+                <p class="last-updated">Last Updated: June 25, 2026</p>
+            </header>
+
+            <section class="policy-section">
+                <p>Welcome to <strong>App Manager</strong>. This application is an enterprise-grade system utility designed for deep device management and policy enforcement. We are committed to transparency regarding how we handle system-level permissions.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>1. Sensitive Permissions Disclosure</h2>
+                <p>To provide advanced device management features, the app requires several high-level Android permissions:</p>
+
+                <div class="highlight-box">
+                    <strong>Administrative Access:</strong> This app uses the <strong>Device Administrator</strong> permission and may require <strong>Device Owner</strong> status for full functionality.
+                </div>
+
+                <h3>Permission Usage:</h3>
+                <ul class="policy-list">
+                    <li><strong>Device Administrator:</strong> Used to enforce security policies such as password complexity, screen lock timeouts, and remote data wipe capabilities.</li>
+                    <li><strong>Query All Packages:</strong> Required to list all installed applications, allowing you to identify and manage (freeze/disable) bloatware or unauthorized software.</li>
+                    <li><strong>Hardware Restrictions:</strong> When configured as a Device Owner, the app can disable hardware components like the Camera or Microphone to comply with enterprise security standards.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>2. Data Privacy & Local Processing</h2>
+                <p>We believe in "Privacy by Design". All device management operations and application metadata are processed locally on the device.</p>
+                <ul class="policy-list">
+                    <li><strong>Zero External Transmission:</strong> Your list of installed apps, security configurations, and device identifiers are never transmitted to our servers.</li>
+                    <li><strong>No Tracking:</strong> The app does not track your location, browsing history, or personal communications.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>3. User Control & Transparency</h2>
+                <p>You have full control over the app's administrative status:</p>
+                <ul class="policy-list">
+                    <li>You can revoke Device Administrator privileges at any time through the system settings.</li>
+                    <li>The app provides clear logs of all policy changes and application management actions performed.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>4. Contact Us</h2>
+                <p>If you have any questions regarding this privacy policy, please contact us at:</p>
+                <p><strong>Email:</strong> manuscriptcode@gmail.com</p>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-tagline">Developed by <span class="highlight">Vivek Umrao</span></div>
+            <div class="footer-meta">
+                &copy; 2026 <span class="dot">•</span> App Manager <span class="dot">•</span> All Rights Reserved
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

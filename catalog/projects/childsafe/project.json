@@ -1,0 +1,16 @@
+{
+  "id": "childsafe",
+  "name": "ChildSafe",
+  "type": "app",
+  "order": 10,
+  "published": true,
+  "tagline": "Parental control and device-owner child safety.",
+  "description": "ChildSafe helps parents manage a child's device.\n\nReplace this text with the real description.",
+  "tags": ["Android", "Java", "Device Owner"],
+  "visibility": "private",
+  "repo": "",
+  "package": "com.example.childsafe",
+  "play_store_url": "",
+  "device_owner": { "enabled": true, "admin_component": "com.example.childsafe/.admin.AdminReceiver" },
+  "screenshots": []
+}
