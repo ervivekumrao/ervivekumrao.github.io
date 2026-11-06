@@ -217,14 +217,17 @@ def main() -> int:
         versions = by_app.get(p["id"], [])
         render_project(site, p, versions, root)
         kind = "libs" if p.get("type") == "library" else "apps"
+        pid = p["id"]
         badge = f"v{esc(versions[0]['version_name'])}" if versions else ""
         icon_card = ""
         for icon_name in ("icon.svg", "icon.png"):
             if (root / "assets" / icon_name).exists():
-                icon_card = f"<img src='{site.url(f'{kind}/{p[\"id\"]}/assets/{icon_name}')}' alt='' style='width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:.5rem'>"
+                icon_url = site.url(f"{kind}/{pid}/assets/{icon_name}")
+                icon_card = f"<img src='{icon_url}' alt='' style='width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:.5rem'>"
                 break
+        proj_url = site.url(f"{kind}/{pid}/")
         sections.get(p.get("type", "app"), sections["other"]).append(
-            f"<div class='card'><h3>{icon_card}<a href='{site.url(f'{kind}/{p[\"id\"]}/')}'>{esc(p['name'])}</a></h3>"
+            f"<div class='card'><h3>{icon_card}<a href='{proj_url}'>{esc(p['name'])}</a></h3>"
             f"<p class='mut'>{esc(p.get('tagline'))}</p><span class='tag'>{badge or esc(p.get('type', 'app'))}</span></div>")
 
     body = f"<h1>{esc(cfg.get('name'))}</h1><p>{esc(cfg.get('bio'))}</p>"
