@@ -5,8 +5,8 @@
   "order": 50,
   "published": true,
   "tagline": "Custom Android view library for radial and linear time range selection.",
-  "description": "A highly customizable, elegant Android library for selecting time spans. Features Circular (Radial) and Linear layouts with full Material 3 support and overnight span handling.",
-  "tags": ["Android", "Java", "Custom View", "Library", "Material 3"],
+  "description": "TimeSpanSelectorView is a highly customizable, open-source Android view library for selecting time spans. It includes Circular (Radial) and Linear layouts with Material 3 styling.\n\nBuilt in Java and Kotlin with extensive unit and UI test coverage (TimeSpanSelectorUITest, TimeSpanSelectorCoverageTest).\n\nHighlights:\n- Dual Selector Components: CircularTimeSpanSelector (radial clock dial) and LinearTimeSpanSelector (horizontal slider) to match any UX design.\n- Blocked Time Intervals: Lock or gray out unselectable time slots (BlockedInterval.java) for appointment booking and shift scheduling.\n- Overnight Span Support: Handles time spans that cross midnight (start time > end time) for sleep trackers and night shifts.\n- Customization Attributes: Configure track colors, stroke widths, tick mark counts, step snap intervals (1, 5, 15, 30 min), and custom thumb drawables.",
+  "tags": ["Android Library", "Java", "Kotlin", "Custom View", "Radial Selector", "Material 3", "JitPack", "100% Tested"],
   "visibility": "public",
   "repo": "ervivekumrao/TimeSpanSelectorView",
   "library": {

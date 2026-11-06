@@ -4,9 +4,9 @@
   "type": "other",
   "order": 70,
   "published": true,
-  "tagline": "Fast containerized database & lakehouse CLI tool.",
-  "description": "Unified CLI (spinctl) to spin up 13 containerized databases, caches, and lakehouse engines using rootless Podman with automatic Docker fallback.\n\nSupports PostgreSQL, pgvector, MySQL, SQL Server, ClickHouse, Redis, and more.",
-  "tags": ["CLI", "Podman", "Docker", "Database", "PostgreSQL", "ClickHouse"],
+  "tagline": "Fast containerized database & lakehouse CLI tool (spinctl).",
+  "description": "SpinDB is a unified developer CLI (spinctl) for spinning up 13 containerized databases, in-memory caches, and lakehouse engines using Podman (rootless, daemonless) with automatic fallback to Docker.\n\nCapabilities:\n- 13 Supported Engines: PostgreSQL, pgvector (AI embeddings), MySQL, MariaDB, SQL Server 2022, Oracle Free, IBM DB2, MongoDB, Redis/Valkey, ClickHouse (OLAP), CockroachDB, Snowflake Emulator (DuckDB), and Databricks (Spark + Delta Lake).\n- Rootless Security: Daemonless and rootless by default with --preflight OS package checks.\n- Port-Aware OCI Probes: Monitors internal container readiness via OCI health probes so applications never connect to unready sockets.\n- Auto Port Allocation: Discovers free host ports automatically to eliminate collisions and generates sequential container names (e.g. mysql-3306).",
+  "tags": ["spinctl CLI", "Rootless Podman", "Docker Fallback", "13 DB Engines", "pgvector AI", "ClickHouse OLAP", "DuckDB", "OCI Healthchecks"],
   "visibility": "public",
   "repo": "ervivekumrao/SpinDB"
 }

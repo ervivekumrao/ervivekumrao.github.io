@@ -4,9 +4,9 @@
   "type": "other",
   "order": 65,
   "published": true,
-  "tagline": "Enterprise cryptographic credential manager for Apache Tomcat.",
-  "description": "Eliminates cleartext database passwords from Tomcat context.xml and server.xml using AES-256-GCM encryption, HikariCP/DBCP2 pool factories, and cloud secret connectors (AWS Secrets Manager, HashiCorp Vault).",
-  "tags": ["Java", "Apache Tomcat", "Security", "AES-256-GCM", "HikariCP", "Vault"],
+  "tagline": "Enterprise cryptographic credential manager & JNDI pool adapter for Apache Tomcat.",
+  "description": "Tomcat Vault is an enterprise cryptographic credential manager, diagnostic verifier, and JNDI DataSource factory for Apache Tomcat connection pools. It eliminates cleartext database passwords from context.xml and server.xml using authenticated AES-256-GCM encryption.\n\nFeatures:\n- Authenticated AES-256-GCM Encryption: 256-bit AES in Galois/Counter Mode with 12-byte random IVs, 128-bit authentication tags, and ENC(...) envelope syntax.\n- Universal Connection Pool Factories: Dedicated factories for HikariCP (VaultHikariDataSourceFactory), Tomcat DBCP2, Tomcat JDBC, and Vibur/C3P0 adapters.\n- Cloud & Enterprise Secret Connectors: Dynamic secret resolution for AWS Secrets Manager (AWS_SECRET(...)), HashiCorp Vault (VAULT(...)), Azure Key Vault, and GCP Secret Manager.\n- Dynamic Reloader & JMX Sanitizer: VaultCredentialReloader for zero-restart credential rotation and VaultJmxSanitizer for automatic JMX MBean password masking (******).",
+  "tags": ["Tomcat 7–11", "Java 8–25+", "AES-256-GCM", "HikariCP", "DBCP2", "AWS Secrets Manager", "HashiCorp Vault", "JMX Masking"],
   "visibility": "public",
   "repo": "ervivekumrao/Tomcat-Vault"
 }

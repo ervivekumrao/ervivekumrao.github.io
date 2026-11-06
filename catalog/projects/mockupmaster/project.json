@@ -4,9 +4,9 @@
   "type": "app",
   "order": 45,
   "published": true,
-  "tagline": "High-fidelity mock data injector for Android developers.",
-  "description": "Instantly populate emulators or physical devices with realistic mock Contacts, SMS threads, and Call Logs for UI stress-testing and demonstration.\n\nIncludes one-tap surgical cleanup that tracks generated entries to keep personal test data intact.",
-  "tags": ["Android", "Developer Tools", "Mock Data", "Testing"],
+  "tagline": "High-Fidelity Mock Data Injector & Headless ADB CLI Generator for Android Developers.",
+  "description": "Mockup Master is a developer utility for Android engineers, QA teams, and UI designers. It populates physical devices or emulators with realistic mock Contacts, SMS/MMS threads, and Call Logs for UI stress-testing and demonstration.\n\nArchitected with Kotlin, Jetpack Compose, Room DB, Firebase Remote Config, and ADB Broadcast CLI Engine.\n\nCore Capabilities:\n- Headless ADB CLI Automation: Trigger mock data generation headlessly from terminal scripts (adb shell am broadcast) using CliCommandEngine for CI/CD test automation.\n- Contact Injection Factory: Bulk create realistic contacts with full names, phone numbers, email addresses, avatars, and country phone formats (Country.kt).\n- SMS & MMS Conversation Builder: Create full multi-turn conversation threads (ConversationBuilderScreen) with Sent, Received, and Draft statuses.\n- Call Log Factory: Inject Incoming, Outgoing, and Missed call entries with realistic durations and human-like time distribution (HumanTimeSpacingEngine).\n- One-Tap Surgical Cleanup: Track generated records (InjectedRecordRegistryImpl) to safely wipe mock data without touching personal device records.\n- Data Portability Engine: Export and import mock scenarios as JSON or CSV files (DataPortabilityEngine) for reproducible test environments.",
+  "tags": ["Android App", "Developer Tools", "ADB CLI Automation", "Mock Data Generator", "SMS/MMS Simulation", "JSON/CSV Export", "Jetpack Compose"],
   "visibility": "private",
   "repo": "",
   "package": "com.vivekumrao.mockupmaster",
@@ -15,5 +15,5 @@
     "enabled": false,
     "admin_component": ""
   },
-  "screenshots": []
+  "screenshots": ["feature_graphic.png"]
 }

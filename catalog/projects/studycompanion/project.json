@@ -4,16 +4,16 @@
   "type": "app",
   "order": 20,
   "published": true,
-  "tagline": "AI-driven educational assistant and study material generator.",
-  "description": "Convert textbooks and handwritten notes into digital study materials using Google ML Kit OCR, AI-generated practice quizzes, Leitner flashcards, and an AI Text-to-Speech tutor.\n\nDesigned with Jetpack Compose and local Room persistence for efficient, self-paced learning.",
-  "tags": ["Android", "Jetpack Compose", "ML Kit OCR", "AI", "Education"],
+  "tagline": "AI-Driven Educational Assistant for quiz generation, Leitner flashcards, and TTS audio tutoring.",
+  "description": "Empower your learning with AI. Convert physical textbooks, lecture notes, and handwritten materials into interactive digital study sets, practice quizzes, Leitner flashcards, and audio tutoring sessions.\n\nEngineered with Jetpack Compose, Google ML Kit OCR, Local On-Device LLM (MediaPipe/PaddleOCR), Gemini Cloud AI Fallback, and Room DB.\n\nCore Capabilities:\n- Multi-Engine OCR & Document Digitizing: Extract textbook pages and handwritten notes accurately using ML Kit and PaddleOCR.\n- AI Quiz Generator: Generate customized Multiple Choice Questions (MCQs), essay prompts, and short-answer tests directly from scanned study text.\n- Spaced Repetition Leitner Flashcards: Automatically generate Leitner flashcard decks (FlashcardEntity) optimized for long-term retention and active recall.\n- Text-to-Speech (TTS) Tutor Mode: Listen to study notes and auto-generated explanations hands-free while commuting or exercising.\n- Student Gamification & Analytics: Track study streaks, XP points, badge achievements (BadgeEntity), and focus revision mode on missed test questions.\n- Multi-Format Study Export: Export generated quizzes and study notes to PDF files for offline printing or classroom sharing.",
+  "tags": ["Android App", "Jetpack Compose", "Google ML Kit OCR", "AI Quiz Generator", "Leitner Spaced Repetition", "TTS Audio Tutor", "PDF Export"],
   "visibility": "private",
   "repo": "",
-  "package": "com.vivek.studycompanion",
+  "package": "study.companion",
   "play_store_url": "https://play.google.com/store/apps/details?id=study.companion",
   "device_owner": {
     "enabled": false,
     "admin_component": ""
   },
-  "screenshots": []
+  "screenshots": ["feature_graphic.png"]
 }

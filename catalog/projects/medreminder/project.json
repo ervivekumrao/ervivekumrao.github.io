@@ -4,9 +4,9 @@
   "type": "app",
   "order": 15,
   "published": true,
-  "tagline": "Intelligent medication reminder and health companion.",
-  "description": "Never miss a dose again. Manage medications for you and your family with a modern reminder system featuring OCR label scanning and biometric security.\n\nBuilt with clinical accuracy and a local-first privacy approach. All health schedules remain stored securely on your device.",
-  "tags": ["Android", "Kotlin", "OCR", "Health", "Biometrics"],
+  "tagline": "Intelligent Health Companion for family medication management, drug interaction checking, and clinical adherence.",
+  "description": "Never miss a dose again. Manage medications for you and your family with an intelligent reminder system featuring OCR label scanning, drug interaction checking, OpenFDA integration, and biometric security.\n\nArchitected with Jetpack Compose, Kotlin Coroutines/Flow, Room DB, Google ML Kit OCR, and OpenFDA integration.\n\nCore Capabilities:\n- Smart Scheduling & Dosage Tracking: Manage complex prescription schedules, recurring intervals, dosage forms, and custom pill visual badges.\n- On-Device OCR Label Scanning: Scan physical prescription labels using Google ML Kit OCR (ScanScreen, ScanViewModel) for instant text extraction.\n- Domain Safety & Drug Interaction Engine: Built-in safety checker (DrugInteractionChecker) screens for contraindications, food-drug interactions, and dosage risks.\n- OpenFDA & Health Connect Integration: Queries the official FDA medication database and synchronizes adherence logs with Android Health Connect.\n- Voice Assistant Interaction: Voice-guided assistant (VoiceAssistantManager) to log taken doses, query daily schedules, or snooze alarms hands-free.\n- Adherence Analytics & Doctor PDF Export: Generate comprehensive adherence logs (GetAdherenceAnalyticsUseCase) and export formatted doctor PDF reports (PdfExporter).\n- Glance Home Screen Widgets: Interactive Android home screen widgets (MedicationWidget) for single-tap dose logging from your launcher.",
+  "tags": ["Android App", "Jetpack Compose", "Google ML Kit OCR", "Drug Safety Engine", "Health Connect", "OpenFDA API", "Voice Assistant", "Glance Widget"],
   "visibility": "private",
   "repo": "",
   "package": "med.reminder",
@@ -15,5 +15,5 @@
     "enabled": false,
     "admin_component": ""
   },
-  "screenshots": []
+  "screenshots": ["feature_graphic.png"]
 }

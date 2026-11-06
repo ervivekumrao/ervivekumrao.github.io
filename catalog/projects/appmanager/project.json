@@ -4,9 +4,9 @@
   "type": "app",
   "order": 40,
   "published": true,
-  "tagline": "Enterprise system management utility and device policy tool.",
-  "description": "Control bloatware, freeze pre-installed apps, enforce strict password policies, and manage hardware restrictions across your device fleet using full Device Owner permissions.",
-  "tags": ["Android Enterprise", "Device Owner", "System Utility", "Security"],
+  "tagline": "Enterprise System Management & Device Owner Policy Security Utility.",
+  "description": "App Manager is a high-security enterprise system management tool and device policy utility designed for managing Android hardware fleets, kiosk devices, and corporate security compliance.\n\nBuilt on Android Device Policy Manager (Device Owner API), Android Enterprise Provisioning, and Material UI.\n\nCore Capabilities:\n- Fleet Governance: Deep system-level Device Owner integration (AdminReceiver, DevicePolicyRepository) for corporate hardware control.\n- Bloatware Freeze Engine: Disable pre-installed system apps (AppsRepository) without uninstallation to free RAM and optimize battery performance.\n- Enterprise Policy Controls: Enforce complex password rules, disable USB file transfer, block factory reset, and disable hardware components (Camera, Microphone).\n- Automated QR Provisioning: Built-in QR provisioning helper (ProvisioningModeActivity, AdminPolicyComplianceActivity) for rapid zero-touch fleet setup.",
+  "tags": ["Android Enterprise", "Device Owner", "System Utility", "Bloatware Freeze", "Hardware Restrictions", "QR Provisioning"],
   "visibility": "private",
   "repo": "",
   "package": "com.my.admin.app",
@@ -15,5 +15,5 @@
     "enabled": true,
     "admin_component": "com.my.admin.app/.AdminReceiver"
   },
-  "screenshots": []
+  "screenshots": ["feature_graphic.png"]
 }

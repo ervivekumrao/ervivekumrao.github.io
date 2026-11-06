@@ -4,9 +4,9 @@
   "type": "other",
   "order": 60,
   "published": true,
-  "tagline": "AI-driven polyglot microservices platform for inventory intelligence.",
-  "description": "Production-grade microservices architecture for real-time stock management, statistical demand forecasting, and agentic AI query processing.\n\nBuilt with Spring Boot 3.4, FastAPI (Python), Apache Kafka, MongoDB, and multi-RDBMS dialect support.",
-  "tags": ["Java 21", "Spring Boot", "Python", "FastAPI", "Kafka", "Microservices", "AI"],
+  "tagline": "AI-driven polyglot microservices platform for real-time stock & forecasting intelligence.",
+  "description": "Agentic Inventory is a production-grade polyglot microservices platform engineered for real-time stock management, statistical demand forecasting, multi-database persistence, and agentic AI query processing.\n\nMicroservices Architecture:\n- inventory-service (Java 17/21 & Spring Boot 3.4.1): Core transactional engine with non-blocking 2-phase reservations (reserve/claim/release), Spring Security Basic/RBAC, Kafka stock mutation events, and 5 pluggable RDBMS dialects (PostgreSQL, SQL Server, MySQL, Oracle, DB2).\n- catalog-service (Java 17/21 & MongoDB 6.0): Dynamic document-based product management for technical specs, categories, and seeder pipelines.\n- forecasting-service (Python 3.11 & FastAPI): Scikit-Learn trained ML intent classifier (1,700+ queries across 15 intents), NER entity extraction, dual-mode Gemini/OpenAI router with offline local ML fallback, and statistical demand forecasting.\n- Key Capabilities: Non-blocking reservation backend, cross-service correlation tracing (X-Correlation-ID), safety stock Z-formulas (Z=1.65, 95% service level), interactive Markdown chat workspace (/chat.html), multi-format export (XLSX/DOCX/PDF), rootless Podman/Docker Compose configs, and Helm charts.",
+  "tags": ["Java 21", "Spring Boot 3.4", "Python 3.11", "FastAPI", "Apache Kafka", "MongoDB", "Multi-DB Dialects", "Scikit-Learn ML", "Podman & Helm"],
   "visibility": "public",
   "repo": "ervivekumrao/Agentic-inventory"
 }

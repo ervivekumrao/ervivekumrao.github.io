@@ -1,14 +1,18 @@
 # Privacy Policy for App Manager
 
-*Last updated: June 25, 2026*
+*Last Updated: June 25, 2026*
 
-App Manager is an enterprise-grade system utility for device policy enforcement.
+Welcome to **App Manager**. This application is an enterprise-grade system utility designed for deep device management and policy enforcement.
 
-## 1. Administrative Access
-App Manager uses Device Administrator and Device Owner permissions to enforce system policies, query package information, and configure hardware restrictions.
+## 1. Sensitive Permissions Disclosure
+- **Device Administrator & Owner:** Enforces security policies (password complexity, screen lock timeout, remote wipe) and hardware restrictions (disabling camera/mic).
+- **Query All Packages:** Lists installed applications to allow administrators to freeze or disable bloatware.
 
 ## 2. Local Processing
-All device management operations and app metadata are processed locally on the device. No data is transmitted externally.
+All device management operations and application metadata are processed locally on the device with zero external transmission.
 
-## 3. Contact Us
-For support, contact `manuscriptcode@gmail.com`.
+## 3. User Control
+Administrative privileges can be revoked at any time through system settings.
+
+## 4. Contact Us
+Email: `manuscriptcode@gmail.com`

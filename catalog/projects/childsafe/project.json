@@ -1,19 +1,19 @@
 {
   "id": "childsafe",
-  "name": "ChildSafe",
+  "name": "Parental Control – Child Safe",
   "type": "app",
   "order": 10,
   "published": true,
-  "tagline": "Parental control, device governance, and kiosk security.",
-  "description": "ChildSafe helps parents manage a child's digital safety with screen time quotas, app locking, real-time location monitoring, and persistent kiosk modes.\n\nDesigned for modern families, ChildSafe features Device Owner QR enrollment, biometric verification, and anti-tamper safeguards.",
-  "tags": ["Android", "Java", "Device Owner", "Biometrics", "Kiosk"],
+  "tagline": "Master your child's digital safety with radar-precision tracking, biometric security, and persistent kiosk modes.",
+  "description": "ChildSafe is an enterprise-grade Parental Control and Device Governance platform built for modern families. It provides parents with real-time location monitoring, biometric protection, granular app usage quotas, anti-tamper safeguards, and persistent kiosk mode enforcement.\n\nArchitected on Android Device Policy Manager (Device Owner API), Room DB, Firebase Realtime Database, and Jetpack components, ChildSafe guarantees local policy enforcement even during intermittent offline periods.\n\nCore Capabilities:\n- Granular Weekly App Quotas: Configure customized daily hour and minute usage limits for individual apps and categories.\n- Persistent Kiosk Mode: Dedicated background service (AdminService, AdminKioskManager) locks the device into designated educational apps and prevents policy bypasses.\n- Biometric Security Guard: Biometric and fingerprint authentication safeguards sensitive parental policy settings, master configurations, and emergency unlocks.\n- Real-Time Location & Activity Auditing: Live location snapshot polling (LocationHelper), historical movement traces, and communication audit features.\n- Anti-Tamper & Lockdowns: Prevents unauthorized uninstallation, blocks system settings, and provides instant remote device locking (DevicePolicyHelper).\n- Zero-Touch QR Provisioning: Provision factory-reset devices as Device Owner via encrypted QR code payloads in minutes.",
+  "tags": ["Android App", "Device Owner", "Kiosk Security", "Biometrics", "Firebase", "Room DB", "QR Enrollment"],
   "visibility": "private",
   "repo": "",
-  "package": "com.vivek.childsafe",
+  "package": "control.child.device",
   "play_store_url": "https://play.google.com/store/apps/details?id=control.child.device",
   "device_owner": {
     "enabled": true,
-    "admin_component": "com.vivek.childsafe/.admin.AdminReceiver"
+    "admin_component": "control.child.device/control.child.device.admin.AdminReceiver"
   },
   "screenshots": []
 }

@@ -4,9 +4,9 @@
   "type": "app",
   "order": 35,
   "published": true,
-  "tagline": "Automated attendance and work-life balance tracker.",
-  "description": "Seamlessly log office arrival and departure times using background geofencing and notification triggers. Calculates daily delta and weekly progress automatically.",
-  "tags": ["Android", "Geofencing", "Productivity", "Attendance"],
+  "tagline": "Automated attendance tracking, geofencing, and work-life balance wellness utility.",
+  "description": "Master your work-life balance with intelligent, automated attendance tracking. Seamlessly log your 'In' and 'Out' times using advanced Geofencing and notification hooks.\n\nBuilt with Kotlin, Android Geofencing API, Notification Listener Service, Room DB, WorkManager, and Jetpack Compose UI.\n\nCore Capabilities:\n- Smart Geofencing Engine: High-accuracy background office entry and exit detection (GeofenceBroadcastReceiver) with configurable coordinate radii.\n- Secondary Notification Hooks: Intercepts attendance notifications (NotificationService) from corporate check-in apps as an automated fail-safe.\n- Real-Time Delta & Target Analytics: Calculates exact office hours, daily over/under time deltas, and remaining weekly hours automatically.\n- Wellness & Break Reminders: Built-in WellnessWorker tracks movement breaks, desk fatigue, and work-life balance statistics.\n- Manual Adjustments & Leave Logs: Easily record half-day, full-day, and manual adjustment entries (LeaveEntity, ManualAdjustmentEntity).\n- Data Export & Cloud Backup: Export monthly attendance history to CSV/Excel files (ExportUtils) with optional Firestore backup sync.",
+  "tags": ["Android App", "Background Location", "Geofencing API", "Notification Listener", "WorkManager", "Wellness Tracking", "CSV Export"],
   "visibility": "private",
   "repo": "",
   "package": "office.time.counter",
@@ -15,5 +15,5 @@
     "enabled": false,
     "admin_component": ""
   },
-  "screenshots": []
+  "screenshots": ["feature_graphic.png"]
 }

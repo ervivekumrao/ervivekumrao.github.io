@@ -4,9 +4,9 @@
   "type": "library",
   "order": 55,
   "published": true,
-  "tagline": "Dynamic in-memory Java runtime compilation utility.",
-  "description": "In-memory Java runtime compilation helper enabling dynamic code evaluation, JIT synthesis, and class loading in Java applications.",
-  "tags": ["Java", "Library", "JIT", "Runtime Compilation"],
+  "tagline": "Dynamic in-memory Java runtime compilation helper.",
+  "description": "RuntimeCompile is a lightweight Java library for dynamic in-memory Java source compilation, JIT evaluation, and ClassLoader synthesis without temporary disk I/O.\n\nKey Capabilities:\n- In-Memory Source Compilation: Compile Java code strings directly into bytecode in RAM using javax.tools.JavaCompiler.\n- Custom In-Memory ClassLoader: Load and instantiate dynamically compiled classes instantly.\n- Zero Disk Footprint: Avoids writing temporary .java or .class files to disk for performance and security.",
+  "tags": ["Java Library", "JIT", "Runtime Compilation", "ClassLoader", "In-Memory Bytecode", "JitPack"],
   "visibility": "public",
   "repo": "ervivekumrao/RuntimeCompile",
   "library": {
