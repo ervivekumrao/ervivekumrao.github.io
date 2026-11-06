@@ -286,14 +286,6 @@ def main() -> int:
             f"<div class='card-footer'><span class='tag'>{tag_badge}</span><a href='{proj_url}' style='font-size:0.85rem;font-weight:600'>Details &rarr;</a></div>"
             f"</div>"
         )
-        tag_badge = badge or esc(p.get("type", "app"))
-        sections.get(p.get("type", "app"), sections["other"]).append(
-            f"<div class='card'>"
-            f"<div class='card-title'>{icon_card}<a href='{proj_url}'>{esc(p['name'])}</a></div>"
-            f"<p>{esc(p.get('tagline'))}</p>"
-            f"<div class='card-footer'><span class='tag'>{tag_badge}</span><a href='{proj_url}' style='font-size:0.85rem;font-weight:600'>Details &rarr;</a></div>"
-            f"</div>"
-        )
 
     # Hero & Portfolio Sections
     profile_url = site.url("profile.jpg")
