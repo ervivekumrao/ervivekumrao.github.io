@@ -9,7 +9,7 @@ Usage  : python tools/build_site.py --out dist                 (CI: reads Releas
          python tools/build_site.py --out dist --fixture tools/fixtures/manifests.sample.json   (offline)
 """
 from __future__ import annotations
-import argparse, html, json, os, shutil, sys, urllib.request
+import argparse, base64, html, json, os, shutil, sys, urllib.request
 from pathlib import Path
 
 try:
@@ -79,7 +79,7 @@ header a.logo{text-decoration:none;font-weight:700;font-size:1.25rem;color:var(-
 .card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.25rem;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;box-shadow:var(--card-shadow);display:flex;flex-direction:column}
 .card:hover{transform:translateY(-2px);box-shadow:0 8px 24px -4px rgba(0,0,0,0.12);border-color:var(--acc)}
 .card-title{display:flex;align-items:center;margin:0 0 .5rem 0;font-size:1.15rem;font-weight:600}
-.card-title img{width:32px;height:32px;border-radius:8px;margin-right:.75rem;object-fit:contain}
+.card-title img{width:32px;height:32px;border-radius:8px;margin-right:.75rem;object-fit:contain;flex-shrink:0}
 .card p{color:var(--mut);font-size:.925rem;margin:0 0 1rem 0;flex-grow:1;line-height:1.5}
 .card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.75rem;border-top:1px dashed var(--line)}
 .mut{color:var(--mut)}.tag{display:inline-block;font-size:.75rem;font-weight:500;background:var(--tag-bg);color:var(--tag-fg);border-radius:6px;padding:.2rem .6rem;margin:0 .3rem .3rem 0}
@@ -185,6 +185,9 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
         tab_icon_url = site.url(f"{kind}/{pid}/assets/icon.svg")
         icon_hdr = f"<img class='proj-icon' src='{tab_icon_url}' alt='{esc(p['name'])} icon'>"
     elif (assets_dir / "icon.png").exists():
+        png_bytes = (assets_dir / "icon.png").read_bytes()
+        b64_str = base64.b64encode(png_bytes).decode("ascii")
+        data_uri = f"data:image/png;base64,{b64_str}"
         svg_tab_content = (
             '<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n'
             '  <defs>\n'
@@ -192,14 +195,13 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
             '      <rect width="120" height="120" rx="26"/>\n'
             '    </clipPath>\n'
             '  </defs>\n'
-            '  <image href="icon.png" width="120" height="120" clip-path="url(#tab-round-corner)"/>\n'
+            f'  <image href="{data_uri}" width="120" height="120" clip-path="url(#tab-round-corner)"/>\n'
             '</svg>\n'
         )
         out_assets_dir.mkdir(parents=True, exist_ok=True)
         (out_assets_dir / "icon_tab.svg").write_text(svg_tab_content, encoding="utf-8")
         tab_icon_url = site.url(f"{kind}/{pid}/assets/icon_tab.svg")
-        png_url = site.url(f"{kind}/{pid}/assets/icon.png")
-        icon_hdr = f"<img class='proj-icon' src='{png_url}' alt='{esc(p['name'])} icon'>"
+        icon_hdr = f"<img class='proj-icon' src='{tab_icon_url}' alt='{esc(p['name'])} icon'>"
 
     shots = "".join(f"<img loading='lazy' alt='' src='{site.url(f'{kind}/{pid}/assets/{s}')}'>" for s in p.get("screenshots", []))
     desc = "".join(f"<p>{esc(x)}</p>" for x in p.get("description", "").split("\n\n") if x.strip())
