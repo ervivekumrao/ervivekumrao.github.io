@@ -162,7 +162,7 @@ def render_download(site: Site, p: dict, versions: list[dict]) -> str:
 
 
 def render_project(site: Site, p: dict, versions: list[dict], root: Path):
-    kind = "libs" if p.get("type") == "library" else "apps"
+    kind = p.get("type", "app")
     pid = p["id"]
     links = []
     if p.get("play_store_url"):
@@ -170,10 +170,10 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     if p.get("visibility") == "public" and p.get("repo"):
         links.append(f"<a class='btn alt' href='https://github.com/{esc(p['repo'])}'>Source code</a>")
     if (root / "privacy.md").exists():
-        links.append(f"<a class='btn alt' href='{site.url(f'{kind}/{pid}/privacy/')}'>Privacy policy</a>")
+        links.append(f"<a class='btn alt' href='{site.url(f'{pid}/privacy/')}'>Privacy policy</a>")
 
     assets_dir = root / "assets"
-    out_assets_dir = site.out / kind / pid / "assets"
+    out_assets_dir = site.out / pid / "assets"
 
     if assets_dir.is_dir():
         shutil.copytree(assets_dir, out_assets_dir, dirs_exist_ok=True)
@@ -182,7 +182,7 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     icon_hdr = ""
 
     if (assets_dir / "icon.svg").exists():
-        tab_icon_url = site.url(f"{kind}/{pid}/assets/icon.svg")
+        tab_icon_url = site.url(f"{pid}/assets/icon.svg")
         icon_hdr = f"<img class='proj-icon' src='{tab_icon_url}' alt='{esc(p['name'])} icon'>"
     elif (assets_dir / "icon.png").exists():
         png_bytes = (assets_dir / "icon.png").read_bytes()
@@ -200,10 +200,10 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
         )
         out_assets_dir.mkdir(parents=True, exist_ok=True)
         (out_assets_dir / "icon_tab.svg").write_text(svg_tab_content, encoding="utf-8")
-        tab_icon_url = site.url(f"{kind}/{pid}/assets/icon_tab.svg")
+        tab_icon_url = site.url(f"{pid}/assets/icon_tab.svg")
         icon_hdr = f"<img class='proj-icon' src='{tab_icon_url}' alt='{esc(p['name'])} icon'>"
 
-    shots = "".join(f"<img loading='lazy' alt='' src='{site.url(f'{kind}/{pid}/assets/{s}')}'>" for s in p.get("screenshots", []))
+    shots = "".join(f"<img loading='lazy' alt='' src='{site.url(f'{pid}/assets/{s}')}'>" for s in p.get("screenshots", []))
     desc = "".join(f"<p>{esc(x)}</p>" for x in p.get("description", "").split("\n\n") if x.strip())
     tags = "".join(f"<span class='tag'>{esc(t)}</span>" for t in p.get("tags", []))
 
@@ -213,7 +213,7 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     if shots:
         body += f"<h2 style='margin-top:2rem'>Showcase</h2><div class='shots'>{shots}</div>"
 
-    if kind == "apps":
+    if kind == "app":
         body += render_download(site, p, versions)
     else:
         lib = p.get("library", {})
@@ -224,9 +224,9 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
         if lib.get("docs_url"):
             body += f"<p><a class='btn alt' href='{esc(lib['docs_url'])}'>API documentation</a></p>"
 
-    site.write(f"{kind}/{pid}/index.html", site.page(p["name"], body, p.get("tagline", ""), icon_url=tab_icon_url))
+    site.write(f"{pid}/index.html", site.page(p["name"], body, p.get("tagline", ""), icon_url=tab_icon_url))
     if (root / "privacy.md").exists():
-        site.write(f"{kind}/{pid}/privacy/index.html", site.page(f"{p['name']} Privacy Policy",
+        site.write(f"{pid}/privacy/index.html", site.page(f"{p['name']} Privacy Policy",
                    md_to_html((root / "privacy.md").read_text(encoding="utf-8")), icon_url=tab_icon_url))
 
 
@@ -266,19 +266,26 @@ def main() -> int:
     for p, root in projects:
         versions = by_app.get(p["id"], [])
         render_project(site, p, versions, root)
-        kind = "libs" if p.get("type") == "library" else "apps"
         pid = p["id"]
         badge = f"v{esc(versions[0]['version_name'])}" if versions else ""
 
         icon_card = ""
         if (root / "assets" / "icon.svg").exists():
-            icon_url = site.url(f"{kind}/{pid}/assets/icon.svg")
+            icon_url = site.url(f"{pid}/assets/icon.svg")
             icon_card = f"<img src='{icon_url}' alt=''>"
         elif (root / "assets" / "icon.png").exists():
-            icon_url = site.url(f"{kind}/{pid}/assets/icon_tab.svg")
+            icon_url = site.url(f"{pid}/assets/icon_tab.svg")
             icon_card = f"<img src='{icon_url}' alt=''>"
 
-        proj_url = site.url(f"{kind}/{pid}/")
+        proj_url = site.url(f"{pid}/")
+        tag_badge = badge or esc(p.get("type", "app"))
+        sections.get(p.get("type", "app"), sections["other"]).append(
+            f"<div class='card'>"
+            f"<div class='card-title'>{icon_card}<a href='{proj_url}'>{esc(p['name'])}</a></div>"
+            f"<p>{esc(p.get('tagline'))}</p>"
+            f"<div class='card-footer'><span class='tag'>{tag_badge}</span><a href='{proj_url}' style='font-size:0.85rem;font-weight:600'>Details &rarr;</a></div>"
+            f"</div>"
+        )
         tag_badge = badge or esc(p.get("type", "app"))
         sections.get(p.get("type", "app"), sections["other"]).append(
             f"<div class='card'>"
