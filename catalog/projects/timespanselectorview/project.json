@@ -3,11 +3,15 @@
   "name": "TimeSpanSelectorView",
   "type": "library",
   "order": 50,
-  "published": false,
-  "tagline": "Android custom view for selecting time spans.",
-  "description": "Replace with the real description.",
-  "tags": ["Android", "Java", "Library"],
+  "published": true,
+  "tagline": "Custom Android view library for radial and linear time range selection.",
+  "description": "A highly customizable, elegant Android library for selecting time spans. Features Circular (Radial) and Linear layouts with full Material 3 support and overnight span handling.",
+  "tags": ["Android", "Java", "Custom View", "Library", "Material 3"],
   "visibility": "public",
   "repo": "ervivekumrao/TimeSpanSelectorView",
-  "library": { "jitpack": "com.github.ervivekumrao:TimeSpanSelectorView", "latest_version": "1.0.0", "docs_url": "" }
+  "library": {
+    "jitpack": "com.github.ervivekumrao:TimeSpanSelectorView",
+    "latest_version": "1.0.0",
+    "docs_url": "https://github.com/ervivekumrao/TimeSpanSelectorView"
+  }
 }

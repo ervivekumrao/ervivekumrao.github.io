@@ -1,0 +1,19 @@
+{
+  "id": "mockupmaster",
+  "name": "Mockup Master",
+  "type": "app",
+  "order": 45,
+  "published": true,
+  "tagline": "High-fidelity mock data injector for Android developers.",
+  "description": "Instantly populate emulators or physical devices with realistic mock Contacts, SMS threads, and Call Logs for UI stress-testing and demonstration.\n\nIncludes one-tap surgical cleanup that tracks generated entries to keep personal test data intact.",
+  "tags": ["Android", "Developer Tools", "Mock Data", "Testing"],
+  "visibility": "private",
+  "repo": "",
+  "package": "com.vivekumrao.mockupmaster",
+  "play_store_url": "https://play.google.com/store/apps/details?id=com.vivekumrao.mockupmaster",
+  "device_owner": {
+    "enabled": false,
+    "admin_component": ""
+  },
+  "screenshots": []
+}

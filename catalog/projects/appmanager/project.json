@@ -1,0 +1,19 @@
+{
+  "id": "appmanager",
+  "name": "App Manager",
+  "type": "app",
+  "order": 40,
+  "published": true,
+  "tagline": "Enterprise system management utility and device policy tool.",
+  "description": "Control bloatware, freeze pre-installed apps, enforce strict password policies, and manage hardware restrictions across your device fleet using full Device Owner permissions.",
+  "tags": ["Android Enterprise", "Device Owner", "System Utility", "Security"],
+  "visibility": "private",
+  "repo": "",
+  "package": "com.my.admin.app",
+  "play_store_url": "https://play.google.com/store/apps/details?id=com.my.admin.app",
+  "device_owner": {
+    "enabled": true,
+    "admin_component": "com.my.admin.app/.AdminReceiver"
+  },
+  "screenshots": []
+}

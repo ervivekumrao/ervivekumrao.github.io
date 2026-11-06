@@ -154,7 +154,12 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     shots = "".join(f"<img loading='lazy' alt='' src='{site.url(f'{kind}/{pid}/assets/{s}')}'>" for s in p.get("screenshots", []))
     desc = "".join(f"<p>{esc(x)}</p>" for x in p.get("description", "").split("\n\n") if x.strip())
     tags = "".join(f"<span class='tag'>{esc(t)}</span>" for t in p.get("tags", []))
-    body = f"<h1>{esc(p['name'])}</h1><p class='mut'>{esc(p.get('tagline'))}</p>{tags}{desc}{''.join(links)}"
+    icon_hdr = ""
+    for icon_name in ("icon.svg", "icon.png"):
+        if (root / "assets" / icon_name).exists():
+            icon_hdr = f"<img src='{site.url(f'{kind}/{pid}/assets/{icon_name}')}' alt='' style='width:64px;height:64px;border-radius:12px;margin-bottom:1rem;display:block'>"
+            break
+    body = f"{icon_hdr}<h1>{esc(p['name'])}</h1><p class='mut'>{esc(p.get('tagline'))}</p>{tags}{desc}{''.join(links)}"
     if shots:
         body += f"<div class='shots'>{shots}</div>"
     if kind == "apps":
@@ -213,8 +218,13 @@ def main() -> int:
         render_project(site, p, versions, root)
         kind = "libs" if p.get("type") == "library" else "apps"
         badge = f"v{esc(versions[0]['version_name'])}" if versions else ""
+        icon_card = ""
+        for icon_name in ("icon.svg", "icon.png"):
+            if (root / "assets" / icon_name).exists():
+                icon_card = f"<img src='{site.url(f'{kind}/{p[\"id\"]}/assets/{icon_name}')}' alt='' style='width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:.5rem'>"
+                break
         sections.get(p.get("type", "app"), sections["other"]).append(
-            f"<div class='card'><h3><a href='{site.url(f'{kind}/{p['id']}/')}'>{esc(p['name'])}</a></h3>"
+            f"<div class='card'><h3>{icon_card}<a href='{site.url(f'{kind}/{p[\"id\"]}/')}'>{esc(p['name'])}</a></h3>"
             f"<p class='mut'>{esc(p.get('tagline'))}</p><span class='tag'>{badge or esc(p.get('type', 'app'))}</span></div>")
 
     body = f"<h1>{esc(cfg.get('name'))}</h1><p>{esc(cfg.get('bio'))}</p>"

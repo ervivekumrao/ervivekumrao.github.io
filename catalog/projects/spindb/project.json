@@ -1,0 +1,12 @@
+{
+  "id": "spindb",
+  "name": "SpinDB",
+  "type": "other",
+  "order": 70,
+  "published": true,
+  "tagline": "Fast containerized database & lakehouse CLI tool.",
+  "description": "Unified CLI (spinctl) to spin up 13 containerized databases, caches, and lakehouse engines using rootless Podman with automatic Docker fallback.\n\nSupports PostgreSQL, pgvector, MySQL, SQL Server, ClickHouse, Redis, and more.",
+  "tags": ["CLI", "Podman", "Docker", "Database", "PostgreSQL", "ClickHouse"],
+  "visibility": "public",
+  "repo": "ervivekumrao/SpinDB"
+}

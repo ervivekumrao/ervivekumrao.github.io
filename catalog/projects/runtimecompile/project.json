@@ -1,0 +1,17 @@
+{
+  "id": "runtimecompile",
+  "name": "RuntimeCompile",
+  "type": "library",
+  "order": 55,
+  "published": true,
+  "tagline": "Dynamic in-memory Java runtime compilation utility.",
+  "description": "In-memory Java runtime compilation helper enabling dynamic code evaluation, JIT synthesis, and class loading in Java applications.",
+  "tags": ["Java", "Library", "JIT", "Runtime Compilation"],
+  "visibility": "public",
+  "repo": "ervivekumrao/RuntimeCompile",
+  "library": {
+    "jitpack": "com.github.ervivekumrao:RuntimeCompile",
+    "latest_version": "1.0.0",
+    "docs_url": "https://github.com/ervivekumrao/RuntimeCompile"
+  }
+}

@@ -3,14 +3,17 @@
   "name": "ChildSafe",
   "type": "app",
   "order": 10,
-  "published": false,
-  "tagline": "Parental control and device-owner child safety.",
-  "description": "ChildSafe helps parents manage a child's device.\n\nReplace this text with the real description.",
-  "tags": ["Android", "Java", "Device Owner"],
+  "published": true,
+  "tagline": "Parental control, device governance, and kiosk security.",
+  "description": "ChildSafe helps parents manage a child's digital safety with screen time quotas, app locking, real-time location monitoring, and persistent kiosk modes.\n\nDesigned for modern families, ChildSafe features Device Owner QR enrollment, biometric verification, and anti-tamper safeguards.",
+  "tags": ["Android", "Java", "Device Owner", "Biometrics", "Kiosk"],
   "visibility": "private",
   "repo": "",
-  "package": "com.example.childsafe",
-  "play_store_url": "",
-  "device_owner": { "enabled": true, "admin_component": "com.example.childsafe/.admin.AdminReceiver" },
+  "package": "com.vivek.childsafe",
+  "play_store_url": "https://play.google.com/store/apps/details?id=control.child.device",
+  "device_owner": {
+    "enabled": true,
+    "admin_component": "com.vivek.childsafe/.admin.AdminReceiver"
+  },
   "screenshots": []
 }

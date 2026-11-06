@@ -1,0 +1,19 @@
+{
+  "id": "officetimecounter",
+  "name": "Office Time Counter",
+  "type": "app",
+  "order": 35,
+  "published": true,
+  "tagline": "Automated attendance and work-life balance tracker.",
+  "description": "Seamlessly log office arrival and departure times using background geofencing and notification triggers. Calculates daily delta and weekly progress automatically.",
+  "tags": ["Android", "Geofencing", "Productivity", "Attendance"],
+  "visibility": "private",
+  "repo": "",
+  "package": "office.time.counter",
+  "play_store_url": "https://play.google.com/store/apps/details?id=office.time.counter",
+  "device_owner": {
+    "enabled": false,
+    "admin_component": ""
+  },
+  "screenshots": []
+}

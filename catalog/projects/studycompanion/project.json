@@ -1,0 +1,19 @@
+{
+  "id": "studycompanion",
+  "name": "Study Companion",
+  "type": "app",
+  "order": 20,
+  "published": true,
+  "tagline": "AI-driven educational assistant and study material generator.",
+  "description": "Convert textbooks and handwritten notes into digital study materials using Google ML Kit OCR, AI-generated practice quizzes, Leitner flashcards, and an AI Text-to-Speech tutor.\n\nDesigned with Jetpack Compose and local Room persistence for efficient, self-paced learning.",
+  "tags": ["Android", "Jetpack Compose", "ML Kit OCR", "AI", "Education"],
+  "visibility": "private",
+  "repo": "",
+  "package": "com.vivek.studycompanion",
+  "play_store_url": "https://play.google.com/store/apps/details?id=study.companion",
+  "device_owner": {
+    "enabled": false,
+    "admin_component": ""
+  },
+  "screenshots": []
+}

@@ -1,0 +1,12 @@
+{
+  "id": "jitforge",
+  "name": "JitForge",
+  "type": "other",
+  "order": 75,
+  "published": true,
+  "tagline": "In-memory Java JIT & bytecode synthesis microservice.",
+  "description": "High-performance in-memory Java runtime compilation and bytecode execution engine powered by Java 21 Loom Virtual Threads, 4-tier storage hierarchy, and AST sandboxing.",
+  "tags": ["Java 21", "Virtual Threads", "JIT", "Bytecode", "Microservices"],
+  "visibility": "public",
+  "repo": "ervivekumrao/JitForge"
+}

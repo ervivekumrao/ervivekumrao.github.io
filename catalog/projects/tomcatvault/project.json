@@ -1,0 +1,12 @@
+{
+  "id": "tomcatvault",
+  "name": "Tomcat Vault",
+  "type": "other",
+  "order": 65,
+  "published": true,
+  "tagline": "Enterprise cryptographic credential manager for Apache Tomcat.",
+  "description": "Eliminates cleartext database passwords from Tomcat context.xml and server.xml using AES-256-GCM encryption, HikariCP/DBCP2 pool factories, and cloud secret connectors (AWS Secrets Manager, HashiCorp Vault).",
+  "tags": ["Java", "Apache Tomcat", "Security", "AES-256-GCM", "HikariCP", "Vault"],
+  "visibility": "public",
+  "repo": "ervivekumrao/Tomcat-Vault"
+}

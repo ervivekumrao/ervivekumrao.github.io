@@ -1,0 +1,19 @@
+{
+  "id": "medreminder",
+  "name": "Med Reminder",
+  "type": "app",
+  "order": 15,
+  "published": true,
+  "tagline": "Intelligent medication reminder and health companion.",
+  "description": "Never miss a dose again. Manage medications for you and your family with a modern reminder system featuring OCR label scanning and biometric security.\n\nBuilt with clinical accuracy and a local-first privacy approach. All health schedules remain stored securely on your device.",
+  "tags": ["Android", "Kotlin", "OCR", "Health", "Biometrics"],
+  "visibility": "private",
+  "repo": "",
+  "package": "med.reminder",
+  "play_store_url": "https://play.google.com/store/apps/details?id=med.reminder",
+  "device_owner": {
+    "enabled": false,
+    "admin_component": ""
+  },
+  "screenshots": []
+}

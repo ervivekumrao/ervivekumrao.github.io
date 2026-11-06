@@ -1,0 +1,19 @@
+{
+  "id": "careercrox",
+  "name": "Career Crox Calling Assistant",
+  "type": "app",
+  "order": 30,
+  "published": true,
+  "tagline": "Recruitment automation companion for Career Crox CRM.",
+  "description": "Transform recruitment workflows with automated dialing queues, real-time CRM synchronization, AHT tracking metrics, and candidate resume/audio record syncing.\n\nPairs securely with the Career Crox CRM web dashboard using a 6-digit verification code.",
+  "tags": ["Android", "CRM", "Recruitment", "Auto-Dialer", "Analytics"],
+  "visibility": "private",
+  "repo": "",
+  "package": "com.careercrox.callingassistant",
+  "play_store_url": "https://play.google.com/store/apps/details?id=com.careercrox.callingassistant",
+  "device_owner": {
+    "enabled": false,
+    "admin_component": ""
+  },
+  "screenshots": []
+}

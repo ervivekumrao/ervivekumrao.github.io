@@ -1,0 +1,12 @@
+{
+  "id": "agenticinventory",
+  "name": "Agentic Inventory",
+  "type": "other",
+  "order": 60,
+  "published": true,
+  "tagline": "AI-driven polyglot microservices platform for inventory intelligence.",
+  "description": "Production-grade microservices architecture for real-time stock management, statistical demand forecasting, and agentic AI query processing.\n\nBuilt with Spring Boot 3.4, FastAPI (Python), Apache Kafka, MongoDB, and multi-RDBMS dialect support.",
+  "tags": ["Java 21", "Spring Boot", "Python", "FastAPI", "Kafka", "Microservices", "AI"],
+  "visibility": "public",
+  "repo": "ervivekumrao/Agentic-inventory"
+}
