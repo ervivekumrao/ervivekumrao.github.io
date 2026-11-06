@@ -111,11 +111,14 @@ class Site:
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(content, encoding="utf-8")
 
-    def page(self, title: str, body: str, desc: str = "") -> str:
+    def page(self, title: str, body: str, desc: str = "", icon_url: str = "") -> str:
         s = self.cfg
+        icon_href = icon_url if icon_url else self.url("favicon.svg")
+        icon_type = "image/svg+xml" if icon_href.endswith(".svg") else "image/png"
         return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} · {esc(s.get('name'))}</title><meta name="description" content="{esc(desc or s.get('tagline'))}">
+<link rel="icon" type="{icon_type}" href="{icon_href}">
 <link rel="stylesheet" href="{self.url('style.css')}"></head><body>
 <header><div><a class="logo" href="{self.url('/')}">{esc(s.get('name'))}</a></div></header>
 <main>{body}</main>
@@ -168,11 +171,12 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     if (root / "privacy.md").exists():
         links.append(f"<a class='btn alt' href='{site.url(f'{kind}/{pid}/privacy/')}'>Privacy policy</a>")
 
+    tab_icon_url = ""
     icon_hdr = ""
     for icon_name in ("icon.svg", "icon.png"):
         if (root / "assets" / icon_name).exists():
-            icon_url = site.url(f"{kind}/{pid}/assets/{icon_name}")
-            icon_hdr = f"<img class='proj-icon' src='{icon_url}' alt='{esc(p['name'])} icon'>"
+            tab_icon_url = site.url(f"{kind}/{pid}/assets/{icon_name}")
+            icon_hdr = f"<img class='proj-icon' src='{tab_icon_url}' alt='{esc(p['name'])} icon'>"
             break
 
     shots = "".join(f"<img loading='lazy' alt='' src='{site.url(f'{kind}/{pid}/assets/{s}')}'>" for s in p.get("screenshots", []))
@@ -196,10 +200,12 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
         if lib.get("docs_url"):
             body += f"<p><a class='btn alt' href='{esc(lib['docs_url'])}'>API documentation</a></p>"
 
-    site.write(f"{kind}/{pid}/index.html", site.page(p["name"], body, p.get("tagline", "")))
+    site.write(f"{kind}/{pid}/index.html", site.page(p["name"], body, p.get("tagline", ""), icon_url=tab_icon_url))
     if (root / "privacy.md").exists():
         site.write(f"{kind}/{pid}/privacy/index.html", site.page(f"{p['name']} Privacy Policy",
-                   md_to_html((root / "privacy.md").read_text(encoding="utf-8"))))
+                   md_to_html((root / "privacy.md").read_text(encoding="utf-8")), icon_url=tab_icon_url))
+    if (root / "assets").is_dir():
+        shutil.copytree(root / "assets", site.out / kind / pid / "assets", dirs_exist_ok=True)
     if (root / "assets").is_dir():
         shutil.copytree(root / "assets", site.out / kind / pid / "assets", dirs_exist_ok=True)
 
