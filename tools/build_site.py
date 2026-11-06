@@ -67,12 +67,16 @@ def md_to_html(text: str) -> str:
 CSS = """
 :root{--bg:#f8fafc;--fg:#0f172a;--mut:#64748b;--card:#ffffff;--card-border:#e2e8f0;--card-shadow:0 4px 14px -2px rgba(0,0,0,0.06);--line:#e2e8f0;--acc:#2563eb;--acc-hover:#1d4ed8;--acc-glow:rgba(37,99,235,0.12);--tag-bg:#f1f5f9;--tag-fg:#334155}
 @media(prefers-color-scheme:dark){:root{--bg:#0b0f19;--fg:#f8fafc;--mut:#94a3b8;--card:#131b2e;--card-border:#1e293b;--card-shadow:0 4px 20px -2px rgba(0,0,0,0.35);--line:#1e293b;--acc:#38bdf8;--acc-hover:#0284c7;--acc-glow:rgba(56,189,248,0.2);--tag-bg:#1e293b;--tag-fg:#cbd5e1}}
+html[data-theme="light"]{:root{--bg:#f8fafc;--fg:#0f172a;--mut:#64748b;--card:#ffffff;--card-border:#e2e8f0;--card-shadow:0 4px 14px -2px rgba(0,0,0,0.06);--line:#e2e8f0;--acc:#2563eb;--acc-hover:#1d4ed8;--acc-glow:rgba(37,99,235,0.12);--tag-bg:#f1f5f9;--tag-fg:#334155}}
+html[data-theme="dark"]{:root{--bg:#0b0f19;--fg:#f8fafc;--mut:#94a3b8;--card:#131b2e;--card-border:#1e293b;--card-shadow:0 4px 20px -2px rgba(0,0,0,0.35);--line:#1e293b;--acc:#38bdf8;--acc-hover:#0284c7;--acc-glow:rgba(56,189,248,0.2);--tag-bg:#1e293b;--tag-fg:#cbd5e1}}
 *{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
 a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
 main,header>div,footer{max-width:1040px;margin:0 auto;padding:1.5rem 1rem}
 header{border-bottom:1px solid var(--line);background:var(--card);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
 header>div{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem}
 header a.logo{text-decoration:none;font-weight:700;font-size:1.25rem;color:var(--fg);letter-spacing:-0.02em}
+.theme-btn{background:transparent;border:1px solid var(--card-border);color:var(--fg);padding:.35rem .75rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:.4rem;transition:background .15s ease,border-color .15s ease}
+.theme-btn:hover{background:var(--tag-bg);border-color:var(--acc)}
 .hero-box{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:2.5rem 2rem;margin-bottom:2.5rem;box-shadow:var(--card-shadow)}
 .hero-box h1{margin:0 0 .5rem 0;font-size:2.25rem;letter-spacing:-0.03em}.hero-box p.lead{font-size:1.15rem;color:var(--mut);margin:0 0 1.5rem 0;max-width:780px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:1rem}
@@ -117,13 +121,40 @@ class Site:
         icon_type = "image/svg+xml" if icon_href.endswith(".svg") else "image/png"
         return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>(function(){{var t=localStorage.getItem("theme");if(t){{document.documentElement.setAttribute("data-theme",t);}}}})();</script>
 <title>{esc(title)} · {esc(s.get('name'))}</title><meta name="description" content="{esc(desc or s.get('tagline'))}">
 <link rel="icon" type="{icon_type}" href="{icon_href}">
 <link rel="apple-touch-icon" href="{icon_href}">
 <link rel="stylesheet" href="{self.url('style.css')}"></head><body>
-<header><div><a class="logo" href="{self.url('/')}">{esc(s.get('name'))}</a></div></header>
+<header><div><a class="logo" href="{self.url('/')}">{esc(s.get('name'))}</a><button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light theme"><span id="theme-icon">☀️</span> <span id="theme-label" class="mut">Theme</span></button></div></header>
 <main>{body}</main>
-<footer class="mut" style="border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem">{esc(s.get('footer', ''))}</footer></body></html>"""
+<footer class="mut" style="border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem">{esc(s.get('footer', ''))}</footer>
+<script>
+(function(){{
+  var btn = document.getElementById("theme-toggle");
+  var icon = document.getElementById("theme-icon");
+  var label = document.getElementById("theme-label");
+  if(!btn) return;
+  function getTheme(){{
+    var d = document.documentElement.getAttribute("data-theme");
+    if(d) return d;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }}
+  function updateUI(t){{
+    icon.textContent = t === "dark" ? "🌙" : "☀️";
+    label.textContent = t === "dark" ? "Dark" : "Light";
+  }}
+  updateUI(getTheme());
+  btn.addEventListener("click", function(){{
+    var current = getTheme();
+    var next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    updateUI(next);
+  }});
+}})();
+</script>
+</body></html>"""
 
 
 def enrollment_payload(p: dict, m: dict) -> dict:
