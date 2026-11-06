@@ -1,5 +1,12 @@
-<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="100" height="100" rx="20" fill="#f43f5e"/>
-    <path d="M30 30L45 50L30 70" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M55 70H75" stroke="white" stroke-width="8" stroke-linecap="round"/>
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="120" rx="26" fill="url(#bg-jf-apple)"/>
+    <path d="M32 78H88L80 64H40L32 78Z" fill="white" opacity="0.95"/>
+    <path d="M24 64H96C96 64 90 52 84 52H36C30 52 24 64 24 64Z" fill="white"/>
+    <path d="M68 22L44 52H64L52 84L80 46H60L68 22Z" fill="white"/>
+    <defs>
+        <linearGradient id="bg-jf-apple" x1="0" y1="0" x2="120" y2="120">
+            <stop offset="0%" stop-color="#f43f5e"/>
+            <stop offset="100%" stop-color="#881337"/>
+        </linearGradient>
+    </defs>
 </svg>

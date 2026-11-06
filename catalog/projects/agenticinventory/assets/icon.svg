@@ -1,7 +1,16 @@
-<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="100" height="100" rx="20" fill="#8b5cf6"/>
-    <path d="M50 22L78 36V64L50 78L22 64V36L50 22Z" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M22 36L50 50L78 36" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M50 50V78" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M72 18L75 25L82 28L75 31L72 38L69 31L62 28L69 25L72 18Z" fill="white"/>
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="120" rx="26" fill="url(#bg-ai-apple)"/>
+    <path d="M60 22L94 40V78L60 96L26 78V40L60 22Z" fill="none" stroke="white" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M26 40L60 58L94 40" stroke="white" stroke-width="5.5" stroke-linejoin="round"/>
+    <path d="M60 58V96" stroke="white" stroke-width="5.5" stroke-linejoin="round"/>
+    <polygon points="60,34 74,42 60,50 46,42" fill="white"/>
+    <circle cx="26" cy="40" r="4" fill="white"/>
+    <circle cx="94" cy="40" r="4" fill="white"/>
+    <circle cx="60" cy="22" r="4" fill="white"/>
+    <defs>
+        <linearGradient id="bg-ai-apple" x1="0" y1="0" x2="120" y2="120">
+            <stop offset="0%" stop-color="#10b981"/>
+            <stop offset="100%" stop-color="#064e3b"/>
+        </linearGradient>
+    </defs>
 </svg>

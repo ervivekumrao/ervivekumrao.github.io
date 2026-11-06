@@ -119,6 +119,7 @@ class Site:
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} · {esc(s.get('name'))}</title><meta name="description" content="{esc(desc or s.get('tagline'))}">
 <link rel="icon" type="{icon_type}" href="{icon_href}">
+<link rel="apple-touch-icon" href="{icon_href}">
 <link rel="stylesheet" href="{self.url('style.css')}"></head><body>
 <header><div><a class="logo" href="{self.url('/')}">{esc(s.get('name'))}</a></div></header>
 <main>{body}</main>
