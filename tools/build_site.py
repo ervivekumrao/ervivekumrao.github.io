@@ -172,13 +172,34 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     if (root / "privacy.md").exists():
         links.append(f"<a class='btn alt' href='{site.url(f'{kind}/{pid}/privacy/')}'>Privacy policy</a>")
 
+    assets_dir = root / "assets"
+    out_assets_dir = site.out / kind / pid / "assets"
+
+    if assets_dir.is_dir():
+        shutil.copytree(assets_dir, out_assets_dir, dirs_exist_ok=True)
+
     tab_icon_url = ""
     icon_hdr = ""
-    for icon_name in ("icon.svg", "icon.png"):
-        if (root / "assets" / icon_name).exists():
-            tab_icon_url = site.url(f"{kind}/{pid}/assets/{icon_name}")
-            icon_hdr = f"<img class='proj-icon' src='{tab_icon_url}' alt='{esc(p['name'])} icon'>"
-            break
+
+    if (assets_dir / "icon.svg").exists():
+        tab_icon_url = site.url(f"{kind}/{pid}/assets/icon.svg")
+        icon_hdr = f"<img class='proj-icon' src='{tab_icon_url}' alt='{esc(p['name'])} icon'>"
+    elif (assets_dir / "icon.png").exists():
+        svg_tab_content = (
+            '<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n'
+            '  <defs>\n'
+            '    <clipPath id="tab-round-corner">\n'
+            '      <rect width="120" height="120" rx="26"/>\n'
+            '    </clipPath>\n'
+            '  </defs>\n'
+            '  <image href="icon.png" width="120" height="120" clip-path="url(#tab-round-corner)"/>\n'
+            '</svg>\n'
+        )
+        out_assets_dir.mkdir(parents=True, exist_ok=True)
+        (out_assets_dir / "icon_tab.svg").write_text(svg_tab_content, encoding="utf-8")
+        tab_icon_url = site.url(f"{kind}/{pid}/assets/icon_tab.svg")
+        png_url = site.url(f"{kind}/{pid}/assets/icon.png")
+        icon_hdr = f"<img class='proj-icon' src='{png_url}' alt='{esc(p['name'])} icon'>"
 
     shots = "".join(f"<img loading='lazy' alt='' src='{site.url(f'{kind}/{pid}/assets/{s}')}'>" for s in p.get("screenshots", []))
     desc = "".join(f"<p>{esc(x)}</p>" for x in p.get("description", "").split("\n\n") if x.strip())
@@ -205,10 +226,6 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     if (root / "privacy.md").exists():
         site.write(f"{kind}/{pid}/privacy/index.html", site.page(f"{p['name']} Privacy Policy",
                    md_to_html((root / "privacy.md").read_text(encoding="utf-8")), icon_url=tab_icon_url))
-    if (root / "assets").is_dir():
-        shutil.copytree(root / "assets", site.out / kind / pid / "assets", dirs_exist_ok=True)
-    if (root / "assets").is_dir():
-        shutil.copytree(root / "assets", site.out / kind / pid / "assets", dirs_exist_ok=True)
 
 
 def main() -> int:
@@ -252,11 +269,12 @@ def main() -> int:
         badge = f"v{esc(versions[0]['version_name'])}" if versions else ""
 
         icon_card = ""
-        for icon_name in ("icon.svg", "icon.png"):
-            if (root / "assets" / icon_name).exists():
-                icon_url = site.url(f"{kind}/{pid}/assets/{icon_name}")
-                icon_card = f"<img src='{icon_url}' alt=''>"
-                break
+        if (root / "assets" / "icon.svg").exists():
+            icon_url = site.url(f"{kind}/{pid}/assets/icon.svg")
+            icon_card = f"<img src='{icon_url}' alt=''>"
+        elif (root / "assets" / "icon.png").exists():
+            icon_url = site.url(f"{kind}/{pid}/assets/icon_tab.svg")
+            icon_card = f"<img src='{icon_url}' alt=''>"
 
         proj_url = site.url(f"{kind}/{pid}/")
         tag_badge = badge or esc(p.get("type", "app"))
