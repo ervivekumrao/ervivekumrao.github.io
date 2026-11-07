@@ -504,42 +504,72 @@ def main() -> int:
 
     exp_html = """<section style="margin-top:3.5rem">
 <h2 style="font-size:1.75rem;margin-bottom:0.25rem">Professional Experience</h2>
-<p class="mut" style="margin-top:0;margin-bottom:1.5rem">A track record of delivering impactful enterprise platform solutions at global scale.</p>
+<p class="mut" style="margin-top:0;margin-bottom:1.5rem">A 15+ year track record of architecting JVM internals, mobile security platforms, and enterprise solutions at global scale.</p>
 
 <div style="display:flex;flex-direction:column;gap:1.5rem">
-  <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.5rem;box-shadow:var(--card-shadow)">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">
+
+  <div class="exp-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem">
       <div>
-        <h3 style="margin:0;font-size:1.25rem">Principal Software Engineer &amp; Lead Architect</h3>
-        <div style="color:var(--acc);font-weight:600">Pegasystems <span style="color:var(--mut);font-weight:400;font-size:0.9rem">(via Cognizant Lead / Pega FTE)</span></div>
+        <h3 style="margin:0;font-size:1.25rem;font-weight:700">Principal Software Engineer</h3>
+        <div style="color:var(--acc);font-weight:600;font-size:1rem;margin-top:0.15rem">Pegasystems</div>
       </div>
-      <div class="tag">Sep 2021 &mdash; Present</div>
+      <div class="tag" style="font-weight:600">Mar 2025 &mdash; Present</div>
     </div>
-    <ul style="margin:0;padding-left:1.25rem;color:var(--fg);line-height:1.65">
-      <li><b>Core JVM Runtime Architecture:</b> Architected low-level PEGA Infinity Engine internals, custom hierarchical class loaders, memory passivation algorithms, and lock-free concurrency to sustain 99.999% availability.</li>
-      <li><b>Cold-Start Elimination &amp; Class Priming:</b> Pioneered pre-emptive class-load priming at container startup, eliminating JVM cold-start latency spikes and slashing scale-up latency by ~85%.</li>
-      <li><b>3x Throughput Distributed ID Generator:</b> Designed a batch-based unique ID generator across multi-tenant nodes, decoupling database lock serialization to achieve &gt;3x throughput gains.</li>
-      <li><b>Enterprise Data Privacy &amp; PII Governance:</b> Led engineering-wide PII data governance architecture (dynamic masking, cryptographic tokenization, access policy enforcement) across distributed engine logs and telemetry.</li>
-      <li><b>Unified Hashing Modernization:</b> Consolidated fragmented legacy hashing algorithms into a centralized cryptographic library, reducing future maintenance overhead by ~40%.</li>
-      <li><b>Incident Command &amp; 30% MTTR Reduction:</b> Served as Tier-3 Incident Commander and RCA lead for critical escalations, driving systemic remediations that slashed MTTR by 30%.</li>
+    <div class="exp-note">
+      Transitioned from Cognizant Contractor to Pega FTE via negotiated management release to drive platform architecture for AU / global time zone enterprise operations.
+    </div>
+    <ul class="exp-list">
+      <li><b>Core JVM Runtime Architecture:</b> Architected low-level Infinity Engine internals, including custom hierarchical class loaders, memory passivation algorithms, and lock-free concurrency, eliminating thread contention bottlenecks and sustaining <b>99.999% platform availability</b> across global enterprise client deployments.</li>
+      <li><b>Cold-Start Elimination &amp; Priming:</b> Pioneered pre-emptive class-load priming at container startup, eliminating JVM cold-start latency spikes and enabling auto-scaled Kubernetes pods to handle peak production traffic immediately, cutting scale-up latency by <b>~85%</b>.</li>
+      <li><b>3x Throughput Distributed ID Generator:</b> Architected a distributed, batch-based unique ID generation engine across multi-tenant nodes, decoupling database locks and dependency bottlenecks to achieve over <b>3x throughput gains</b> under peak concurrent workloads with zero collision risk.</li>
+      <li><b>Enterprise Data Privacy &amp; PII Governance:</b> Led engineering-wide PII data governance architecture (dynamic masking, cryptographic tokenization, access policy enforcement) across distributed engine logs and telemetry traces, ensuring zero sensitive data exposure and full enterprise compliance.</li>
+      <li><b>Unified Hashing Modernization:</b> Spearheaded the consolidation of fragmented legacy hashing algorithms into a centralized, extensible cryptographic library, reducing future upgrade overhead by <b>~40%</b> across distributed microservices.</li>
+      <li><b>High-Performance APIs &amp; Connection Pooling:</b> Engineered robust database connection pooling (HikariCP/custom adapters) and high-throughput RESTful integration APIs, hardening database resource recycling under high-concurrency failover conditions.</li>
+      <li><b>Incident Command &amp; 30% MTTR Reduction:</b> Served as Tier-3 Incident Commander and RCA lead for high-severity customer escalations; led systemic architectural remediations that slashed mean time to resolution (MTTR) by <b>30%</b> alongside 24/7 mission-critical on-call production governance.</li>
+      <li><b>Engineering Multiplier &amp; Quality Modernization:</b> Chaired architectural reviews, authored technical RFCs, and modernized automated integration testing lifecycles with JUnit and Mockito, reducing regression cycles by <b>20%</b> while mentoring senior engineers on JVM memory and concurrency patterns.</li>
     </ul>
   </div>
 
-  <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.5rem;box-shadow:var(--card-shadow)">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">
+  <div class="exp-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem">
       <div>
-        <h3 style="margin:0;font-size:1.25rem">Staff Engineer &mdash; Systems &amp; Mobile Security</h3>
-        <div style="color:var(--acc);font-weight:600">Samsung R&amp;D</div>
+        <h3 style="margin:0;font-size:1.25rem;font-weight:700">Lead Architect <span style="font-size:0.95rem;font-weight:500;color:var(--mut)">(Manager &ndash; Projects)</span></h3>
+        <div style="color:var(--acc);font-weight:600;font-size:1rem;margin-top:0.15rem">Cognizant</div>
       </div>
-      <div class="tag">Jul 2011 &mdash; Sep 2021</div>
+      <div class="tag" style="font-weight:600">Sep 2021 &mdash; Mar 2025</div>
     </div>
-    <ul style="margin:0;padding-left:1.25rem;color:var(--fg);line-height:1.65">
-      <li><b>Samsung Knox Security Architecture:</b> Architected and scaled Samsung Knox Guard and Knox Configure, deploying system-level MDM policy enforcement, hardware attestation, and biometrics across 100M+ global devices.</li>
-      <li><b>Systems R&amp;D &amp; Patented Innovations:</b> Led OS-level security hardening and proof-of-concept initiatives, translating R&D into patented mobile security innovations for global Samsung flagship lineups.</li>
-      <li><b>Global Cross-Region Alignment:</b> Served as principal technical liaison between South Korea R&D headquarters and international engineering teams, harmonizing technical specifications across 50+ telecom carriers.</li>
-      <li><b>Test Automation Harness Architecture:</b> Built multi-threaded test automation and integration testing frameworks (UI Automator, custom device harnesses), accelerating Agile delivery cycles by 40%.</li>
+    <div class="exp-note">
+      Embedded full-time with Pegasystems as Principal Technical Lead &amp; Contractor Architecture Governance.
+    </div>
+    <ul class="exp-list">
+      <li><b>Technical Program Delivery &amp; Architecture:</b> Directed technical architecture and engineering delivery for core engine initiatives at Pegasystems, aligning cross-functional software development, QA, and platform reliability engineering squads across global delivery centers.</li>
+      <li><b>Core Engine SLA &amp; Passivation Governance:</b> Owned architectural enhancements for low-level passivation strategies, thread-pool allocation, and database connectivity, ensuring strict performance benchmark compliance and SLA adherence across multi-tenant enterprise accounts.</li>
+      <li><b>CI/CD &amp; Deployment Acceleration:</b> Architected end-to-end CI/CD release pipelines and automated regression test suites, cutting release cycle times by <b>35%</b> and enforcing automated code quality gates across all contractor deliverables.</li>
+      <li><b>Systemic Incident RCA &amp; 25&ndash;30% MTTR Reduction:</b> Led cross-functional incident triage and Root Cause Analysis (RCA) for critical enterprise production issues, engineering preventative runtime safeguards that reduced customer MTTR by <b>25&ndash;30%</b>.</li>
+      <li><b>Developer Toolchain Modernization:</b> Drove enterprise-scale developer infrastructure modernizations, including Vagrant-to-WSL2 environment migrations and Bitbucket-to-GitHub transitions, standardizing developer workflows and slashing engineering onboarding time by <b>50%</b>.</li>
     </ul>
   </div>
+
+  <div class="exp-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem">
+      <div>
+        <h3 style="margin:0;font-size:1.25rem;font-weight:700">Staff Engineer <span style="font-size:0.95rem;font-weight:500;color:var(--mut)">(Systems &amp; Mobile Security)</span></h3>
+        <div style="color:var(--acc);font-weight:600;font-size:1rem;margin-top:0.15rem">Samsung R&amp;D</div>
+      </div>
+      <div class="tag" style="font-weight:600">Jul 2011 &mdash; Sep 2021</div>
+    </div>
+    <div class="exp-note">
+      Samsung Knox Platform &amp; Enterprise Mobile Security R&amp;D.
+    </div>
+    <ul class="exp-list">
+      <li><b>Samsung Knox Security Architecture:</b> Architected and scaled core platform security frameworks (Samsung Knox Guard and Knox Configure), deploying system-level Mobile Device Management (MDM) policy enforcement, hardware attestation, and biometric authentication across <b>100M+ global devices</b>.</li>
+      <li><b>Systems R&amp;D &amp; Patented Innovations:</b> Led systems R&D, OS-level security hardening, and proof-of-concept initiatives, translating novel research into patented mobile security innovations and achieving feature parity across global flagship device lineups.</li>
+      <li><b>Global Cross-Region Architectural Alignment:</b> Served as principal technical liaison between South Korea R&D headquarters and international engineering teams, harmonizing technical specifications and strict performance benchmarks across <b>50+ global telecommunication carriers</b>.</li>
+      <li><b>Test Automation Harness Architecture:</b> Built comprehensive multi-threaded test automation and integration testing frameworks (UI Automator, custom device harnesses), accelerating Agile delivery cycles by <b>40%</b> and elevating release stability.</li>
+    </ul>
+  </div>
+
 </div>
 </section>"""
 
