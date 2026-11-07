@@ -8,7 +8,10 @@ Agentic Inventory ("the System") is an autonomous AI-driven inventory and supply
 The System processes inventory data and logs strictly to perform automated stock management, reordering workflows, and forecasting. No proprietary inventory data or customer details are shared with unauthorized external entities.
 
 ## 2. Automated Agent Operations
-AI agents operate within configured permissions and authorization thresholds. All agent decision workflows and automated transactions are logged for full transparency and auditability.
+AI agents operate within configured permissions and authorization thresholds. All agent decision workflows and automated transactions are logged for full transparency and auditability by system administrators.
 
-## 3. Contact Us
-Email: `manuscriptcode@gmail.com`
+## 3. Third-Party Services
+When integrating with external AI providers or supplier APIs, data transmissions are restricted to necessary operational payloads and protected using enterprise encryption standards.
+
+## 4. Contact Us
+For questions or support regarding Agentic Inventory, please contact `manuscriptcode@gmail.com`.

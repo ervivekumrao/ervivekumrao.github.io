@@ -1,12 +1,19 @@
 {
   "id": "appmanager",
-  "name": "App Manager",
+  "name": "App Manager — Enterprise System Utility",
   "type": "app",
   "order": 40,
   "published": true,
-  "tagline": "Enterprise System Management & Device Owner Policy Security Utility.",
-  "description": "App Manager is a high-security enterprise system management tool and device policy utility designed for managing Android hardware fleets, kiosk devices, and corporate security compliance.\n\nBuilt on Android Device Policy Manager (Device Owner API), Android Enterprise Provisioning, and Material UI.\n\nCore Capabilities:\n- Fleet Governance: Deep system-level Device Owner integration (AdminReceiver, DevicePolicyRepository) for corporate hardware control.\n- Bloatware Freeze Engine: Disable pre-installed system apps (AppsRepository) without uninstallation to free RAM and optimize battery performance.\n- Enterprise Policy Controls: Enforce complex password rules, disable USB file transfer, block factory reset, and disable hardware components (Camera, Microphone).\n- Automated QR Provisioning: Built-in QR provisioning helper (ProvisioningModeActivity, AdminPolicyComplianceActivity) for rapid zero-touch fleet setup.",
-  "tags": ["Android Enterprise", "Device Owner", "System Utility", "Bloatware Freeze", "Hardware Restrictions", "QR Provisioning"],
+  "tagline": "High-security enterprise system management tool. Control bloatware, enforce strict password policies, manage hardware restrictions, and govern Android fleets using full Device Owner capabilities.",
+  "description": "<p style=\"font-size: 1.15rem; color: var(--mut); margin-bottom: 2rem; line-height: 1.65;\">\n  A high-security enterprise system management tool and device policy utility designed for managing Android hardware fleets, kiosk devices, and corporate security compliance. Built on Android Device Policy Manager (Device Owner API).\n</p>\n\n<h2 style=\"font-size: 1.5rem; margin: 2rem 0 1rem 0;\">Core Capabilities</h2>\n\n<div class=\"grid\" style=\"margin-bottom: 2.5rem;\">\n  <div class=\"card\">\n    <div class=\"card-title\">🏢 Fleet Management</div>\n    <p>Leverage Device Owner and Admin permissions for deep system integration. Ideal for kiosk devices or employee fleet management.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">🚫 Bloatware Freeze</div>\n    <p>Disable pre-installed system apps without uninstallation. Reclaim RAM and significantly improve battery life on managed devices.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">🔐 Policy Engine</div>\n    <p>Enforce complex password rules, disable hardware (camera/mic/USB), and configure auto-wipe protocols for compromised devices.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">📲 QR Provisioning</div>\n    <p>Streamline deployment with automated QR-based enrollment. Set up dozens of devices with full Device Owner status in minutes.</p>\n  </div>\n</div>\n\n<h2 style=\"font-size: 1.5rem; margin: 2rem 0 1rem 0;\">🚀 Deployment Guide</h2>\n\n<div class=\"grid\" style=\"grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;\">\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 1: Device Preparation</div>\n    <p>For full management, the device should be factory reset. During initial setup, use the <b>afw#setup</b> identifier or a specialized QR code.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 2: Grant Admin Rights</div>\n    <p>Launch App Manager and follow prompts to grant <b>Device Administrator</b> status to enable the core policy engine.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 3: Configure Policy</div>\n    <p>Access the dashboard to select which system apps to freeze and which hardware restrictions to enforce (e.g. Disable Camera, Prevent Factory Reset).</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 4: Deploy &amp; Monitor</div>\n    <p>Once configured, the device is locked down. Policies can be updated remotely if integrated with an EMM server backend.</p>\n  </div>\n</div>",
+  "tags": [
+    "Android Enterprise",
+    "Device Owner",
+    "System Utility",
+    "Bloatware Freeze",
+    "Hardware Restrictions",
+    "QR Provisioning"
+  ],
   "visibility": "private",
   "repo": "",
   "package": "com.my.admin.app",
@@ -15,5 +22,7 @@
     "enabled": true,
     "admin_component": "com.my.admin.app/.AdminReceiver"
   },
-  "screenshots": ["feature_graphic.png"]
+  "screenshots": [
+    "feature_graphic.png"
+  ]
 }

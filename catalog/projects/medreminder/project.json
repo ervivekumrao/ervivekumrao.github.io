@@ -1,12 +1,21 @@
 {
   "id": "medreminder",
-  "name": "Med Reminder",
+  "name": "Med Reminder — Intelligent Health Companion",
   "type": "app",
   "order": 15,
   "published": true,
-  "tagline": "Intelligent Health Companion for family medication management, drug interaction checking, and clinical adherence.",
-  "description": "Never miss a dose again. Manage medications for you and your family with an intelligent reminder system featuring OCR label scanning, drug interaction checking, OpenFDA integration, and biometric security.\n\nArchitected with Jetpack Compose, Kotlin Coroutines/Flow, Room DB, Google ML Kit OCR, and OpenFDA integration.\n\nCore Capabilities:\n- Smart Scheduling & Dosage Tracking: Manage complex prescription schedules, recurring intervals, dosage forms, and custom pill visual badges.\n- On-Device OCR Label Scanning: Scan physical prescription labels using Google ML Kit OCR (ScanScreen, ScanViewModel) for instant text extraction.\n- Domain Safety & Drug Interaction Engine: Built-in safety checker (DrugInteractionChecker) screens for contraindications, food-drug interactions, and dosage risks.\n- OpenFDA & Health Connect Integration: Queries the official FDA medication database and synchronizes adherence logs with Android Health Connect.\n- Voice Assistant Interaction: Voice-guided assistant (VoiceAssistantManager) to log taken doses, query daily schedules, or snooze alarms hands-free.\n- Adherence Analytics & Doctor PDF Export: Generate comprehensive adherence logs (GetAdherenceAnalyticsUseCase) and export formatted doctor PDF reports (PdfExporter).\n- Glance Home Screen Widgets: Interactive Android home screen widgets (MedicationWidget) for single-tap dose logging from your launcher.",
-  "tags": ["Android App", "Jetpack Compose", "Google ML Kit OCR", "Drug Safety Engine", "Health Connect", "OpenFDA API", "Voice Assistant", "Glance Widget"],
+  "tagline": "Never miss a dose again. Manage medications for you and your family with an intelligent reminder system featuring OCR label scanning and biometric security.",
+  "description": "<p style=\"font-size: 1.15rem; color: var(--mut); margin-bottom: 2rem; line-height: 1.65;\">\n  Never miss a dose again. Manage medications for you and your family with our modern reminder system featuring OCR label scanning, drug interaction checking, and biometric security.\n</p>\n\n<h2 style=\"font-size: 1.5rem; margin: 2rem 0 1rem 0;\">Health Intelligence</h2>\n\n<div class=\"grid\" style=\"margin-bottom: 2.5rem;\">\n  <div class=\"card\">\n    <div class=\"card-title\">📅 Smart Scheduling</div>\n    <p>Easily add medications with specific dosages, frequencies, and recurring intervals. Handles everything from antibiotics to chronic prescriptions.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">📷 OCR Label Scanning</div>\n    <p>Point your camera at the medication label. Our AI-driven OCR (Google ML Kit) extracts names and schedules automatically for error-free entry.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">👨‍👩‍👧‍👦 Family Profiles</div>\n    <p>Create separate profiles for children, parents, or elderly relatives. Monitor the entire family's adherence from a single dashboard.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">🛡️ Biometric Security</div>\n    <p>Protect sensitive medical data with industry-standard biometric authentication (Fingerprint, Face Unlock, or PIN).</p>\n  </div>\n</div>\n\n<h2 style=\"font-size: 1.5rem; margin: 2rem 0 1rem 0;\">🚀 Patient Setup Guide</h2>\n\n<div class=\"grid\" style=\"grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;\">\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 1: Create Profile</div>\n    <p>Set up your primary profile. You can also add family members with custom icons for easy identification.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 2: Add Medications</div>\n    <p>Tap <b>Add Medicine</b>. Use the camera to scan the label or manually enter details using auto-complete.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 3: Configure Reminders</div>\n    <p>Set precise alarm times. Enable Post-Reboot Execution to ensure schedules are never interrupted by device restarts.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 4: Track &amp; Adjust</div>\n    <p>Log doses as you take them. View the <b>Adherence Log</b> to see your progress and identify patterns over time.</p>\n  </div>\n</div>",
+  "tags": [
+    "Android App",
+    "Jetpack Compose",
+    "Google ML Kit OCR",
+    "Drug Safety Engine",
+    "Health Connect",
+    "OpenFDA API",
+    "Voice Assistant",
+    "Glance Widget"
+  ],
   "visibility": "private",
   "repo": "",
   "package": "med.reminder",
@@ -15,5 +24,7 @@
     "enabled": false,
     "admin_component": ""
   },
-  "screenshots": ["feature_graphic.png"]
+  "screenshots": [
+    "feature_graphic.png"
+  ]
 }

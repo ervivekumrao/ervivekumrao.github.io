@@ -1,3 +1,11 @@
-# Privacy Information for RuntimeCompile
+# Privacy Policy for RuntimeCompile
 
-RuntimeCompile is an open-source Java utility library. It processes compilation in-memory and does not collect or transmit any data.
+*Last updated: June 10, 2026*
+
+RuntimeCompile is an open-source Java library.
+
+## 1. Zero Data Collection
+RuntimeCompile does not collect, store, or transmit any data. All compilation operations take place entirely within the host application's JVM memory.
+
+## 2. Contact Us
+For questions regarding this library, please contact `manuscriptcode@gmail.com`.

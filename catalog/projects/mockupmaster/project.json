@@ -5,8 +5,16 @@
   "order": 45,
   "published": true,
   "tagline": "High-Fidelity Mock Data Injector & Headless ADB CLI Generator for Android Developers.",
-  "description": "Mockup Master is a developer utility for Android engineers, QA teams, and UI designers. It populates physical devices or emulators with realistic mock Contacts, SMS/MMS threads, and Call Logs for UI stress-testing and demonstration.\n\nArchitected with Kotlin, Jetpack Compose, Room DB, Firebase Remote Config, and ADB Broadcast CLI Engine.\n\nCore Capabilities:\n- Headless ADB CLI Automation: Trigger mock data generation headlessly from terminal scripts (adb shell am broadcast) using CliCommandEngine for CI/CD test automation.\n- Contact Injection Factory: Bulk create realistic contacts with full names, phone numbers, email addresses, avatars, and country phone formats (Country.kt).\n- SMS & MMS Conversation Builder: Create full multi-turn conversation threads (ConversationBuilderScreen) with Sent, Received, and Draft statuses.\n- Call Log Factory: Inject Incoming, Outgoing, and Missed call entries with realistic durations and human-like time distribution (HumanTimeSpacingEngine).\n- One-Tap Surgical Cleanup: Track generated records (InjectedRecordRegistryImpl) to safely wipe mock data without touching personal device records.\n- Data Portability Engine: Export and import mock scenarios as JSON or CSV files (DataPortabilityEngine) for reproducible test environments.",
-  "tags": ["Android App", "Developer Tools", "ADB CLI Automation", "Mock Data Generator", "SMS/MMS Simulation", "JSON/CSV Export", "Jetpack Compose"],
+  "description": "<p style=\"font-size: 1.15rem; color: var(--mut); margin-bottom: 2rem; line-height: 1.65;\">\n  The ultimate developer utility for Android. Instantly populate any emulator or physical device with realistic, high-quality mock data including Contacts, SMS threads, and Call Logs for UI stress-testing and demonstration.\n</p>\n\n<h2 style=\"font-size: 1.5rem; margin: 2rem 0 1rem 0;\">Developer Superpowers</h2>\n\n<div class=\"grid\" style=\"margin-bottom: 2.5rem;\">\n  <div class=\"card\">\n    <div class=\"card-title\">📱 Contact Injection</div>\n    <p>Bulk create contacts with full names, multiple phone numbers, emails, and placeholder avatars. Perfect for testing contact lists and search logic.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">💬 SMS Simulation</div>\n    <p>Create entire conversation histories between different numbers. Supports Sent, Received, Draft statuses and even MMS simulation.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">📞 Call Log Factory</div>\n    <p>Generate Incoming, Outgoing, and Missed call entries with randomized durations to simulate years of device usage in seconds.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">🧹 One-Tap Cleanup</div>\n    <p>Safe, surgical wipe of all mock data. Tracks every entry it creates so your personal or other test data remains completely untouched.</p>\n  </div>\n</div>\n\n<h2 style=\"font-size: 1.5rem; margin: 2rem 0 1rem 0;\">🚀 Developer User Guide</h2>\n\n<div class=\"grid\" style=\"grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;\">\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 1: Grant Data Access</div>\n    <p>Launch app and grant permissions for Contacts, SMS, and Call Logs. To mock SMS, set Mockup Master as default SMS app temporarily.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 2: Configure Datasets</div>\n    <p>Choose entry quantity (10, 50, 100+) and select presets like Corporate or Social to tailor data to your app needs.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 3: Generate &amp; Test</div>\n    <p>Hit <b>Generate</b>. Watch system databases populate in real-time, then switch to your app to verify performance under load.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 4: Export &amp; Share</div>\n    <p>Save mock scenarios as <b>JSON</b> or <b>CSV</b> files to share with QA teams for consistent testing across emulators.</p>\n  </div>\n</div>",
+  "tags": [
+    "Android App",
+    "Developer Tools",
+    "ADB CLI Automation",
+    "Mock Data Generator",
+    "SMS/MMS Simulation",
+    "JSON/CSV Export",
+    "Jetpack Compose"
+  ],
   "visibility": "private",
   "repo": "",
   "package": "com.vivekumrao.mockupmaster",
@@ -15,5 +23,7 @@
     "enabled": false,
     "admin_component": ""
   },
-  "screenshots": ["feature_graphic.png"]
+  "screenshots": [
+    "feature_graphic.png"
+  ]
 }

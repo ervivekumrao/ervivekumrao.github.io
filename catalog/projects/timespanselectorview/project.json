@@ -1,17 +1,24 @@
 {
   "id": "timespanselectorview",
-  "name": "TimeSpanSelectorView",
+  "name": "Time Span Selector",
   "type": "library",
   "order": 50,
   "published": true,
-  "tagline": "Custom Android view library for radial and linear time range selection.",
-  "description": "TimeSpanSelectorView is a highly customizable, open-source Android view library for selecting time spans. It includes Circular (Radial) and Linear layouts with Material 3 styling.\n\nBuilt in Java and Kotlin with extensive unit and UI test coverage (TimeSpanSelectorUITest, TimeSpanSelectorCoverageTest).\n\nHighlights:\n- Dual Selector Components: CircularTimeSpanSelector (radial clock dial) and LinearTimeSpanSelector (horizontal slider) to match any UX design.\n- Blocked Time Intervals: Lock or gray out unselectable time slots (BlockedInterval.java) for appointment booking and shift scheduling.\n- Overnight Span Support: Handles time spans that cross midnight (start time > end time) for sleep trackers and night shifts.\n- Customization Attributes: Configure track colors, stroke widths, tick mark counts, step snap intervals (1, 5, 15, 30 min), and custom thumb drawables.",
-  "tags": ["Android Library", "Java", "Kotlin", "Custom View", "Radial Selector", "Material 3", "JitPack", "100% Tested"],
+  "tagline": "A highly customizable, elegant Android library for selecting time durations with Radial and Linear designs.",
+  "description": "<p style=\"font-size: 1.15rem; color: var(--mut); margin-bottom: 2rem; line-height: 1.65;\">\n  A highly customizable, elegant Android library for selecting time durations. Featuring both Circular (Radial) and Linear designs with full Material 3 support.\n</p>\n\n<h2 style=\"font-size: 1.5rem; margin: 2rem 0 1rem 0;\">Library Features</h2>\n\n<div class=\"grid\" style=\"margin-bottom: 2.5rem;\">\n  <div class=\"card\">\n    <div class=\"card-title\">🕒 Dual Layouts</div>\n    <p>Includes both Circular (clock-like) and Linear (slider-like) selectors to fit any application design or UX requirement.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">🌓 Overnight Support</div>\n    <p>Seamlessly handles spans that cross midnight. Perfect for sleep trackers, work shifts, and flexible alarm settings.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">🎨 Fully Customizable</div>\n    <p>Control every detail: colors, widths, tick marks, labels, and custom thumb drawables to match your brand identity.</p>\n  </div>\n  <div class=\"card\">\n    <div class=\"card-title\">📏 Step Intervals</div>\n    <p>Configure snap-to-grid intervals (1, 5, 15, or 30 minutes) for precise selection and a better user experience.</p>\n  </div>\n</div>\n\n<h2 style=\"font-size: 1.5rem; margin: 2rem 0 1rem 0;\">🚀 Implementation Guide</h2>\n\n<div class=\"grid\" style=\"grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;\">\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 1: Add Dependency</div>\n    <p>Add JitPack repository to build file and include implementation line in app-level build.gradle.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 2: Declare in XML</div>\n    <p>Add <b>CircularTimeSpanSelector</b> or <b>LinearTimeSpanSelector</b> to layout file with desired attributes.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 3: Style with Attributes</div>\n    <p>Use <b>app:tss_spanColor</b>, <b>app:tss_trackWidth</b>, and <b>app:tss_is24HourFormat</b> to customize appearance.</p>\n  </div>\n  <div class=\"card\">\n    <div style=\"font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;\">Step 4: Handle Listeners</div>\n    <p>Implement <b>OnSpanChangeListener</b> in Activity or Fragment for real-time interaction updates.</p>\n  </div>\n</div>",
+  "tags": [
+    "Android Library",
+    "Material 3",
+    "Custom View",
+    "Radial Selector",
+    "Time Range",
+    "Kotlin"
+  ],
   "visibility": "public",
   "repo": "ervivekumrao/TimeSpanSelectorView",
   "library": {
     "jitpack": "com.github.ervivekumrao:TimeSpanSelectorView",
-    "latest_version": "1.0.0",
+    "latest_version": "0.0.6",
     "docs_url": "https://github.com/ervivekumrao/TimeSpanSelectorView"
   }
 }
