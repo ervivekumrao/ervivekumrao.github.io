@@ -78,22 +78,20 @@ a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
 main,header>div{max-width:1080px;margin:0 auto;padding:1.5rem 1rem}
 header{border-bottom:1px solid var(--line);background:var(--card);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
 header>div{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem}
-.nav-brand{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:1.05rem;color:var(--fg);text-decoration:none!important}
-.nav-brand:hover{color:var(--acc)}
-.nav-subtitle{font-size:.82rem;font-weight:500;color:var(--mut)}
+.nav-brand-home{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:var(--tag-bg);border:1px solid var(--card-border);color:var(--fg);transition:all .15s ease;text-decoration:none!important}
+.nav-brand-home:hover{background:var(--acc);color:#ffffff!important;border-color:var(--acc)}
 
 .theme-switch{background:transparent;border:none;padding:0;cursor:pointer;display:inline-flex;align-items:center;outline:none;user-select:none;-webkit-tap-highlight-color:transparent}
-.switch-track{position:relative;width:58px;height:30px;border-radius:99px;background:#cbd5e1;border:1.5px solid #94a3b8;box-shadow:inset 0 2px 4px rgba(0,0,0,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 7px;transition:background-color .3s ease,border-color .3s ease,box-shadow .3s ease}
-[data-theme="dark"] .switch-track{background:#1e293b;border-color:#334155;box-shadow:inset 0 2px 6px rgba(0,0,0,0.4)}
-.switch-icon{width:16px;height:16px;display:flex;align-items:center;justify-content:center;z-index:1;transition:opacity .25s ease,color .25s ease;pointer-events:none}
-.icon-sun{color:#f59e0b;opacity:1}
-.icon-moon{color:#94a3b8;opacity:0.5}
-[data-theme="dark"] .icon-sun{opacity:0.5;color:#64748b}
-[data-theme="dark"] .icon-moon{opacity:1;color:#38bdf8}
-.switch-knob{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#ffffff;box-shadow:0 2px 6px rgba(0,0,0,0.25),0 0 0 1px rgba(0,0,0,0.05);transition:transform .3s cubic-bezier(0.34,1.56,0.64,1),background-color .3s ease,box-shadow .3s ease;z-index:2}
-[data-theme="dark"] .switch-knob{transform:translateX(28px);background:#38bdf8;box-shadow:0 2px 8px rgba(56,189,248,0.45),0 0 0 1px rgba(56,189,248,0.3)}
+.switch-track{position:relative;width:64px;height:32px;border-radius:99px;background:#bae6fd;border:2px solid #7dd3fc;box-shadow:inset 0 2px 4px rgba(0,0,0,0.12);display:flex;align-items:center;padding:3px;transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease}
+[data-theme="dark"] .switch-track{background:#0f172a;border-color:#1e293b;box-shadow:inset 0 2px 6px rgba(0,0,0,0.5)}
+.switch-knob{position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#334155;box-shadow:0 2px 6px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;transform:translateX(32px);transition:transform .35s cubic-bezier(0.34,1.56,0.64,1),background-color .35s ease,box-shadow .35s ease}
+[data-theme="dark"] .switch-knob{transform:translateX(0px);background:#1e293b;box-shadow:0 2px 6px rgba(0,0,0,0.4),0 0 10px rgba(56,189,248,0.2)}
+.knob-icon{position:absolute;display:flex;align-items:center;justify-content:center;color:#ffffff;transition:opacity .25s ease,transform .35s ease}
+.icon-sun{opacity:1;transform:scale(1) rotate(0deg)}
+.icon-moon{opacity:0;transform:scale(0.6) rotate(-90deg)}
+[data-theme="dark"] .icon-sun{opacity:0;transform:scale(0.6) rotate(90deg)}
+[data-theme="dark"] .icon-moon{opacity:1;transform:scale(1) rotate(0deg);color:#38bdf8}
 .theme-switch:hover .switch-track{border-color:var(--acc)}
-.theme-switch:focus-visible .switch-track{outline:2px solid var(--acc);outline-offset:2px}
 
 .breadcrumb{display:flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--mut);margin-bottom:1.25rem;flex-wrap:wrap}
 .breadcrumb a{color:var(--mut);text-decoration:none}.breadcrumb a:hover{color:var(--acc);text-decoration:underline}
@@ -261,11 +259,8 @@ class Site:
                     crumbs_rendered.append(f"<span class='current'>{esc(label)}</span>")
             crumb_html = f"<nav class='breadcrumb' aria-label='Breadcrumb'>{' <span class=\"sep\">&rsaquo;</span> '.join(crumbs_rendered)}</nav>"
 
-        brand_logo = self.url("favicon.svg")
-        brand_html = f"""<a href="{self.url('/')}" class="nav-brand">
-      <img src="{brand_logo}" width="26" height="26" style="border-radius:6px" alt="Logo">
-      <span>Vivek Umrao</span> <span class="nav-subtitle">/ Hub</span>
-    </a>""" if show_home_brand else "<div></div>"
+        home_icon_svg = """<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>"""
+        brand_html = f"""<a href="{self.url('/')}" class="nav-brand-home" aria-label="Home">{home_icon_svg}</a>""" if show_home_brand else "<div></div>"
 
         return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -279,18 +274,19 @@ class Site:
     {brand_html}
     <button id="theme-toggle" class="theme-switch" aria-label="Toggle dark/light theme" type="button">
       <span class="switch-track">
-        <span class="switch-icon icon-sun">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-          </svg>
+        <span class="switch-knob">
+          <span class="knob-icon icon-sun">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+          </span>
+          <span class="knob-icon icon-moon">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
         </span>
-        <span class="switch-icon icon-moon">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-            <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-5.4-5.4c0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path>
-          </svg>
-        </span>
-        <span class="switch-knob"></span>
       </span>
     </button>
   </div>
