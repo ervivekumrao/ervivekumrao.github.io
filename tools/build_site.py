@@ -233,7 +233,7 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
         icon_hdr = f"<img class='proj-icon' src='{tab_icon_url}' alt='{esc(p['name'])} icon'>"
 
     shots = "".join(f"<img loading='lazy' alt='' src='{site.url(f'{pid}/assets/{s}')}'>" for s in p.get("screenshots", []))
-    desc = "".join(f"<p>{esc(x)}</p>" for x in p.get("description", "").split("\n\n") if x.strip())
+    desc = md_to_html(p.get("description", ""))
     tags = "".join(f"<span class='tag'>{esc(t)}</span>" for t in p.get("tags", []))
 
     header_html = f"<div class='proj-header'>{icon_hdr}<div><h1 style='margin:0 0 .25rem 0'>{esc(p['name'])}</h1><p class='mut' style='font-size:1.1rem;margin:0 0 .75rem 0'>{esc(p.get('tagline'))}</p>{tags}</div></div>"
