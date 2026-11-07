@@ -115,6 +115,19 @@ header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75r
 .btn-details:hover{background:var(--acc);color:#fff!important;border-color:var(--acc);text-decoration:none}
 .btn-source{display:inline-flex;align-items:center;gap:0.25rem;font-size:0.78rem;font-weight:500;color:var(--mut);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--card-border);transition:all .15s ease}
 .btn-source:hover{color:var(--fg)!important;border-color:var(--mut);text-decoration:none}
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.25rem;margin-top:1rem}
+.comp-card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.25rem;box-shadow:var(--card-shadow);display:flex;flex-direction:column;gap:0.75rem;transition:all .25s ease}
+.comp-card:hover{transform:translateY(-3px);border-color:var(--acc);box-shadow:0 12px 28px -4px rgba(37,99,235,0.12)}
+@media(prefers-color-scheme:dark){.comp-card:hover{background:#182238!important;border-color:#38bdf8!important;box-shadow:0 12px 28px -4px rgba(56,189,248,0.25)}}
+[data-theme="dark"] .comp-card:hover{background:#182238!important;border-color:#38bdf8!important;box-shadow:0 12px 28px -4px rgba(56,189,248,0.25)}
+.comp-header{margin:0}
+.comp-title{font-size:1.05rem;font-weight:700;color:var(--fg);display:flex;align-items:center;justify-content:space-between}
+.comp-count{font-size:0.72rem;font-weight:600;padding:0.15rem 0.5rem;border-radius:12px;background:var(--tag-bg);color:var(--mut);border:1px solid var(--card-border)}
+.comp-chips{display:flex;flex-wrap:wrap;gap:0.35rem}
+.comp-chip{font-size:0.76rem;font-weight:500;padding:0.22rem 0.55rem;border-radius:6px;background:var(--tag-bg);color:var(--tag-fg);border:1px solid var(--card-border);transition:all .15s ease}
+.comp-chip:hover{border-color:var(--acc);color:var(--acc)}
+.comp-chip.highlight{background:rgba(37,99,235,0.08);color:var(--acc);border-color:rgba(37,99,235,0.25);font-weight:600}
+[data-theme="dark"] .comp-chip.highlight{background:rgba(56,189,248,0.12);color:#38bdf8;border-color:rgba(56,189,248,0.3)}
 .card-title{display:flex;align-items:center;margin:0 0 .5rem 0;font-size:1.15rem;font-weight:600}
 .card-title img{width:32px;height:32px;border-radius:8px;margin-right:.75rem;object-fit:contain;flex-shrink:0}
 .card p{color:var(--mut);font-size:.925rem;margin:0 0 1rem 0;flex-grow:1;line-height:1.5}
@@ -469,82 +482,209 @@ def main() -> int:
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line)">
   <div>
     <div style="font-size:1.75rem;font-weight:700;color:var(--acc)">15+</div>
-    <div style="font-size:0.85rem;color:var(--mut);font-weight:500">Years Experience</div>
+    <div style="font-size:0.85rem;color:var(--mut);font-weight:500">Years Systems Experience</div>
   </div>
   <div>
-    <div style="font-size:1.75rem;font-weight:700;color:var(--acc)">Millions</div>
+    <div style="font-size:1.75rem;font-weight:700;color:var(--acc)">100M+</div>
     <div style="font-size:0.85rem;color:var(--mut);font-weight:500">Devices Secured (Knox)</div>
   </div>
   <div>
-    <div style="font-size:1.75rem;font-weight:700;color:var(--acc)">JVM & Systems</div>
-    <div style="font-size:0.85rem;color:var(--mut);font-weight:500">Core Engine Architecture</div>
+    <div style="font-size:1.75rem;font-weight:700;color:var(--acc)">99.999%</div>
+    <div style="font-size:0.85rem;color:var(--mut);font-weight:500">Platform Availability</div>
   </div>
 </div>
 </div>"""
 
-    exp_html = """<section style="margin-top:3rem">
+    exp_html = """<section style="margin-top:3.5rem">
 <h2 style="font-size:1.75rem;margin-bottom:0.25rem">Professional Experience</h2>
-<p class="mut" style="margin-top:0;margin-bottom:1.5rem">A track record of delivering impactful enterprise solutions at global scale.</p>
+<p class="mut" style="margin-top:0;margin-bottom:1.5rem">A track record of delivering impactful enterprise platform solutions at global scale.</p>
 
 <div style="display:flex;flex-direction:column;gap:1.5rem">
   <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.5rem;box-shadow:var(--card-shadow)">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">
       <div>
-        <h3 style="margin:0;font-size:1.25rem">Principal Software Engineer</h3>
-        <div style="color:var(--acc);font-weight:600">Pegasystems</div>
+        <h3 style="margin:0;font-size:1.25rem">Principal Software Engineer &amp; Lead Architect</h3>
+        <div style="color:var(--acc);font-weight:600">Pegasystems <span style="color:var(--mut);font-weight:400;font-size:0.9rem">(via Cognizant Lead / Pega FTE)</span></div>
       </div>
       <div class="tag">Sep 2021 &mdash; Present</div>
     </div>
-    <ul style="margin:0;padding-left:1.25rem;color:var(--fg);line-height:1.6">
-      <li><b>Classload Priming & Engine Governance:</b> Architecting low-level PEGA Engine internals, introducing classload priming to ensure pods are traffic-ready at startup and eliminate cold starts. Optimized custom class loading, passivation strategies, and high-concurrency locking.</li>
-      <li><b>Distributed ID Generation & Scalability:</b> Designed a distributed ID generation system that eliminates database bottlenecks across nodes, alongside hardened database connection pools for PEGA Infinity.</li>
-      <li><b>Security & Hashing Architecture:</b> Drove PII security initiatives to safeguard sensitive customer data in logs/traces and led the migration to a unified hashing framework to future-proof enterprise security.</li>
-      <li><b>APIs & Operational Excellence:</b> Orchestrated high-performance RESTful APIs and modernized testing with JUnit/Mockito, reducing regression overhead by 20% and improving system uptime.</li>
+    <ul style="margin:0;padding-left:1.25rem;color:var(--fg);line-height:1.65">
+      <li><b>Core JVM Runtime Architecture:</b> Architected low-level PEGA Infinity Engine internals, custom hierarchical class loaders, memory passivation algorithms, and lock-free concurrency to sustain 99.999% availability.</li>
+      <li><b>Cold-Start Elimination &amp; Class Priming:</b> Pioneered pre-emptive class-load priming at container startup, eliminating JVM cold-start latency spikes and slashing scale-up latency by ~85%.</li>
+      <li><b>3x Throughput Distributed ID Generator:</b> Designed a batch-based unique ID generator across multi-tenant nodes, decoupling database lock serialization to achieve &gt;3x throughput gains.</li>
+      <li><b>Enterprise Data Privacy &amp; PII Governance:</b> Led engineering-wide PII data governance architecture (dynamic masking, cryptographic tokenization, access policy enforcement) across distributed engine logs and telemetry.</li>
+      <li><b>Unified Hashing Modernization:</b> Consolidated fragmented legacy hashing algorithms into a centralized cryptographic library, reducing future maintenance overhead by ~40%.</li>
+      <li><b>Incident Command &amp; 30% MTTR Reduction:</b> Served as Tier-3 Incident Commander and RCA lead for critical escalations, driving systemic remediations that slashed MTTR by 30%.</li>
     </ul>
   </div>
 
   <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.5rem;box-shadow:var(--card-shadow)">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">
       <div>
-        <h3 style="margin:0;font-size:1.25rem">Staff Engineer</h3>
-        <div style="color:var(--acc);font-weight:600">Samsung</div>
+        <h3 style="margin:0;font-size:1.25rem">Staff Engineer &mdash; Systems &amp; Mobile Security</h3>
+        <div style="color:var(--acc);font-weight:600">Samsung R&amp;D</div>
       </div>
       <div class="tag">Jul 2011 &mdash; Sep 2021</div>
     </div>
-    <ul style="margin:0;padding-left:1.25rem;color:var(--fg);line-height:1.6">
-      <li><b>Security at Scale (Knox Guard):</b> Played a fundamental role in architecting Knox Guard and Knox Configure, deploying system-level MDM security policies to millions of global devices.</li>
-      <li><b>Patented Innovations & R&D:</b> Led proof-of-concept initiatives in mobile security and system optimization, translating R&D efforts into patented innovations for global Samsung variants.</li>
-      <li><b>Technical Diplomacy:</b> Coordinated complex requirements between international R&D centers, ensuring feature parity across global markets while maintaining strict performance benchmarks.</li>
-      <li><b>Agile Automation:</b> Built custom integration testing harnesses that accelerated the transition to Agile delivery within the Samsung mobile ecosystem.</li>
+    <ul style="margin:0;padding-left:1.25rem;color:var(--fg);line-height:1.65">
+      <li><b>Samsung Knox Security Architecture:</b> Architected and scaled Samsung Knox Guard and Knox Configure, deploying system-level MDM policy enforcement, hardware attestation, and biometrics across 100M+ global devices.</li>
+      <li><b>Systems R&amp;D &amp; Patented Innovations:</b> Led OS-level security hardening and proof-of-concept initiatives, translating R&D into patented mobile security innovations for global Samsung flagship lineups.</li>
+      <li><b>Global Cross-Region Alignment:</b> Served as principal technical liaison between South Korea R&D headquarters and international engineering teams, harmonizing technical specifications across 50+ telecom carriers.</li>
+      <li><b>Test Automation Harness Architecture:</b> Built multi-threaded test automation and integration testing frameworks (UI Automator, custom device harnesses), accelerating Agile delivery cycles by 40%.</li>
     </ul>
   </div>
 </div>
 </section>"""
 
-    comp_html = """<section style="margin-top:3rem">
-<h2 style="font-size:1.75rem;margin-bottom:0.25rem">Core Competencies</h2>
-<p class="mut" style="margin-top:0;margin-bottom:1.5rem">Technical domain expertise extracted from professional engineering experience.</p>
+    comp_html = """<section style="margin-top:3.5rem">
+<h2 style="font-size:1.75rem;margin-bottom:0.25rem">Core Competencies &amp; Technical Skills</h2>
+<p class="mut" style="margin-top:0;margin-bottom:1.5rem">Systematic domain expertise, runtime architectures, and enterprise technologies from 15+ years of systems engineering.</p>
 
-<div class="grid">
-  <div class="card">
-    <div class="card-title">⚡ Core Systems & JVM</div>
-    <p>Java (Expert), Kotlin, JVM Internals, Class Loading, High-Concurrency Locking, Passivation Strategy</p>
+<div class="comp-grid">
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-title">
+        <span>⚡ Core Systems &amp; JVM</span>
+        <span class="comp-count">8 Skills</span>
+      </div>
+    </div>
+    <div class="comp-chips">
+      <span class="comp-chip highlight">JVM Internals</span>
+      <span class="comp-chip highlight">Custom Hierarchical Class Loaders</span>
+      <span class="comp-chip">In-Memory JIT Compilation</span>
+      <span class="comp-chip highlight">Java 21+ Virtual Threads (Loom)</span>
+      <span class="comp-chip">Lock-Free Concurrency</span>
+      <span class="comp-chip">Passivation Algorithms</span>
+      <span class="comp-chip">Memory &amp; GC Pause Tuning</span>
+      <span class="comp-chip">Kotlin</span>
+    </div>
   </div>
-  <div class="card">
-    <div class="card-title">🔒 Mobile Security & MDM</div>
-    <p>Android SDK, Samsung Knox, Device Policy Enforcement, Biometrics, Kiosk Architecture</p>
+
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-title">
+        <span>🛡️ Mobile Security &amp; MDM</span>
+        <span class="comp-count">7 Skills</span>
+      </div>
+    </div>
+    <div class="comp-chips">
+      <span class="comp-chip highlight">Android SDK &amp; Frameworks</span>
+      <span class="comp-chip highlight">Samsung Knox Guard &amp; Knox Configure</span>
+      <span class="comp-chip highlight">Device Policy Manager (DPM MDM)</span>
+      <span class="comp-chip">Hardware Attestation</span>
+      <span class="comp-chip">Biometric Authentication</span>
+      <span class="comp-chip">Jetpack Compose</span>
+      <span class="comp-chip">Material 3 UI</span>
+    </div>
   </div>
-  <div class="card">
-    <div class="card-title">☁️ Backend & Infrastructure</div>
-    <p>Spring Boot, PEGA Infinity, Apache Kafka, Docker & Kubernetes, RESTful APIs</p>
+
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-title">
+        <span>🔐 Security &amp; Cryptography</span>
+        <span class="comp-count">7 Skills</span>
+      </div>
+    </div>
+    <div class="comp-chips">
+      <span class="comp-chip highlight">AES-256-GCM Encryption</span>
+      <span class="comp-chip highlight">PII Dynamic Data Masking &amp; Redaction</span>
+      <span class="comp-chip">Cryptographic Tokenization</span>
+      <span class="comp-chip">Unified Hashing Frameworks</span>
+      <span class="comp-chip">JMX Credential Masking</span>
+      <span class="comp-chip">AWS Secrets Manager</span>
+      <span class="comp-chip">HashiCorp Vault</span>
+    </div>
   </div>
-  <div class="card">
-    <div class="card-title">💾 Database & Storage</div>
-    <p>PostgreSQL, Oracle, SQL Server, Connection Pooling, HikariCP, Resource Management</p>
+
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-title">
+        <span>🌐 Distributed Systems &amp; Backend</span>
+        <span class="comp-count">7 Skills</span>
+      </div>
+    </div>
+    <div class="comp-chips">
+      <span class="comp-chip highlight">Distributed Systems Architecture</span>
+      <span class="comp-chip highlight">Spring Boot</span>
+      <span class="comp-chip">PEGA Infinity Core Engine</span>
+      <span class="comp-chip highlight">Apache Kafka Event Streaming</span>
+      <span class="comp-chip">High-Throughput RESTful APIs</span>
+      <span class="comp-chip highlight">3x Distributed ID Generator</span>
+      <span class="comp-chip">Cold-Start Elimination &amp; Priming</span>
+    </div>
   </div>
-  <div class="card">
-    <div class="card-title">🔬 Testing & CI/CD DevOps</div>
-    <p>JUnit & Mockito, UI Automator, Git & Jenkins, Gradle & Maven, CI/CD Pipelines</p>
+
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-title">
+        <span>💾 Databases &amp; Observability</span>
+        <span class="comp-count">9 Skills</span>
+      </div>
+    </div>
+    <div class="comp-chips">
+      <span class="comp-chip highlight">PostgreSQL</span>
+      <span class="comp-chip">Oracle</span>
+      <span class="comp-chip">SQL Server</span>
+      <span class="comp-chip">MySQL &amp; DB2</span>
+      <span class="comp-chip highlight">Redis Multi-Tier Caching</span>
+      <span class="comp-chip">pgvector AI Lakehouse</span>
+      <span class="comp-chip highlight">HikariCP &amp; DBCP2 Connection Pools</span>
+      <span class="comp-chip">Grafana</span>
+      <span class="comp-chip">Distributed Tracing &amp; Telemetry</span>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-title">
+        <span>☸️ Cloud, Containers &amp; DevOps</span>
+        <span class="comp-count">8 Skills</span>
+      </div>
+    </div>
+    <div class="comp-chips">
+      <span class="comp-chip highlight">Rootless Podman</span>
+      <span class="comp-chip">Docker</span>
+      <span class="comp-chip highlight">Kubernetes (K8s Operators)</span>
+      <span class="comp-chip">Self-Healing Pod Architecture</span>
+      <span class="comp-chip">Helm Charts</span>
+      <span class="comp-chip">AWS &amp; GCP</span>
+      <span class="comp-chip">CI/CD (Git, Jenkins)</span>
+      <span class="comp-chip">Gradle &amp; Maven</span>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-title">
+        <span>🤖 AI &amp; Agentic Systems</span>
+        <span class="comp-count">6 Skills</span>
+      </div>
+    </div>
+    <div class="comp-chips">
+      <span class="comp-chip highlight">Autonomous Multi-Agent Orchestration</span>
+      <span class="comp-chip">LLM Prompt Engineering</span>
+      <span class="comp-chip">Spec-Kit Framework</span>
+      <span class="comp-chip">ML Intent Classification (Scikit-Learn)</span>
+      <span class="comp-chip highlight">Gemini &amp; Claude Integration</span>
+      <span class="comp-chip">GitHub &amp; Microsoft Copilot</span>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-title">
+        <span>🎯 Leadership &amp; Governance</span>
+        <span class="comp-count">6 Skills</span>
+      </div>
+    </div>
+    <div class="comp-chips">
+      <span class="comp-chip highlight">Architecture Review Board (ARB)</span>
+      <span class="comp-chip">RFC &amp; Technical Proposals</span>
+      <span class="comp-chip highlight">Systemic RCA (30% MTTR Reduction)</span>
+      <span class="comp-chip">Enterprise SLA Governance (99.999%)</span>
+      <span class="comp-chip">Cross-Region R&amp;D Mentorship</span>
+      <span class="comp-chip">Tier-3 Incident Command</span>
+    </div>
   </div>
 </div>
 </section>"""
