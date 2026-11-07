@@ -117,8 +117,10 @@ header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75r
 .app-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding-top:0.75rem;border-top:1px dashed var(--line);gap:0.5rem}
 .app-footer-left{display:flex;align-items:center;gap:0.4rem}
 .app-footer-right{display:flex;align-items:center;gap:0.4rem}
-.app-chip-store{font-size:0.72rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:6px;background:rgba(16,185,129,0.1);color:#059669;border:1px solid rgba(16,185,129,0.25)}
-[data-theme="dark"] .app-chip-store{background:rgba(52,211,153,0.12);color:#34d399;border-color:rgba(52,211,153,0.3)}
+.app-chip-store{display:inline-flex;align-items:center;gap:0.2rem;font-size:0.72rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:6px;background:rgba(16,185,129,0.1);color:#059669!important;border:1px solid rgba(16,185,129,0.25);text-decoration:none!important;transition:all .15s ease}
+.app-chip-store:hover{background:#10b981;color:#ffffff!important;border-color:#10b981;text-decoration:none!important}
+[data-theme="dark"] .app-chip-store{background:rgba(52,211,153,0.12);color:#34d399!important;border-color:rgba(52,211,153,0.3)}
+[data-theme="dark"] .app-chip-store:hover{background:#34d399;color:#0b0f19!important;border-color:#34d399;text-decoration:none!important}
 .app-chip-open{font-size:0.72rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:6px;background:rgba(99,102,241,0.1);color:#6366f1;border:1px solid rgba(99,102,241,0.25)}
 [data-theme="dark"] .app-chip-open{background:rgba(129,140,248,0.12);color:#818cf8;border-color:rgba(129,140,248,0.3)}
 .btn-details{display:inline-flex;align-items:center;gap:0.25rem;font-size:0.83rem;font-weight:600;color:var(--acc);padding:0.3rem 0.7rem;border-radius:6px;background:var(--tag-bg);border:1px solid var(--card-border);transition:all .15s ease}
@@ -272,7 +274,7 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     pid = p["id"]
     links = []
     if p.get("play_store_url"):
-        links.append(f"<a class='btn' href='{esc(p['play_store_url'])}'>Get it on Google Play</a>")
+        links.append(f"<a class='btn' href='{esc(p['play_store_url'])}' target='_blank' rel='noopener noreferrer'>Get it on Google Play</a>")
     if p.get("visibility") == "public" and p.get("repo"):
         links.append(f"<a class='btn alt' href='https://github.com/{esc(p['repo'])}'>Source code</a>")
     if (root / "license.md").exists():
@@ -437,7 +439,7 @@ def main() -> int:
 
         footer_left = []
         if p.get("play_store_url"):
-            footer_left.append("<span class='app-chip-store'>Google Play</span>")
+            footer_left.append(f"<a href='{esc(p['play_store_url'])}' target='_blank' rel='noopener noreferrer' class='app-chip-store'>Google Play</a>")
         elif badge:
             footer_left.append(f"<span class='app-chip'>{badge}</span>")
         elif p.get("visibility") == "public":
