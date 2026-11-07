@@ -1,30 +1,28 @@
 <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
   <rect width="400" height="260" rx="16" fill="#0F172A"/>
-  <rect x="8" y="8" width="384" height="244" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+  <rect x="10" y="10" width="380" height="240" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
 
-  <!-- Title -->
-  <text x="200" y="32" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="14" text-anchor="middle">LOCAL SECURITY HARDENING &amp; RESOURCE LIMITS</text>
+  <!-- Main Section Title -->
+  <text x="200" y="35" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="13" text-anchor="middle">LOCAL SECURITY HARDENING &amp; RESOURCE LIMITS</text>
 
-  <!-- Hardening Cards -->
-  <g transform="translate(20, 48)">
-    <rect x="0" y="0" width="170" height="88" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
-    <text x="85" y="22" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">🔒 Localhost Security</text>
-    <text x="85" y="42" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">Binds to 127.0.0.1 by default</text>
-    <text x="85" y="58" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Prevents public interface exposure</text>
-    <text x="85" y="74" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">(--bind-all for 0.0.0.0)</text>
+  <!-- Hardening Cards (2 Side-by-Side) -->
+  <!-- Left Box: Localhost Security -->
+  <rect x="20" y="50" width="172" height="88" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+  <text x="106" y="70" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">🔒 Localhost Security</text>
+  <text x="106" y="88" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">Binds 127.0.0.1 by default</text>
+  <text x="106" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Prevents public exposure</text>
+  <text x="106" y="122" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">(--bind-all for 0.0.0.0)</text>
 
-    <rect x="190" y="0" width="170" height="88" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
-    <text x="275" y="22" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">⚡ Resource Caps</text>
-    <text x="275" y="42" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">Memory Limits (--memory 512m)</text>
-    <text x="275" y="58" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">CPU Limits (--cpus 1.5)</text>
-    <text x="275" y="74" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9" text-anchor="middle">Prevents host exhaustion</text>
-  </g>
+  <!-- Right Box: Resource Caps -->
+  <rect x="208" y="50" width="172" height="88" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="294" y="70" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">⚡ Resource Caps</text>
+  <text x="294" y="88" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">Memory (--memory 512m)</text>
+  <text x="294" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">CPU Limits (--cpus 1.5)</text>
+  <text x="294" y="122" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9" text-anchor="middle">Prevents host exhaustion</text>
 
-  <!-- Credentials Box -->
-  <g transform="translate(20, 150)">
-    <rect x="0" y="0" width="360" height="86" rx="10" fill="#0F172A" stroke="#8B5CF6" stroke-width="1.5"/>
-    <text x="180" y="24" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">Gitignored Local Credential Overrides</text>
-    <text x="180" y="44" fill="#F8FAFC" font-family="monospace" font-size="9.5">config/database.env.example ➔ Database.properties.local</text>
-    <text x="180" y="64" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10" text-anchor="middle">✓ Protects private credentials from git commits</text>
-  </g>
+  <!-- Bottom Credentials Banner Box -->
+  <rect x="20" y="150" width="360" height="86" rx="10" fill="#0F172A" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="200" y="170" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">Gitignored Local Credential Overrides</text>
+  <text x="200" y="190" fill="#F8FAFC" font-family="monospace" font-size="9.5" text-anchor="middle">config/database.env.example ➔ Database.properties.local</text>
+  <text x="200" y="214" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10" text-anchor="middle">✓ Protects private credentials from git commits</text>
 </svg>

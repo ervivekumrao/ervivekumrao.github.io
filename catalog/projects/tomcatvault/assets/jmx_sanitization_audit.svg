@@ -1,24 +1,28 @@
 <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
   <rect width="400" height="260" rx="16" fill="#0F172A"/>
-  <rect x="8" y="8" width="384" height="244" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+  <rect x="10" y="10" width="380" height="240" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
 
-  <!-- Title -->
-  <text x="200" y="32" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="14" text-anchor="middle">JMX SANITIZATION &amp; SIEM AUDIT LOGGING</text>
+  <!-- Main Section Title -->
+  <text x="200" y="34" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="13" text-anchor="middle">JMX SANITIZATION &amp; SIEM AUDIT LOGGING</text>
 
   <!-- JMX Sanitizer Card -->
-  <g transform="translate(20, 48)">
-    <rect x="0" y="0" width="360" height="92" rx="10" fill="#1E293B" stroke="#EC4899" stroke-width="1"/>
-    <text x="14" y="22" fill="#EC4899" font-family="system-ui, sans-serif" font-weight="700" font-size="11">VaultJmxSanitizer (JConsole / VisualVM / Prometheus)</text>
-    <text x="14" y="42" fill="#EF4444" font-family="system-ui, sans-serif" font-size="10">Raw Input:  url="jdbc:mysql://admin:secret123@db:3306/db"</text>
-    <text x="14" y="60" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Sanitized:  url="jdbc:mysql://admin:******@db:3306/db"</text>
-    <text x="14" y="78" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">✓ Short-circuits clean URLs for max MBean throughput</text>
-  </g>
+  <rect x="20" y="46" width="360" height="96" rx="10" fill="#1E293B" stroke="#EC4899" stroke-width="1"/>
+  <text x="34" y="65" fill="#EC4899" font-family="system-ui, sans-serif" font-weight="700" font-size="10.5">VaultJmxSanitizer (JConsole / VisualVM / Prometheus)</text>
+
+  <!-- Code Snippet Box 1 -->
+  <rect x="30" y="73" width="340" height="44" rx="6" fill="#0D1117" stroke="#334155" stroke-width="0.8"/>
+  <text x="40" y="89" fill="#F87171" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="9">RAW:  jdbc:mysql://admin:secret123@db.prod:3306/appdb</text>
+  <text x="40" y="105" fill="#34D399" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-weight="600" font-size="9">MASK: jdbc:mysql://admin:******@db.prod:3306/appdb</text>
+
+  <text x="34" y="132" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">✓ Automatically masks MBean passwords &amp; URL credentials across all JMX trees</text>
 
   <!-- Audit Logger Card -->
-  <g transform="translate(20, 150)">
-    <rect x="0" y="0" width="360" height="86" rx="10" fill="#1E293B" stroke="#8B5CF6" stroke-width="1"/>
-    <text x="14" y="22" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="11">VaultAuditLogger (SIEM Structured JSON Events)</text>
-    <text x="14" y="44" fill="#A78BFA" font-family="monospace" font-size="9.5">{"event":"KEY_DECRYPT", "status":"SUCCESS", "provider":"File"}</text>
-    <text x="14" y="66" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">✓ Tamper-evident audit trail without leaking secrets</text>
-  </g>
+  <rect x="20" y="148" width="360" height="92" rx="10" fill="#1E293B" stroke="#8B5CF6" stroke-width="1"/>
+  <text x="34" y="167" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="10.5">VaultAuditLogger (SIEM Structured Audit Events)</text>
+
+  <!-- Code Snippet Box 2 -->
+  <rect x="30" y="175" width="340" height="32" rx="6" fill="#0D1117" stroke="#334155" stroke-width="0.8"/>
+  <text x="40" y="195" fill="#C084FC" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="9">{"event":"KEY_DECRYPT", "user":"tomcat", "status":"SUCCESS"}</text>
+
+  <text x="34" y="228" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9">✓ Tamper-evident structured JSON audit logging with zero plaintext key leakage</text>
 </svg>

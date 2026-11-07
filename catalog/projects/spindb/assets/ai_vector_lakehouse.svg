@@ -1,31 +1,29 @@
 <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
   <rect width="400" height="260" rx="16" fill="#0F172A"/>
-  <rect x="8" y="8" width="384" height="244" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+  <rect x="10" y="10" width="380" height="240" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
 
-  <!-- Title -->
-  <text x="200" y="32" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="14" text-anchor="middle">AI VECTOR EMBEDDINGS &amp; LAKEHOUSE</text>
+  <!-- Main Section Title -->
+  <text x="200" y="35" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="13" text-anchor="middle">AI VECTOR EMBEDDINGS &amp; LAKEHOUSE</text>
 
-  <!-- Cards -->
-  <g transform="translate(20, 48)">
-    <rect x="0" y="0" width="170" height="88" rx="8" fill="#1E293B" stroke="#8B5CF6" stroke-width="1"/>
-    <text x="85" y="22" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">🤖 pgvector AI</text>
-    <text x="85" y="42" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">PostgreSQL + Vector Index</text>
-    <text x="85" y="58" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">L2 distance &amp; Cosine search</text>
-    <text x="85" y="74" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9" text-anchor="middle">spinctl -t pgvector</text>
+  <!-- Top 2 Engine Cards -->
+  <!-- Left Box: pgvector AI -->
+  <rect x="20" y="50" width="172" height="88" rx="8" fill="#1E293B" stroke="#8B5CF6" stroke-width="1"/>
+  <text x="106" y="70" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">🤖 pgvector AI</text>
+  <text x="106" y="88" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">PostgreSQL + Vector Index</text>
+  <text x="106" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">L2 distance &amp; Cosine search</text>
+  <text x="106" y="122" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9" text-anchor="middle">spinctl -t pgvector</text>
 
-    <rect x="190" y="0" width="170" height="88" rx="8" fill="#1E293B" stroke="#06B6D4" stroke-width="1"/>
-    <text x="275" y="22" fill="#06B6D4" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">⚡ ClickHouse OLAP</text>
-    <text x="275" y="42" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">Columnar Analytics</text>
-    <text x="275" y="58" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Billion-row real-time queries</text>
-    <text x="275" y="74" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9" text-anchor="middle">spinctl -t clickhouse</text>
-  </g>
+  <!-- Right Box: ClickHouse OLAP -->
+  <rect x="208" y="50" width="172" height="88" rx="8" fill="#1E293B" stroke="#06B6D4" stroke-width="1"/>
+  <text x="294" y="70" fill="#06B6D4" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">⚡ ClickHouse OLAP</text>
+  <text x="294" y="88" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">Columnar Analytics</text>
+  <text x="294" y="104" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Billion-row real-time queries</text>
+  <text x="294" y="122" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9" text-anchor="middle">spinctl -t clickhouse</text>
 
-  <!-- Lakehouse Badge -->
-  <g transform="translate(20, 150)">
-    <rect x="0" y="0" width="360" height="86" rx="10" fill="#0F172A" stroke="#F59E0B" stroke-width="1.5"/>
-    <text x="180" y="24" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">Databricks &amp; Snowflake Local Emulators</text>
-    <text x="180" y="44" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Databricks: Apache Spark + Delta Lake (Web UI: 4040)</text>
-    <text x="180" y="62" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Snowflake: DuckDB-backed local SQL engine</text>
-    <text x="180" y="78" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9" text-anchor="middle">✓ Instant local data pipeline testing without cloud costs</text>
-  </g>
+  <!-- Bottom Lakehouse Banner Box -->
+  <rect x="20" y="150" width="360" height="86" rx="10" fill="#0F172A" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="200" y="170" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">Databricks &amp; Snowflake Local Emulators</text>
+  <text x="200" y="190" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Databricks: Apache Spark + Delta Lake (Web UI: 4040)</text>
+  <text x="200" y="208" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Snowflake: DuckDB-backed local SQL engine</text>
+  <text x="200" y="224" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9" text-anchor="middle">✓ Instant local data pipeline testing without cloud costs</text>
 </svg>

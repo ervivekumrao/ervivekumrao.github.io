@@ -1,27 +1,23 @@
 <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
   <rect width="400" height="260" rx="16" fill="#0F172A"/>
-  <rect x="8" y="8" width="384" height="244" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+  <rect x="10" y="10" width="380" height="240" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
 
-  <!-- Title -->
-  <text x="200" y="32" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="14" text-anchor="middle">AUTHENTICATED AES-256-GCM VAULT</text>
+  <!-- Main Section Title -->
+  <text x="200" y="35" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="13" text-anchor="middle">AUTHENTICATED AES-256-GCM VAULT</text>
 
   <!-- Cleartext Deprecated Box -->
-  <g transform="translate(20, 48)">
-    <rect x="0" y="0" width="360" height="42" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1"/>
-    <text x="12" y="18" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Cleartext context.xml Password (DEPRECATED):</text>
-    <text x="12" y="32" fill="#EF4444" font-family="system-ui, sans-serif" font-weight="600" font-size="10.5">password="SuperSecret123"</text>
+  <rect x="20" y="50" width="360" height="44" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1"/>
+  <text x="34" y="67" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Cleartext context.xml Password (DEPRECATED):</text>
+  <text x="34" y="84" fill="#EF4444" font-family="system-ui, sans-serif" font-weight="600" font-size="11">password="SuperSecret123"</text>
 
-    <!-- Encrypted Box -->
-    <rect x="0" y="50" width="360" height="48" rx="8" fill="#1E293B" stroke="#14B8A6" stroke-width="1.5"/>
-    <text x="12" y="68" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="9.5">Tomcat Vault Authenticated Envelope (AES-256-GCM):</text>
-    <text x="12" y="86" fill="#34D399" font-family="monospace" font-weight="600" font-size="10">password="ENC(axVXzR5w+rr8ICucjw/ZZzhila/psl0pw...)"</text>
-  </g>
+  <!-- Encrypted GCM Envelope Box -->
+  <rect x="20" y="102" width="360" height="48" rx="8" fill="#1E293B" stroke="#14B8A6" stroke-width="1.5"/>
+  <text x="34" y="119" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="9.5">Tomcat Vault Authenticated Envelope (AES-256-GCM):</text>
+  <text x="34" y="138" fill="#34D399" font-family="monospace" font-size="10.5" font-weight="600">password="ENC(axVXzR5w+rr8ICucjw/ZZzhila/psl0pw...)"</text>
 
-  <!-- Feature List -->
-  <g transform="translate(20, 156)">
-    <rect x="0" y="0" width="360" height="80" rx="10" fill="#0F172A" stroke="#14B8A6" stroke-width="1.5"/>
-    <text x="14" y="24" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ 12-Byte Cryptographically Secure Random IV Per Encryption</text>
-    <text x="14" y="44" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ 128-Bit Galois Authentication Tag (Oracle/Cipher Protection)</text>
-    <text x="14" y="64" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">✓ 100% Backward Compatible with Legacy Ciphertexts</text>
-  </g>
+  <!-- Bottom Security Highlights Banner -->
+  <rect x="20" y="158" width="360" height="78" rx="10" fill="#0F172A" stroke="#14B8A6" stroke-width="1.5"/>
+  <text x="36" y="178" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ 12-Byte Cryptographically Secure Random IV Per Encryption</text>
+  <text x="36" y="198" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ 128-Bit Galois Auth Tag (Protects Against Oracle Attacks)</text>
+  <text x="36" y="218" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">✓ 100% Backward Compatible with Legacy Ciphertexts</text>
 </svg>
