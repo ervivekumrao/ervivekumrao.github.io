@@ -71,7 +71,7 @@ CSS = """
 [data-theme="dark"]{--bg:#0b0f19!important;--fg:#f8fafc!important;--mut:#94a3b8!important;--card:#131b2e!important;--card-border:#1e293b!important;--card-shadow:0 4px 20px -2px rgba(0,0,0,0.35)!important;--line:#1e293b!important;--acc:#38bdf8!important;--acc-hover:#0284c7!important;--acc-glow:rgba(56,189,248,0.2)!important;--tag-bg:#1e293b!important;--tag-fg:#cbd5e1!important}
 *{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
 a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
-main,header>div,footer{max-width:1040px;margin:0 auto;padding:1.5rem 1rem}
+main,header>div{max-width:1040px;margin:0 auto;padding:1.5rem 1rem}
 header{border-bottom:1px solid var(--line);background:var(--card);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
 header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75rem 1rem}
 .theme-btn{background:transparent;border:1px solid var(--card-border);color:var(--fg);padding:.35rem .75rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:.4rem;transition:background .15s ease,border-color .15s ease}
@@ -127,7 +127,6 @@ class Site:
 <link rel="stylesheet" href="{self.url('style.css')}"></head><body>
 <header><div><button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light theme"><span id="theme-icon">☀️</span> <span id="theme-label" class="mut">Theme</span></button></div></header>
 <main>{body}</main>
-<footer class="mut" style="border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem">{esc(s.get('footer', ''))}</footer>
 <script>
 (function(){{
   var btn = document.getElementById("theme-toggle");
