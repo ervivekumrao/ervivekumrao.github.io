@@ -1,30 +1,27 @@
-<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
-  <rect width="400" height="600" rx="20" fill="#0F172A"/>
-  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
-  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="260" rx="16" fill="#0F172A"/>
+  <rect x="8" y="8" width="384" height="244" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
 
-  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">AES-256-GCM Vault</text>
-  <text x="200" y="98" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Authenticated Encryption Envelopes</text>
+  <!-- Title -->
+  <text x="200" y="32" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="14" text-anchor="middle">AUTHENTICATED AES-256-GCM VAULT</text>
 
-  <g transform="translate(80, 120)">
-    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#14B8A6" stroke-width="1.5"/>
-    <text x="120" y="36" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="12" text-anchor="middle">AUTHENTICATED ENCRYPTED KEY</text>
+  <!-- Cleartext Deprecated Box -->
+  <g transform="translate(20, 48)">
+    <rect x="0" y="0" width="360" height="42" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1"/>
+    <text x="12" y="18" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Cleartext context.xml Password (DEPRECATED):</text>
+    <text x="12" y="32" fill="#EF4444" font-family="system-ui, sans-serif" font-weight="600" font-size="10.5">password="SuperSecret123"</text>
 
-    <rect x="16" y="55" width="208" height="55" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1"/>
-    <text x="26" y="75" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">Cleartext context.xml Password (DEPRECATED):</text>
-    <text x="26" y="92" fill="#EF4444" font-family="system-ui, sans-serif" font-weight="600" font-size="11">password="SuperSecret123"</text>
+    <!-- Encrypted Box -->
+    <rect x="0" y="50" width="360" height="48" rx="8" fill="#1E293B" stroke="#14B8A6" stroke-width="1.5"/>
+    <text x="12" y="68" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="9.5">Tomcat Vault Authenticated Envelope (AES-256-GCM):</text>
+    <text x="12" y="86" fill="#34D399" font-family="monospace" font-weight="600" font-size="10">password="ENC(axVXzR5w+rr8ICucjw/ZZzhila/psl0pw...)"</text>
+  </g>
 
-    <rect x="16" y="125" width="208" height="65" rx="10" fill="#0F172A" stroke="#14B8A6" stroke-width="1"/>
-    <text x="26" y="145" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="9">Tomcat Vault Envelope (AES-256-GCM):</text>
-    <text x="26" y="165" fill="#34D399" font-family="system-ui, sans-serif" font-weight="600" font-size="10">ENC(AQIDBAUGBwgJCgsMDQ...)</text>
-    <text x="26" y="180" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8">12-Byte IV • 128-Bit Auth Tag</text>
-
-    <rect x="16" y="205" width="208" height="150" rx="12" fill="#0F172A"/>
-    <text x="26" y="230" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">SECURITY HARDENING</text>
-    <text x="26" y="254" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Eliminates cleartext from server.xml</text>
-    <text x="26" y="274" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Automatic JMX Password Masking (******)</text>
-    <text x="26" y="294" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ AWS &amp; HashiCorp Vault Connectors</text>
-    <text x="26" y="314" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Kubernetes Secret Auto-Reload Watcher</text>
-    <text x="26" y="340" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Pre-Flight Dry-Run CLI Verified</text>
+  <!-- Feature List -->
+  <g transform="translate(20, 156)">
+    <rect x="0" y="0" width="360" height="80" rx="10" fill="#0F172A" stroke="#14B8A6" stroke-width="1.5"/>
+    <text x="14" y="24" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ 12-Byte Cryptographically Secure Random IV Per Encryption</text>
+    <text x="14" y="44" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ 128-Bit Galois Authentication Tag (Oracle/Cipher Protection)</text>
+    <text x="14" y="64" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">✓ 100% Backward Compatible with Legacy Ciphertexts</text>
   </g>
 </svg>
