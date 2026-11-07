@@ -19,6 +19,10 @@ node_modules/
 .parcel-cache/
 .npm/
 .yarn/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
 
 # Local configuration and environment
 local.properties
@@ -33,6 +37,10 @@ secrets/
 .agents/
 .gemini/
 .cursor/
+.artifacts/
+*.artifact.md
+*BLUEPRINT.md
+content.md
 scratch/
 .system_generated/
 
