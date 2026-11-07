@@ -1,6 +1,7 @@
 {
   "id": "timespanselectorview",
   "name": "Time Span Selector",
+  "subtitle": "Radial & Linear Duration Picker",
   "type": "library",
   "order": 50,
   "published": true,

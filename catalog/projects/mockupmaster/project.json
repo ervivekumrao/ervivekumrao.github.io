@@ -1,6 +1,7 @@
 {
   "id": "mockupmaster",
   "name": "Mockup Master",
+  "subtitle": "Mock Data & ADB CLI Generator",
   "type": "app",
   "order": 45,
   "published": true,

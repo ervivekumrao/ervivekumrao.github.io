@@ -1,6 +1,7 @@
 {
   "id": "medreminder",
   "name": "Med Reminder — Intelligent Health Companion",
+  "subtitle": "Intelligent Health Companion",
   "type": "app",
   "order": 15,
   "published": true,

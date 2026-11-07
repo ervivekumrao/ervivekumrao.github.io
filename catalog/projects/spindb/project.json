@@ -1,6 +1,7 @@
 {
   "id": "spindb",
   "name": "SpinDB",
+  "subtitle": "13 Containerized DB & Lakehouse CLI",
   "type": "other",
   "order": 3,
   "published": true,

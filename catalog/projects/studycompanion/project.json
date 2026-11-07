@@ -1,6 +1,7 @@
 {
   "id": "studycompanion",
   "name": "Study Companion",
+  "subtitle": "AI Quiz, Flashcards & TTS Tutoring",
   "type": "app",
   "order": 20,
   "published": true,

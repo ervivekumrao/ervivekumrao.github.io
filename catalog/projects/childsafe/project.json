@@ -1,6 +1,7 @@
 {
   "id": "childsafe",
   "name": "Child Safe — Parental Control & Device Governance",
+  "subtitle": "Parental Control & Device Governance",
   "type": "app",
   "order": 10,
   "published": true,

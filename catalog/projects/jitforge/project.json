@@ -1,6 +1,7 @@
 {
   "id": "jitforge",
   "name": "JitForge",
+  "subtitle": "In-Memory Bytecode JIT Engine",
   "type": "other",
   "order": 2,
   "published": true,

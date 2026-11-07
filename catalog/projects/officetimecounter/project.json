@@ -1,6 +1,7 @@
 {
   "id": "officetimecounter",
   "name": "Office Time Counter",
+  "subtitle": "Automated Attendance & Geofencing",
   "type": "app",
   "order": 35,
   "published": true,

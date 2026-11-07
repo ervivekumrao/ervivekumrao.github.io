@@ -1,6 +1,7 @@
 {
   "id": "appmanager",
   "name": "App Manager — Enterprise System Utility",
+  "subtitle": "Enterprise System Utility",
   "type": "app",
   "order": 40,
   "published": true,

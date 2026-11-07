@@ -1,6 +1,7 @@
 {
   "id": "careercrox",
   "name": "Career Crox – Calling Assistant",
+  "subtitle": "Calling Assistant",
   "type": "app",
   "order": 30,
   "published": true,

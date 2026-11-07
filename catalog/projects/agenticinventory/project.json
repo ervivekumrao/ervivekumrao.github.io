@@ -1,6 +1,7 @@
 {
   "id": "agenticinventory",
   "name": "Agentic Inventory",
+  "subtitle": "Polyglot Microservices & AI Engine",
   "type": "other",
   "order": 5,
   "published": true,

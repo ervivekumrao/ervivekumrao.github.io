@@ -1,6 +1,7 @@
 {
   "id": "tomcatvault",
   "name": "Tomcat Vault",
+  "subtitle": "AES-256-GCM Credential Vault",
   "type": "other",
   "order": 1,
   "published": true,
