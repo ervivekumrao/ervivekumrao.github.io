@@ -88,6 +88,33 @@ header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75r
 @media(prefers-color-scheme:dark){.card:hover,.hero-box:hover,details:hover,.card-box:hover{background:#182238!important;box-shadow:0 12px 32px -4px rgba(56,189,248,0.25),0 0 24px 0 rgba(56,189,248,0.15)!important;border-color:#38bdf8!important}}
 [data-theme="dark"] .card:hover,[data-theme="dark"] .hero-box:hover,[data-theme="dark"] details:hover,[data-theme="dark"] .card-box:hover{background:#182238!important;box-shadow:0 12px 32px -4px rgba(56,189,248,0.25),0 0 24px 0 rgba(56,189,248,0.15)!important;border-color:#38bdf8!important}
 .card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.25rem;box-shadow:var(--card-shadow);display:flex;flex-direction:column}
+.app-card{padding:1.25rem;display:flex;flex-direction:column;justify-content:space-between;height:100%}
+.app-card-top{display:flex;flex-direction:column;gap:0.65rem}
+.app-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem}
+.app-icon-wrapper{width:44px;height:44px;border-radius:12px;background:var(--tag-bg);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+.app-icon-wrapper img{width:32px;height:32px;object-fit:contain;border-radius:6px}
+.app-badges{display:flex;flex-direction:column;align-items:flex-end;gap:0.3rem}
+.app-badge-cat{font-size:0.72rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:20px;background:var(--tag-bg);color:var(--tag-fg);border:1px solid var(--card-border);white-space:nowrap}
+.app-badge-dpm{font-size:0.7rem;font-weight:600;padding:0.18rem 0.5rem;border-radius:20px;background:rgba(37,99,235,0.1);color:var(--acc);border:1px solid rgba(37,99,235,0.25);white-space:nowrap}
+[data-theme="dark"] .app-badge-dpm{background:rgba(56,189,248,0.12);color:#38bdf8;border-color:rgba(56,189,248,0.3)}
+.app-title-group{margin:0}
+.app-main-title{font-size:1.15rem;font-weight:700;line-height:1.3;margin:0;letter-spacing:-0.01em}
+.app-main-title a{color:var(--fg);text-decoration:none}.app-main-title a:hover{color:var(--acc)}
+.app-subtitle{font-size:0.82rem;font-weight:600;color:var(--acc);margin-top:0.15rem;line-height:1.35}
+.app-description{color:var(--mut);font-size:0.875rem;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.app-chips{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.15rem}
+.app-chip{font-size:0.72rem;font-weight:500;padding:0.18rem 0.5rem;border-radius:6px;background:var(--tag-bg);color:var(--tag-fg);border:1px solid var(--card-border)}
+.app-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding-top:0.75rem;border-top:1px dashed var(--line);gap:0.5rem}
+.app-footer-left{display:flex;align-items:center;gap:0.4rem}
+.app-footer-right{display:flex;align-items:center;gap:0.4rem}
+.app-chip-store{font-size:0.72rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:6px;background:rgba(16,185,129,0.1);color:#059669;border:1px solid rgba(16,185,129,0.25)}
+[data-theme="dark"] .app-chip-store{background:rgba(52,211,153,0.12);color:#34d399;border-color:rgba(52,211,153,0.3)}
+.app-chip-open{font-size:0.72rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:6px;background:rgba(99,102,241,0.1);color:#6366f1;border:1px solid rgba(99,102,241,0.25)}
+[data-theme="dark"] .app-chip-open{background:rgba(129,140,248,0.12);color:#818cf8;border-color:rgba(129,140,248,0.3)}
+.btn-details{display:inline-flex;align-items:center;gap:0.25rem;font-size:0.83rem;font-weight:600;color:var(--acc);padding:0.3rem 0.7rem;border-radius:6px;background:var(--tag-bg);border:1px solid var(--card-border);transition:all .15s ease}
+.btn-details:hover{background:var(--acc);color:#fff!important;border-color:var(--acc);text-decoration:none}
+.btn-source{display:inline-flex;align-items:center;gap:0.25rem;font-size:0.78rem;font-weight:500;color:var(--mut);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--card-border);transition:all .15s ease}
+.btn-source:hover{color:var(--fg)!important;border-color:var(--mut);text-decoration:none}
 .card-title{display:flex;align-items:center;margin:0 0 .5rem 0;font-size:1.15rem;font-weight:600}
 .card-title img{width:32px;height:32px;border-radius:8px;margin-right:.75rem;object-fit:contain;flex-shrink:0}
 .card p{color:var(--mut);font-size:.925rem;margin:0 0 1rem 0;flex-grow:1;line-height:1.5}
@@ -318,25 +345,103 @@ def main() -> int:
         versions = by_app.get(p["id"], [])
         render_project(site, p, versions, root)
         pid = p["id"]
+        ptype = p.get("type", "app")
         badge = f"v{esc(versions[0]['version_name'])}" if versions else ""
+
+        DEFAULT_SUBTITLES = {
+            "studycompanion": "AI Quiz, Flashcards & TTS Tutoring",
+            "officetimecounter": "Automated Attendance & Geofencing",
+            "mockupmaster": "Mock Data & ADB CLI Generator",
+            "timespanselectorview": "Radial & Linear Duration Picker",
+            "tomcatvault": "AES-256-GCM Credential Vault",
+            "jitforge": "In-Memory Bytecode JIT Engine",
+            "spindb": "13 Containerized DB & Lakehouse CLI",
+            "agenticinventory": "Polyglot Microservices & AI Engine",
+        }
+
+        raw_name = p['name']
+        if " — " in raw_name:
+            main_title, sub_title = raw_name.split(" — ", 1)
+        elif " – " in raw_name:
+            main_title, sub_title = raw_name.split(" – ", 1)
+        else:
+            main_title, sub_title = raw_name, DEFAULT_SUBTITLES.get(pid, "")
+
+        if ptype == "app":
+            cat_badge = "📱 Android App"
+        elif ptype == "library":
+            cat_badge = "📦 Android SDK"
+        else:
+            if pid == "agenticinventory":
+                cat_badge = "⚡ Microservices & AI"
+            elif pid == "spindb":
+                cat_badge = "🛠️ Developer CLI"
+            elif pid == "jitforge":
+                cat_badge = "⚡ JVM JIT Engine"
+            elif pid == "tomcatvault":
+                cat_badge = "🔒 Cryptographic Vault"
+            else:
+                cat_badge = "⚙️ System Tool"
+
+        do = p.get("device_owner", {})
+        is_dpm = do.get("enabled", False)
+        dpm_badge_html = "<span class='app-badge-dpm'>🛡️ Device Owner (DPM)</span>" if is_dpm else ""
 
         icon_card = ""
         if (root / "assets" / "icon.svg").exists():
             icon_url = site.url(f"{pid}/assets/icon.svg")
-            icon_card = f"<img src='{icon_url}' alt=''>"
+            icon_card = f"<img src='{icon_url}' alt='{esc(main_title)} icon'>"
         elif (root / "assets" / "icon.png").exists():
             icon_url = site.url(f"{pid}/assets/icon_tab.svg")
-            icon_card = f"<img src='{icon_url}' alt=''>"
+            icon_card = f"<img src='{icon_url}' alt='{esc(main_title)} icon'>"
 
         proj_url = site.url(f"{pid}/")
-        tag_badge = badge or esc(p.get("type", "app"))
-        sections.get(p.get("type", "app"), sections["other"]).append(
-            f"<div class='card'>"
-            f"<div class='card-title'>{icon_card}<a href='{proj_url}'>{esc(p['name'])}</a></div>"
-            f"<p>{esc(p.get('tagline'))}</p>"
-            f"<div class='card-footer'><span class='tag'>{tag_badge}</span><a href='{proj_url}' style='font-size:0.85rem;font-weight:600'>Details &rarr;</a></div>"
+
+        raw_tags = p.get("tags", [])
+        ignored_tags = {"android app", "android library", "system utility"}
+        filtered_tags = [t for t in raw_tags if t.lower() not in ignored_tags]
+        display_tags = filtered_tags[:5] if filtered_tags else raw_tags[:5]
+        chips_html = "".join(f"<span class='app-chip'>{esc(t)}</span>" for t in display_tags)
+
+        footer_left = []
+        if p.get("play_store_url"):
+            footer_left.append("<span class='app-chip-store'>Google Play</span>")
+        elif badge:
+            footer_left.append(f"<span class='app-chip'>{badge}</span>")
+        elif p.get("visibility") == "public":
+            footer_left.append("<span class='app-chip-open'>Open Source</span>")
+
+        footer_right = []
+        if p.get("visibility") == "public" and p.get("repo"):
+            footer_right.append(f"<a href='https://github.com/{esc(p['repo'])}' target='_blank' class='btn-source'>GitHub &nearr;</a>")
+        footer_right.append(f"<a href='{proj_url}' class='btn-details'>Details &rarr;</a>")
+
+        subtitle_html = f"<div class='app-subtitle'>{esc(sub_title)}</div>" if sub_title else ""
+
+        card_markup = (
+            f"<div class='card app-card'>"
+            f"  <div class='app-card-top'>"
+            f"    <div class='app-card-header'>"
+            f"      <div class='app-icon-wrapper'>{icon_card}</div>"
+            f"      <div class='app-badges'>"
+            f"        <span class='app-badge-cat'>{esc(cat_badge)}</span>"
+            f"        {dpm_badge_html}"
+            f"      </div>"
+            f"    </div>"
+            f"    <div class='app-title-group'>"
+            f"      <h3 class='app-main-title'><a href='{proj_url}'>{esc(main_title)}</a></h3>"
+            f"      {subtitle_html}"
+            f"    </div>"
+            f"    <p class='app-description'>{esc(p.get('tagline'))}</p>"
+            f"    <div class='app-chips'>{chips_html}</div>"
+            f"  </div>"
+            f"  <div class='app-card-footer'>"
+            f"    <div class='app-footer-left'>{''.join(footer_left)}</div>"
+            f"    <div class='app-footer-right'>{''.join(footer_right)}</div>"
+            f"  </div>"
             f"</div>"
         )
+        sections.get(ptype, sections["other"]).append(card_markup)
 
     # Hero & Portfolio Sections
     profile_url = site.url("profile.jpg")
