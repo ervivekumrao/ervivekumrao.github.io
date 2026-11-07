@@ -1,0 +1,29 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">TTS Audio Tutor</text>
+  <text x="200" y="98" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Hands-Free Voice Assistant</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="120" y="36" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="12" text-anchor="middle">AUDIO TUTOR PLAYER</text>
+
+    <!-- Headphones Icon -->
+    <circle cx="120" cy="100" r="40" fill="#0F172A" stroke="#8B5CF6" stroke-width="2"/>
+    <text x="120" y="110" fill="#8B5CF6" font-family="system-ui, sans-serif" font-size="32" font-weight="700" text-anchor="middle">🎧</text>
+
+    <!-- Audio Waveform -->
+    <path d="M40 170 L50 160 L60 180 L70 150 L80 190 L90 155 L100 185 L110 165 L120 195 L130 150 L140 185 L150 160 L160 180 L170 165 L180 175 L190 165 L200 170" stroke="#8B5CF6" stroke-width="2.5" fill="none"/>
+
+    <text x="120" y="215" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="13" text-anchor="middle">Playing: Biology Chapter 4</text>
+    <text x="120" y="235" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Speed: 1.25x • Voice: Natural Neural</text>
+
+    <rect x="16" y="255" width="208" height="105" rx="12" fill="#0F172A"/>
+    <text x="28" y="280" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="11">COMMUTE &amp; WORKOUT MODE</text>
+    <text x="28" y="302" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Background Audio Service Active</text>
+    <text x="28" y="320" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Auto-read Scanned Chapter Summary</text>
+    <text x="28" y="338" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Hands-Free Study Active</text>
+  </g>
+</svg>

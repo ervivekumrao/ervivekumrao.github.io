@@ -1,0 +1,47 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Smart Scheduling</text>
+  <text x="200" y="98" fill="#00897B" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Prescription &amp; Dosage Management</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#00897B" font-family="system-ui, sans-serif" font-weight="700" font-size="11">TODAY'S DOSAGE SCHEDULE</text>
+
+    <!-- Medication 1 -->
+    <rect x="16" y="45" width="208" height="56" rx="10" fill="#0F172A"/>
+    <circle cx="36" cy="73" r="12" fill="#00897B"/>
+    <text x="36" y="77" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">💊</text>
+    <text x="60" y="66" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Amoxicillin 500mg</text>
+    <text x="60" y="80" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">8:00 AM • Take after meal</text>
+    <rect x="166" y="63" width="48" height="20" rx="10" fill="#10B981"/>
+    <text x="190" y="77" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="9" text-anchor="middle">TAKEN</text>
+
+    <!-- Medication 2 -->
+    <rect x="16" y="111" width="208" height="56" rx="10" fill="#0F172A"/>
+    <circle cx="36" cy="139" r="12" fill="#D81B60"/>
+    <text x="36" y="143" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">💊</text>
+    <text x="60" y="132" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Vitamin D3 2000 IU</text>
+    <text x="60" y="146" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">1:00 PM • Daily Interval</text>
+    <rect x="166" y="129" width="48" height="20" rx="10" fill="#F59E0B"/>
+    <text x="190" y="143" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="9" text-anchor="middle">DUE</text>
+
+    <!-- Medication 3 -->
+    <rect x="16" y="177" width="208" height="56" rx="10" fill="#0F172A"/>
+    <circle cx="36" cy="205" r="12" fill="#2563EB"/>
+    <text x="36" y="209" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">💊</text>
+    <text x="60" y="198" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Omega 3 Fish Oil</text>
+    <text x="60" y="212" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">9:00 PM • Bedtime Schedule</text>
+    <rect x="166" y="195" width="48" height="20" rx="10" fill="#334155"/>
+    <text x="190" y="209" fill="#94A3B8" font-family="system-ui, sans-serif" font-weight="700" font-size="9" text-anchor="middle">NEXT</text>
+
+    <!-- Adherence Summary Banner -->
+    <rect x="16" y="248" width="208" height="115" rx="12" fill="#0F172A" stroke="#00897B" stroke-width="1"/>
+    <text x="28" y="272" fill="#00897B" font-family="system-ui, sans-serif" font-weight="700" font-size="11">ADHERENCE SCORE</text>
+    <text x="28" y="302" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="800" font-size="28">96%</text>
+    <text x="28" y="322" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">28 Days Streak Managed</text>
+    <text x="28" y="340" fill="#34D399" font-family="system-ui, sans-serif" font-size="10">✓ OpenFDA Safety Verified</text>
+  </g>
+</svg>

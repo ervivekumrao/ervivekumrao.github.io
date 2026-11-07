@@ -1,0 +1,37 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Precision OCR Scan</text>
+  <text x="200" y="98" fill="#6366F1" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Textbook &amp; Note Digitizer</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="220" rx="16" fill="#1E293B" stroke="#6366F1" stroke-width="1.5"/>
+    <rect x="20" y="25" width="200" height="130" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+
+    <!-- Document Lines Mock -->
+    <rect x="35" y="45" width="120" height="8" rx="4" fill="#6366F1"/>
+    <rect x="35" y="60" width="170" height="6" rx="3" fill="#94A3B8"/>
+    <rect x="35" y="72" width="150" height="6" rx="3" fill="#94A3B8"/>
+    <rect x="35" y="84" width="165" height="6" rx="3" fill="#94A3B8"/>
+    <rect x="35" y="96" width="110" height="6" rx="3" fill="#94A3B8"/>
+
+    <!-- Scanning Line -->
+    <line x1="20" y1="75" x2="220" y2="75" stroke="#818CF8" stroke-width="2"/>
+
+    <text x="120" y="180" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="12" text-anchor="middle">Google ML Kit OCR</text>
+    <text x="120" y="198" fill="#818CF8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Instant Text Extraction</text>
+  </g>
+
+  <g transform="translate(80, 355)">
+    <rect x="0" y="0" width="240" height="145" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="24" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">DIGITIZED NOTE</text>
+
+    <text x="16" y="50" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Chapter 4: Photosynthesis</text>
+    <text x="16" y="70" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">Light-dependent reactions occur in thylakoid membranes...</text>
+
+    <rect x="16" y="95" width="208" height="34" rx="8" fill="#6366F1"/>
+    <text x="120" y="116" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="10" text-anchor="middle">Generate AI Study Set Now</text>
+  </g>
+</svg>

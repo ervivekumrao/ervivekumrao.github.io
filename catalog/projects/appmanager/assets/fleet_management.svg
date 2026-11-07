@@ -1,0 +1,44 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-fleet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="600" rx="20" fill="url(#bg-fleet)"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Fleet Management</text>
+  <text x="200" y="98" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Corporate Device Owner Governance</text>
+
+  <!-- Device Cluster Graphic -->
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="150" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">FLEET GOVERNANCE STATUS</text>
+    <text x="16" y="55" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="28">128 / 128</text>
+    <text x="16" y="74" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="11">● All Devices Compliant</text>
+
+    <rect x="16" y="90" width="208" height="44" rx="10" fill="#0F172A"/>
+    <text x="28" y="110" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Device Owner Status:</text>
+    <text x="28" y="124" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10">DPM AdminReceiver Enforced</text>
+  </g>
+
+  <g transform="translate(80, 290)">
+    <rect x="0" y="0" width="240" height="210" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">FLEET DEPLOYMENT UNITS</text>
+
+    <rect x="16" y="45" width="208" height="44" rx="8" fill="#0F172A"/>
+    <text x="26" y="65" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Terminal Kiosk Fleet #1</text>
+    <text x="26" y="78" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">42 Handheld Units Active</text>
+
+    <rect x="16" y="97" width="208" height="44" rx="8" fill="#0F172A"/>
+    <text x="26" y="117" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Warehouse Scanner Fleet #2</text>
+    <text x="26" y="130" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">86 Enterprise Scanners Active</text>
+
+    <rect x="16" y="149" width="208" height="44" rx="8" fill="#0F172A"/>
+    <text x="26" y="169" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Policy Version:</text>
+    <text x="26" y="182" fill="#10B981" font-family="system-ui, sans-serif" font-size="10">v4.2.0 Sync Complete</text>
+  </g>
+</svg>

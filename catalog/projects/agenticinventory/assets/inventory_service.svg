@@ -1,0 +1,29 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">inventory-service</text>
+  <text x="200" y="98" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Non-Blocking 2-Phase Reservation</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="11">TRANSACTION ENGINE STATUS</text>
+
+    <rect x="16" y="45" width="208" height="50" rx="10" fill="#0F172A"/>
+    <text x="26" y="66" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Java 21 • Spring Boot 3.4.1</text>
+    <text x="26" y="80" fill="#10B981" font-family="system-ui, sans-serif" stroke-width="0" font-size="10">● HTTP REST Port 8081 Active</text>
+
+    <rect x="16" y="105" width="208" height="110" rx="10" fill="#0F172A" stroke="#8B5CF6" stroke-width="1"/>
+    <text x="26" y="128" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="11">2-PHASE RESERVATION ENGINE</text>
+    <text x="26" y="150" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">Phase 1: Reserve Token (Idempotent)</text>
+    <text x="26" y="168" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">Phase 2: Claim / Release Reaper</text>
+    <text x="26" y="188" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">✓ High-Concurrency Row Lock Free</text>
+
+    <rect x="16" y="225" width="208" height="135" rx="12" fill="#0F172A"/>
+    <text x="26" y="250" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">KAFKA EVENT MUTATION BUS</text>
+    <text x="26" y="275" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="18">stock-events-v1</text>
+    <text x="26" y="295" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">Partitioned Event Stream Sync</text>
+    <text x="26" y="315" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Audit Log MDC MDC Tracing</text>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Multi-DB Dialects</text>
+  <text x="200" y="98" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Pluggable 5 RDBMS Dialect Drivers</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">SUPPORTED DATABASE ENGINES</text>
+
+    <rect x="16" y="45" width="208" height="42" rx="8" fill="#0F172A"/>
+    <text x="26" y="70" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">PostgreSQL &amp; pgvector</text>
+
+    <rect x="16" y="95" width="208" height="42" rx="8" fill="#0F172A"/>
+    <text x="26" y="120" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Microsoft SQL Server 2022</text>
+
+    <rect x="16" y="145" width="208" height="42" rx="8" fill="#0F172A"/>
+    <text x="26" y="170" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">MySQL 8.0 &amp; MariaDB</text>
+
+    <rect x="16" y="195" width="208" height="42" rx="8" fill="#0F172A"/>
+    <text x="26" y="220" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Oracle Database Free</text>
+
+    <rect x="16" y="245" width="208" height="42" rx="8" fill="#0F172A"/>
+    <text x="26" y="270" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">IBM DB2 Enterprise</text>
+
+    <rect x="16" y="297" width="208" height="65" rx="10" fill="#020617" stroke="#38BDF8" stroke-width="1"/>
+    <text x="26" y="322" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">ZERO VENDOR LOCK-IN</text>
+    <text x="26" y="342" fill="#10B981" font-family="system-ui, sans-serif" font-size="10">Programmatic Custom Isolation Levels</text>
+  </g>
+</svg>

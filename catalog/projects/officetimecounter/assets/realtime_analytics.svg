@@ -1,0 +1,31 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Real-Time Analytics</text>
+  <text x="200" y="98" fill="#10B981" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Daily Delta &amp; Target Hours</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="150" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">TODAY'S WORK DELTA</text>
+    <text x="16" y="65" fill="#10B981" font-family="system-ui, sans-serif" font-weight="800" font-size="32">+ 45 min</text>
+    <text x="16" y="88" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Total Time Today: 8h 45m</text>
+    <text x="16" y="125" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">Target Shift: 8h 00m</text>
+  </g>
+
+  <g transform="translate(80, 290)">
+    <rect x="0" y="0" width="240" height="210" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">WEEKLY TARGET PROGRESS</text>
+
+    <text x="16" y="55" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Completed: 34h 30m / 40h</text>
+    <rect x="16" y="65" width="208" height="12" rx="6" fill="#0F172A"/>
+    <rect x="16" y="65" width="175" height="12" rx="6" fill="#10B981"/>
+
+    <rect x="16" y="95" width="208" height="95" rx="10" fill="#0F172A"/>
+    <text x="26" y="118" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">WORK-LIFE WELLNESS</text>
+    <text x="26" y="140" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">Desk Fatigue Breaks: 4 Taken</text>
+    <text x="26" y="158" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">Remaining to Target: 5h 30m</text>
+    <text x="26" y="176" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">On Track to Complete Shift Early</text>
+  </g>
+</svg>

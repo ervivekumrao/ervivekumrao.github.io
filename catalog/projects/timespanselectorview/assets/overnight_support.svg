@@ -1,0 +1,27 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Overnight Span Support</text>
+  <text x="200" y="98" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Midnight Crossing Span Calculator</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="120" y="36" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="700" font-size="12" text-anchor="middle">OVERNIGHT SHIFT SELECTOR</text>
+
+    <!-- Moon Icon -->
+    <path d="M120 70 A25 25 0 1 0 145 95 A20 20 0 1 1 120 70 Z" fill="#F59E0B"/>
+
+    <text x="120" y="145" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="800" font-size="20" text-anchor="middle">10:00 PM - 06:00 AM</text>
+    <text x="120" y="168" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="12" text-anchor="middle">Duration: 8 Hours (Overnight)</text>
+
+    <rect x="16" y="195" width="208" height="160" rx="12" fill="#0F172A"/>
+    <text x="28" y="220" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">ADVANCED FEATURES</text>
+    <text x="28" y="244" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Handles Midnight Boundary Crossing</text>
+    <text x="28" y="264" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Configurable Snap Intervals (5m, 15m)</text>
+    <text x="28" y="284" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Custom Thumb Drawables &amp; Ticks</text>
+    <text x="28" y="304" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ 12-Hour &amp; 24-Hour Format Switch</text>
+    <text x="28" y="335" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">OnSpanChangeListener Active</text>
+  </g>
+</svg>

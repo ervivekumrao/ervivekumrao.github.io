@@ -1,0 +1,31 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Notification Hooks</text>
+  <text x="200" y="98" fill="#3B82F6" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Corporate Check-in Fail-Safe Listener</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#3B82F6" font-family="system-ui, sans-serif" font-weight="700" font-size="11">NOTIFICATION LISTENER SERVICE</text>
+
+    <!-- Notification 1 -->
+    <rect x="16" y="45" width="208" height="65" rx="10" fill="#0F172A" stroke="#2563EB" stroke-width="1"/>
+    <text x="28" y="65" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Workplace Check-In App</text>
+    <text x="28" y="80" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">"Check-in successful at Building A."</text>
+    <text x="28" y="96" fill="#34D399" font-family="system-ui, sans-serif" font-size="9">✓ In-Time Logged: 09:02 AM</text>
+
+    <!-- Notification 2 -->
+    <rect x="16" y="120" width="208" height="65" rx="10" fill="#0F172A"/>
+    <text x="28" y="140" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Corporate Access Gate</text>
+    <text x="28" y="155" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">"Turnstile Badge In Approved."</text>
+    <text x="28" y="171" fill="#10B981" font-family="system-ui, sans-serif" font-size="9">✓ Backup Hook Verified</text>
+
+    <rect x="16" y="200" width="208" height="155" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="1"/>
+    <text x="28" y="225" fill="#3B82F6" font-family="system-ui, sans-serif" font-weight="700" font-size="11">FAIL-SAFE AUDIT</text>
+    <text x="28" y="250" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="800" font-size="24">100% Accuracy</text>
+    <text x="28" y="272" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">Dual Geofence &amp; Notification Backup</text>
+    <text x="28" y="292" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Zero Missed Office Shifts</text>
+  </g>
+</svg>

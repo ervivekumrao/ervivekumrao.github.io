@@ -1,0 +1,31 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Instant CRM Sync</text>
+  <text x="200" y="98" fill="#10B981" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Real-Time Outcome Hydration</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">POST-CALL OUTCOME SYNC</text>
+
+    <rect x="16" y="45" width="208" height="50" rx="10" fill="#0F172A"/>
+    <text x="26" y="66" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Candidate: John Doe</text>
+    <text x="26" y="80" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Status: Interested (Screening Passed)</text>
+
+    <rect x="16" y="105" width="208" height="50" rx="10" fill="#0F172A"/>
+    <text x="26" y="126" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Candidate: Emma Watson</text>
+    <text x="26" y="140" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Status: Call Back Tomorrow</text>
+
+    <rect x="16" y="165" width="208" height="50" rx="10" fill="#0F172A"/>
+    <text x="26" y="186" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Candidate: Mark Taylor</text>
+    <text x="26" y="200" fill="#EF4444" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Status: Not Connected</text>
+
+    <rect x="16" y="230" width="208" height="130" rx="12" fill="#020617" stroke="#10B981" stroke-width="1"/>
+    <text x="26" y="255" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">CRM SYNC STREAM</text>
+    <text x="26" y="280" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="22">100% Synced</text>
+    <text x="26" y="300" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">Bi-directional Webhook Active</text>
+    <text x="26" y="318" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10">Career Crox Desktop Cloud</text>
+  </g>
+</svg>

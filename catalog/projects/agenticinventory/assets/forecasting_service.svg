@@ -1,0 +1,29 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">forecasting-service</text>
+  <text x="200" y="98" fill="#10B981" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Scikit-Learn ML &amp; NER Router</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">PYTHON FASTAPI ENGINE</text>
+
+    <rect x="16" y="45" width="208" height="110" rx="10" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="26" y="68" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">ML INTENT CLASSIFIER</text>
+    <text x="26" y="90" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">1,700+ Queries • 15 Intents</text>
+    <text x="26" y="108" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">TF-IDF + Calibrated Logistic Regression</text>
+    <text x="26" y="128" fill="#34D399" font-family="system-ui, sans-serif" font-weight="600" font-size="10">✓ 98.4% Classification Accuracy</text>
+
+    <rect x="16" y="165" width="208" height="195" rx="12" fill="#0F172A"/>
+    <text x="26" y="190" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">DUAL-MODE AI ROUTER</text>
+    <text x="26" y="215" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">Mode 1: Cloud LLM (Gemini / OpenAI)</text>
+    <text x="26" y="235" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">Mode 2: Local Offline ML Synthesis</text>
+
+    <rect x="26" y="255" width="188" height="40" rx="8" fill="#1E293B"/>
+    <text x="36" y="278" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Safety Stock Z=1.65 (95% Service)</text>
+
+    <text x="26" y="320" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Dynamic Reorder Point (ROP) Active</text>
+  </g>
+</svg>

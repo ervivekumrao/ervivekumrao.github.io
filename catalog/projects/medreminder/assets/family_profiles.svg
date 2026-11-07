@@ -1,0 +1,38 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Family Profiles</text>
+  <text x="200" y="98" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Multi-User Health Management</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">FAMILY MEMBERS DASHBOARD</text>
+
+    <!-- Profile 1: Myself -->
+    <rect x="16" y="45" width="208" height="65" rx="12" fill="#0F172A" stroke="#00897B" stroke-width="1.5"/>
+    <circle cx="42" cy="77" r="18" fill="#00897B"/>
+    <text x="42" y="83" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="14" text-anchor="middle">👨</text>
+    <text x="70" y="72" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="12">John (Myself)</text>
+    <text x="70" y="88" fill="#10B981" font-family="system-ui, sans-serif" font-size="10">3 Active Meds • 100% Adherence</text>
+
+    <!-- Profile 2: Daughter -->
+    <rect x="16" y="120" width="208" height="65" rx="12" fill="#0F172A"/>
+    <circle cx="42" cy="152" r="18" fill="#D81B60"/>
+    <text x="42" y="158" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="14" text-anchor="middle">👧</text>
+    <text x="70" y="147" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="12">Lily (Daughter)</text>
+    <text x="70" y="163" fill="#F59E0B" font-family="system-ui, sans-serif" font-size="10">1 Active Med • Due 2:00 PM</text>
+
+    <!-- Profile 3: Grandfather -->
+    <rect x="16" y="195" width="208" height="65" rx="12" fill="#0F172A"/>
+    <circle cx="42" cy="227" r="18" fill="#2563EB"/>
+    <text x="42" y="233" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="14" text-anchor="middle">👴</text>
+    <text x="70" y="222" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="12">Robert (Grandpa)</text>
+    <text x="70" y="238" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">4 Active Meds • Caregiver Sync</text>
+
+    <!-- Add Profile Button -->
+    <rect x="16" y="275" width="208" height="40" rx="10" fill="#38BDF8" fill-opacity="0.2" stroke="#38BDF8" stroke-width="1"/>
+    <text x="120" y="300" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">+ Add Family Member Profile</text>
+  </g>
+</svg>

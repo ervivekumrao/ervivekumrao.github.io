@@ -1,0 +1,30 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">spinctl CLI Engine</text>
+  <text x="200" y="98" fill="#0EA5E9" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Rootless Podman &amp; Docker Fallback</text>
+
+  <!-- Seal / Podman Graphic -->
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#0EA5E9" stroke-width="1.5"/>
+    <text x="120" y="36" fill="#0EA5E9" font-family="system-ui, sans-serif" font-weight="700" font-size="12" text-anchor="middle">DAEMONLESS ROOTLESS CONTAINER ENGINE</text>
+
+    <rect x="16" y="55" width="208" height="60" rx="10" fill="#0F172A"/>
+    <text x="26" y="78" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="12">Rootless Podman Active</text>
+    <text x="26" y="96" fill="#10B981" font-family="system-ui, sans-serif" font-size="10">✓ Secure Daemonless Runtime</text>
+
+    <rect x="16" y="125" width="208" height="60" rx="10" fill="#0F172A"/>
+    <text x="26" y="148" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="12">Docker Automatic Fallback</text>
+    <text x="26" y="166" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10">✓ Auto-Detect Docker Daemon</text>
+
+    <rect x="16" y="195" width="208" height="170" rx="12" fill="#0F172A"/>
+    <text x="26" y="220" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="700" font-size="11">PORT-AWARE OCI HEALTHCHECKS</text>
+    <text x="26" y="244" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Probes internal socket readiness</text>
+    <text x="26" y="264" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Tracks starting to healthy transitions</text>
+    <text x="26" y="284" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Auto Port Discovery (Collision Free)</text>
+    <text x="26" y="304" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10">✓ Binds to 127.0.0.1 Localhost</text>
+    <text x="26" y="335" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="10">spinctl --preflight Verified</text>
+  </g>
+</svg>

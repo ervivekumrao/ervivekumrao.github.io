@@ -1,0 +1,39 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">13 Database &amp; Lakehouses</text>
+  <text x="200" y="98" fill="#10B981" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Instant Single-Command Container Launch</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">SUPPORTED CONTAINER ENGINES</text>
+
+    <!-- Grid of DB Pills -->
+    <g transform="translate(16, 45)">
+      <rect x="0" y="0" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="19" fill="#F8FAFC" font-size="9" text-anchor="middle">PostgreSQL</text>
+      <rect x="110" y="0" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="19" fill="#34D399" font-size="9" text-anchor="middle">pgvector (AI)</text>
+
+      <rect x="0" y="38" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="57" fill="#F8FAFC" font-size="9" text-anchor="middle">MySQL 8.0</text>
+      <rect x="110" y="38" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="57" fill="#F8FAFC" font-size="9" text-anchor="middle">MariaDB</text>
+
+      <rect x="0" y="76" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="95" fill="#F8FAFC" font-size="9" text-anchor="middle">SQL Server</text>
+      <rect x="110" y="76" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="95" fill="#F8FAFC" font-size="9" text-anchor="middle">Oracle Free</text>
+
+      <rect x="0" y="114" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="133" fill="#F8FAFC" font-size="9" text-anchor="middle">IBM DB2</text>
+      <rect x="110" y="114" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="133" fill="#F8FAFC" font-size="9" text-anchor="middle">MongoDB</text>
+
+      <rect x="0" y="152" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="171" fill="#F8FAFC" font-size="9" text-anchor="middle">Redis / Valkey</text>
+      <rect x="110" y="152" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="171" fill="#F8FAFC" font-size="9" text-anchor="middle">ClickHouse</text>
+
+      <rect x="0" y="190" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="209" fill="#F8FAFC" font-size="9" text-anchor="middle">CockroachDB</text>
+      <rect x="110" y="190" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="209" fill="#38BDF8" font-size="9" text-anchor="middle">DuckDB</text>
+    </g>
+
+    <rect x="16" y="280" width="208" height="80" rx="10" fill="#020617" stroke="#10B981" stroke-width="1"/>
+    <text x="26" y="302" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">SINGLE COMMAND LAUNCH</text>
+    <text x="26" y="322" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9">spinctl -t pgvector -p 5432 -n dev-ai</text>
+    <text x="26" y="342" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="600" font-size="9">Dynamic Version Discovery (--list-versions)</text>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="600" rx="20" fill="#0F172A"/>
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Bloatware Freeze Engine</text>
+  <text x="200" y="98" fill="#EF4444" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">RAM Optimization &amp; System App Freeze</text>
+
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <text x="16" y="28" fill="#EF4444" font-family="system-ui, sans-serif" font-weight="700" font-size="11">SYSTEM APPS FREEZE LIST</text>
+
+    <!-- App 1 -->
+    <rect x="16" y="45" width="208" height="48" rx="10" fill="#0F172A"/>
+    <text x="28" y="66" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Pre-installed Store</text>
+    <text x="28" y="80" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">com.vendor.bloat.store</text>
+    <rect x="166" y="58" width="48" height="20" rx="10" fill="#EF4444"/>
+    <text x="190" y="72" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="9" text-anchor="middle">FROZEN</text>
+
+    <!-- App 2 -->
+    <rect x="16" y="103" width="208" height="48" rx="10" fill="#0F172A"/>
+    <text x="28" y="124" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Vendor Diagnostics</text>
+    <text x="28" y="138" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">com.vendor.diag</text>
+    <rect x="166" y="116" width="48" height="20" rx="10" fill="#EF4444"/>
+    <text x="190" y="130" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="9" text-anchor="middle">FROZEN</text>
+
+    <!-- App 3 -->
+    <rect x="16" y="161" width="208" height="48" rx="10" fill="#0F172A"/>
+    <text x="28" y="182" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Partner News Feed</text>
+    <text x="28" y="196" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9">com.partner.news</text>
+    <rect x="166" y="174" width="48" height="20" rx="10" fill="#EF4444"/>
+    <text x="190" y="188" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="9" text-anchor="middle">FROZEN</text>
+
+    <!-- RAM Saved Indicator -->
+    <rect x="16" y="225" width="208" height="135" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="28" y="250" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">RAM &amp; BATTERY GAINS</text>
+    <text x="28" y="280" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="800" font-size="26">1.4 GB</text>
+    <text x="28" y="300" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">RAM Reclaimed from Background Processes</text>
+    <text x="28" y="320" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Battery Life Extended +35%</text>
+  </g>
+</svg>
