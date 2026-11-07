@@ -1,0 +1,64 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-sec" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="600" rx="20" fill="url(#bg-sec)"/>
+
+  <!-- Phone Mockup -->
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#334155" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <!-- Header -->
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="15" text-anchor="middle">App Security &amp; Dual Governance</text>
+  <text x="200" y="98" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Multi-Factor Lock &amp; Parent Device Rules</text>
+
+  <!-- Section 1: Security Login Modes -->
+  <g transform="translate(80, 115)">
+    <rect x="0" y="0" width="240" height="150" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="16" y="24" fill="#A855F7" font-family="system-ui, sans-serif" font-weight="700" font-size="11" letter-spacing="0.5">PARENT APP AUTHENTICATION</text>
+
+    <!-- Smart PIN Toggle -->
+    <text x="16" y="55" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Smart PIN (Rhythm Defense)</text>
+    <rect x="180" y="42" width="44" height="20" rx="10" fill="#2563EB"/>
+    <circle cx="214" cy="52" r="8" fill="#ffffff"/>
+
+    <!-- Biometric Unlock Toggle -->
+    <text x="16" y="95" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Biometric / Fingerprint</text>
+    <rect x="180" y="82" width="44" height="20" rx="10" fill="#2563EB"/>
+    <circle cx="214" cy="92" r="8" fill="#ffffff"/>
+
+    <!-- Pattern Lock Toggle -->
+    <text x="16" y="130" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Standard 4-Digit PIN</text>
+    <rect x="180" y="118" width="44" height="20" rx="10" fill="#2563EB"/>
+    <circle cx="214" cy="128" r="8" fill="#ffffff"/>
+  </g>
+
+  <!-- Section 2: Parent Device Self-Governance -->
+  <g transform="translate(80, 280)">
+    <rect x="0" y="0" width="240" height="195" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="16" y="24" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11" letter-spacing="0.5">PARENT DEVICE GOVERNANCE</text>
+
+    <text x="16" y="48" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">Manage &amp; lock parent apps when configured</text>
+
+    <!-- Parent App Control Item 1 -->
+    <rect x="16" y="62" width="208" height="38" rx="8" fill="#0F172A"/>
+    <text x="26" y="85" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Hide Parent Apps</text>
+    <rect x="170" y="70" width="44" height="20" rx="10" fill="#10B981"/>
+    <circle cx="204" cy="80" r="8" fill="#ffffff"/>
+
+    <!-- Parent App Control Item 2 -->
+    <rect x="16" y="106" width="208" height="38" rx="8" fill="#0F172A"/>
+    <text x="26" y="129" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Suspend Distractions</text>
+    <rect x="170" y="114" width="44" height="20" rx="10" fill="#10B981"/>
+    <circle cx="204" cy="124" r="8" fill="#ffffff"/>
+
+    <!-- Parent App Control Item 3 -->
+    <rect x="16" y="150" width="208" height="36" rx="8" fill="#0F172A"/>
+    <text x="26" y="172" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Parent App Uninstall Rules</text>
+    <text x="180" y="172" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="600" font-size="10">Active</text>
+  </g>
+</svg>

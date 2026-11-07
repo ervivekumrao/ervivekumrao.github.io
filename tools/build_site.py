@@ -239,8 +239,7 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     header_html = f"<div class='proj-header'>{icon_hdr}<div><h1 style='margin:0 0 .25rem 0'>{esc(p['name'])}</h1><p class='mut' style='font-size:1.1rem;margin:0 0 .75rem 0'>{esc(p.get('tagline'))}</p>{tags}</div></div>"
     body = f"{header_html}<div style='margin:1.5rem 0'>{desc}</div><div style='margin-bottom:2rem'>{''.join(links)}</div>"
 
-    if shots:
-        body += f"<h2 style='margin-top:2rem'>Showcase</h2><div class='shots'>{shots}</div>"
+
 
     if kind == "app":
         body += render_download(site, p, versions)

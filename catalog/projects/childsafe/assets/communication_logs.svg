@@ -1,0 +1,67 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-comm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="600" rx="20" fill="url(#bg-comm)"/>
+
+  <!-- Phone Mockup -->
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#334155" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <!-- Header -->
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Communication &amp; Safety Logs</text>
+  <text x="200" y="98" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Remote Call, SMS &amp; Contact Auditing</text>
+
+  <!-- Segmented Tabs (Calls | SMS | Contacts) -->
+  <g transform="translate(80, 115)">
+    <rect x="0" y="0" width="240" height="32" rx="10" fill="#1E293B"/>
+    <rect x="4" y="4" width="74" height="24" rx="8" fill="#2563EB"/>
+    <text x="41" y="20" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="10" text-anchor="middle">Call Logs</text>
+    <text x="120" y="20" fill="#94A3B8" font-family="system-ui, sans-serif" font-weight="600" font-size="10" text-anchor="middle">SMS History</text>
+    <text x="195" y="20" fill="#94A3B8" font-family="system-ui, sans-serif" font-weight="600" font-size="10" text-anchor="middle">Contacts</text>
+  </g>
+
+  <!-- Call Logs List -->
+  <g transform="translate(80, 160)">
+    <!-- Call 1 -->
+    <rect x="0" y="0" width="240" height="54" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <circle cx="24" cy="27" r="14" fill="#10B981" fill-opacity="0.2"/>
+    <path d="M20 23 L28 31 M28 23 L28 31 L20 31" stroke="#34D399" stroke-width="2" fill="none"/>
+    <text x="48" y="24" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Mom</text>
+    <text x="48" y="38" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">Incoming • 4m 12s • 10:14 AM</text>
+
+    <!-- Call 2 -->
+    <rect x="0" y="62" width="240" height="54" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <circle cx="24" cy="89" r="14" fill="#DC2626" fill-opacity="0.2"/>
+    <path d="M20 85 L28 93 M28 85 L20 85 L20 93" stroke="#F87171" stroke-width="2" fill="none"/>
+    <text x="48" y="86" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Unknown Number</text>
+    <text x="48" y="100" fill="#F87171" font-family="system-ui, sans-serif" font-weight="500" font-size="10">Missed Call • 09:30 AM</text>
+
+    <!-- Call 3 -->
+    <rect x="0" y="124" width="240" height="54" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <circle cx="24" cy="151" r="14" fill="#2563EB" fill-opacity="0.2"/>
+    <path d="M28 147 L20 155 M20 147 L28 147 L28 155" stroke="#60A5FA" stroke-width="2" fill="none"/>
+    <text x="48" y="148" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">School Office</text>
+    <text x="48" y="162" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">Outgoing • 1m 45s • Yesterday</text>
+  </g>
+
+  <!-- SMS Preview Section -->
+  <g transform="translate(80, 350)">
+    <rect x="0" y="0" width="240" height="135" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="16" y="24" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11" letter-spacing="0.5">RECENT SMS AUDIT LOGS</text>
+
+    <rect x="16" y="38" width="208" height="38" rx="8" fill="#0F172A"/>
+    <text x="26" y="54" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Dad:</text>
+    <text x="56" y="54" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">I am outside the gate.</text>
+    <text x="26" y="68" fill="#64748B" font-family="system-ui, sans-serif" font-size="9">Received • 10:45 AM</text>
+
+    <rect x="16" y="82" width="208" height="38" rx="8" fill="#0F172A"/>
+    <text x="26" y="98" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Kid:</text>
+    <text x="54" y="98" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">Coming in 2 minutes!</text>
+    <text x="26" y="112" fill="#64748B" font-family="system-ui, sans-serif" font-size="9">Sent • 10:46 AM</text>
+  </g>
+</svg>

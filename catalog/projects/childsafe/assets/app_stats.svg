@@ -1,0 +1,74 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-stats" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="bar-green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="bar-purple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="600" rx="20" fill="url(#bg-stats)"/>
+
+  <!-- Phone Mockup -->
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#334155" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <!-- Header -->
+  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">Child App Usage Analytics</text>
+  <text x="200" y="98" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Real-time Time Spent &amp; App Metrics</text>
+
+  <!-- Total Screen Time Card -->
+  <g transform="translate(80, 115)">
+    <rect x="0" y="0" width="240" height="64" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="16" y="24" fill="#94A3B8" font-family="system-ui, sans-serif" font-weight="600" font-size="10">TOTAL SCREEN TIME TODAY</text>
+    <text x="16" y="50" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="800" font-size="22">2h 45m</text>
+    <text x="140" y="50" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="11">↓ 15% vs yesterday</text>
+  </g>
+
+  <!-- Most Used Apps Bar Progress List -->
+  <g transform="translate(80, 195)">
+    <rect x="0" y="0" width="240" height="290" rx="14" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="16" y="24" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="11" letter-spacing="0.5">MOST USED APPS (TODAY)</text>
+
+    <!-- App 1: Learning App -->
+    <rect x="16" y="40" width="24" height="24" rx="6" fill="#10B981"/>
+    <text x="48" y="52" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Math Learning</text>
+    <text x="180" y="52" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">1h 20m</text>
+    <rect x="48" y="58" width="176" height="8" rx="4" fill="#0F172A"/>
+    <rect x="48" y="58" width="130" height="8" rx="4" fill="url(#bar-green)"/>
+
+    <!-- App 2: Educational Videos -->
+    <rect x="16" y="80" width="24" height="24" rx="6" fill="#A855F7"/>
+    <text x="48" y="92" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">EduTube Kids</text>
+    <text x="180" y="92" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">45m</text>
+    <rect x="48" y="98" width="176" height="8" rx="4" fill="#0F172A"/>
+    <rect x="48" y="98" width="85" height="8" rx="4" fill="url(#bar-purple)"/>
+
+    <!-- App 3: Reading Assistant -->
+    <rect x="16" y="120" width="24" height="24" rx="6" fill="#2563EB"/>
+    <text x="48" y="132" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Story Reader</text>
+    <text x="180" y="132" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">30m</text>
+    <rect x="48" y="138" width="176" height="8" rx="4" fill="#0F172A"/>
+    <rect x="48" y="138" width="55" height="8" rx="4" fill="#2563EB"/>
+
+    <!-- App 4: Drawing & Creativity -->
+    <rect x="16" y="160" width="24" height="24" rx="6" fill="#F4A261"/>
+    <text x="48" y="172" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Art Studio</text>
+    <text x="180" y="172" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">10m</text>
+    <rect x="48" y="178" width="176" height="8" rx="4" fill="#0F172A"/>
+    <rect x="48" y="178" width="25" height="8" rx="4" fill="#F4A261"/>
+
+    <!-- App Launch Frequency Summary -->
+    <rect x="16" y="205" width="208" height="65" rx="10" fill="#0F172A"/>
+    <text x="26" y="225" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="11">App Launches &amp; Unlocks</text>
+    <text x="26" y="245" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">Device Unlocks: 14 times • App Switches: 38</text>
+    <text x="26" y="258" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10">Stats updated in real time</text>
+  </g>
+</svg>
