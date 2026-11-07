@@ -75,28 +75,39 @@ CSS = """
 [data-theme="dark"]{--bg:#0b0f19!important;--fg:#f8fafc!important;--mut:#94a3b8!important;--card:#131b2e!important;--card-border:#1e293b!important;--card-shadow:0 4px 20px -2px rgba(0,0,0,0.35)!important;--line:#1e293b!important;--acc:#38bdf8!important;--acc-hover:#0284c7!important;--acc-glow:rgba(56,189,248,0.2)!important;--tag-bg:#1e293b!important;--tag-fg:#cbd5e1!important}
 *{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
 a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
-main,header>div{max-width:1040px;margin:0 auto;padding:1.5rem 1rem}
+main,header>div{max-width:1080px;margin:0 auto;padding:1.5rem 1rem}
 header{border-bottom:1px solid var(--line);background:var(--card);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
-header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75rem 1rem}
-.theme-btn{background:transparent;border:1px solid var(--card-border);color:var(--fg);padding:.35rem .75rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:.4rem;transition:background .15s ease,border-color .15s ease}
-.theme-btn:hover{background:var(--tag-bg);border-color:var(--acc)}
+header>div{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem}
+.nav-brand{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:1.05rem;color:var(--fg);text-decoration:none!important}
+.nav-brand:hover{color:var(--acc)}
+.nav-subtitle{font-size:.82rem;font-weight:500;color:var(--mut)}
+
+.theme-switch{background:transparent;border:none;padding:0;cursor:pointer;display:inline-flex;align-items:center;outline:none;user-select:none;-webkit-tap-highlight-color:transparent}
+.switch-track{position:relative;width:58px;height:30px;border-radius:99px;background:#cbd5e1;border:1.5px solid #94a3b8;box-shadow:inset 0 2px 4px rgba(0,0,0,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 7px;transition:background-color .3s ease,border-color .3s ease,box-shadow .3s ease}
+[data-theme="dark"] .switch-track{background:#1e293b;border-color:#334155;box-shadow:inset 0 2px 6px rgba(0,0,0,0.4)}
+.switch-icon{width:16px;height:16px;display:flex;align-items:center;justify-content:center;z-index:1;transition:opacity .25s ease,color .25s ease;pointer-events:none}
+.icon-sun{color:#f59e0b;opacity:1}
+.icon-moon{color:#94a3b8;opacity:0.5}
+[data-theme="dark"] .icon-sun{opacity:0.5;color:#64748b}
+[data-theme="dark"] .icon-moon{opacity:1;color:#38bdf8}
+.switch-knob{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#ffffff;box-shadow:0 2px 6px rgba(0,0,0,0.25),0 0 0 1px rgba(0,0,0,0.05);transition:transform .3s cubic-bezier(0.34,1.56,0.64,1),background-color .3s ease,box-shadow .3s ease;z-index:2}
+[data-theme="dark"] .switch-knob{transform:translateX(28px);background:#38bdf8;box-shadow:0 2px 8px rgba(56,189,248,0.45),0 0 0 1px rgba(56,189,248,0.3)}
+.theme-switch:hover .switch-track{border-color:var(--acc)}
+.theme-switch:focus-visible .switch-track{outline:2px solid var(--acc);outline-offset:2px}
+
+.breadcrumb{display:flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--mut);margin-bottom:1.25rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--mut);text-decoration:none}.breadcrumb a:hover{color:var(--acc);text-decoration:underline}
+.breadcrumb .sep{color:var(--mut);opacity:0.6;font-size:.8rem}
+.breadcrumb .current{color:var(--fg);font-weight:600}
+
 .hero-box{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:2.5rem 2rem;margin-bottom:2.5rem;box-shadow:var(--card-shadow)}
 .hero-box h1{margin:0 0 .5rem 0;font-size:2.25rem;letter-spacing:-0.03em}.hero-box p.lead{font-size:1.15rem;color:var(--mut);margin:0 0 1.5rem 0;max-width:780px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:1rem}
-.card,.hero-box,details,.card-box{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background .25s ease}
-.card:hover,.hero-box:hover,details:hover,.card-box:hover{transform:translateY(-4px);box-shadow:0 14px 30px -4px rgba(37,99,235,0.14),0 4px 12px -2px rgba(15,23,42,0.06);border-color:var(--acc)!important;background:var(--card)}
-[data-theme="light"] .card:hover,[data-theme="light"] .hero-box:hover,[data-theme="light"] details:hover,[data-theme="light"] .card-box:hover{background:#ffffff!important;border-color:var(--acc)!important;box-shadow:0 14px 30px -4px rgba(37,99,235,0.14),0 4px 12px -2px rgba(15,23,42,0.06)!important}
-[data-theme="dark"] .card:hover,[data-theme="dark"] .hero-box:hover,[data-theme="dark"] details:hover,[data-theme="dark"] .card-box:hover{background:#182238!important;box-shadow:0 12px 32px -4px rgba(56,189,248,0.25),0 0 24px 0 rgba(56,189,248,0.15)!important;border-color:#38bdf8!important}
-@media(prefers-color-scheme:dark){
-  :root[data-theme="light"] .card:hover,
-  :root[data-theme="light"] .hero-box:hover,
-  :root[data-theme="light"] details:hover,
-  :root[data-theme="light"] .card-box:hover{background:#ffffff!important;border-color:var(--acc)!important;box-shadow:0 14px 30px -4px rgba(37,99,235,0.14),0 4px 12px -2px rgba(15,23,42,0.06)!important}
-  :root:not([data-theme="light"]) .card:hover,
-  :root:not([data-theme="light"]) .hero-box:hover,
-  :root:not([data-theme="light"]) details:hover,
-  :root:not([data-theme="light"]) .card-box:hover{background:#182238!important;box-shadow:0 12px 32px -4px rgba(56,189,248,0.25),0 0 24px 0 rgba(56,189,248,0.15)!important;border-color:#38bdf8!important}
-}
+.card,.hero-box,details,.card-box,.proj-hero-card,.proj-section,.shot-item{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background .25s ease}
+.card:hover,.hero-box:hover,details:hover,.card-box:hover,.proj-hero-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -4px rgba(37,99,235,0.14),0 4px 12px -2px rgba(15,23,42,0.06);border-color:var(--acc)!important;background:var(--card)}
+[data-theme="light"] .card:hover,[data-theme="light"] .hero-box:hover,[data-theme="light"] details:hover,[data-theme="light"] .card-box:hover,[data-theme="light"] .proj-hero-card:hover{background:#ffffff!important;border-color:var(--acc)!important;box-shadow:0 14px 30px -4px rgba(37,99,235,0.14),0 4px 12px -2px rgba(15,23,42,0.06)!important}
+[data-theme="dark"] .card:hover,[data-theme="dark"] .hero-box:hover,[data-theme="dark"] details:hover,[data-theme="dark"] .card-box:hover,[data-theme="dark"] .proj-hero-card:hover{background:#182238!important;box-shadow:0 12px 32px -4px rgba(56,189,248,0.25),0 0 24px 0 rgba(56,189,248,0.15)!important;border-color:#38bdf8!important}
+
 .card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.25rem;box-shadow:var(--card-shadow);display:flex;flex-direction:column}
 .app-card{padding:1.25rem;display:flex;flex-direction:column;justify-content:space-between;height:100%}
 .app-card-top{display:flex;flex-direction:column;gap:0.65rem}
@@ -107,6 +118,11 @@ header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75r
 .app-badge-cat{font-size:0.72rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:20px;background:var(--tag-bg);color:var(--tag-fg);border:1px solid var(--card-border);white-space:nowrap}
 .app-badge-dpm{font-size:0.7rem;font-weight:600;padding:0.18rem 0.5rem;border-radius:20px;background:rgba(37,99,235,0.1);color:var(--acc);border:1px solid rgba(37,99,235,0.25);white-space:nowrap}
 [data-theme="dark"] .app-badge-dpm{background:rgba(56,189,248,0.12);color:#38bdf8;border-color:rgba(56,189,248,0.3)}
+.app-badge-ver{font-size:0.7rem;font-weight:600;padding:0.18rem 0.5rem;border-radius:20px;background:rgba(16,185,129,0.1);color:#059669;border:1px solid rgba(16,185,129,0.25);white-space:nowrap}
+[data-theme="dark"] .app-badge-ver{background:rgba(52,211,153,0.12);color:#34d399;border-color:rgba(52,211,153,0.3)}
+.app-badge-open{font-size:0.7rem;font-weight:600;padding:0.18rem 0.5rem;border-radius:20px;background:rgba(99,102,241,0.1);color:#6366f1;border:1px solid rgba(99,102,241,0.25);white-space:nowrap}
+[data-theme="dark"] .app-badge-open{background:rgba(129,140,248,0.12);color:#818cf8;border-color:rgba(129,140,248,0.3)}
+
 .app-title-group{margin:0}
 .app-main-title{font-size:1.15rem;font-weight:700;line-height:1.3;margin:0;letter-spacing:-0.01em}
 .app-main-title a{color:var(--fg);text-decoration:none}.app-main-title a:hover{color:var(--acc)}
@@ -127,6 +143,7 @@ header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75r
 .btn-details:hover{background:var(--acc);color:#fff!important;border-color:var(--acc);text-decoration:none}
 .btn-source{display:inline-flex;align-items:center;gap:0.25rem;font-size:0.78rem;font-weight:500;color:var(--mut);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--card-border);transition:all .15s ease}
 .btn-source:hover{color:var(--fg)!important;border-color:var(--mut);text-decoration:none}
+
 .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.25rem;margin-top:1rem}
 .comp-card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.25rem;box-shadow:var(--card-shadow);display:flex;flex-direction:column;gap:0.75rem;transition:all .25s ease}
 .comp-card:hover{transform:translateY(-3px);border-color:var(--acc);box-shadow:0 12px 28px -4px rgba(37,99,235,0.12);background:var(--card)}
@@ -141,6 +158,7 @@ header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75r
 .comp-chip:hover{border-color:var(--acc);color:var(--acc)}
 .comp-chip.highlight{background:rgba(37,99,235,0.08);color:var(--acc);border-color:rgba(37,99,235,0.25);font-weight:600}
 [data-theme="dark"] .comp-chip.highlight{background:rgba(56,189,248,0.12);color:#38bdf8;border-color:rgba(56,189,248,0.3)}
+
 .exp-card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.5rem;box-shadow:var(--card-shadow);transition:all .25s ease;position:relative}
 .exp-card:hover{border-color:var(--acc);transform:translateY(-2px);box-shadow:0 10px 25px -4px rgba(37,99,235,0.12);background:var(--card)}
 [data-theme="light"] .exp-card:hover{background:#ffffff!important;border-color:var(--acc)!important}
@@ -149,6 +167,39 @@ header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75r
 .exp-list{margin:0;padding-left:1.2rem;color:var(--fg);line-height:1.65;font-size:0.925rem}
 .exp-list li{margin-bottom:0.5rem}
 .exp-list li:last-child{margin-bottom:0}
+
+/* Project Detail Page Elements */
+.proj-hero-card{background:var(--card);border:1px solid var(--card-border);border-radius:18px;padding:2rem;margin-bottom:2rem;box-shadow:var(--card-shadow)}
+.proj-hero-top{display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap}
+.proj-icon-wrapper{width:80px;height:80px;border-radius:18px;background:var(--tag-bg);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+.proj-icon-wrapper img{width:60px;height:60px;object-fit:contain;border-radius:12px}
+.proj-hero-info{flex:1;min-width:260px}
+.proj-badges{display:flex;align-items:center;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.6rem}
+.proj-hero-title{font-size:2rem;font-weight:800;margin:0 0 0.2rem 0;letter-spacing:-0.02em;line-height:1.2;color:var(--fg)}
+.proj-hero-subtitle{font-size:1rem;font-weight:600;color:var(--acc);margin-bottom:0.6rem}
+.proj-hero-tagline{font-size:1.05rem;line-height:1.6;color:var(--mut);margin:0 0 1rem 0}
+.proj-hero-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.proj-action-bar{display:flex;flex-wrap:wrap;gap:0.6rem;align-items:center;padding-top:1.25rem;border-top:1px dashed var(--line);margin-top:1.25rem}
+
+.proj-section{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:1.75rem;margin-bottom:2rem;box-shadow:var(--card-shadow)}
+.proj-section-title{font-size:1.35rem;font-weight:700;margin:0 0 1.25rem 0;display:flex;align-items:center;gap:0.5rem;color:var(--fg);border-bottom:1px solid var(--line);padding-bottom:0.6rem}
+
+.shots-container{margin-bottom:2rem}
+.shots-scroll{display:flex;gap:1.25rem;overflow-x:auto;padding:0.5rem 0.25rem 1.25rem 0.25rem;scrollbar-width:thin;scroll-snap-type:x mandatory}
+.shot-item{flex:0 0 auto;scroll-snap-align:start}
+.shot-item:hover{transform:translateY(-4px)}
+.shot-item img{height:300px;border-radius:12px;border:1px solid var(--card-border);box-shadow:var(--card-shadow);display:block;background:var(--bg)}
+
+.download-hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-bottom:1.5rem}
+.download-card{background:var(--tag-bg);border:1px solid var(--card-border);border-radius:14px;padding:1.25rem;display:flex;flex-direction:column;justify-content:space-between}
+.qr-container{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.5rem;margin-top:1.25rem}
+
+.install-card{background:var(--tag-bg);border:1px solid var(--card-border);border-radius:14px;padding:1.25rem;margin-bottom:1.25rem}
+.install-card pre{margin:0.75rem 0 0 0;background:#0f172a;color:#f8fafc;border:1px solid #1e293b}
+[data-theme="dark"] .install-card pre{background:#080c14;border-color:#1e293b}
+
+.proj-footer-nav{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;margin-top:2rem;border-top:1px solid var(--line);flex-wrap:wrap;gap:1rem}
+
 .card-title{display:flex;align-items:center;margin:0 0 .5rem 0;font-size:1.15rem;font-weight:600}
 .card-title img{width:32px;height:32px;border-radius:8px;margin-right:.75rem;object-fit:contain;flex-shrink:0}
 .card p{color:var(--mut);font-size:.925rem;margin:0 0 1rem 0;flex-grow:1;line-height:1.5}
@@ -156,8 +207,10 @@ header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75r
 .mut{color:var(--mut)}.tag{display:inline-block;font-size:.75rem;font-weight:500;background:var(--tag-bg);color:var(--tag-fg);border-radius:6px;padding:.2rem .6rem;margin:0 .3rem .3rem 0}
 .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--acc);color:#fff!important;font-weight:600;font-size:.9rem;padding:.6rem 1.25rem;border-radius:8px;text-decoration:none!important;margin:.25rem .5rem .25rem 0;transition:background .15s ease,transform .1s ease}
 .btn:hover{background:var(--acc-hover);transform:translateY(-1px)}.btn.alt{background:transparent;color:var(--acc)!important;border:1px solid var(--acc)}
-.btn.alt:hover{background:var(--acc-glow)}.shots{display:flex;gap:1rem;overflow-x:auto;padding:.5rem 0 1rem 0;scrollbar-width:thin}
-.shots img{height:320px;border-radius:12px;border:1px solid var(--card-border);box-shadow:var(--card-shadow);flex-shrink:0}
+.btn.alt:hover{background:var(--acc-glow)}
+.btn-play{background:#10b981;border-color:#10b981}.btn-play:hover{background:#059669}
+.btn-download{background:#6366f1;border-color:#6366f1}.btn-download:hover{background:#4f46e5}
+
 code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.875rem}
 pre{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:1rem;overflow-x:auto}
 code{background:var(--tag-bg);padding:.15rem .4rem;border-radius:4px;color:var(--fg)}
@@ -193,10 +246,27 @@ class Site:
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(content, encoding="utf-8")
 
-    def page(self, title: str, body: str, desc: str = "", icon_url: str = "") -> str:
+    def page(self, title: str, body: str, desc: str = "", icon_url: str = "", breadcrumbs: list[tuple[str, str]] = None, show_home_brand: bool = False) -> str:
         s = self.cfg
         icon_href = icon_url if icon_url else self.url("favicon.svg")
         icon_type = "image/svg+xml" if icon_href.endswith(".svg") else "image/png"
+
+        crumb_html = ""
+        if breadcrumbs:
+            crumbs_rendered = []
+            for label, link in breadcrumbs:
+                if link:
+                    crumbs_rendered.append(f"<a href='{esc(link)}'>{esc(label)}</a>")
+                else:
+                    crumbs_rendered.append(f"<span class='current'>{esc(label)}</span>")
+            crumb_html = f"<nav class='breadcrumb' aria-label='Breadcrumb'>{' <span class=\"sep\">&rsaquo;</span> '.join(crumbs_rendered)}</nav>"
+
+        brand_logo = self.url("favicon.svg")
+        brand_html = f"""<a href="{self.url('/')}" class="nav-brand">
+      <img src="{brand_logo}" width="26" height="26" style="border-radius:6px" alt="Logo">
+      <span>Vivek Umrao</span> <span class="nav-subtitle">/ Hub</span>
+    </a>""" if show_home_brand else "<div></div>"
+
         return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script>(function(){{var t=localStorage.getItem("theme");if(t){{document.documentElement.setAttribute("data-theme",t);}}}})();</script>
@@ -204,30 +274,45 @@ class Site:
 <link rel="icon" type="{icon_type}" href="{icon_href}">
 <link rel="apple-touch-icon" href="{icon_href}">
 <link rel="stylesheet" href="{self.url('style.css')}"></head><body>
-<header><div><button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light theme"><span id="theme-icon">☀️</span> <span id="theme-label" class="mut">Theme</span></button></div></header>
-<main>{body}</main>
+<header>
+  <div>
+    {brand_html}
+    <button id="theme-toggle" class="theme-switch" aria-label="Toggle dark/light theme" type="button">
+      <span class="switch-track">
+        <span class="switch-icon icon-sun">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+        </span>
+        <span class="switch-icon icon-moon">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-5.4-5.4c0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path>
+          </svg>
+        </span>
+        <span class="switch-knob"></span>
+      </span>
+    </button>
+  </div>
+</header>
+<main>
+{crumb_html}
+{body}
+</main>
 <script>
 (function(){{
   var btn = document.getElementById("theme-toggle");
-  var icon = document.getElementById("theme-icon");
-  var label = document.getElementById("theme-label");
   if(!btn) return;
   function getTheme(){{
     var d = document.documentElement.getAttribute("data-theme");
     if(d) return d;
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }}
-  function updateUI(t){{
-    icon.textContent = t === "dark" ? "🌙" : "☀️";
-    label.textContent = t === "dark" ? "Dark" : "Light";
-  }}
-  updateUI(getTheme());
   btn.addEventListener("click", function(){{
     var current = getTheme();
     var next = current === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
-    updateUI(next);
   }});
 }})();
 </script>
@@ -245,42 +330,121 @@ def enrollment_payload(p: dict, m: dict) -> dict:
 
 def render_download(site: Site, p: dict, versions: list[dict]) -> str:
     if not versions:
-        return "<h2 style='margin-top:2rem'>Download</h2><p class='mut'>No release has been published yet.</p>"
+        return """
+<section class="proj-section">
+  <h2 class="proj-section-title">📲 Download &amp; Releases</h2>
+  <p class="mut" style="margin:0">No binary release has been published to GitHub Releases yet. You can inspect the source code or install via Google Play above.</p>
+</section>
+"""
     m = versions[0]
-    h = [f"<h2 style='margin-top:2rem'>Download</h2><p>Latest: <strong>{esc(m['version_name'])}</strong> · "
-         f"{human_size(m['size_bytes'])} · Android {esc(m['min_sdk'])}+</p>",
-         f"<a class='btn' href='{esc(m['url_latest'])}'>Download APK (latest)</a>",
-         f"<a class='btn alt' href='{esc(m['url_versioned'])}'>This exact version</a>",
-         f"<p class='mut' style='margin-top:1rem'>SHA-256: <code>{esc(m['sha256'])}</code><br>"
-         f"Signing certificate SHA-256: <code>{esc(m['cert_sha256_hex'])}</code></p>"]
+    h = [
+        f"""
+<section class="proj-section">
+  <h2 class="proj-section-title">📲 Download &amp; Releases</h2>
+  <div class="download-hero">
+    <div class="download-card">
+      <div>
+        <div style="font-size:0.82rem;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:0.5px">Latest Stable Build</div>
+        <div style="font-size:1.75rem;font-weight:800;color:var(--fg);margin:0.25rem 0">v{esc(m['version_name'])}</div>
+        <div style="font-size:0.88rem;color:var(--mut)">Size: <strong>{human_size(m['size_bytes'])}</strong> &bull; Min Android: <strong>API {esc(m['min_sdk'])}+</strong></div>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+        <a class='btn btn-download' href='{esc(m['url_latest'])}'>⚡ Download APK (latest)</a>
+        <a class='btn alt' href='{esc(m['url_versioned'])}'>Download v{esc(m['version_name'])}</a>
+      </div>
+    </div>
+    
+    <div class="download-card">
+      <div style="font-size:0.82rem;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:0.5px">Cryptographic Integrity</div>
+      <div style="font-size:0.82rem;margin-top:0.5rem;color:var(--mut)">
+        <strong>Binary SHA-256:</strong><br>
+        <code style="display:block;word-break:break-all;margin-top:0.2rem;font-size:0.75rem">{esc(m['sha256'])}</code>
+      </div>
+      <div style="font-size:0.82rem;margin-top:0.5rem;color:var(--mut)">
+        <strong>Signing Certificate SHA-256:</strong><br>
+        <code style="display:block;word-break:break-all;margin-top:0.2rem;font-size:0.75rem">{esc(m['cert_sha256_hex'])}</code>
+      </div>
+    </div>
+  </div>
+"""
+    ]
+
     do = p.get("device_owner", {})
     if do.get("enabled") and do.get("admin_component"):
         payload = json.dumps(enrollment_payload(p, m), separators=(",", ":"))
-        h.append("<h3>Device-owner enrollment (QR)</h3><p class='mut'>Factory-reset device: tap the welcome screen "
-                 "6 times, then scan this code. Always points to the latest build.</p>")
+        qr_svg_html = ""
         if segno:
             qr = segno.make(payload, error="l")
             svg = qr.svg_inline(scale=6, border=2)
-            h.append(f"<div class='qr'>{svg}</div>")
-        h.append(f"<details style='margin-top:.5rem'><summary>QR payload</summary><pre>{esc(payload)}</pre></details>")
-    rows = "".join(f"<tr><td>{esc(v['version_name'])}</td><td>{esc(v['released_at'][:10])}</td>"
-                   f"<td><a href='{esc(v['url_versioned'])}'>APK</a></td></tr>" for v in versions[:15])
-    h.append(f"<h3>Versions</h3><div class='wrap'><table><tr><th>Version</th><th>Date</th><th>File</th></tr>{rows}</table></div>")
+            qr_svg_html = f"<div class='qr' style='margin:1rem 0'>{svg}</div>"
+        
+        h.append(f"""
+  <div class="qr-container">
+    <h3 style="margin:0 0 0.5rem 0;font-size:1.2rem">🛡️ Device-Owner (DPM) Enterprise Provisioning QR</h3>
+    <p class="mut" style="font-size:0.9rem;max-width:600px;margin:0 0 0.5rem 0">
+      <strong>Factory-Reset Enrollment:</strong> Power on factory-reset Android device. Tap the welcome screen 6 times to trigger QR scanner, then scan code below. Always installs the latest signed build.
+    </p>
+    {qr_svg_html}
+    <details style="width:100%;max-width:640px;margin-top:0.75rem;text-align:left"><summary style="cursor:pointer;font-weight:600;color:var(--acc);font-size:0.85rem">View Provisioning JSON Payload</summary><pre style="margin-top:0.5rem;font-size:0.75rem;white-space:pre-wrap;word-break:break-all">{esc(payload)}</pre></details>
+  </div>
+""")
+
+    rows = "".join(f"<tr><td><strong>v{esc(v['version_name'])}</strong></td><td>{esc(v['released_at'][:10])}</td>"
+                   f"<td><a class='btn alt' style='padding:0.25rem 0.6rem;font-size:0.78rem' href='{esc(v['url_versioned'])}'>Download APK</a></td></tr>" for v in versions[:15])
+    h.append(f"""
+  <h3 style="margin:1.75rem 0 0.75rem 0;font-size:1.15rem">Release History</h3>
+  <div class='wrap'><table><thead><tr><th>Version</th><th>Release Date</th><th>File Link</th></tr></thead><tbody>{rows}</tbody></table></div>
+</section>
+""")
     return "".join(h)
+
 
 
 def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     kind = p.get("type", "app")
     pid = p["id"]
-    links = []
-    if p.get("play_store_url"):
-        links.append(f"<a class='btn' href='{esc(p['play_store_url'])}' target='_blank' rel='noopener noreferrer'>Get it on Google Play</a>")
-    if p.get("visibility") == "public" and p.get("repo"):
-        links.append(f"<a class='btn alt' href='https://github.com/{esc(p['repo'])}'>Source code</a>")
-    if (root / "license.md").exists():
-        links.append(f"<a class='btn alt' href='{site.url(f'{pid}/license/')}'>License information</a>")
-    if (root / "privacy.md").exists():
-        links.append(f"<a class='btn alt' href='{site.url(f'{pid}/privacy/')}'>Privacy policy</a>")
+
+    DEFAULT_SUBTITLES = {
+        "studycompanion": "AI Quiz, Flashcards & TTS Tutoring",
+        "officetimecounter": "Automated Attendance & Geofencing",
+        "mockupmaster": "Mock Data & ADB CLI Generator",
+        "timespanselectorview": "Radial & Linear Duration Picker",
+        "tomcatvault": "AES-256-GCM Credential Vault",
+        "jitforge": "In-Memory Bytecode JIT Engine",
+        "spindb": "13 Containerized DB & Lakehouse CLI",
+        "agenticinventory": "Polyglot Microservices & AI Engine",
+    }
+
+    raw_name = p['name']
+    if " — " in raw_name:
+        main_title, sub_title = raw_name.split(" — ", 1)
+    elif " – " in raw_name:
+        main_title, sub_title = raw_name.split(" – ", 1)
+    else:
+        main_title, sub_title = raw_name, DEFAULT_SUBTITLES.get(pid, "")
+
+    if kind == "app":
+        cat_badge = "📱 Android App"
+        cat_name = "Apps"
+    elif kind == "library":
+        cat_badge = "📦 Android SDK"
+        cat_name = "Libraries & SDKs"
+    else:
+        cat_name = "Tools & Systems"
+        if pid == "agenticinventory":
+            cat_badge = "⚡ Microservices & AI"
+        elif pid == "spindb":
+            cat_badge = "🛠️ Developer CLI"
+        elif pid == "jitforge":
+            cat_badge = "⚡ JVM JIT Engine"
+        elif pid == "tomcatvault":
+            cat_badge = "🔒 Cryptographic Vault"
+        else:
+            cat_badge = "⚙️ System Utility"
+
+    do = p.get("device_owner", {})
+    is_dpm = do.get("enabled", False)
+    dpm_badge_html = "<span class='app-badge-dpm'>🛡️ Device Owner (DPM)</span>" if is_dpm else ""
 
     assets_dir = root / "assets"
     out_assets_dir = site.out / pid / "assets"
@@ -293,7 +457,7 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
 
     if (assets_dir / "icon.svg").exists():
         tab_icon_url = site.url(f"{pid}/assets/icon.svg")
-        icon_hdr = f"<img class='proj-icon' src='{tab_icon_url}' alt='{esc(p['name'])} icon'>"
+        icon_hdr = f"<img class='proj-icon-img' style='width:60px;height:60px;object-fit:contain;border-radius:12px' src='{tab_icon_url}' alt='{esc(main_title)} icon'>"
     elif (assets_dir / "icon.png").exists():
         png_bytes = (assets_dir / "icon.png").read_bytes()
         b64_str = base64.b64encode(png_bytes).decode("ascii")
@@ -311,35 +475,174 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
         out_assets_dir.mkdir(parents=True, exist_ok=True)
         (out_assets_dir / "icon_tab.svg").write_text(svg_tab_content, encoding="utf-8")
         tab_icon_url = site.url(f"{pid}/assets/icon_tab.svg")
-        icon_hdr = f"<img class='proj-icon' src='{tab_icon_url}' alt='{esc(p['name'])} icon'>"
+        icon_hdr = f"<img class='proj-icon-img' style='width:60px;height:60px;object-fit:contain;border-radius:12px' src='{tab_icon_url}' alt='{esc(main_title)} icon'>"
 
-    shots = "".join(f"<img loading='lazy' alt='' src='{site.url(f'{pid}/assets/{s}')}'>" for s in p.get("screenshots", []))
-    desc = md_to_html(p.get("description", ""))
-    tags = "".join(f"<span class='tag'>{esc(t)}</span>" for t in p.get("tags", []))
+    tags_html = "".join(f"<span class='tag'>{esc(t)}</span>" for t in p.get("tags", []))
 
-    header_html = f"<div class='proj-header'>{icon_hdr}<div><h1 style='margin:0 0 .25rem 0'>{esc(p['name'])}</h1><p class='mut' style='font-size:1.1rem;margin:0 0 .75rem 0'>{esc(p.get('tagline'))}</p>{tags}</div></div>"
-    body = f"{header_html}<div style='margin:1.5rem 0'>{desc}</div><div style='margin-bottom:2rem'>{''.join(links)}</div>"
-
-
-
-    if kind == "app":
-        body += render_download(site, p, versions)
-    else:
-        lib = p.get("library", {})
-        if lib.get("jitpack"):
-            ver = lib.get("latest_version", "TAG")
-            body += ("<h2 style='margin-top:2rem'>Install</h2><pre>repositories { maven { url = uri(\"https://jitpack.io\") } }\n"
-                     f"dependencies {{ implementation(\"{esc(lib['jitpack'])}:{esc(ver)}\") }}</pre>")
-        if lib.get("docs_url"):
-            body += f"<p><a class='btn alt' href='{esc(lib['docs_url'])}'>API documentation</a></p>"
-
-    site.write(f"{pid}/index.html", site.page(p["name"], body, p.get("tagline", ""), icon_url=tab_icon_url))
+    links = []
+    if p.get("play_store_url"):
+        links.append(f"<a class='btn btn-play' href='{esc(p['play_store_url'])}' target='_blank' rel='noopener noreferrer'>Get it on Google Play &nearr;</a>")
+    if versions and versions[0].get("url_latest"):
+        links.append(f"<a class='btn btn-download' href='{esc(versions[0]['url_latest'])}'>⚡ Download APK (v{esc(versions[0]['version_name'])})</a>")
+    if p.get("visibility") == "public" and p.get("repo"):
+        links.append(f"<a class='btn alt' href='https://github.com/{esc(p['repo'])}' target='_blank' rel='noopener noreferrer'>View Source Code &nearr;</a>")
+    if p.get("library", {}).get("docs_url"):
+        links.append(f"<a class='btn alt' href='{esc(p['library']['docs_url'])}' target='_blank' rel='noopener noreferrer'>API Documentation &nearr;</a>")
     if (root / "license.md").exists():
-        site.write(f"{pid}/license/index.html", site.page(f"{p['name']} License Information",
-                   md_to_html((root / "license.md").read_text(encoding="utf-8")), icon_url=tab_icon_url))
+        links.append(f"<a class='btn alt' href='{site.url(f'{pid}/license/')}'>License Information</a>")
     if (root / "privacy.md").exists():
-        site.write(f"{pid}/privacy/index.html", site.page(f"{p['name']} Privacy Policy",
-                   md_to_html((root / "privacy.md").read_text(encoding="utf-8")), icon_url=tab_icon_url))
+        links.append(f"<a class='btn alt' href='{site.url(f'{pid}/privacy/')}'>Privacy Policy</a>")
+
+    subtitle_html = f"<div class='proj-hero-subtitle'>{esc(sub_title)}</div>" if sub_title else ""
+    version_badge = f"<span class='app-badge-ver'>v{esc(versions[0]['version_name'])}</span>" if versions else ""
+    visibility_badge = "<span class='app-badge-open'>Open Source</span>" if p.get("visibility") == "public" else ""
+
+    hero_html = f"""
+<div class="proj-hero-card">
+  <div class="proj-hero-top">
+    <div class="proj-icon-wrapper">
+      {icon_hdr}
+    </div>
+    <div class="proj-hero-info">
+      <div class="proj-badges">
+        <span class="app-badge-cat">{esc(cat_badge)}</span>
+        {dpm_badge_html}
+        {version_badge}
+        {visibility_badge}
+      </div>
+      <h1 class="proj-hero-title">{esc(main_title)}</h1>
+      {subtitle_html}
+      <p class="proj-hero-tagline">{esc(p.get('tagline'))}</p>
+      <div class="proj-hero-tags">{tags_html}</div>
+    </div>
+  </div>
+  <div class="proj-action-bar">
+    {''.join(links)}
+  </div>
+</div>
+"""
+
+    screenshots = p.get("screenshots", [])
+    shots_section = ""
+    if screenshots:
+        shot_imgs = "".join(
+            f"<div class='shot-item'><img loading='lazy' alt='{esc(main_title)} visual preview' src='{site.url(f'{pid}/assets/{s}')}'></div>"
+            for s in screenshots
+        )
+        shots_section = f"""
+<section class="proj-section shots-container">
+  <h2 class="proj-section-title">🖼️ Visual Showcase &amp; Highlights</h2>
+  <div class="shots-scroll">
+    {shot_imgs}
+  </div>
+</section>
+"""
+
+    desc_content = md_to_html(p.get("description", ""))
+    desc_section = f"""
+<section class="proj-section">
+  {desc_content}
+</section>
+"""
+
+    extra_section = ""
+    if kind == "app":
+        extra_section = render_download(site, p, versions)
+    elif kind == "library":
+        lib = p.get("library", {})
+        jit = lib.get("jitpack", "")
+        ver = lib.get("latest_version", "TAG")
+        extra_section = f"""
+<section class="proj-section">
+  <h2 class="proj-section-title">📦 Library Installation &amp; Setup</h2>
+  <div class="install-card">
+    <h3 style="margin:0 0 0.5rem 0;font-size:1.1rem">1. Add JitPack Repository</h3>
+    <p style="color:var(--mut);font-size:0.9rem;margin:0 0 0.5rem 0">Add JitPack to your <code>settings.gradle.kts</code> or root <code>build.gradle</code> file:</p>
+    <pre><code>dependencyResolutionManagement {{
+    repositories {{
+        mavenCentral()
+        maven {{ url = uri("https://jitpack.io") }}
+    }}
+}}</code></pre>
+  </div>
+
+  <div class="install-card" style="margin-bottom:0">
+    <h3 style="margin:0 0 0.5rem 0;font-size:1.1rem">2. Add Gradle Dependency</h3>
+    <p style="color:var(--mut);font-size:0.9rem;margin:0 0 0.5rem 0">Add the dependency to your app-level <code>build.gradle.kts</code>:</p>
+    <pre><code>dependencies {{
+    implementation("{esc(jit)}:{esc(ver)}")
+}}</code></pre>
+  </div>
+</section>
+"""
+    else:
+        repo = p.get("repo", "")
+        repo_url = f"https://github.com/{esc(repo)}" if repo else ""
+        repo_btn = f"<a class='btn alt' href='{repo_url}' target='_blank'>View Repository on GitHub &nearr;</a>" if repo_url else ""
+        extra_section = f"""
+<section class="proj-section">
+  <h2 class="proj-section-title">⚡ Developer Quickstart &amp; Source Access</h2>
+  <div class="install-card" style="margin-bottom:0">
+    <p style="color:var(--mut);font-size:0.95rem;line-height:1.6;margin:0 0 1rem 0">
+      This enterprise system tool is fully configured for cloud-native containerized execution (Podman, Docker, Helm) and local development workflows.
+    </p>
+    <div>
+      {repo_btn}
+    </div>
+  </div>
+</section>
+"""
+
+    footer_nav = f"""
+<div class="proj-footer-nav" style="justify-content:flex-end">
+  <a href="#" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}}); return false;" class="btn alt">&uarr; Back to Top</a>
+</div>
+"""
+
+    body = hero_html + shots_section + desc_section + extra_section + footer_nav
+
+    site.write(f"{pid}/index.html", site.page(p["name"], body, p.get("tagline", ""), icon_url=tab_icon_url, show_home_brand=False))
+
+    if (root / "license.md").exists():
+        lic_body = f"""
+<div class="proj-hero-card" style="margin-bottom:1.5rem">
+  <h1 class="proj-hero-title">{esc(main_title)}</h1>
+  <div class="proj-hero-subtitle">License Information &amp; Copyright Notice</div>
+</div>
+<section class="proj-section">
+  {md_to_html((root / "license.md").read_text(encoding="utf-8"))}
+</section>
+<div class="proj-footer-nav">
+  <a href="{site.url(f'{pid}/')}" class="btn alt">&larr; Back to {esc(main_title)} Page</a>
+  <a href="#" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}}); return false;" class="btn alt">&uarr; Back to Top</a>
+</div>
+"""
+        lic_breadcrumbs = [
+            (main_title, site.url(f"{pid}/")),
+            ("License Information", "")
+        ]
+        site.write(f"{pid}/license/index.html", site.page(f"{p['name']} License Information", lic_body, icon_url=tab_icon_url, breadcrumbs=lic_breadcrumbs, show_home_brand=False))
+
+    if (root / "privacy.md").exists():
+        priv_body = f"""
+<div class="proj-hero-card" style="margin-bottom:1.5rem">
+  <h1 class="proj-hero-title">{esc(main_title)}</h1>
+  <div class="proj-hero-subtitle">Privacy Policy &amp; Security Compliance</div>
+</div>
+<section class="proj-section">
+  {md_to_html((root / "privacy.md").read_text(encoding="utf-8"))}
+</section>
+<div class="proj-footer-nav">
+  <a href="{site.url(f'{pid}/')}" class="btn alt">&larr; Back to {esc(main_title)} Page</a>
+  <a href="#" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}}); return false;" class="btn alt">&uarr; Back to Top</a>
+</div>
+"""
+        priv_breadcrumbs = [
+            (main_title, site.url(f"{pid}/")),
+            ("Privacy Policy", "")
+        ]
+        site.write(f"{pid}/privacy/index.html", site.page(f"{p['name']} Privacy Policy", priv_body, icon_url=tab_icon_url, breadcrumbs=priv_breadcrumbs, show_home_brand=False))
+
 
 
 def main() -> int:
@@ -747,7 +1050,7 @@ def main() -> int:
             body += f"<h3 style='margin-top:2rem;font-size:1.35rem'>{title}</h3><div class='grid'>{''.join(sections[key])}</div>"
     body += "</section>"
 
-    site.write("index.html", site.page(cfg.get("name", "Home"), body, cfg.get("tagline", "")))
+    site.write("index.html", site.page(cfg.get("name", "Home"), body, cfg.get("tagline", ""), show_home_brand=True))
 
     site.write("api/catalog.json", json.dumps({
         "projects": [p for p, _ in projects],
