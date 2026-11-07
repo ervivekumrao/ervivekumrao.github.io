@@ -73,8 +73,7 @@ CSS = """
 a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
 main,header>div,footer{max-width:1040px;margin:0 auto;padding:1.5rem 1rem}
 header{border-bottom:1px solid var(--line);background:var(--card);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
-header>div{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem}
-header a.logo{text-decoration:none;font-weight:700;font-size:1.25rem;color:var(--fg);letter-spacing:-0.02em}
+header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75rem 1rem}
 .theme-btn{background:transparent;border:1px solid var(--card-border);color:var(--fg);padding:.35rem .75rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:.4rem;transition:background .15s ease,border-color .15s ease}
 .theme-btn:hover{background:var(--tag-bg);border-color:var(--acc)}
 .hero-box{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:2.5rem 2rem;margin-bottom:2.5rem;box-shadow:var(--card-shadow)}
@@ -126,7 +125,7 @@ class Site:
 <link rel="icon" type="{icon_type}" href="{icon_href}">
 <link rel="apple-touch-icon" href="{icon_href}">
 <link rel="stylesheet" href="{self.url('style.css')}"></head><body>
-<header><div><a class="logo" href="{self.url('/')}">{esc(s.get('name'))}</a><button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light theme"><span id="theme-icon">☀️</span> <span id="theme-label" class="mut">Theme</span></button></div></header>
+<header><div><button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light theme"><span id="theme-icon">☀️</span> <span id="theme-label" class="mut">Theme</span></button></div></header>
 <main>{body}</main>
 <footer class="mut" style="border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem">{esc(s.get('footer', ''))}</footer>
 <script>
