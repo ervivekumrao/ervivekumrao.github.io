@@ -1,0 +1,82 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-kiosk" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#0F4C81"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="acc-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2A9D8F"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="400" height="600" rx="20" fill="url(#bg-kiosk)"/>
+
+  <!-- Subtle Grid Pattern -->
+  <path d="M0 100 H400 M0 200 H400 M0 300 H400 M0 400 H400 M0 500 H400" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+  <path d="M100 0 V600 M200 0 V600 M300 0 V600" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+
+  <!-- Phone Frame Mockup -->
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#334155" stroke-width="4" filter="url(#shadow)"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="url(#card-grad)"/>
+
+  <!-- Notch / Camera Island -->
+  <rect x="150" y="52" width="100" height="18" rx="9" fill="#020617"/>
+
+  <!-- Kiosk Active Banner -->
+  <rect x="80" y="85" width="240" height="36" rx="18" fill="url(#acc-grad)"/>
+  <path d="M135 103 L142 110 L155 97" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="165" y="108" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="700" font-size="13" letter-spacing="0.5">KIOSK MODE ACTIVE</text>
+
+  <!-- Digital Clock -->
+  <text x="200" y="170" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="800" font-size="42" text-anchor="middle">10:42</text>
+  <text x="200" y="195" fill="#94A3B8" font-family="system-ui, sans-serif" font-weight="500" font-size="14" text-anchor="middle">Monday, June 15</text>
+
+  <!-- App Grid (4 Approved Apps) -->
+  <g transform="translate(82, 220)">
+    <!-- App 1: Math -->
+    <rect x="0" y="0" width="62" height="62" rx="16" fill="#1E293B" stroke="#38BDF8" stroke-width="2"/>
+    <text x="31" y="38" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="24" text-anchor="middle">∑</text>
+    <text x="31" y="80" fill="#CBD5E1" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Math</text>
+
+    <!-- App 2: Science -->
+    <rect x="74" y="0" width="62" height="62" rx="16" fill="#1E293B" stroke="#2A9D8F" stroke-width="2"/>
+    <path d="M100 20 L110 40 A10 10 0 0 1 90 40 Z" stroke="#2A9D8F" stroke-width="2" fill="none"/>
+    <text x="105" y="80" fill="#CBD5E1" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Science</text>
+
+    <!-- App 3: Reader -->
+    <rect x="148" y="0" width="62" height="62" rx="16" fill="#1E293B" stroke="#F4A261" stroke-width="2"/>
+    <path d="M168 22 H190 V42 H168 Z" stroke="#F4A261" stroke-width="2" fill="none"/>
+    <text x="179" y="80" fill="#CBD5E1" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Reader</text>
+
+    <!-- App 4: Dictionary -->
+    <rect x="0" y="105" width="62" height="62" rx="16" fill="#1E293B" stroke="#A855F7" stroke-width="2"/>
+    <text x="31" y="143" fill="#A855F7" font-family="system-ui, sans-serif" font-weight="700" font-size="22" text-anchor="middle">Aa</text>
+    <text x="31" y="185" fill="#CBD5E1" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Dict</text>
+
+    <!-- Locked App 5 (Disabled) -->
+    <rect x="74" y="105" width="62" height="62" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5" stroke-dasharray="4"/>
+    <path d="M105 128 V133 M100 133 H110 V143 H100 Z" stroke="#64748B" stroke-width="2" fill="none"/>
+    <text x="105" y="185" fill="#64748B" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Locked</text>
+
+    <!-- Locked App 6 (Disabled) -->
+    <rect x="148" y="105" width="62" height="62" rx="16" fill="#0F172A" stroke="#334155" stroke-width="1.5" stroke-dasharray="4"/>
+    <path d="M179 128 V133 M174 133 H184 V143 H174 Z" stroke="#64748B" stroke-width="2" fill="none"/>
+    <text x="179" y="185" fill="#64748B" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Locked</text>
+  </g>
+
+  <!-- Emergency Recovery PIN Banner at Bottom -->
+  <rect x="80" y="475" width="240" height="48" rx="14" fill="#0F172A" stroke="#1E293B" stroke-width="2"/>
+  <circle cx="104" cy="499" r="12" fill="#2A9D8F" fill-opacity="0.2"/>
+  <path d="M100 499 L103 502 L108 496" stroke="#2A9D8F" stroke-width="2" fill="none"/>
+  <text x="126" y="497" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Offline PIN Exit Guard</text>
+  <text x="126" y="512" fill="#64748B" font-family="system-ui, sans-serif" font-size="10">Press &amp; Hold to unlock</text>
+</svg>

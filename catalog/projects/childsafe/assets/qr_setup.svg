@@ -1,0 +1,61 @@
+<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-qr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="600" rx="20" fill="url(#bg-qr)"/>
+
+  <!-- Phone Mockup -->
+  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#334155" stroke-width="4"/>
+  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+
+  <!-- Setup Header -->
+  <text x="200" y="85" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">QR Code Provisioning</text>
+  <text x="200" y="105" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="12" text-anchor="middle">Android Enterprise Setup</text>
+
+  <!-- QR Code Frame & Illustration -->
+  <g transform="translate(110, 130)">
+    <rect x="0" y="0" width="180" height="180" rx="20" fill="#FFFFFF"/>
+    <!-- QR Code Pattern Elements -->
+    <rect x="16" y="16" width="48" height="48" fill="#0F172A"/>
+    <rect x="24" y="24" width="32" height="32" fill="#FFFFFF"/>
+    <rect x="32" y="32" width="16" height="16" fill="#0F172A"/>
+
+    <rect x="116" y="16" width="48" height="48" fill="#0F172A"/>
+    <rect x="124" y="24" width="32" height="32" fill="#FFFFFF"/>
+    <rect x="132" y="32" width="16" height="16" fill="#0F172A"/>
+
+    <rect x="16" y="116" width="48" height="48" fill="#0F172A"/>
+    <rect x="24" y="124" width="32" height="32" fill="#FFFFFF"/>
+    <rect x="32" y="132" width="16" height="16" fill="#0F172A"/>
+
+    <!-- Data Pixels -->
+    <rect x="80" y="24" width="16" height="16" fill="#10B981"/>
+    <rect x="80" y="56" width="24" height="16" fill="#0F172A"/>
+    <rect x="24" y="80" width="24" height="16" fill="#0F172A"/>
+    <rect x="64" y="80" width="40" height="16" fill="#10B981"/>
+    <rect x="120" y="80" width="36" height="16" fill="#0F172A"/>
+    <rect x="80" y="116" width="24" height="24" fill="#0F172A"/>
+    <rect x="120" y="124" width="36" height="36" fill="#10B981"/>
+  </g>
+
+  <!-- Step 1-2-3 Guide Box -->
+  <rect x="80" y="335" width="240" height="175" rx="16" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+
+  <g transform="translate(96, 355)">
+    <circle cx="12" cy="12" r="12" fill="#10B981"/>
+    <text x="12" y="16" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">1</text>
+    <text x="34" y="16" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Factory Reset Device</text>
+
+    <circle cx="12" cy="52" r="12" fill="#10B981"/>
+    <text x="12" y="56" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">2</text>
+    <text x="34" y="56" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Tap 6 Times on Welcome</text>
+
+    <circle cx="12" cy="92" r="12" fill="#10B981"/>
+    <text x="12" y="96" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">3</text>
+    <text x="34" y="96" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Scan QR &amp; Auto Provision</text>
+  </g>
+</svg>
