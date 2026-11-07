@@ -1,0 +1,31 @@
+<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="260" rx="16" fill="#0F172A"/>
+  <rect x="10" y="10" width="380" height="240" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Main Section Title -->
+  <text x="200" y="34" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="13" text-anchor="middle">CLOUD-NATIVE REST MICROSERVICE</text>
+
+  <!-- Grid (2x2) -->
+  <rect x="20" y="48" width="172" height="44" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+  <text x="106" y="65" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="10.5" text-anchor="middle">POST /api/compile</text>
+  <text x="106" y="81" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">RAM Compilation &amp; Bytecode</text>
+
+  <rect x="208" y="48" width="172" height="44" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+  <text x="294" y="65" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="10.5" text-anchor="middle">POST /api/execute</text>
+  <text x="294" y="81" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Dynamic Method Invocation</text>
+
+  <rect x="20" y="98" width="172" height="44" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+  <text x="106" y="115" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="700" font-size="10.5" text-anchor="middle">GET /api/bytecode</text>
+  <text x="106" y="131" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Binary Stream &amp; Base64 JSON</text>
+
+  <rect x="208" y="98" width="172" height="44" rx="8" fill="#1E293B" stroke="#8B5CF6" stroke-width="1"/>
+  <text x="294" y="115" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="10.5" text-anchor="middle">GET /api/classes</text>
+  <text x="294" y="131" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">URLClassLoader Stream</text>
+
+  <!-- Bottom Details Banner Box -->
+  <rect x="20" y="148" width="360" height="90" rx="10" fill="#0F172A" stroke="#14B8A6" stroke-width="1.5"/>
+  <text x="200" y="168" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">Java 21 Loom Virtual Threads</text>
+  <text x="200" y="188" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">Non-blocking million-scale concurrent HTTP request handling</text>
+  <text x="200" y="206" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Hermetic Podman/Docker image with unprivileged UID 10001</text>
+  <text x="200" y="224" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9.5" text-anchor="middle">✓ Health check (/api/health) &amp; Tiers status (/api/tiers)</text>
+</svg>

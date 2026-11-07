@@ -1,0 +1,27 @@
+<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="260" rx="16" fill="#0F172A"/>
+  <rect x="10" y="10" width="380" height="240" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Main Section Title -->
+  <text x="200" y="34" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="13" text-anchor="middle">AST LEXICAL SANDBOXING &amp; SECURITY</text>
+
+  <!-- Top 2 Cards -->
+  <rect x="20" y="48" width="172" height="88" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1"/>
+  <text x="106" y="68" fill="#EF4444" font-family="system-ui, sans-serif" font-weight="700" font-size="10.5" text-anchor="middle">AST Token Rules</text>
+  <text x="106" y="86" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Proactive AST Inspection</text>
+  <text x="106" y="102" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5" text-anchor="middle">Blocks Process &amp; System.exit</text>
+  <text x="106" y="120" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9" text-anchor="middle">CodeSecurityValidator</text>
+
+  <rect x="208" y="48" width="172" height="88" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+  <text x="294" y="68" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="700" font-size="10.5" text-anchor="middle">Thread Timeout</text>
+  <text x="294" y="86" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">SandboxedExecutor</text>
+  <text x="294" y="102" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="8.5" text-anchor="middle">Bounds execution duration</text>
+  <text x="294" y="120" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9" text-anchor="middle">Prevents Infinite Loops</text>
+
+  <!-- Bottom Details Banner Box -->
+  <rect x="20" y="148" width="360" height="90" rx="10" fill="#0F172A" stroke="#14B8A6" stroke-width="1.5"/>
+  <text x="200" y="168" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">Enterprise Hardened Security Policy</text>
+  <text x="200" y="188" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">Proactively blocks RCE, reflection, and unauthorized file/network I/O</text>
+  <text x="200" y="206" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">SecurityPolicy.builder() for package whitelists &amp; code limits</text>
+  <text x="200" y="224" fill="#10B981" font-family="system-ui, sans-serif" font-weight="600" font-size="9.5" text-anchor="middle">✓ Safe Multitenant Dynamic Execution in Shared Cloud Pods</text>
+</svg>
