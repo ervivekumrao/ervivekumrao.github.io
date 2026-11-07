@@ -128,6 +128,13 @@ header>div{display:flex;align-items:center;justify-content:flex-end;padding:.75r
 .comp-chip:hover{border-color:var(--acc);color:var(--acc)}
 .comp-chip.highlight{background:rgba(37,99,235,0.08);color:var(--acc);border-color:rgba(37,99,235,0.25);font-weight:600}
 [data-theme="dark"] .comp-chip.highlight{background:rgba(56,189,248,0.12);color:#38bdf8;border-color:rgba(56,189,248,0.3)}
+.exp-card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:1.5rem;box-shadow:var(--card-shadow);transition:all .25s ease;position:relative}
+.exp-card:hover{border-color:var(--acc);transform:translateY(-2px);box-shadow:0 10px 25px -4px rgba(37,99,235,0.12)}
+[data-theme="dark"] .exp-card:hover{background:#182238!important;border-color:#38bdf8!important}
+.exp-note{font-size:0.85rem;color:var(--mut);font-style:italic;margin-bottom:1rem;padding:0.5rem 0.75rem;background:var(--tag-bg);border-left:3px solid var(--acc);border-radius:0 8px 8px 0}
+.exp-list{margin:0;padding-left:1.2rem;color:var(--fg);line-height:1.65;font-size:0.925rem}
+.exp-list li{margin-bottom:0.5rem}
+.exp-list li:last-child{margin-bottom:0}
 .card-title{display:flex;align-items:center;margin:0 0 .5rem 0;font-size:1.15rem;font-weight:600}
 .card-title img{width:32px;height:32px;border-radius:8px;margin-right:.75rem;object-fit:contain;flex-shrink:0}
 .card p{color:var(--mut);font-size:.925rem;margin:0 0 1rem 0;flex-grow:1;line-height:1.5}
