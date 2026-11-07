@@ -61,7 +61,11 @@ def human_size(n: int) -> str:
 
 
 def md_to_html(text: str) -> str:
-    return _md.markdown(text, extensions=["extra"]) if _md else f"<pre>{esc(text)}</pre>"
+    if _md:
+        return _md.markdown(text, extensions=["extra"])
+    if text.strip().startswith("<"):
+        return text
+    return f"<pre>{esc(text)}</pre>"
 
 
 CSS = """
@@ -212,6 +216,8 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
         links.append(f"<a class='btn' href='{esc(p['play_store_url'])}'>Get it on Google Play</a>")
     if p.get("visibility") == "public" and p.get("repo"):
         links.append(f"<a class='btn alt' href='https://github.com/{esc(p['repo'])}'>Source code</a>")
+    if (root / "license.md").exists():
+        links.append(f"<a class='btn alt' href='{site.url(f'{pid}/license/')}'>License information</a>")
     if (root / "privacy.md").exists():
         links.append(f"<a class='btn alt' href='{site.url(f'{pid}/privacy/')}'>Privacy policy</a>")
 
@@ -267,6 +273,9 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
             body += f"<p><a class='btn alt' href='{esc(lib['docs_url'])}'>API documentation</a></p>"
 
     site.write(f"{pid}/index.html", site.page(p["name"], body, p.get("tagline", ""), icon_url=tab_icon_url))
+    if (root / "license.md").exists():
+        site.write(f"{pid}/license/index.html", site.page(f"{p['name']} License Information",
+                   md_to_html((root / "license.md").read_text(encoding="utf-8")), icon_url=tab_icon_url))
     if (root / "privacy.md").exists():
         site.write(f"{pid}/privacy/index.html", site.page(f"{p['name']} Privacy Policy",
                    md_to_html((root / "privacy.md").read_text(encoding="utf-8")), icon_url=tab_icon_url))
