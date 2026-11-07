@@ -1,39 +1,37 @@
-<svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
-  <rect width="400" height="600" rx="20" fill="#0F172A"/>
-  <rect x="50" y="30" width="300" height="540" rx="36" fill="#020617" stroke="#475569" stroke-width="4"/>
-  <rect x="62" y="42" width="276" height="516" rx="26" fill="#0F172A"/>
+<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="260" rx="16" fill="#0F172A"/>
+  <rect x="8" y="8" width="384" height="244" rx="12" fill="#020617" stroke="#334155" stroke-width="1.5"/>
 
-  <text x="200" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-weight="700" font-size="16" text-anchor="middle">13 Database &amp; Lakehouses</text>
-  <text x="200" y="98" fill="#10B981" font-family="system-ui, sans-serif" font-weight="500" font-size="11" text-anchor="middle">Instant Single-Command Container Launch</text>
+  <!-- Title -->
+  <text x="200" y="32" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="700" font-size="14" text-anchor="middle">13 DATABASE &amp; LAKEHOUSE ENGINES</text>
 
-  <g transform="translate(80, 120)">
-    <rect x="0" y="0" width="240" height="380" rx="16" fill="#1E293B" stroke="#475569" stroke-width="1"/>
-    <text x="16" y="28" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">SUPPORTED CONTAINER ENGINES</text>
+  <!-- Engine Badges -->
+  <g transform="translate(20, 48)">
+    <!-- Row 1: SQL -->
+    <rect x="0" y="0" width="112" height="38" rx="6" fill="#1E293B" stroke="#3B82F6" stroke-width="1"/>
+    <text x="56" y="23" fill="#3B82F6" font-family="system-ui, sans-serif" font-weight="700" font-size="10" text-anchor="middle">PostgreSQL / MySQL</text>
 
-    <!-- Grid of DB Pills -->
-    <g transform="translate(16, 45)">
-      <rect x="0" y="0" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="19" fill="#F8FAFC" font-size="9" text-anchor="middle">PostgreSQL</text>
-      <rect x="110" y="0" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="19" fill="#34D399" font-size="9" text-anchor="middle">pgvector (AI)</text>
+    <rect x="124" y="0" width="112" height="38" rx="6" fill="#1E293B" stroke="#00C7F7" stroke-width="1"/>
+    <text x="180" y="23" fill="#00C7F7" font-family="system-ui, sans-serif" font-weight="700" font-size="10" text-anchor="middle">MariaDB / MSSQL</text>
 
-      <rect x="0" y="38" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="57" fill="#F8FAFC" font-size="9" text-anchor="middle">MySQL 8.0</text>
-      <rect x="110" y="38" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="57" fill="#F8FAFC" font-size="9" text-anchor="middle">MariaDB</text>
+    <rect x="248" y="0" width="112" height="38" rx="6" fill="#1E293B" stroke="#F59E0B" stroke-width="1"/>
+    <text x="304" y="23" fill="#F59E0B" font-family="system-ui, sans-serif" font-weight="700" font-size="10" text-anchor="middle">Oracle / DB2</text>
 
-      <rect x="0" y="76" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="95" fill="#F8FAFC" font-size="9" text-anchor="middle">SQL Server</text>
-      <rect x="110" y="76" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="95" fill="#F8FAFC" font-size="9" text-anchor="middle">Oracle Free</text>
+    <!-- Row 2: NoSQL & Cache -->
+    <rect x="0" y="46" width="112" height="38" rx="6" fill="#1E293B" stroke="#EF4444" stroke-width="1"/>
+    <text x="56" y="69" fill="#EF4444" font-family="system-ui, sans-serif" font-weight="700" font-size="10" text-anchor="middle">Redis / Valkey</text>
 
-      <rect x="0" y="114" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="133" fill="#F8FAFC" font-size="9" text-anchor="middle">IBM DB2</text>
-      <rect x="110" y="114" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="133" fill="#F8FAFC" font-size="9" text-anchor="middle">MongoDB</text>
+    <rect x="124" y="46" width="112" height="38" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+    <text x="180" y="69" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="10" text-anchor="middle">MongoDB</text>
 
-      <rect x="0" y="152" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="171" fill="#F8FAFC" font-size="9" text-anchor="middle">Redis / Valkey</text>
-      <rect x="110" y="152" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="171" fill="#F8FAFC" font-size="9" text-anchor="middle">ClickHouse</text>
-
-      <rect x="0" y="190" width="98" height="30" rx="6" fill="#0F172A"/><text x="49" y="209" fill="#F8FAFC" font-size="9" text-anchor="middle">CockroachDB</text>
-      <rect x="110" y="190" width="98" height="30" rx="6" fill="#0F172A"/><text x="159" y="209" fill="#38BDF8" font-size="9" text-anchor="middle">DuckDB</text>
-    </g>
-
-    <rect x="16" y="280" width="208" height="80" rx="10" fill="#020617" stroke="#10B981" stroke-width="1"/>
-    <text x="26" y="302" fill="#10B981" font-family="system-ui, sans-serif" font-weight="700" font-size="11">SINGLE COMMAND LAUNCH</text>
-    <text x="26" y="322" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="9">spinctl -t pgvector -p 5432 -n dev-ai</text>
-    <text x="26" y="342" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="600" font-size="9">Dynamic Version Discovery (--list-versions)</text>
+    <rect x="248" y="46" width="112" height="38" rx="6" fill="#1E293B" stroke="#8B5CF6" stroke-width="1"/>
+    <text x="304" y="69" fill="#8B5CF6" font-family="system-ui, sans-serif" font-weight="700" font-size="10" text-anchor="middle">pgvector (AI)</text>
   </g>
+
+  <!-- Analytics & Lakehouse Row -->
+  <rect x="20" y="146" width="360" height="90" rx="10" fill="#0F172A" stroke="#14B8A6" stroke-width="1.5"/>
+  <text x="180" y="168" fill="#14B8A6" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">Analytics &amp; Big Data Lakehouse Engines</text>
+  <text x="180" y="188" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">ClickHouse (OLAP) • CockroachDB • Snowflake (DuckDB)</text>
+  <text x="180" y="206" fill="#38BDF8" font-family="system-ui, sans-serif" font-weight="600" font-size="10" text-anchor="middle">Databricks Engine (Apache Spark + Delta Lake)</text>
+  <text x="180" y="224" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Instant provisioning with single command: spinctl -t &lt;engine&gt;</text>
 </svg>
