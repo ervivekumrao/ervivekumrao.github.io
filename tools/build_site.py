@@ -82,15 +82,18 @@ header>div{display:flex;align-items:center;justify-content:space-between;padding
 .nav-brand-home:hover{background:var(--acc);color:#ffffff!important;border-color:var(--acc)}
 
 .theme-switch{background:transparent;border:none;padding:0;cursor:pointer;display:inline-flex;align-items:center;outline:none;user-select:none;-webkit-tap-highlight-color:transparent}
-.switch-track{position:relative;width:64px;height:32px;border-radius:99px;background:#bae6fd;border:2px solid #7dd3fc;box-shadow:inset 0 2px 4px rgba(0,0,0,0.12);display:flex;align-items:center;padding:3px;transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease}
-[data-theme="dark"] .switch-track{background:#0f172a;border-color:#1e293b;box-shadow:inset 0 2px 6px rgba(0,0,0,0.5)}
-.switch-knob{position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#334155;box-shadow:0 2px 6px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;transform:translateX(32px);transition:transform .35s cubic-bezier(0.34,1.56,0.64,1),background-color .35s ease,box-shadow .35s ease}
-[data-theme="dark"] .switch-knob{transform:translateX(0px);background:#1e293b;box-shadow:0 2px 6px rgba(0,0,0,0.4),0 0 10px rgba(56,189,248,0.2)}
-.knob-icon{position:absolute;display:flex;align-items:center;justify-content:center;color:#ffffff;transition:opacity .25s ease,transform .35s ease}
-.icon-sun{opacity:1;transform:scale(1) rotate(0deg)}
-.icon-moon{opacity:0;transform:scale(0.6) rotate(-90deg)}
-[data-theme="dark"] .icon-sun{opacity:0;transform:scale(0.6) rotate(90deg)}
-[data-theme="dark"] .icon-moon{opacity:1;transform:scale(1) rotate(0deg);color:#38bdf8}
+.switch-track{position:relative;width:56px;height:28px;border-radius:99px;background:#cbd5e1;border:1.5px solid #94a3b8;box-shadow:inset 0 2px 4px rgba(0,0,0,0.12);transition:background-color .3s ease,border-color .3s ease}
+[data-theme="dark"] .switch-track{background:#1e293b;border-color:#334155;box-shadow:inset 0 2px 5px rgba(0,0,0,0.4)}
+.switch-knob{position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;background:#ffffff;box-shadow:0 2px 5px rgba(0,0,0,0.25);display:grid;place-items:center;transition:transform .3s cubic-bezier(0.34,1.56,0.64,1),background-color .3s ease,box-shadow .3s ease}
+[data-theme="dark"] .switch-knob{transform:translateX(27px);background:#0b0f19;box-shadow:0 2px 8px rgba(56,189,248,0.35)}
+.switch-knob svg{grid-area:1 / 1;transition:opacity .25s ease,transform .3s ease}
+.icon-sun{color:#f59e0b;opacity:1;transform:scale(1)}
+.icon-moon{color:#38bdf8;opacity:0;transform:scale(0.5)}
+[data-theme="dark"] .icon-sun{opacity:0;transform:scale(0.5)}
+[data-theme="dark"] .icon-moon{opacity:1;transform:scale(1)}
+.track-icon{position:absolute;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;pointer-events:none;color:var(--mut);opacity:0.45}
+.track-sun{left:6px}
+.track-moon{right:6px}
 .theme-switch:hover .switch-track{border-color:var(--acc)}
 
 .breadcrumb{display:flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--mut);margin-bottom:1.25rem;flex-wrap:wrap}
@@ -274,18 +277,25 @@ class Site:
     {brand_html}
     <button id="theme-toggle" class="theme-switch" aria-label="Toggle dark/light theme" type="button">
       <span class="switch-track">
+        <span class="track-icon track-sun">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+        </span>
+        <span class="track-icon track-moon">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </span>
         <span class="switch-knob">
-          <span class="knob-icon icon-sun">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="4"></circle>
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-            </svg>
-          </span>
-          <span class="knob-icon icon-moon">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </span>
+          <svg class="icon-sun" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
         </span>
       </span>
     </button>
