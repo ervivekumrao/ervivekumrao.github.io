@@ -42,18 +42,51 @@ class Site:
         icon_href = icon_url if icon_url else self.url("favicon.svg")
         icon_type = "image/svg+xml" if icon_href.endswith(".svg") else "image/png"
 
-        crumb_html = ""
+        ribbon_items = []
         if breadcrumbs:
-            crumbs_rendered = []
-            for label, link in breadcrumbs:
-                if link:
-                    crumbs_rendered.append(f"<a href='{esc(link)}'>{esc(label)}</a>")
-                else:
-                    crumbs_rendered.append(f"<span class='current'>{esc(label)}</span>")
-            crumb_html = f"<nav class='breadcrumb' aria-label='Breadcrumb'>{' <span class=\"sep\">&rsaquo;</span> '.join(crumbs_rendered)}</nav>"
+            total_crumbs = len(breadcrumbs)
+            for i, (label, link) in enumerate(breadcrumbs):
+                is_first = (i == 0)
+                is_last = (i == total_crumbs - 1)
+                is_current = (link == "")
 
-        home_icon_svg = """<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>"""
-        brand_html = f"""<a href="{self.url('/')}" class="nav-brand-home" aria-label="Home">{home_icon_svg}</a>""" if show_home_brand else "<div></div>"
+                classes = ["ribbon-item"]
+                if is_first:
+                    classes.append("ribbon-first")
+                if is_last:
+                    classes.append("ribbon-last")
+                if is_current:
+                    classes.append("ribbon-current")
+                else:
+                    classes.append("ribbon-sublink")
+
+                class_str = " ".join(classes)
+                content = f"<span>{esc(label)}</span>"
+
+                if link and not is_current:
+                    ribbon_items.append(f"<a href='{esc(link)}' class='{class_str}'>{content}</a>")
+                else:
+                    ribbon_items.append(f"<span class='{class_str}'>{content}</span>")
+        else:
+            home_sections = [
+                ("⚡ Overview", self.url("#overview"), "overview"),
+                ("Experience", self.url("#experience"), "experience"),
+                ("Core Skills", self.url("#competencies"), "competencies"),
+                ("Featured Projects", self.url("#projects"), "projects")
+            ]
+            total_sections = len(home_sections)
+            for i, (label, link, sec_id) in enumerate(home_sections):
+                is_first = (i == 0)
+                is_last = (i == total_sections - 1)
+                classes = ["ribbon-item ribbon-section"]
+                if is_first:
+                    classes.append("ribbon-first ribbon-active")
+                if is_last:
+                    classes.append("ribbon-last")
+                class_str = " ".join(classes)
+                ribbon_items.append(f"<a href='{esc(link)}' class='{class_str}' data-section='{sec_id}'><span>{esc(label)}</span></a>")
+
+        crumb_html = f"<nav class='ribbon-nav' aria-label='Breadcrumb'>{''.join(ribbon_items)}</nav>"
 
         return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -64,7 +97,9 @@ class Site:
 <link rel="stylesheet" href="{self.url('style.css')}"></head><body>
 <header>
   <div>
-    {brand_html}
+    <div class="header-left">
+      {crumb_html}
+    </div>
     <button id="theme-toggle" class="theme-switch" aria-label="Toggle dark/light theme" type="button">
       <span class="switch-track">
         <span class="track-icon track-sun">
@@ -92,7 +127,6 @@ class Site:
   </div>
 </header>
 <main>
-{crumb_html}
 {body}
 </main>
 <script>
@@ -135,6 +169,32 @@ class Site:
         setTheme(e.matches ? "dark" : "light");
       }}
     }});
+  }}
+
+  var sections = ["overview", "experience", "competencies", "projects"];
+  var navLinks = document.querySelectorAll(".ribbon-section[data-section]");
+  if(navLinks && navLinks.length){{
+    function updateProgress(){{
+      var scrollPos = window.scrollY + 140;
+      var activeIdx = 0;
+      for(var i = 0; i < sections.length; i++){{
+        var el = document.getElementById(sections[i]);
+        if(el && el.offsetTop <= scrollPos){{
+          activeIdx = i;
+        }}
+      }}
+      navLinks.forEach(function(link){{
+        var sec = link.getAttribute("data-section");
+        var idx = sections.indexOf(sec);
+        if(idx <= activeIdx){{
+          link.classList.add("ribbon-active");
+        }} else {{
+          link.classList.remove("ribbon-active");
+        }}
+      }});
+    }}
+    window.addEventListener("scroll", updateProgress, {{passive: true}});
+    updateProgress();
   }}
 }})();
 </script>
@@ -267,10 +327,16 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
         links.append(f"<a class='btn alt' href='https://github.com/{esc(p['repo'])}' target='_blank' rel='noopener noreferrer'>View Source Code &nearr;</a>")
     if p.get("library", {}).get("docs_url"):
         links.append(f"<a class='btn alt' href='{esc(p['library']['docs_url'])}' target='_blank' rel='noopener noreferrer'>API Documentation &nearr;</a>")
-    if (root / "license.md").exists():
-        links.append(f"<a class='btn alt' href='{site.url(f'{pid}/license/')}'>License Information</a>")
-    if (root / "privacy.md").exists():
-        links.append(f"<a class='btn alt' href='{site.url(f'{pid}/privacy/')}'>Privacy Policy</a>")
+    if kind == "library" or (root / "license.md").exists():
+        if (root / "license.md").exists():
+            links.append(f"<a class='btn alt' href='{site.url(f'{pid}/license/')}'>License Information</a>")
+        if (root / "privacy.md").exists():
+            links.append(f"<a class='btn alt' href='{site.url(f'{pid}/privacy/')}'>Privacy Policy</a>")
+    else:
+        if (root / "privacy.md").exists():
+            links.append(f"<a class='btn alt' href='{site.url(f'{pid}/privacy/')}'>Privacy Policy</a>")
+        if (root / "license.md").exists():
+            links.append(f"<a class='btn alt' href='{site.url(f'{pid}/license/')}'>License Information</a>")
 
     subtitle_html = f"<div class='proj-hero-subtitle'>{esc(sub_title)}</div>" if sub_title else ""
     version_badge = f"<span class='app-badge-ver'>v{esc(versions[0]['version_name'])}</span>" if versions else ""
@@ -379,19 +445,34 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
 
     body = hero_html + shots_section + desc_section + extra_section + footer_nav
 
-    site.write(f"{pid}/index.html", site.page(p["name"], body, p.get("tagline", ""), icon_url=tab_icon_url, show_home_brand=False))
+    proj_breadcrumbs = [(main_title, "")]
+    if kind == "library" or (root / "license.md").exists():
+        if (root / "license.md").exists():
+            proj_breadcrumbs.append(("License Information", site.url(f"{pid}/license/")))
+        if (root / "privacy.md").exists():
+            proj_breadcrumbs.append(("Privacy Policy", site.url(f"{pid}/privacy/")))
+    else:
+        if (root / "privacy.md").exists():
+            proj_breadcrumbs.append(("Privacy Policy", site.url(f"{pid}/privacy/")))
+        if (root / "license.md").exists():
+            proj_breadcrumbs.append(("License Information", site.url(f"{pid}/license/")))
+
+    site.write(f"{pid}/index.html", site.page(p["name"], body, p.get("tagline", ""), icon_url=tab_icon_url, breadcrumbs=proj_breadcrumbs, show_home_brand=False))
 
     if (root / "license.md").exists():
         lic_body = f"""
 <div class="proj-hero-card" style="margin-bottom:1.5rem">
+  <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:600;color:var(--acc);margin-bottom:0.5rem">
+    <span>📜 License &amp; Terms Compliance</span>
+  </div>
   <h1 class="proj-hero-title">{esc(main_title)}</h1>
-  <div class="proj-hero-subtitle">License Information &amp; Copyright Notice</div>
+  <div class="proj-hero-subtitle">Open Source License Terms &amp; Copyright Notice</div>
 </div>
-<section class="proj-section">
+<div class="doc-card">
   {md_to_html((root / "license.md").read_text(encoding="utf-8"))}
-</section>
+</div>
 <div class="proj-footer-nav">
-  <a href="{site.url(f'{pid}/')}" class="btn alt">&larr; Back to {esc(main_title)} Page</a>
+  <a href="{site.url(f'{pid}/')}" class="btn alt">&larr; Back to {esc(main_title)} Overview</a>
   <a href="#" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}}); return false;" class="btn alt">&uarr; Back to Top</a>
 </div>
 """
@@ -399,19 +480,25 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
             (main_title, site.url(f"{pid}/")),
             ("License Information", "")
         ]
+        if (root / "privacy.md").exists():
+            lic_breadcrumbs.append(("Privacy Policy", site.url(f"{pid}/privacy/")))
+
         site.write(f"{pid}/license/index.html", site.page(f"{p['name']} License Information", lic_body, icon_url=tab_icon_url, breadcrumbs=lic_breadcrumbs, show_home_brand=False))
 
     if (root / "privacy.md").exists():
         priv_body = f"""
 <div class="proj-hero-card" style="margin-bottom:1.5rem">
+  <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:600;color:var(--acc);margin-bottom:0.5rem">
+    <span>🛡️ Data Privacy &amp; Security Compliance</span>
+  </div>
   <h1 class="proj-hero-title">{esc(main_title)}</h1>
-  <div class="proj-hero-subtitle">Privacy Policy &amp; Security Compliance</div>
+  <div class="proj-hero-subtitle">Privacy Policy &amp; Security Standards</div>
 </div>
-<section class="proj-section">
+<div class="doc-card">
   {md_to_html((root / "privacy.md").read_text(encoding="utf-8"))}
-</section>
+</div>
 <div class="proj-footer-nav">
-  <a href="{site.url(f'{pid}/')}" class="btn alt">&larr; Back to {esc(main_title)} Page</a>
+  <a href="{site.url(f'{pid}/')}" class="btn alt">&larr; Back to {esc(main_title)} Overview</a>
   <a href="#" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}}); return false;" class="btn alt">&uarr; Back to Top</a>
 </div>
 """
@@ -419,6 +506,9 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
             (main_title, site.url(f"{pid}/")),
             ("Privacy Policy", "")
         ]
+        if (root / "license.md").exists():
+            priv_breadcrumbs.append(("License Information", site.url(f"{pid}/license/")))
+
         site.write(f"{pid}/privacy/index.html", site.page(f"{p['name']} Privacy Policy", priv_body, icon_url=tab_icon_url, breadcrumbs=priv_breadcrumbs, show_home_brand=False))
 
 
@@ -441,7 +531,7 @@ def render_profile_sections(site: Site, profile: dict, experience: dict) -> str:
             f"</div>"
         )
 
-    hero_html = f"""<div class="hero-box">
+    hero_html = f"""<div class="hero-box" id="overview">
 <div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
   <div style="flex:1;min-width:280px">
     <div style="display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--tag-fg);padding:0.3rem 0.8rem;border-radius:99px;font-size:0.85rem;font-weight:500;margin-bottom:1rem">
@@ -484,7 +574,7 @@ def render_profile_sections(site: Site, profile: dict, experience: dict) -> str:
             f"</div>"
         )
 
-    exp_html = f"""<section style="margin-top:3.5rem">
+    exp_html = f"""<section id="experience" style="margin-top:3.5rem">
 <h2 style="font-size:1.75rem;margin-bottom:0.25rem">Professional Experience</h2>
 <p class="mut" style="margin-top:0;margin-bottom:1.5rem">A 15+ year track record of architecting JVM internals, mobile security platforms, and enterprise solutions at global scale.</p>
 
@@ -511,7 +601,7 @@ def render_profile_sections(site: Site, profile: dict, experience: dict) -> str:
             f"</div>"
         )
 
-    comp_html = f"""<section style="margin-top:3.5rem">
+    comp_html = f"""<section id="competencies" style="margin-top:3.5rem">
 <h2 style="font-size:1.75rem;margin-bottom:0.25rem">Core Competencies &amp; Technical Skills</h2>
 <p class="mut" style="margin-top:0;margin-bottom:1.5rem">Systematic domain expertise, runtime architectures, and enterprise technologies from 15+ years of systems engineering.</p>
 

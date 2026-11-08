@@ -48,22 +48,160 @@ function getProjectCategoryBadge(p) {
 
 function mdToHtml(text) {
   if (!text) return '';
-  if (text.trim().startsWith('<')) return text;
-  return `<pre>${esc(text)}</pre>`;
+  text = text.trim();
+  if (text.startsWith('<')) return text;
+
+  function parseInline(str) {
+    let s = esc(str);
+    s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+    s = s.replace(/(\*\*|__)(.*?)\1/g, '<strong>$2</strong>');
+    s = s.replace(/(\*|_)(.*?)\1/g, '<em>$2</em>');
+    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, label, url) => {
+      const target = url.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
+      return `<a href="${url}"${target}>${label}</a>`;
+    });
+    return s;
+  }
+
+  const lines = text.split(/\r?\n/);
+  const blocks = [];
+  let inCode = false;
+  let codeLines = [];
+  let inList = false;
+  let listItems = [];
+
+  function flushList() {
+    if (inList && listItems.length) {
+      blocks.push(`<ul>${listItems.join('')}</ul>`);
+      listItems = [];
+      inList = false;
+    }
+  }
+
+  for (const line of lines) {
+    const stripped = line.trim();
+
+    if (stripped.startsWith('```')) {
+      if (inCode) {
+        blocks.push(`<pre><code>${esc(codeLines.join('\n'))}</code></pre>`);
+        codeLines = [];
+        inCode = false;
+      } else {
+        flushList();
+        inCode = true;
+        codeLines = [];
+      }
+      continue;
+    }
+
+    if (inCode) {
+      codeLines.push(line);
+      continue;
+    }
+
+    if (!stripped) {
+      flushList();
+      continue;
+    }
+
+    if (stripped === '---' || stripped === '***' || stripped === '___') {
+      flushList();
+      blocks.push('<hr>');
+      continue;
+    }
+
+    if (stripped.startsWith('# ')) {
+      flushList();
+      blocks.push(`<h1>${parseInline(stripped.slice(2))}</h1>`);
+      continue;
+    }
+    if (stripped.startsWith('## ')) {
+      flushList();
+      blocks.push(`<h2>${parseInline(stripped.slice(3))}</h2>`);
+      continue;
+    }
+    if (stripped.startsWith('### ')) {
+      flushList();
+      blocks.push(`<h3>${parseInline(stripped.slice(4))}</h3>`);
+      continue;
+    }
+    if (stripped.startsWith('#### ')) {
+      flushList();
+      blocks.push(`<h4>${parseInline(stripped.slice(5))}</h4>`);
+      continue;
+    }
+
+    if (stripped.startsWith('> ')) {
+      flushList();
+      blocks.push(`<blockquote>${parseInline(stripped.slice(2))}</blockquote>`);
+      continue;
+    }
+
+    if (stripped.startsWith('- ') || stripped.startsWith('* ') || stripped.startsWith('+ ')) {
+      inList = true;
+      listItems.push(`<li>${parseInline(stripped.slice(2))}</li>`);
+      continue;
+    }
+
+    flushList();
+    blocks.push(`<p>${parseInline(stripped)}</p>`);
+  }
+
+  flushList();
+  if (inCode && codeLines.length) {
+    blocks.push(`<pre><code>${esc(codeLines.join('\n'))}</code></pre>`);
+  }
+
+  return blocks.join('\n');
 }
 
 function page(cfg, title, body, desc = '', iconUrl = '', breadcrumbs = null, showHomeBrand = false) {
   const iconHref = iconUrl ? iconUrl : '/favicon.svg';
   const iconType = iconHref.endsWith('.svg') ? 'image/svg+xml' : 'image/png';
-  let crumbHtml = '';
-  if (breadcrumbs) {
-    const crumbsRendered = breadcrumbs.map(([label, link]) => {
-      return link ? `<a href='${esc(link)}'>${esc(label)}</a>` : `<span class='current'>${esc(label)}</span>`;
+
+  const ribbonItems = [];
+  if (breadcrumbs && breadcrumbs.length) {
+    const totalCrumbs = breadcrumbs.length;
+    breadcrumbs.forEach(([label, link], i) => {
+      const isFirst = i === 0;
+      const isLast = i === totalCrumbs - 1;
+      const isCurrent = link === '';
+
+      const classes = ['ribbon-item'];
+      if (isFirst) classes.push('ribbon-first');
+      if (isLast) classes.push('ribbon-last');
+      if (isCurrent) classes.push('ribbon-current');
+      else classes.push('ribbon-sublink');
+
+      const classStr = classes.join(' ');
+      const content = `<span>${esc(label)}</span>`;
+
+      if (link && !isCurrent) {
+        ribbonItems.push(`<a href='${esc(link)}' class='${classStr}'>${content}</a>`);
+      } else {
+        ribbonItems.push(`<span class='${classStr}'>${content}</span>`);
+      }
     });
-    crumbHtml = `<nav class='breadcrumb' aria-label='Breadcrumb'>${crumbsRendered.join(' <span class="sep">&rsaquo;</span> ')}</nav>`;
+  } else {
+    const homeSections = [
+      ['⚡ Overview', '#overview', 'overview'],
+      ['Experience', '#experience', 'experience'],
+      ['Core Skills', '#competencies', 'competencies'],
+      ['Featured Projects', '#projects', 'projects']
+    ];
+    const totalSections = homeSections.length;
+    homeSections.forEach(([label, link, secId], i) => {
+      const isFirst = i === 0;
+      const isLast = i === totalSections - 1;
+      const classes = ['ribbon-item ribbon-section'];
+      if (isFirst) classes.push('ribbon-first ribbon-active');
+      if (isLast) classes.push('ribbon-last');
+      const classStr = classes.join(' ');
+      ribbonItems.push(`<a href='${esc(link)}' class='${classStr}' data-section='${secId}'><span>${esc(label)}</span></a>`);
+    });
   }
-  const homeIconSvg = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>`;
-  const brandHtml = showHomeBrand ? `<a href="/" class="nav-brand-home" aria-label="Home">${homeIconSvg}</a>` : '<div></div>';
+
+  const crumbHtml = `<nav class='ribbon-nav' aria-label='Breadcrumb'>${ribbonItems.join('')}</nav>`;
 
   return `<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -74,7 +212,9 @@ function page(cfg, title, body, desc = '', iconUrl = '', breadcrumbs = null, sho
 <link rel="stylesheet" href="/style.css"></head><body>
 <header>
   <div>
-    ${brandHtml}
+    <div class="header-left">
+      ${crumbHtml}
+    </div>
     <button id="theme-toggle" class="theme-switch" aria-label="Toggle dark/light theme" type="button">
       <span class="switch-track">
         <span class="track-icon track-sun">
@@ -102,7 +242,6 @@ function page(cfg, title, body, desc = '', iconUrl = '', breadcrumbs = null, sho
   </div>
 </header>
 <main>
-${crumbHtml}
 ${body}
 </main>
 <script>
@@ -146,6 +285,32 @@ ${body}
       }
     });
   }
+
+  var sections = ["overview", "experience", "competencies", "projects"];
+  var navLinks = document.querySelectorAll(".ribbon-section[data-section]");
+  if(navLinks && navLinks.length){
+    function updateProgress(){
+      var scrollPos = window.scrollY + 140;
+      var activeIdx = 0;
+      for(var i = 0; i < sections.length; i++){
+        var el = document.getElementById(sections[i]);
+        if(el && el.offsetTop <= scrollPos){
+          activeIdx = i;
+        }
+      }
+      navLinks.forEach(function(link){
+        var sec = link.getAttribute("data-section");
+        var idx = sections.indexOf(sec);
+        if(idx <= activeIdx){
+          link.classList.add("ribbon-active");
+        } else {
+          link.classList.remove("ribbon-active");
+        }
+      });
+    }
+    window.addEventListener("scroll", updateProgress, {passive: true});
+    updateProgress();
+  }
 })();
 </script>
 </body></html>`;
@@ -166,7 +331,7 @@ function renderProfileSections(cfg, profile, experience) {
     </div>
   `).join('');
 
-  const heroHtml = `<div class="hero-box">
+  const heroHtml = `<div class="hero-box" id="overview">
 <div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
   <div style="flex:1;min-width:280px">
     <div style="display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--tag-fg);padding:0.3rem 0.8rem;border-radius:99px;font-size:0.85rem;font-weight:500;margin-bottom:1rem">
@@ -209,7 +374,7 @@ function renderProfileSections(cfg, profile, experience) {
     `;
   }).join('');
 
-  const expHtml = `<section style="margin-top:3.5rem">
+  const expHtml = `<section id="experience" style="margin-top:3.5rem">
 <h2 style="font-size:1.75rem;margin-bottom:0.25rem">Professional Experience</h2>
 <p class="mut" style="margin-top:0;margin-bottom:1.5rem">A 15+ year track record of architecting JVM internals, mobile security platforms, and enterprise solutions at global scale.</p>
 
@@ -236,7 +401,7 @@ function renderProfileSections(cfg, profile, experience) {
     `;
   }).join('');
 
-  const compHtml = `<section style="margin-top:3.5rem">
+  const compHtml = `<section id="competencies" style="margin-top:3.5rem">
 <h2 style="font-size:1.75rem;margin-bottom:0.25rem">Core Competencies &amp; Technical Skills</h2>
 <p class="mut" style="margin-top:0;margin-bottom:1.5rem">Systematic domain expertise, runtime architectures, and enterprise technologies from 15+ years of systems engineering.</p>
 
@@ -382,6 +547,22 @@ function buildSite(outDir) {
       projLinks.push(`<a class='btn alt' href='https://github.com/${esc(p.repo)}' target='_blank' rel='noopener noreferrer'>View Source Code &nearr;</a>`);
     }
 
+    if (ptype === 'library' || fs.existsSync(path.join(dirPath, 'license.md'))) {
+      if (fs.existsSync(path.join(dirPath, 'license.md'))) {
+        projLinks.push(`<a class='btn alt' href='/${pid}/license/'>License Information</a>`);
+      }
+      if (fs.existsSync(path.join(dirPath, 'privacy.md'))) {
+        projLinks.push(`<a class='btn alt' href='/${pid}/privacy/'>Privacy Policy</a>`);
+      }
+    } else {
+      if (fs.existsSync(path.join(dirPath, 'privacy.md'))) {
+        projLinks.push(`<a class='btn alt' href='/${pid}/privacy/'>Privacy Policy</a>`);
+      }
+      if (fs.existsSync(path.join(dirPath, 'license.md'))) {
+        projLinks.push(`<a class='btn alt' href='/${pid}/license/'>License Information</a>`);
+      }
+    }
+
     const projHeroHtml = `
       <div class="proj-hero-card">
         <div class="proj-hero-top">
@@ -405,13 +586,87 @@ function buildSite(outDir) {
 
     const descSection = `<section class="proj-section">${p.description || ''}</section>`;
     const projBody = projHeroHtml + descSection;
-    const projHtml = page(cfg, p.name, projBody, p.tagline || '');
+
+    const projBreadcrumbs = [[mainTitle, '']];
+    if (ptype === 'library' || fs.existsSync(path.join(dirPath, 'license.md'))) {
+      if (fs.existsSync(path.join(dirPath, 'license.md'))) {
+        projBreadcrumbs.push(['License Information', `/${pid}/license/`]);
+      }
+      if (fs.existsSync(path.join(dirPath, 'privacy.md'))) {
+        projBreadcrumbs.push(['Privacy Policy', `/${pid}/privacy/`]);
+      }
+    } else {
+      if (fs.existsSync(path.join(dirPath, 'privacy.md'))) {
+        projBreadcrumbs.push(['Privacy Policy', `/${pid}/privacy/`]);
+      }
+      if (fs.existsSync(path.join(dirPath, 'license.md'))) {
+        projBreadcrumbs.push(['License Information', `/${pid}/license/`]);
+      }
+    }
+
+    const projHtml = page(cfg, p.name, projBody, p.tagline || '', '', projBreadcrumbs);
     fs.writeFileSync(path.join(projOutDir, 'index.html'), projHtml, 'utf8');
+
+    if (fs.existsSync(path.join(dirPath, 'license.md'))) {
+      const licDir = path.join(projOutDir, 'license');
+      fs.mkdirSync(licDir, { recursive: true });
+      const licContent = fs.readFileSync(path.join(dirPath, 'license.md'), 'utf8');
+      const licBody = `
+        <div class="proj-hero-card" style="margin-bottom:1.5rem">
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:600;color:var(--acc);margin-bottom:0.5rem">
+            <span>📜 License &amp; Terms Compliance</span>
+          </div>
+          <h1 class="proj-hero-title">${esc(mainTitle)}</h1>
+          <div class="proj-hero-subtitle">Open Source License Terms &amp; Copyright Notice</div>
+        </div>
+        <div class="doc-card">
+          ${mdToHtml(licContent)}
+        </div>
+        <div class="proj-footer-nav">
+          <a href="/${pid}/" class="btn alt">&larr; Back to ${esc(mainTitle)} Overview</a>
+          <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="btn alt">&uarr; Back to Top</a>
+        </div>
+      `;
+      const licCrumbs = [[mainTitle, `/${pid}/`], ['License Information', '']];
+      if (fs.existsSync(path.join(dirPath, 'privacy.md'))) {
+        licCrumbs.push(['Privacy Policy', `/${pid}/privacy/`]);
+      }
+      const licHtml = page(cfg, `${p.name} License Information`, licBody, p.tagline || '', '', licCrumbs);
+      fs.writeFileSync(path.join(licDir, 'index.html'), licHtml, 'utf8');
+    }
+
+    if (fs.existsSync(path.join(dirPath, 'privacy.md'))) {
+      const privDir = path.join(projOutDir, 'privacy');
+      fs.mkdirSync(privDir, { recursive: true });
+      const privContent = fs.readFileSync(path.join(dirPath, 'privacy.md'), 'utf8');
+      const privBody = `
+        <div class="proj-hero-card" style="margin-bottom:1.5rem">
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:600;color:var(--acc);margin-bottom:0.5rem">
+            <span>🛡️ Data Privacy &amp; Security Compliance</span>
+          </div>
+          <h1 class="proj-hero-title">${esc(mainTitle)}</h1>
+          <div class="proj-hero-subtitle">Privacy Policy &amp; Security Standards</div>
+        </div>
+        <div class="doc-card">
+          ${mdToHtml(privContent)}
+        </div>
+        <div class="proj-footer-nav">
+          <a href="/${pid}/" class="btn alt">&larr; Back to ${esc(mainTitle)} Overview</a>
+          <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="btn alt">&uarr; Back to Top</a>
+        </div>
+      `;
+      const privCrumbs = [[mainTitle, `/${pid}/`], ['Privacy Policy', '']];
+      if (fs.existsSync(path.join(dirPath, 'license.md'))) {
+        privCrumbs.push(['License Information', `/${pid}/license/`]);
+      }
+      const privHtml = page(cfg, `${p.name} Privacy Policy`, privBody, p.tagline || '', '', privCrumbs);
+      fs.writeFileSync(path.join(privDir, 'index.html'), privHtml, 'utf8');
+    }
   }
 
   // Render main index page
   let body = renderProfileSections(cfg, profile, experience);
-  body += `<section style='margin-top:3rem'><h2 style='font-size:1.75rem;margin-bottom:0.25rem'>Featured Software & Open Source Projects</h2><p class='mut' style='margin-top:0;margin-bottom:1.5rem'>A portfolio of apps, open-source libraries, and tools built to solve specific platform engineering bottlenecks.</p>`;
+  body += `<section id='projects' style='margin-top:3rem'><h2 style='font-size:1.75rem;margin-bottom:0.25rem'>Featured Software & Open Source Projects</h2><p class='mut' style='margin-top:0;margin-bottom:1.5rem'>A portfolio of apps, open-source libraries, and tools built to solve specific platform engineering bottlenecks.</p>`;
 
   const sectionTitles = [
     ['app', 'Android Applications'],

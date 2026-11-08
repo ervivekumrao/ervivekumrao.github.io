@@ -19,13 +19,115 @@ def human_size(n: int) -> str:
     return f"{n / 1_048_576:.1f} MB"
 
 
+import re
+
+
+def _parse_inline_md(text: str) -> str:
+    text = esc(text)
+    text = re.sub(r'`([^`]+)`', r'<code>\1</code>', text)
+    text = re.sub(r'(\*\*|__)(.*?)\1', r'<strong>\2</strong>', text)
+    text = re.sub(r'(\*|_)(.*?)\1', r'<em>\2</em>', text)
+    def _link_repl(m):
+        label, url = m.group(1), m.group(2)
+        target = " target='_blank' rel='noopener noreferrer'" if url.startswith("http") else ""
+        return f"<a href='{url}'{target}>{label}</a>"
+    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', _link_repl, text)
+    return text
+
+
 def md_to_html(text: str) -> str:
-    """Converts Markdown text into HTML, using markdown library if installed."""
-    if _md:
-        return _md.markdown(text, extensions=["extra"])
-    if text.strip().startswith("<"):
+    """Converts Markdown text into formatted HTML."""
+    if not text:
+        return ""
+
+    text = text.strip()
+    if text.startswith("<"):
         return text
-    return f"<pre>{esc(text)}</pre>"
+
+    if _md:
+        try:
+            return _md.markdown(text, extensions=["extra"])
+        except Exception:
+            pass
+
+    lines = text.splitlines()
+    html_blocks = []
+    in_code_block = False
+    code_lines = []
+    in_list = False
+    list_items = []
+
+    def flush_list():
+        nonlocal in_list, list_items
+        if in_list and list_items:
+            html_blocks.append(f"<ul>{''.join(list_items)}</ul>")
+            list_items = []
+            in_list = False
+
+    for line in lines:
+        stripped = line.strip()
+
+        if stripped.startswith("```"):
+            if in_code_block:
+                code_content = esc("\n".join(code_lines))
+                html_blocks.append(f"<pre><code>{code_content}</code></pre>")
+                code_lines = []
+                in_code_block = False
+            else:
+                flush_list()
+                in_code_block = True
+                code_lines = []
+            continue
+
+        if in_code_block:
+            code_lines.append(line)
+            continue
+
+        if not stripped:
+            flush_list()
+            continue
+
+        if stripped in ("---", "***", "___"):
+            flush_list()
+            html_blocks.append("<hr>")
+            continue
+
+        if stripped.startswith("# "):
+            flush_list()
+            html_blocks.append(f"<h1>{_parse_inline_md(stripped[2:])}</h1>")
+            continue
+        if stripped.startswith("## "):
+            flush_list()
+            html_blocks.append(f"<h2>{_parse_inline_md(stripped[3:])}</h2>")
+            continue
+        if stripped.startswith("### "):
+            flush_list()
+            html_blocks.append(f"<h3>{_parse_inline_md(stripped[4:])}</h3>")
+            continue
+        if stripped.startswith("#### "):
+            flush_list()
+            html_blocks.append(f"<h4>{_parse_inline_md(stripped[5:])}</h4>")
+            continue
+
+        if stripped.startswith("> "):
+            flush_list()
+            html_blocks.append(f"<blockquote>{_parse_inline_md(stripped[2:])}</blockquote>")
+            continue
+
+        if stripped.startswith("- ") or stripped.startswith("* ") or stripped.startswith("+ "):
+            in_list = True
+            list_items.append(f"<li>{_parse_inline_md(stripped[2:])}</li>")
+            continue
+
+        flush_list()
+        html_blocks.append(f"<p>{_parse_inline_md(stripped)}</p>")
+
+    flush_list()
+    if in_code_block and code_lines:
+        code_content = esc("\n".join(code_lines))
+        html_blocks.append(f"<pre><code>{code_content}</code></pre>")
+
+    return "\n".join(html_blocks)
 
 
 def get_project_titles(p: dict) -> tuple[str, str]:
