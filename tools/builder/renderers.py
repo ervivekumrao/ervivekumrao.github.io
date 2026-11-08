@@ -57,7 +57,7 @@ class Site:
 
         return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<script>(function(){{var t;try{{t=localStorage.getItem("theme");}}catch(e){{}}if(!t){{t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}}document.documentElement.setAttribute("data-theme",t);}})();</script>
+<script>(function(){{var t;try{{t=localStorage.getItem("theme");}}catch(e){{}}if(!t){{t="dark";}}document.documentElement.setAttribute("data-theme",t);}})();</script>
 <title>{esc(title)} · {esc(s.get('name'))}</title><meta name="description" content="{esc(desc or s.get('tagline'))}">
 <link rel="icon" type="{icon_type}" href="{icon_href}">
 <link rel="apple-touch-icon" href="{icon_href}">

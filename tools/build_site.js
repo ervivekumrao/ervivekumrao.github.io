@@ -35,14 +35,14 @@ function getProjectTitles(p) {
 
 function getProjectCategoryBadge(p) {
   if (p.category_badge) return p.category_badge;
-  const ptype = p.type || 'app';
   const pid = p.id || '';
-  if (ptype === 'app') return '📱 Android App';
-  if (ptype === 'library') return '📦 Android SDK';
   if (pid === 'agenticinventory') return '⚡ Microservices & AI';
   if (pid === 'spindb') return '🛠️ Developer CLI';
   if (pid === 'jitforge') return '⚡ JVM JIT Engine';
   if (pid === 'tomcatvault') return '🔒 Cryptographic Vault';
+  const ptype = p.type || 'app';
+  if (ptype === 'app') return '📱 Android App';
+  if (ptype === 'library') return '📦 Android SDK';
   return '⚙️ System Tool';
 }
 
@@ -67,7 +67,7 @@ function page(cfg, title, body, desc = '', iconUrl = '', breadcrumbs = null, sho
 
   return `<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<script>(function(){var t;try{t=localStorage.getItem("theme");}catch(e){}if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);})();</script>
+<script>(function(){var t;try{t=localStorage.getItem("theme");}catch(e){}if(!t){t="dark";}document.documentElement.setAttribute("data-theme",t);})();</script>
 <title>${esc(title)} · ${esc(cfg.name)}</title><meta name="description" content="${esc(desc || cfg.tagline)}">
 <link rel="icon" type="${iconHref}">
 <link rel="apple-touch-icon" href="${iconHref}">

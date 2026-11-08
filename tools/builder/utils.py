@@ -49,14 +49,7 @@ def get_project_category_badge(p: dict) -> str:
     if p.get("category_badge"):
         return p["category_badge"]
 
-    ptype = p.get("type", "app")
     pid = p.get("id", "")
-
-    if ptype == "app":
-        return "📱 Android App"
-    elif ptype == "library":
-        return "📦 Android SDK"
-
     if pid == "agenticinventory":
         return "⚡ Microservices & AI"
     elif pid == "spindb":
@@ -66,5 +59,12 @@ def get_project_category_badge(p: dict) -> str:
     elif pid == "tomcatvault":
         return "🔒 Cryptographic Vault"
 
+    ptype = p.get("type", "app")
+    if ptype == "app":
+        return "📱 Android App"
+    elif ptype == "library":
+        return "📦 Android SDK"
+
     return "⚙️ System Tool"
+
 
