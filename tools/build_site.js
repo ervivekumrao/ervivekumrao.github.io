@@ -35,11 +35,6 @@ function getProjectTitles(p) {
 
 function getProjectCategoryBadge(p) {
   if (p.category_badge) return p.category_badge;
-  const pid = p.id || '';
-  if (pid === 'agenticinventory') return '⚡ Microservices & AI';
-  if (pid === 'spindb') return '🛠️ Developer CLI';
-  if (pid === 'jitforge') return '⚡ JVM JIT Engine';
-  if (pid === 'tomcatvault') return '🔒 Cryptographic Vault';
   const ptype = p.type || 'app';
   if (ptype === 'app') return '📱 Android App';
   if (ptype === 'library') return '📦 Android SDK';
@@ -162,10 +157,13 @@ function page(cfg, title, body, desc = '', iconUrl = '', breadcrumbs = null, sho
   const ribbonItems = [];
   if (breadcrumbs && breadcrumbs.length) {
     const totalCrumbs = breadcrumbs.length;
-    breadcrumbs.forEach(([label, link], i) => {
+    breadcrumbs.forEach((crumb, i) => {
+      const label = crumb[0];
+      const link = crumb[1];
+      const isCurrent = crumb.length > 2 ? !!crumb[2] : (link === '');
+
       const isFirst = i === 0;
       const isLast = i === totalCrumbs - 1;
-      const isCurrent = link === '';
 
       const classes = ['ribbon-item'];
       if (isFirst) classes.push('ribbon-first');
@@ -176,7 +174,7 @@ function page(cfg, title, body, desc = '', iconUrl = '', breadcrumbs = null, sho
       const classStr = classes.join(' ');
       const content = `<span>${esc(label)}</span>`;
 
-      if (link && !isCurrent) {
+      if (link && link !== '') {
         ribbonItems.push(`<a href='${esc(link)}' class='${classStr}'>${content}</a>`);
       } else {
         ribbonItems.push(`<span class='${classStr}'>${content}</span>`);
@@ -413,7 +411,7 @@ function renderProfileSections(cfg, profile, experience) {
   return heroHtml + expHtml + compHtml;
 }
 
-function buildSite(outDir) {
+function buildSite(outDir, customFixturePath) {
   if (fs.existsSync(outDir)) {
     fs.rmSync(outDir, { recursive: true, force: true });
   }
@@ -429,7 +427,7 @@ function buildSite(outDir) {
   }
 
   // Load offline fixtures
-  const fixturePath = path.join(ROOT, 'tools', 'fixtures', 'manifests.sample.json');
+  const fixturePath = customFixturePath || path.join(ROOT, 'tools', 'fixtures', 'manifests.sample.json');
   const manifests = fs.existsSync(fixturePath) ? JSON.parse(fs.readFileSync(fixturePath, 'utf8')) : [];
   const byApp = {};
   for (const m of manifests) {
@@ -587,20 +585,20 @@ function buildSite(outDir) {
     const descSection = `<section class="proj-section">${p.description || ''}</section>`;
     const projBody = projHeroHtml + descSection;
 
-    const projBreadcrumbs = [[mainTitle, '']];
+    const projBreadcrumbs = [[mainTitle, '', true]];
     if (ptype === 'library' || fs.existsSync(path.join(dirPath, 'license.md'))) {
       if (fs.existsSync(path.join(dirPath, 'license.md'))) {
-        projBreadcrumbs.push(['License Information', `/${pid}/license/`]);
+        projBreadcrumbs.push(['License Information', `/${pid}/license/`, false]);
       }
       if (fs.existsSync(path.join(dirPath, 'privacy.md'))) {
-        projBreadcrumbs.push(['Privacy Policy', `/${pid}/privacy/`]);
+        projBreadcrumbs.push(['Privacy Policy', `/${pid}/privacy/`, false]);
       }
     } else {
       if (fs.existsSync(path.join(dirPath, 'privacy.md'))) {
-        projBreadcrumbs.push(['Privacy Policy', `/${pid}/privacy/`]);
+        projBreadcrumbs.push(['Privacy Policy', `/${pid}/privacy/`, false]);
       }
       if (fs.existsSync(path.join(dirPath, 'license.md'))) {
-        projBreadcrumbs.push(['License Information', `/${pid}/license/`]);
+        projBreadcrumbs.push(['License Information', `/${pid}/license/`, false]);
       }
     }
 
@@ -627,9 +625,9 @@ function buildSite(outDir) {
           <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="btn alt">&uarr; Back to Top</a>
         </div>
       `;
-      const licCrumbs = [[mainTitle, `/${pid}/`], ['License Information', '']];
+      const licCrumbs = [[mainTitle, `/${pid}/`, true], ['License Information', '', true]];
       if (fs.existsSync(path.join(dirPath, 'privacy.md'))) {
-        licCrumbs.push(['Privacy Policy', `/${pid}/privacy/`]);
+        licCrumbs.push(['Privacy Policy', `/${pid}/privacy/`, false]);
       }
       const licHtml = page(cfg, `${p.name} License Information`, licBody, p.tagline || '', '', licCrumbs);
       fs.writeFileSync(path.join(licDir, 'index.html'), licHtml, 'utf8');
@@ -655,9 +653,9 @@ function buildSite(outDir) {
           <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="btn alt">&uarr; Back to Top</a>
         </div>
       `;
-      const privCrumbs = [[mainTitle, `/${pid}/`], ['Privacy Policy', '']];
+      const privCrumbs = [[mainTitle, `/${pid}/`, true], ['Privacy Policy', '', true]];
       if (fs.existsSync(path.join(dirPath, 'license.md'))) {
-        privCrumbs.push(['License Information', `/${pid}/license/`]);
+        privCrumbs.push(['License Information', `/${pid}/license/`, false]);
       }
       const privHtml = page(cfg, `${p.name} Privacy Policy`, privBody, p.tagline || '', '', privCrumbs);
       fs.writeFileSync(path.join(privDir, 'index.html'), privHtml, 'utf8');
@@ -694,46 +692,62 @@ function buildSite(outDir) {
   console.log(`Successfully built ${projects.length} projects into ${outDir}`);
 }
 
-// Build static site into dist/
-const outDir = path.join(ROOT, 'dist');
-buildSite(outDir);
+let outDir = path.join(ROOT, 'dist');
+let fixturePath = null;
+let shouldServe = false;
 
-// Serve static site via local HTTP server
-const PORT = 8000;
-const MIME_TYPES = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.js': 'application/javascript; charset=utf-8',
-  '.json': 'application/json; charset=utf-8',
-  '.svg': 'image/svg+xml',
-  '.jpg': 'image/jpeg',
-  '.png': 'image/png',
-  '.ico': 'image/x-icon'
-};
-
-const server = http.createServer((req, res) => {
-  let reqPath = req.url.split('?')[0];
-  if (reqPath.endsWith('/')) {
-    reqPath += 'index.html';
+const args = process.argv.slice(2);
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--out' && i + 1 < args.length) {
+    outDir = path.resolve(ROOT, args[++i]);
+  } else if (args[i] === '--fixture' && i + 1 < args.length) {
+    fixturePath = path.resolve(ROOT, args[++i]);
+  } else if (args[i] === '--serve') {
+    shouldServe = true;
   }
-  let filePath = path.join(outDir, reqPath);
-  if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
-    filePath = path.join(filePath, 'index.html');
-  }
+}
 
-  if (!fs.existsSync(filePath)) {
-    res.writeHead(404, { 'Content-Type': 'text/html' });
-    res.end('<h1>404 Not Found</h1>');
-    return;
-  }
+// Build static site into target directory
+buildSite(outDir, fixturePath);
 
-  const ext = path.extname(filePath).toLowerCase();
-  const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-  res.writeHead(200, { 'Content-Type': contentType });
-  fs.createReadStream(filePath).pipe(res);
-});
+// Serve static site via local HTTP server only if requested or run interactively
+if (shouldServe || args.length === 0) {
+  const PORT = 8000;
+  const MIME_TYPES = {
+    '.html': 'text/html; charset=utf-8',
+    '.css': 'text/css; charset=utf-8',
+    '.js': 'application/javascript; charset=utf-8',
+    '.json': 'application/json; charset=utf-8',
+    '.svg': 'image/svg+xml',
+    '.jpg': 'image/jpeg',
+    '.png': 'image/png',
+    '.ico': 'image/x-icon'
+  };
 
-server.listen(PORT, '127.0.0.1', () => {
-  console.log(`\n🚀 Portfolio Site is live & ready to view!`);
-  console.log(`👉 Open http://localhost:${PORT} in your browser.`);
-});
+  const server = http.createServer((req, res) => {
+    let reqPath = req.url.split('?')[0];
+    if (reqPath.endsWith('/')) {
+      reqPath += 'index.html';
+    }
+    let filePath = path.join(outDir, reqPath);
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+      filePath = path.join(filePath, 'index.html');
+    }
+
+    if (!fs.existsSync(filePath)) {
+      res.writeHead(404, { 'Content-Type': 'text/html' });
+      res.end('<h1>404 Not Found</h1>');
+      return;
+    }
+
+    const ext = path.extname(filePath).toLowerCase();
+    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    res.writeHead(200, { 'Content-Type': contentType });
+    fs.createReadStream(filePath).pipe(res);
+  });
+
+  server.listen(PORT, '127.0.0.1', () => {
+    console.log(`\n🚀 Portfolio Site is live & ready to view!`);
+    console.log(`👉 Open http://localhost:${PORT} in your browser.`);
+  });
+}

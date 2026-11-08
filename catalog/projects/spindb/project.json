@@ -2,6 +2,7 @@
   "id": "spindb",
   "name": "SpinDB",
   "subtitle": "13 Containerized DB & Lakehouse CLI",
+  "category_badge": "🛠️ Developer CLI",
   "type": "other",
   "order": 3,
   "published": true,

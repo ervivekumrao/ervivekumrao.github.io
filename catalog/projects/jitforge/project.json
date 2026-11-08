@@ -2,6 +2,7 @@
   "id": "jitforge",
   "name": "JitForge",
   "subtitle": "In-Memory Bytecode JIT Engine",
+  "category_badge": "⚡ JVM JIT Engine",
   "type": "other",
   "order": 2,
   "published": true,

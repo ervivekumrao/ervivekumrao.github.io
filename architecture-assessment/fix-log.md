@@ -14,14 +14,16 @@
 | **FIX-04** | ARCH-04 | Tier 0 | Created `static/style.css` asset file and updated `styles.py` to load CSS from file system if present. | `static/style.css`, `tools/builder/styles.py` | Verified `styles.py` reads `static/style.css` | Revert commit |
 | **FIX-05** | ARCH-07 | Tier 1 | Added full end-to-end integration test `test_full_build_site_e2e` executing `build_site_main()` against offline sample fixtures. | `tests/test_builder.py` | Verified `test_full_build_site_e2e` test case | Revert commit / patch `004-add-end-to-end-integration-tests.diff` |
 | **FIX-06** | ARCH-05 | Tier 1 | Converted `fetch_manifests()` in `github_api.py` to use `concurrent.futures.ThreadPoolExecutor` for concurrent manifest fetching. | `tools/builder/github_api.py` | Verified unit tests `test_fetch_manifests` | Revert commit |
+| **FIX-07** | ARCH-03 | Tier 1 | Enriched catalog declarations (`agenticinventory`, `spindb`, `jitforge`, `tomcatvault`) with explicit `category_badge` keys. Removed all hardcoded project ID conditionals from `utils.py` and `build_site.js`. | `catalog/projects/*/project.json`, `tools/builder/utils.py`, `tools/build_site.js` | Verified test suite in `tests/test_builder.test.js` | Revert commit |
+| **FIX-08** | ARCH-08 | Tier 1 | Synchronized `tools/build_site.js` CLI flags (`--out`, `--fixture`, `--serve`) with Python builder behavior and added automated Node.js architecture fitness suite. | `tools/build_site.js`, `tests/test_architecture_fitness.py`, `tests/test_builder.test.js` | Verified `node tests/test_builder.test.js` (4/4 tests passed) | Revert commit |
 
 ---
 
 ## Summary of Changes
 1. **Separation of Content & Presentation**: Extracted all personal resume and skill data out of Python executable source code into `catalog/profile.json` and `catalog/experience.json`.
-2. **Code Deduplication**: Centralized category badge mapping into a reusable function in `tools/builder/utils.py`.
+2. **Code Deduplication & Zero Hardcoded IDs**: Centralized category badge mapping in `tools/builder/utils.py` and `tools/build_site.js`, backed by explicit `category_badge` metadata in project catalog files.
 3. **Domain Security Hardening**: Enforced that Bearer authorization tokens are strictly restricted to `api.github.com`.
 4. **Asset Modularization**: Externalized `static/style.css` to enable IDE CSS syntax formatting and static asset management.
-5. **Quality Gate & Testing**: Added end-to-end site build integration tests to `tests/test_builder.py`.
-6. **Concurrent I/O Performance**: Accelerated GitHub Release API manifest fetching by ~80% using `ThreadPoolExecutor`.
+5. **Quality Gate & Automated Testing**: Added executable architecture fitness suites (`test_architecture_fitness.py` and `test_builder.test.js`) and E2E integration tests.
+6. **Concurrent I/O Performance & CLI Alignment**: Accelerated GitHub Release API manifest fetching by ~80% via `ThreadPoolExecutor` and aligned Node.js CLI argument handling.
 

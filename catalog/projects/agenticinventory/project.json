@@ -2,6 +2,7 @@
   "id": "agenticinventory",
   "name": "Agentic Inventory",
   "subtitle": "Polyglot Microservices & AI Engine",
+  "category_badge": "⚡ Microservices & AI",
   "type": "other",
   "order": 5,
   "published": true,

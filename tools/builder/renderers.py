@@ -45,10 +45,13 @@ class Site:
         ribbon_items = []
         if breadcrumbs:
             total_crumbs = len(breadcrumbs)
-            for i, (label, link) in enumerate(breadcrumbs):
+            for i, crumb in enumerate(breadcrumbs):
+                label = crumb[0]
+                link = crumb[1]
+                is_current = crumb[2] if len(crumb) > 2 else (link == "")
+
                 is_first = (i == 0)
                 is_last = (i == total_crumbs - 1)
-                is_current = (link == "")
 
                 classes = ["ribbon-item"]
                 if is_first:
@@ -63,7 +66,7 @@ class Site:
                 class_str = " ".join(classes)
                 content = f"<span>{esc(label)}</span>"
 
-                if link and not is_current:
+                if link and link != "":
                     ribbon_items.append(f"<a href='{esc(link)}' class='{class_str}'>{content}</a>")
                 else:
                     ribbon_items.append(f"<span class='{class_str}'>{content}</span>")
@@ -445,17 +448,17 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
 
     body = hero_html + shots_section + desc_section + extra_section + footer_nav
 
-    proj_breadcrumbs = [(main_title, "")]
+    proj_breadcrumbs = [(main_title, "", True)]
     if kind == "library" or (root / "license.md").exists():
         if (root / "license.md").exists():
-            proj_breadcrumbs.append(("License Information", site.url(f"{pid}/license/")))
+            proj_breadcrumbs.append(("License Information", site.url(f"{pid}/license/"), False))
         if (root / "privacy.md").exists():
-            proj_breadcrumbs.append(("Privacy Policy", site.url(f"{pid}/privacy/")))
+            proj_breadcrumbs.append(("Privacy Policy", site.url(f"{pid}/privacy/"), False))
     else:
         if (root / "privacy.md").exists():
-            proj_breadcrumbs.append(("Privacy Policy", site.url(f"{pid}/privacy/")))
+            proj_breadcrumbs.append(("Privacy Policy", site.url(f"{pid}/privacy/"), False))
         if (root / "license.md").exists():
-            proj_breadcrumbs.append(("License Information", site.url(f"{pid}/license/")))
+            proj_breadcrumbs.append(("License Information", site.url(f"{pid}/license/"), False))
 
     site.write(f"{pid}/index.html", site.page(p["name"], body, p.get("tagline", ""), icon_url=tab_icon_url, breadcrumbs=proj_breadcrumbs, show_home_brand=False))
 
@@ -477,11 +480,11 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
 </div>
 """
         lic_breadcrumbs = [
-            (main_title, site.url(f"{pid}/")),
-            ("License Information", "")
+            (main_title, site.url(f"{pid}/"), True),
+            ("License Information", "", True)
         ]
         if (root / "privacy.md").exists():
-            lic_breadcrumbs.append(("Privacy Policy", site.url(f"{pid}/privacy/")))
+            lic_breadcrumbs.append(("Privacy Policy", site.url(f"{pid}/privacy/"), False))
 
         site.write(f"{pid}/license/index.html", site.page(f"{p['name']} License Information", lic_body, icon_url=tab_icon_url, breadcrumbs=lic_breadcrumbs, show_home_brand=False))
 
@@ -503,11 +506,11 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
 </div>
 """
         priv_breadcrumbs = [
-            (main_title, site.url(f"{pid}/")),
-            ("Privacy Policy", "")
+            (main_title, site.url(f"{pid}/"), True),
+            ("Privacy Policy", "", True)
         ]
         if (root / "license.md").exists():
-            priv_breadcrumbs.append(("License Information", site.url(f"{pid}/license/")))
+            priv_breadcrumbs.append(("License Information", site.url(f"{pid}/license/"), False))
 
         site.write(f"{pid}/privacy/index.html", site.page(f"{p['name']} Privacy Policy", priv_body, icon_url=tab_icon_url, breadcrumbs=priv_breadcrumbs, show_home_brand=False))
 
