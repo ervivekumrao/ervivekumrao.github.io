@@ -1,7 +1,13 @@
-"""CSS Stylesheet for the static portfolio site."""
+from pathlib import Path
 
-CSS = """
+_STATIC_CSS = Path(__file__).resolve().parent.parent.parent / "static" / "style.css"
+
+if _STATIC_CSS.exists():
+    CSS = _STATIC_CSS.read_text(encoding="utf-8")
+else:
+    CSS = """
 :root{--bg:#f8fafc;--fg:#0f172a;--mut:#64748b;--card:#ffffff;--card-border:#e2e8f0;--card-shadow:0 4px 14px -2px rgba(0,0,0,0.06);--line:#e2e8f0;--acc:#2563eb;--acc-hover:#1d4ed8;--acc-glow:rgba(37,99,235,0.12);--tag-bg:#f1f5f9;--tag-fg:#334155}
+
 @media(prefers-color-scheme:dark){:root{--bg:#0b0f19;--fg:#f8fafc;--mut:#94a3b8;--card:#131b2e;--card-border:#1e293b;--card-shadow:0 4px 20px -2px rgba(0,0,0,0.35);--line:#1e293b;--acc:#38bdf8;--acc-hover:#0284c7;--acc-glow:rgba(56,189,248,0.2);--tag-bg:#1e293b;--tag-fg:#cbd5e1}}
 [data-theme="light"]{--bg:#f8fafc!important;--fg:#0f172a!important;--mut:#64748b!important;--card:#ffffff!important;--card-border:#e2e8f0!important;--card-shadow:0 4px 14px -2px rgba(0,0,0,0.06)!important;--line:#e2e8f0!important;--acc:#2563eb!important;--acc-hover:#1d4ed8!important;--acc-glow:rgba(37,99,235,0.12)!important;--tag-bg:#f1f5f9!important;--tag-fg:#334155!important}
 [data-theme="dark"]{--bg:#0b0f19!important;--fg:#f8fafc!important;--mut:#94a3b8!important;--card:#131b2e!important;--card-border:#1e293b!important;--card-shadow:0 4px 20px -2px rgba(0,0,0,0.35)!important;--line:#1e293b!important;--acc:#38bdf8!important;--acc-hover:#0284c7!important;--acc-glow:rgba(56,189,248,0.2)!important;--tag-bg:#1e293b!important;--tag-fg:#cbd5e1!important}

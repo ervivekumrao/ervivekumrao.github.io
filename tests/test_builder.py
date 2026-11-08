@@ -12,9 +12,10 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from tools.builder.utils import esc, human_size, md_to_html, get_project_titles
-from tools.builder.github_api import fetch_manifests
+from tools.builder.utils import esc, human_size, md_to_html, get_project_titles, get_project_category_badge
+from tools.builder.github_api import fetch_manifests, http_json
 from tools.builder.renderers import Site, enrollment_payload
+from tools.build_site import main as build_site_main
 
 
 class TestBuilderUtils(unittest.TestCase):
@@ -150,6 +151,30 @@ class TestSiteRendering(unittest.TestCase):
         self.assertEqual(payload["android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION"], "https://example.com/app.apk")
         self.assertEqual(payload["android.app.extra.PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM"], "sha256b64")
 
+    def test_get_project_category_badge(self):
+        self.assertEqual(get_project_category_badge({"type": "app"}), "📱 Android App")
+        self.assertEqual(get_project_category_badge({"type": "library"}), "📦 Android SDK")
+        self.assertEqual(get_project_category_badge({"id": "agenticinventory"}), "⚡ Microservices & AI")
+        self.assertEqual(get_project_category_badge({"category_badge": "Custom Badge"}), "Custom Badge")
+
+    def test_http_json_bearer_security(self):
+        with self.assertRaises(ValueError):
+            http_json("https://malicious-site.com/data", token="secret_token")
+
+    def test_full_build_site_e2e(self):
+        fixture_path = ROOT / "tools" / "fixtures" / "manifests.sample.json"
+        out_dir = Path(self.temp_dir) / "dist"
+        with patch("sys.argv", ["build_site.py", "--out", str(out_dir), "--fixture", str(fixture_path)]):
+            exit_code = build_site_main()
+            self.assertEqual(exit_code, 0)
+            self.assertTrue((out_dir / "index.html").exists())
+            self.assertTrue((out_dir / "style.css").exists())
+            self.assertTrue((out_dir / "api" / "catalog.json").exists())
+            index_content = (out_dir / "index.html").read_text(encoding="utf-8")
+            self.assertIn("Vivek Umrao", index_content)
+            self.assertIn("Child Safe", index_content)
+
 
 if __name__ == "__main__":
     unittest.main()
+

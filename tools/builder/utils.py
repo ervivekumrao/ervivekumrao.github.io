@@ -42,3 +42,29 @@ def get_project_titles(p: dict) -> tuple[str, str]:
 
     subtitle = explicit_sub if explicit_sub is not None else name_sub
     return main_title, subtitle
+
+
+def get_project_category_badge(p: dict) -> str:
+    """Resolves the category display badge for a project dict."""
+    if p.get("category_badge"):
+        return p["category_badge"]
+
+    ptype = p.get("type", "app")
+    pid = p.get("id", "")
+
+    if ptype == "app":
+        return "📱 Android App"
+    elif ptype == "library":
+        return "📦 Android SDK"
+
+    if pid == "agenticinventory":
+        return "⚡ Microservices & AI"
+    elif pid == "spindb":
+        return "🛠️ Developer CLI"
+    elif pid == "jitforge":
+        return "⚡ JVM JIT Engine"
+    elif pid == "tomcatvault":
+        return "🔒 Cryptographic Vault"
+
+    return "⚙️ System Tool"
+

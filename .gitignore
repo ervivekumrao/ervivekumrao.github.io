@@ -23,6 +23,18 @@ __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+.coverage
+htmlcov/
+coverage/
+.nyc_output/
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+pip-log.txt
+pip-delete-this-directory.txt
 
 # Local configuration and environment
 local.properties
@@ -44,12 +56,14 @@ content.md
 scratch/
 .system_generated/
 
-# Key / Secret / Signing files
+# Key / Secret / Signing files & Binaries
 *.keystore
 *.jks
 *.pem
 *.key
 *.p12
+*.apk
+*.aab
 
 # Logs, crash dumps and temporary files
 *.log

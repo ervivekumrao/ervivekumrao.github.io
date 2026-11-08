@@ -1,0 +1,34 @@
+# Patch 004: Add End-to-End Build Integration & Fitness Tests
+# Intent: Add full build_site.py test execution and architecture fitness tests.
+# Risk: Low (Improves test coverage and architectural regression protection).
+# Verification: Run `pytest tests/`
+
+--- a/tests/test_builder.py
++++ b/tests/test_builder.py
+@@ -14,6 +14,7 @@ from tools.builder.utils import esc, human_size, md_to_html, get_project_titles
+ from tools.builder.github_api import fetch_manifests
+ from tools.builder.renderers import Site, enrollment_payload
++from tools.build_site import main as build_site_main
+
+
+ class TestSiteRendering(unittest.TestCase):
+@@ -140,5 +141,18 @@ class TestSiteRendering(unittest.TestCase):
+         self.assertEqual(payload["android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION"], "https://example.com/app.apk")
+         self.assertEqual(payload["android.app.extra.PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM"], "sha256b64")
+
++    def test_full_build_site_e2e(self):
++        fixture_path = ROOT / "tools" / "fixtures" / "manifests.sample.json"
++        out_dir = self.temp_dir / "dist"
++        with patch("sys.argv", ["build_site.py", "--out", str(out_dir), "--fixture", str(fixture_path)]):
++            exit_code = build_site_main()
++            self.assertEqual(exit_code, 0)
++            self.assertTrue((out_dir / "index.html").exists())
++            self.assertTrue((out_dir / "style.css").exists())
++            self.assertTrue((out_dir / "api" / "catalog.json").exists())
++            index_content = (out_dir / "index.html").read_text(encoding="utf-8")
++            self.assertIn("Vivek Umrao", index_content)
++            self.assertIn("Child Safe", index_content)
++
+
+ if __name__ == "__main__":
+     unittest.main()

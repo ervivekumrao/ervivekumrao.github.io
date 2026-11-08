@@ -1,0 +1,163 @@
+{
+  "roles": [
+    {
+      "title": "Principal Software Engineer",
+      "company": "Pegasystems",
+      "period": "Mar 2025 — Present",
+      "note": "Transitioned from Cognizant Contractor to Pega FTE via negotiated management release to drive platform architecture for AU / global time zone enterprise operations.",
+      "highlights": [
+        "<b>Core JVM Runtime Architecture:</b> Architected low-level Infinity Engine internals, including custom hierarchical class loaders, memory passivation algorithms, and lock-free concurrency, eliminating thread contention bottlenecks and sustaining <b>99.999% platform availability</b> across global enterprise client deployments.",
+        "<b>Cold-Start Elimination &amp; Priming:</b> Pioneered pre-emptive class-load priming at container startup, eliminating JVM cold-start latency spikes and enabling auto-scaled Kubernetes pods to handle peak production traffic immediately, cutting scale-up latency by <b>~85%</b>.",
+        "<b>3x Throughput Distributed ID Generator:</b> Architected a distributed, batch-based unique ID generation engine across multi-tenant nodes, decoupling database locks and dependency bottlenecks to achieve over <b>3x throughput gains</b> under peak concurrent workloads with zero collision risk.",
+        "<b>Enterprise Data Privacy &amp; PII Governance:</b> Led engineering-wide PII data governance architecture (dynamic masking, cryptographic tokenization, access policy enforcement) across distributed engine logs and telemetry traces, ensuring zero sensitive data exposure and full enterprise compliance.",
+        "<b>Unified Hashing Modernization:</b> Spearheaded the consolidation of fragmented legacy hashing algorithms into a centralized, extensible cryptographic library, reducing future upgrade overhead by <b>~40%</b> across distributed microservices.",
+        "<b>High-Performance APIs &amp; Connection Pooling:</b> Engineered robust database connection pooling (HikariCP/custom adapters) and high-throughput RESTful integration APIs, hardening database resource recycling under high-concurrency failover conditions.",
+        "<b>Incident Command &amp; 30% MTTR Reduction:</b> Served as Tier-3 Incident Commander and RCA lead for high-severity customer escalations; led systemic architectural remediations that slashed mean time to resolution (MTTR) by <b>30%</b> alongside 24/7 mission-critical on-call production governance.",
+        "<b>Engineering Multiplier &amp; Quality Modernization:</b> Chaired architectural reviews, authored technical RFCs, and modernized automated integration testing lifecycles with JUnit and Mockito, reducing regression cycles by <b>20%</b> while mentoring senior engineers on JVM memory and concurrency patterns."
+      ]
+    },
+    {
+      "title": "Lead Architect",
+      "title_sub": "(Manager – Projects)",
+      "company": "Cognizant",
+      "period": "Sep 2021 — Mar 2025",
+      "note": "Embedded full-time with Pegasystems as Principal Technical Lead &amp; Contractor Architecture Governance.",
+      "highlights": [
+        "<b>Technical Program Delivery &amp; Architecture:</b> Directed technical architecture and engineering delivery for core engine initiatives at Pegasystems, aligning cross-functional software development, QA, and platform reliability engineering squads across global delivery centers.",
+        "<b>Core Engine SLA &amp; Passivation Governance:</b> Owned architectural enhancements for low-level passivation strategies, thread-pool allocation, and database connectivity, ensuring strict performance benchmark compliance and SLA adherence across multi-tenant enterprise accounts.",
+        "<b>CI/CD &amp; Deployment Acceleration:</b> Architected end-to-end CI/CD release pipelines and automated regression test suites, cutting release cycle times by <b>35%</b> and enforcing automated code quality gates across all contractor deliverables.",
+        "<b>Systemic Incident RCA &amp; 25–30% MTTR Reduction:</b> Led cross-functional incident triage and Root Cause Analysis (RCA) for critical enterprise production issues, engineering preventative runtime safeguards that reduced customer MTTR by <b>25–30%</b>.",
+        "<b>Developer Toolchain Modernization:</b> Drove enterprise-scale developer infrastructure modernizations, including Vagrant-to-WSL2 environment migrations and Bitbucket-to-GitHub transitions, standardizing developer workflows and slashing engineering onboarding time by <b>50%</b>."
+      ]
+    },
+    {
+      "title": "Staff Engineer",
+      "title_sub": "(Systems & Mobile Security)",
+      "company": "Samsung R&D",
+      "period": "Jul 2011 — Sep 2021",
+      "note": "Samsung Knox Platform &amp; Enterprise Mobile Security R&D.",
+      "highlights": [
+        "<b>Samsung Knox Security Architecture:</b> Architected and scaled core platform security frameworks (Samsung Knox Guard and Knox Configure), deploying system-level Mobile Device Management (MDM) policy enforcement, hardware attestation, and biometric authentication across <b>100M+ global devices</b>.",
+        "<b>Systems R&amp;D &amp; Patented Innovations:</b> Led systems R&D, OS-level security hardening, and proof-of-concept initiatives, translating novel research into patented mobile security innovations and achieving feature parity across global flagship device lineups.",
+        "<b>Global Cross-Region Architectural Alignment:</b> Served as principal technical liaison between South Korea R&D headquarters and international engineering teams, harmonizing technical specifications and strict performance benchmarks across <b>50+ global telecommunication carriers</b>.",
+        "<b>Test Automation Harness Architecture:</b> Built comprehensive multi-threaded test automation and integration testing frameworks (UI Automator, custom device harnesses), accelerating Agile delivery cycles by <b>40%</b> and elevating release stability."
+      ]
+    }
+  ],
+  "competencies": [
+    {
+      "icon": "⚡",
+      "category": "Core Systems & JVM",
+      "count_label": "8 Skills",
+      "chips": [
+        { "name": "JVM Internals", "highlight": true },
+        { "name": "Custom Hierarchical Class Loaders", "highlight": true },
+        { "name": "In-Memory JIT Compilation", "highlight": false },
+        { "name": "Java 21+ Virtual Threads (Loom)", "highlight": true },
+        { "name": "Lock-Free Concurrency", "highlight": false },
+        { "name": "Passivation Algorithms", "highlight": false },
+        { "name": "Memory & GC Pause Tuning", "highlight": false },
+        { "name": "Kotlin", "highlight": false }
+      ]
+    },
+    {
+      "icon": "🛡️",
+      "category": "Mobile Security & MDM",
+      "count_label": "7 Skills",
+      "chips": [
+        { "name": "Android SDK & Frameworks", "highlight": true },
+        { "name": "Samsung Knox Guard & Knox Configure", "highlight": true },
+        { "name": "Device Policy Manager (DPM MDM)", "highlight": true },
+        { "name": "Hardware Attestation", "highlight": false },
+        { "name": "Biometric Authentication", "highlight": false },
+        { "name": "Jetpack Compose", "highlight": false },
+        { "name": "Material 3 UI", "highlight": false }
+      ]
+    },
+    {
+      "icon": "🔐",
+      "category": "Security & Cryptography",
+      "count_label": "7 Skills",
+      "chips": [
+        { "name": "AES-256-GCM Encryption", "highlight": true },
+        { "name": "PII Dynamic Data Masking & Redaction", "highlight": true },
+        { "name": "Cryptographic Tokenization", "highlight": false },
+        { "name": "Unified Hashing Frameworks", "highlight": false },
+        { "name": "JMX Credential Masking", "highlight": false },
+        { "name": "AWS Secrets Manager", "highlight": false },
+        { "name": "HashiCorp Vault", "highlight": false }
+      ]
+    },
+    {
+      "icon": "🌐",
+      "category": "Distributed Systems & Backend",
+      "count_label": "7 Skills",
+      "chips": [
+        { "name": "Distributed Systems Architecture", "highlight": true },
+        { "name": "Spring Boot", "highlight": true },
+        { "name": "PEGA Infinity Core Engine", "highlight": false },
+        { "name": "Apache Kafka Event Streaming", "highlight": true },
+        { "name": "High-Throughput RESTful APIs", "highlight": false },
+        { "name": "3x Distributed ID Generator", "highlight": true },
+        { "name": "Cold-Start Elimination & Priming", "highlight": false }
+      ]
+    },
+    {
+      "icon": "💾",
+      "category": "Databases & Observability",
+      "count_label": "9 Skills",
+      "chips": [
+        { "name": "PostgreSQL", "highlight": true },
+        { "name": "Oracle", "highlight": false },
+        { "name": "SQL Server", "highlight": false },
+        { "name": "MySQL & DB2", "highlight": false },
+        { "name": "Redis Multi-Tier Caching", "highlight": true },
+        { "name": "pgvector AI Lakehouse", "highlight": false },
+        { "name": "HikariCP & DBCP2 Connection Pools", "highlight": true },
+        { "name": "Grafana", "highlight": false },
+        { "name": "Distributed Tracing & Telemetry", "highlight": false }
+      ]
+    },
+    {
+      "icon": "☸️",
+      "category": "Cloud, Containers & DevOps",
+      "count_label": "8 Skills",
+      "chips": [
+        { "name": "Rootless Podman", "highlight": true },
+        { "name": "Docker", "highlight": false },
+        { "name": "Kubernetes (K8s Operators)", "highlight": true },
+        { "name": "Self-Healing Pod Architecture", "highlight": false },
+        { "name": "Helm Charts", "highlight": false },
+        { "name": "AWS & GCP", "highlight": false },
+        { "name": "CI/CD (Git, Jenkins)", "highlight": false },
+        { "name": "Gradle & Maven", "highlight": false }
+      ]
+    },
+    {
+      "icon": "🤖",
+      "category": "AI & Agentic Systems",
+      "count_label": "6 Skills",
+      "chips": [
+        { "name": "Autonomous Multi-Agent Orchestration", "highlight": true },
+        { "name": "LLM Prompt Engineering", "highlight": false },
+        { "name": "Spec-Kit Framework", "highlight": false },
+        { "name": "ML Intent Classification (Scikit-Learn)", "highlight": false },
+        { "name": "Gemini & Claude Integration", "highlight": true },
+        { "name": "GitHub & Microsoft Copilot", "highlight": false }
+      ]
+    },
+    {
+      "icon": "🎯",
+      "category": "Leadership & Governance",
+      "count_label": "6 Skills",
+      "chips": [
+        { "name": "Architecture Review Board (ARB)", "highlight": true },
+        { "name": "RFC & Technical Proposals", "highlight": false },
+        { "name": "Systemic RCA (30% MTTR Reduction)", "highlight": true },
+        { "name": "Enterprise SLA Governance (99.999%)", "highlight": false },
+        { "name": "Cross-Region R&D Mentorship", "highlight": false },
+        { "name": "Tier-3 Incident Command", "highlight": false }
+      ]
+    }
+  ]
+}

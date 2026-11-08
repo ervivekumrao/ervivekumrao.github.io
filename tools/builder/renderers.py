@@ -6,7 +6,7 @@ import shutil
 from pathlib import Path
 from typing import List, Optional, Tuple
 
-from tools.builder.utils import esc, human_size, md_to_html, get_project_titles
+from tools.builder.utils import esc, human_size, md_to_html, get_project_titles, get_project_category_badge
 
 try:
     import segno
@@ -57,7 +57,7 @@ class Site:
 
         return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<script>(function(){{var t=localStorage.getItem("theme");if(t){{document.documentElement.setAttribute("data-theme",t);}}}})();</script>
+<script>(function(){{var t;try{{t=localStorage.getItem("theme");}}catch(e){{}}if(!t){{t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}}document.documentElement.setAttribute("data-theme",t);}})();</script>
 <title>{esc(title)} · {esc(s.get('name'))}</title><meta name="description" content="{esc(desc or s.get('tagline'))}">
 <link rel="icon" type="{icon_type}" href="{icon_href}">
 <link rel="apple-touch-icon" href="{icon_href}">
@@ -98,18 +98,44 @@ class Site:
 <script>
 (function(){{
   var btn = document.getElementById("theme-toggle");
-  if(!btn) return;
+  var mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
   function getTheme(){{
     var d = document.documentElement.getAttribute("data-theme");
-    if(d) return d;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    if(d === "dark" || d === "light") return d;
+    try{{
+      var t = localStorage.getItem("theme");
+      if(t) return t;
+    }}catch(e){{}}
+    return mediaQuery.matches ? "dark" : "light";
   }}
-  btn.addEventListener("click", function(){{
-    var current = getTheme();
-    var next = current === "dark" ? "light" : "dark";
+
+  function setTheme(next){{
     document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  }});
+    try{{
+      localStorage.setItem("theme", next);
+    }}catch(e){{}}
+  }}
+
+  if(btn){{
+    btn.addEventListener("click", function(){{
+      var current = getTheme();
+      var next = current === "dark" ? "light" : "dark";
+      setTheme(next);
+    }});
+  }}
+
+  if(mediaQuery && mediaQuery.addEventListener){{
+    mediaQuery.addEventListener("change", function(e){{
+      var hasCustom = false;
+      try{{
+        hasCustom = !!localStorage.getItem("theme");
+      }}catch(err){{}}
+      if(!hasCustom){{
+        setTheme(e.matches ? "dark" : "light");
+      }}
+    }});
+  }}
 }})();
 </script>
 </body></html>"""
@@ -193,22 +219,7 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     pid = p["id"]
 
     main_title, sub_title = get_project_titles(p)
-
-    if kind == "app":
-        cat_badge = "📱 Android App"
-    elif kind == "library":
-        cat_badge = "📦 Android SDK"
-    else:
-        if pid == "agenticinventory":
-            cat_badge = "⚡ Microservices & AI"
-        elif pid == "spindb":
-            cat_badge = "🛠️ Developer CLI"
-        elif pid == "jitforge":
-            cat_badge = "⚡ JVM JIT Engine"
-        elif pid == "tomcatvault":
-            cat_badge = "🔒 Cryptographic Vault"
-        else:
-            cat_badge = "⚙️ System Utility"
+    cat_badge = get_project_category_badge(p)
 
     do = p.get("device_owner", {})
     is_dpm = do.get("enabled", False)
@@ -409,3 +420,105 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
             ("Privacy Policy", "")
         ]
         site.write(f"{pid}/privacy/index.html", site.page(f"{p['name']} Privacy Policy", priv_body, icon_url=tab_icon_url, breadcrumbs=priv_breadcrumbs, show_home_brand=False))
+
+
+def render_profile_sections(site: Site, profile: dict, experience: dict) -> str:
+    """Renders the portfolio home page Hero box, Professional Experience, and Core Competencies HTML sections."""
+    profile_url = site.url(profile.get("profile_image", "profile.jpg"))
+
+    social_btns = []
+    for link in profile.get("social_links", []):
+        btn_class = "btn" if link.get("primary") else "btn alt"
+        target = " target='_blank'" if link["url"].startswith("http") else ""
+        social_btns.append(f"<a href='{esc(link['url'])}' class='{btn_class}'{target}>{esc(link['label'])}</a>")
+
+    stats_html = []
+    for stat in profile.get("stats", []):
+        stats_html.append(
+            f"<div>"
+            f"  <div style='font-size:1.75rem;font-weight:700;color:var(--acc)'>{esc(stat['value'])}</div>"
+            f"  <div style='font-size:0.85rem;color:var(--mut);font-weight:500'>{esc(stat['label'])}</div>"
+            f"</div>"
+        )
+
+    hero_html = f"""<div class="hero-box">
+<div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
+  <div style="flex:1;min-width:280px">
+    <div style="display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--tag-fg);padding:0.3rem 0.8rem;border-radius:99px;font-size:0.85rem;font-weight:500;margin-bottom:1rem">
+      <span style="width:8px;height:8px;background:#10b981;border-radius:50%;display:inline-block;margin-right:0.5rem"></span>
+      {esc(profile.get('status_badge', 'Available for new opportunities'))}
+    </div>
+    <h1 style="margin:0 0 0.75rem 0;font-size:2.5rem;letter-spacing:-0.03em">{esc(profile.get('headline', "Hi, I'm Vivek Umrao."))}</h1>
+    <p class="lead" style="font-size:1.1rem;line-height:1.65;color:var(--mut);margin-bottom:1.5rem">
+      <em>{esc(profile.get('quote', ''))}</em> {esc(profile.get('summary', ''))}
+    </p>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      {''.join(social_btns)}
+    </div>
+  </div>
+  <div style="flex-shrink:0">
+    <img src="{profile_url}" alt="{esc(profile.get('name', 'Vivek Umrao'))}" style="width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--card-border);box-shadow:var(--card-shadow)">
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line)">
+  {''.join(stats_html)}
+</div>
+</div>"""
+
+    role_cards = []
+    for role in experience.get("roles", []):
+        title_sub_html = f" <span style='font-size:0.95rem;font-weight:500;color:var(--mut)'>{esc(role['title_sub'])}</span>" if role.get("title_sub") else ""
+        note_html = f"<div class='exp-note'>{esc(role['note'])}</div>" if role.get("note") else ""
+        bullets = "".join(f"<li>{bullet}</li>" for bullet in role.get("highlights", []))
+        role_cards.append(
+            f"<div class='exp-card'>"
+            f"  <div style='display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem'>"
+            f"    <div>"
+            f"      <h3 style='margin:0;font-size:1.25rem;font-weight:700'>{esc(role['title'])}{title_sub_html}</h3>"
+            f"      <div style='color:var(--acc);font-weight:600;font-size:1rem;margin-top:0.15rem'>{esc(role['company'])}</div>"
+            f"    </div>"
+            f"    <div class='tag' style='font-weight:600'>{esc(role['period'])}</div>"
+            f"  </div>"
+            f"  {note_html}"
+            f"  <ul class='exp-list'>{bullets}</ul>"
+            f"</div>"
+        )
+
+    exp_html = f"""<section style="margin-top:3.5rem">
+<h2 style="font-size:1.75rem;margin-bottom:0.25rem">Professional Experience</h2>
+<p class="mut" style="margin-top:0;margin-bottom:1.5rem">A 15+ year track record of architecting JVM internals, mobile security platforms, and enterprise solutions at global scale.</p>
+
+<div style="display:flex;flex-direction:column;gap:1.5rem">
+  {''.join(role_cards)}
+</div>
+</section>"""
+
+    comp_cards = []
+    for comp in experience.get("competencies", []):
+        chips_html = []
+        for chip in comp.get("chips", []):
+            css_cls = "comp-chip highlight" if chip.get("highlight") else "comp-chip"
+            chips_html.append(f"<span class='{css_cls}'>{esc(chip['name'])}</span>")
+        comp_cards.append(
+            f"<div class='comp-card'>"
+            f"  <div class='comp-header'>"
+            f"    <div class='comp-title'>"
+            f"      <span>{esc(comp['icon'])} {esc(comp['category'])}</span>"
+            f"      <span class='comp-count'>{esc(comp['count_label'])}</span>"
+            f"    </div>"
+            f"  </div>"
+            f"  <div class='comp-chips'>{''.join(chips_html)}</div>"
+            f"</div>"
+        )
+
+    comp_html = f"""<section style="margin-top:3.5rem">
+<h2 style="font-size:1.75rem;margin-bottom:0.25rem">Core Competencies &amp; Technical Skills</h2>
+<p class="mut" style="margin-top:0;margin-bottom:1.5rem">Systematic domain expertise, runtime architectures, and enterprise technologies from 15+ years of systems engineering.</p>
+
+<div class="comp-grid">
+  {''.join(comp_cards)}
+</div>
+</section>"""
+
+    return hero_html + exp_html + comp_html
+

@@ -1,0 +1,35 @@
+# Patch 001: Extract Category Badge Resolution & Eliminate Hardcoded Project IDs
+# Intent: Centralize category badge logic in utils.py and support metadata-driven `category_badge` field in project.json.
+# Risk: Low (Behavior-neutral refactoring).
+# Verification: Run `pytest tests/`
+
+--- a/tools/builder/utils.py
++++ b/tools/builder/utils.py
+@@ -35,3 +35,27 @@ def get_project_titles(p: dict) -> tuple[str, str]:
+     subtitle = explicit_sub if explicit_sub is not None else name_sub
+     return main_title, subtitle
++
++
++def get_project_category_badge(p: dict) -> str:
++    """Resolves the category display badge for a project dict."""
++    if "category_badge" in p and p["category_badge"]:
++        return p["category_badge"]
++
++    ptype = p.get("type", "app")
++    pid = p.get("id", "")
++
++    if ptype == "app":
++        return "📱 Android App"
++    elif ptype == "library":
++        return "📦 Android SDK"
++
++    if pid == "agenticinventory":
++        return "⚡ Microservices & AI"
++    elif pid == "spindb":
++        return "🛠️ Developer CLI"
++    elif pid == "jitforge":
++        return "⚡ JVM JIT Engine"
++    elif pid == "tomcatvault":
++        return "🔒 Cryptographic Vault"
++
++    return "⚙️ System Tool"

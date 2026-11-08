@@ -1,0 +1,20 @@
+{
+  "units": [
+    { "id": "cli", "path": "tools/build_site.py", "type": "entrypoint" },
+    { "id": "renderers", "path": "tools/builder/renderers.py", "type": "presentation" },
+    { "id": "styles", "path": "tools/builder/styles.py", "type": "assets" },
+    { "id": "github_api", "path": "tools/builder/github_api.py", "type": "infrastructure" },
+    { "id": "utils", "path": "tools/builder/utils.py", "type": "shared_kernel" },
+    { "id": "tests", "path": "tests/test_builder.py", "type": "testing" }
+  ],
+  "edges": [
+    { "source": "cli", "target": "utils" },
+    { "source": "cli", "target": "github_api" },
+    { "source": "cli", "target": "styles" },
+    { "source": "cli", "target": "renderers" },
+    { "source": "renderers", "target": "utils" },
+    { "source": "tests", "target": "utils" },
+    { "source": "tests", "target": "github_api" },
+    { "source": "tests", "target": "renderers" }
+  ]
+}

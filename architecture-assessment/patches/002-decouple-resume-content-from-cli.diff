@@ -1,0 +1,26 @@
+# Patch 002: Decouple Resume & Experience Content from Generator CLI
+# Intent: Extract hardcoded resume/competency HTML string constants into catalog/profile.json and catalog/experience.json.
+# Risk: Low (Improves separation of concerns, content editability).
+# Verification: Run `pytest tests/` and verify generated `dist/index.html`.
+
+--- a/catalog/profile.json
++++ b/catalog/profile.json
+@@0,0 @@
++{
++  "name": "Vivek Umrao",
++  "headline": "Hi, I'm Vivek Umrao.",
++  "availability_status": "Available for new opportunities",
++  "tagline_quote": "\"Most software engineers build on top of platforms. I build the platforms themselves.\"",
++  "summary": "As a Principal Software Engineer and Systems Architect with 15+ years of experience, I specialize in JVM internals, enterprise scale, and device-level security.",
++  "profile_image": "profile.jpg",
++  "social_links": {
++    "linkedin": "https://www.linkedin.com/in/ervivekumrao/",
++    "github": "https://github.com/ervivekumrao",
++    "email": "mailto:vivekumraomain@gmail.com"
++  },
++  "stats": [
++    { "value": "15+", "label": "Years Systems Experience" },
++    { "value": "100M+", "label": "Devices Secured (Knox)" },
++    { "value": "99.999%", "label": "Platform Availability" }
++  ]
++}
