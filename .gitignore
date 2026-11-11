@@ -55,6 +55,8 @@ secrets/
 content.md
 scratch/
 .system_generated/
+architecture-assessment/
+@architecture-assessment/
 
 # Key / Secret / Signing files & Binaries
 *.keystore

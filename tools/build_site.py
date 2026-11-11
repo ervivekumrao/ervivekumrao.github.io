@@ -75,8 +75,18 @@ def main() -> int:
         is_dpm = do.get("enabled", False)
         dpm_badge_html = "<span class='app-badge-dpm'>🛡️ Device Owner (DPM)</span>" if is_dpm else ""
 
+        icon_dark = p.get("icon_dark") or ("icon_dark.svg" if (root / "assets" / "icon_dark.svg").exists() else None)
+        icon_light = p.get("icon_light") or ("icon_light.svg" if (root / "assets" / "icon_light.svg").exists() else None)
+
         icon_card = ""
-        if (root / "assets" / "icon.svg").exists():
+        if icon_dark and icon_light and icon_dark != icon_light:
+            dark_url = site.url(f"{pid}/assets/{icon_dark}")
+            light_url = site.url(f"{pid}/assets/{icon_light}")
+            icon_card = f"""
+<img src='{dark_url}' class='theme-dark-only' alt='{esc(main_title)} icon'>
+<img src='{light_url}' class='theme-light-only' alt='{esc(main_title)} icon'>
+"""
+        elif (root / "assets" / "icon.svg").exists():
             icon_url = site.url(f"{pid}/assets/icon.svg")
             icon_card = f"<img src='{icon_url}' alt='{esc(main_title)} icon'>"
         elif (root / "assets" / "icon.png").exists():

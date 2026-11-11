@@ -155,7 +155,7 @@ def get_project_category_badge(p: dict) -> str:
     if ptype == "app":
         return "📱 Android App"
     elif ptype == "library":
-        return "📦 Android SDK"
+        return "📦 Android Library"
 
     return "⚙️ System Tool"
 

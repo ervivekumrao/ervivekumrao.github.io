@@ -193,6 +193,41 @@ a.ribbon-item.ribbon-section.ribbon-active:hover{background:#1d4ed8;color:#fffff
 code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.875rem}
 pre{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:1rem;overflow-x:auto}
 code{background:var(--tag-bg);padding:.15rem .4rem;border-radius:4px;color:var(--fg)}
+
+/* IDE Code Block Container & Header */
+.code-block{margin:1.25rem 0;border-radius:12px;overflow:hidden;border:1px solid var(--card-border);box-shadow:var(--card-shadow);background:#0f172a}
+.code-header{display:flex;align-items:center;justify-content:space-between;background:#1e293b;padding:.5rem 1rem;border-bottom:1px solid #334155;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;color:#94a3b8;font-weight:600}
+.code-header-dots{display:flex;gap:6px}
+.code-header-dot{width:10px;height:10px;border-radius:50%}
+.dot-red{background:#ef4444}
+.dot-yellow{background:#f59e0b}
+.dot-green{background:#10b981}
+.code-content{margin:0;padding:1.25rem;background:#0f172a;color:#f8fafc;font-family:'JetBrains Mono','Fira Code',SFMono-Regular,Consolas,monospace;font-size:.88rem;line-height:1.6;overflow-x:auto;border:none}
+
+/* Syntax Highlighting (IDE Colors) */
+.hl-kw{color:#c678dd;font-weight:600}
+.hl-str{color:#98c379}
+.hl-num{color:#d19a66}
+.hl-com{color:#5c6370;font-style:italic}
+.hl-type{color:#e5c07b;font-weight:600}
+.hl-func{color:#61afef}
+.hl-tag{color:#e06c75;font-weight:600}
+.hl-attr{color:#d19a66}
+
+/* Copy Code Button */
+.copy-btn{background:rgba(255,255,255,0.08);color:#94a3b8;border:1px solid #334155;border-radius:6px;padding:.2rem .6rem;font-size:.75rem;font-family:inherit;font-weight:600;cursor:pointer;transition:all .15s ease;display:inline-flex;align-items:center;gap:.3rem;user-select:none}
+.copy-btn:hover{background:rgba(255,255,255,0.18);color:#f8fafc;border-color:#6366f1}
+.copy-btn.copied{background:rgba(16,185,129,0.2);color:#34d399;border-color:#10b981}
+
+/* Theme-Aware Asset Display */
+.theme-light-only{display:none!important}
+.theme-dark-only{display:block!important}
+[data-theme="light"] .theme-light-only{display:block!important}
+[data-theme="light"] .theme-dark-only{display:none!important}
+img.theme-light-only{display:none!important}
+img.theme-dark-only{display:block!important}
+[data-theme="light"] img.theme-light-only{display:block!important}
+[data-theme="light"] img.theme-dark-only{display:none!important}
 table{border-collapse:separate;border-spacing:0;width:100%;margin:1.5rem 0;border-radius:12px;overflow:hidden;border:1px solid var(--card-border);background:var(--card);box-shadow:var(--card-shadow)}
 th{background:var(--tag-bg);color:var(--fg);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.5px;padding:.85rem 1rem;border-bottom:2px solid var(--line)}
 td{border-bottom:1px solid var(--line);padding:.85rem 1rem;text-align:left;font-size:.925rem}

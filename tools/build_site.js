@@ -37,7 +37,7 @@ function getProjectCategoryBadge(p) {
   if (p.category_badge) return p.category_badge;
   const ptype = p.type || 'app';
   if (ptype === 'app') return '📱 Android App';
-  if (ptype === 'library') return '📦 Android SDK';
+  if (ptype === 'library') return '📦 Android Library';
   return '⚙️ System Tool';
 }
 
@@ -309,6 +309,68 @@ ${body}
     window.addEventListener("scroll", updateProgress, {passive: true});
     updateProgress();
   }
+
+  window.copyCodeBlock = function(btn){
+    var block = btn.closest(".code-block") || btn.closest("pre") || (btn.parentElement ? btn.parentElement.closest(".code-block") : null);
+    var code = block ? block.querySelector("code") : null;
+    if(!code) return;
+    var text = code.innerText || code.textContent;
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){
+        showCopied(btn);
+      }).catch(function(){
+        fallbackCopy(text, btn);
+      });
+    } else {
+      fallbackCopy(text, btn);
+    }
+  };
+
+  function showCopied(btn){
+    var orig = btn.innerHTML;
+    btn.innerHTML = "✅ Copied!";
+    btn.classList.add("copied");
+    setTimeout(function(){
+      btn.innerHTML = orig;
+      btn.classList.remove("copied");
+    }, 2000);
+  }
+
+  function fallbackCopy(text, btn){
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.select();
+    try{
+      document.execCommand("copy");
+      showCopied(btn);
+    }catch(e){
+      console.error("Copy failed", e);
+    }
+    document.body.removeChild(textArea);
+  }
+
+  document.querySelectorAll(".code-block, pre").forEach(function(el){
+    if(el.tagName.toLowerCase() === "pre" && el.closest(".code-block")) return;
+    if(el.querySelector(".copy-btn")) return;
+    var btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.type = "button";
+    btn.innerHTML = "📋 Copy";
+    btn.onclick = function(){ copyCodeBlock(btn); };
+    var header = el.querySelector(".code-header");
+    if(header){
+      header.appendChild(btn);
+    } else {
+      el.style.position = "relative";
+      btn.style.position = "absolute";
+      btn.style.top = "0.5rem";
+      btn.style.right = "0.5rem";
+      el.appendChild(btn);
+    }
+  });
 })();
 </script>
 </body></html>`;
@@ -469,11 +531,20 @@ function buildSite(outDir, customFixturePath) {
     const isDpm = p.device_owner && p.device_owner.enabled;
     const dpmBadgeHtml = isDpm ? `<span class='app-badge-dpm'>🛡️ Device Owner (DPM)</span>` : '';
 
-    const iconCard = fs.existsSync(path.join(dirPath, 'assets', 'icon.svg'))
-      ? `<img src='/${pid}/assets/icon.svg' alt='${esc(mainTitle)} icon'>`
-      : fs.existsSync(path.join(dirPath, 'assets', 'icon.png'))
-      ? `<img src='/${pid}/assets/icon.png' alt='${esc(mainTitle)} icon'>`
-      : '';
+    const iconDark = p.icon_dark || (fs.existsSync(path.join(dirPath, 'assets', 'icon_dark.svg')) ? 'icon_dark.svg' : null);
+    const iconLight = p.icon_light || (fs.existsSync(path.join(dirPath, 'assets', 'icon_light.svg')) ? 'icon_light.svg' : null);
+
+    let iconCard = '';
+    if (iconDark && iconLight && iconDark !== iconLight) {
+      iconCard = `
+        <img src='/${pid}/assets/${iconDark}' class='theme-dark-only' alt='${esc(mainTitle)} icon'>
+        <img src='/${pid}/assets/${iconLight}' class='theme-light-only' alt='${esc(mainTitle)} icon'>
+      `;
+    } else if (fs.existsSync(path.join(dirPath, 'assets', 'icon.svg'))) {
+      iconCard = `<img src='/${pid}/assets/icon.svg' alt='${esc(mainTitle)} icon'>`;
+    } else if (fs.existsSync(path.join(dirPath, 'assets', 'icon.png'))) {
+      iconCard = `<img src='/${pid}/assets/icon.png' alt='${esc(mainTitle)} icon'>`;
+    }
 
     const rawTags = p.tags || [];
     const ignoredTags = new Set(['android app', 'android library', 'system utility']);
@@ -561,6 +632,25 @@ function buildSite(outDir, customFixturePath) {
       }
     }
 
+    const bannerDark = p.banner_dark || p.banner || p.banner_image;
+    const bannerLight = p.banner_light || p.banner || p.banner_image;
+
+    let heroBannerHtml = '';
+    if (bannerDark && bannerLight && bannerDark !== bannerLight) {
+      heroBannerHtml = `
+        <div class="proj-hero-banner-wrap" style="margin:1.5rem 0 1.25rem 0;border-radius:12px;overflow:hidden;border:1px solid var(--brd);">
+          <img src="/${pid}/assets/${bannerDark}" class="theme-dark-only" alt="${esc(mainTitle)} Banner" style="width:100%;height:auto;display:block;">
+          <img src="/${pid}/assets/${bannerLight}" class="theme-light-only" alt="${esc(mainTitle)} Banner" style="width:100%;height:auto;display:block;">
+        </div>
+      `;
+    } else if (bannerDark) {
+      heroBannerHtml = `
+        <div class="proj-hero-banner-wrap" style="margin:1.5rem 0 1.25rem 0;border-radius:12px;overflow:hidden;border:1px solid var(--brd);">
+          <img src="/${pid}/assets/${bannerDark}" alt="${esc(mainTitle)} Banner" style="width:100%;height:auto;display:block;">
+        </div>
+      `;
+    }
+
     const projHeroHtml = `
       <div class="proj-hero-card">
         <div class="proj-hero-top">
@@ -576,6 +666,7 @@ function buildSite(outDir, customFixturePath) {
             <div class="proj-hero-tags">${projTagsHtml}</div>
           </div>
         </div>
+        ${heroBannerHtml}
         <div class="proj-action-bar">
           ${projLinks.join('')}
         </div>
@@ -604,6 +695,52 @@ function buildSite(outDir, customFixturePath) {
 
     const projHtml = page(cfg, p.name, projBody, p.tagline || '', '', projBreadcrumbs);
     fs.writeFileSync(path.join(projOutDir, 'index.html'), projHtml, 'utf8');
+
+    // Generate legacy alias redirects if defined
+    const aliases = p.aliases || [];
+    for (const alias of aliases) {
+      const aliasOutDir = path.join(outDir, alias);
+      fs.mkdirSync(aliasOutDir, { recursive: true });
+      const redirectHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to ${esc(mainTitle)}...</title>
+  <link rel="canonical" href="/${pid}/">
+  <meta http-equiv="refresh" content="0; url=/${pid}/">
+  <script>window.location.replace("/${pid}/");</script>
+</head>
+<body style="font-family: system-ui, sans-serif; background: #0f172a; color: #f8fafc; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+  <div style="text-align: center;">
+    <h2>Project Renamed to ${esc(mainTitle)}</h2>
+    <p>Redirecting to <a href="/${pid}/" style="color: #6366f1;">/${pid}/</a>...</p>
+  </div>
+</body>
+</html>`;
+      fs.writeFileSync(path.join(aliasOutDir, 'index.html'), redirectHtml, 'utf8');
+
+      if (fs.existsSync(path.join(dirPath, 'privacy.md'))) {
+        const aliasPrivDir = path.join(aliasOutDir, 'privacy');
+        fs.mkdirSync(aliasPrivDir, { recursive: true });
+        const privRedirectHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to ${esc(mainTitle)} Privacy Policy...</title>
+  <link rel="canonical" href="/${pid}/privacy/">
+  <meta http-equiv="refresh" content="0; url=/${pid}/privacy/">
+  <script>window.location.replace("/${pid}/privacy/");</script>
+</head>
+<body style="font-family: system-ui, sans-serif; background: #0f172a; color: #f8fafc; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+  <div style="text-align: center;">
+    <h2>Project Renamed to ${esc(mainTitle)}</h2>
+    <p>Redirecting to <a href="/${pid}/privacy/" style="color: #6366f1;">/${pid}/privacy/</a>...</p>
+  </div>
+</body>
+</html>`;
+        fs.writeFileSync(path.join(aliasPrivDir, 'index.html'), privRedirectHtml, 'utf8');
+      }
+    }
 
     if (fs.existsSync(path.join(dirPath, 'license.md'))) {
       const licDir = path.join(projOutDir, 'license');

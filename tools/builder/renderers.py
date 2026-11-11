@@ -199,6 +199,68 @@ class Site:
     window.addEventListener("scroll", updateProgress, {{passive: true}});
     updateProgress();
   }}
+
+  window.copyCodeBlock = function(btn){{
+    var block = btn.closest(".code-block") || btn.closest("pre") || (btn.parentElement ? btn.parentElement.closest(".code-block") : null);
+    var code = block ? block.querySelector("code") : null;
+    if(!code) return;
+    var text = code.innerText || code.textContent;
+    if(navigator.clipboard && navigator.clipboard.writeText){{
+      navigator.clipboard.writeText(text).then(function(){{
+        showCopied(btn);
+      }}).catch(function(){{
+        fallbackCopy(text, btn);
+      }});
+    }} else {{
+      fallbackCopy(text, btn);
+    }}
+  }};
+
+  function showCopied(btn){{
+    var orig = btn.innerHTML;
+    btn.innerHTML = "✅ Copied!";
+    btn.classList.add("copied");
+    setTimeout(function(){{
+      btn.innerHTML = orig;
+      btn.classList.remove("copied");
+    }}, 2000);
+  }}
+
+  function fallbackCopy(text, btn){{
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.select();
+    try{{
+      document.execCommand("copy");
+      showCopied(btn);
+    }}catch(e){{
+      console.error("Copy failed", e);
+    }}
+    document.body.removeChild(textArea);
+  }}
+
+  document.querySelectorAll(".code-block, pre").forEach(function(el){{
+    if(el.tagName.toLowerCase() === "pre" && el.closest(".code-block")) return;
+    if(el.querySelector(".copy-btn")) return;
+    var btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.type = "button";
+    btn.innerHTML = "📋 Copy";
+    btn.onclick = function(){{ copyCodeBlock(btn); }};
+    var header = el.querySelector(".code-header");
+    if(header){{
+      header.appendChild(btn);
+    }} else {{
+      el.style.position = "relative";
+      btn.style.position = "absolute";
+      btn.style.top = "0.5rem";
+      btn.style.right = "0.5rem";
+      el.appendChild(btn);
+    }}
+  }});
 }})();
 </script>
 </body></html>"""
@@ -294,10 +356,21 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     if assets_dir.is_dir():
         shutil.copytree(assets_dir, out_assets_dir, dirs_exist_ok=True)
 
+    icon_dark = p.get("icon_dark") or ("icon_dark.svg" if (assets_dir / "icon_dark.svg").exists() else None)
+    icon_light = p.get("icon_light") or ("icon_light.svg" if (assets_dir / "icon_light.svg").exists() else None)
+
     tab_icon_url = ""
     icon_hdr = ""
 
-    if (assets_dir / "icon.svg").exists():
+    if icon_dark and icon_light and icon_dark != icon_light:
+        dark_url = site.url(f"{pid}/assets/{icon_dark}")
+        light_url = site.url(f"{pid}/assets/{icon_light}")
+        tab_icon_url = dark_url
+        icon_hdr = f"""
+<img class='proj-icon-img theme-dark-only' style='width:60px;height:60px;object-fit:contain;border-radius:12px' src='{dark_url}' alt='{esc(main_title)} icon'>
+<img class='proj-icon-img theme-light-only' style='width:60px;height:60px;object-fit:contain;border-radius:12px' src='{light_url}' alt='{esc(main_title)} icon'>
+"""
+    elif (assets_dir / "icon.svg").exists():
         tab_icon_url = site.url(f"{pid}/assets/icon.svg")
         icon_hdr = f"<img class='proj-icon-img' style='width:60px;height:60px;object-fit:contain;border-radius:12px' src='{tab_icon_url}' alt='{esc(main_title)} icon'>"
     elif (assets_dir / "icon.png").exists():
@@ -345,6 +418,24 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
     version_badge = f"<span class='app-badge-ver'>v{esc(versions[0]['version_name'])}</span>" if versions else ""
     visibility_badge = "<span class='app-badge-open'>Open Source</span>" if p.get("visibility") == "public" else ""
 
+    banner_dark = p.get("banner_dark") or p.get("banner") or p.get("banner_image")
+    banner_light = p.get("banner_light") or p.get("banner") or p.get("banner_image")
+
+    hero_banner_html = ""
+    if banner_dark and banner_light and banner_dark != banner_light:
+        hero_banner_html = f"""
+  <div class="proj-hero-banner-wrap" style="margin:1.5rem 0 1.25rem 0;border-radius:12px;overflow:hidden;border:1px solid var(--brd)">
+    <img src="{site.url(f'{pid}/assets/{banner_dark}')}" class="theme-dark-only" alt="{esc(main_title)} Banner" style="width:100%;height:auto;display:block">
+    <img src="{site.url(f'{pid}/assets/{banner_light}')}" class="theme-light-only" alt="{esc(main_title)} Banner" style="width:100%;height:auto;display:block">
+  </div>
+"""
+    elif banner_dark:
+        hero_banner_html = f"""
+  <div class="proj-hero-banner-wrap" style="margin:1.5rem 0 1.25rem 0;border-radius:12px;overflow:hidden;border:1px solid var(--brd)">
+    <img src="{site.url(f'{pid}/assets/{banner_dark}')}" alt="{esc(main_title)} Banner" style="width:100%;height:auto;display:block">
+  </div>
+"""
+
     hero_html = f"""
 <div class="proj-hero-card">
   <div class="proj-hero-top">
@@ -364,6 +455,7 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
       <div class="proj-hero-tags">{tags_html}</div>
     </div>
   </div>
+  {hero_banner_html}
   <div class="proj-action-bar">
     {''.join(links)}
   </div>
@@ -461,6 +553,48 @@ def render_project(site: Site, p: dict, versions: list[dict], root: Path):
             proj_breadcrumbs.append(("License Information", site.url(f"{pid}/license/"), False))
 
     site.write(f"{pid}/index.html", site.page(p["name"], body, p.get("tagline", ""), icon_url=tab_icon_url, breadcrumbs=proj_breadcrumbs, show_home_brand=False))
+
+    aliases = p.get("aliases", [])
+    for alias in aliases:
+        alias_out = site.out / alias
+        alias_out.mkdir(parents=True, exist_ok=True)
+        redirect_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to {esc(main_title)}...</title>
+  <link rel="canonical" href="{site.url(f'{pid}/')}">
+  <meta http-equiv="refresh" content="0; url={site.url(f'{pid}/')}">
+  <script>window.location.replace("{site.url(f'{pid}/')}");</script>
+</head>
+<body style="font-family: system-ui, sans-serif; background: #0f172a; color: #f8fafc; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+  <div style="text-align: center;">
+    <h2>Project Renamed to {esc(main_title)}</h2>
+    <p>Redirecting to <a href="{site.url(f'{pid}/')}" style="color: #6366f1;">{site.url(f'{pid}/')}</a>...</p>
+  </div>
+</body>
+</html>"""
+        (alias_out / "index.html").write_text(redirect_html, encoding="utf-8")
+        if (root / "privacy.md").exists():
+            alias_priv = alias_out / "privacy"
+            alias_priv.mkdir(parents=True, exist_ok=True)
+            priv_redirect_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to {esc(main_title)} Privacy Policy...</title>
+  <link rel="canonical" href="{site.url(f'{pid}/privacy/')}">
+  <meta http-equiv="refresh" content="0; url={site.url(f'{pid}/privacy/')}">
+  <script>window.location.replace("{site.url(f'{pid}/privacy/')}");</script>
+</head>
+<body style="font-family: system-ui, sans-serif; background: #0f172a; color: #f8fafc; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+  <div style="text-align: center;">
+    <h2>Project Renamed to {esc(main_title)}</h2>
+    <p>Redirecting to <a href="{site.url(f'{pid}/privacy/')}" style="color: #6366f1;">{site.url(f'{pid}/privacy/')}</a>...</p>
+  </div>
+</body>
+</html>"""
+            (alias_priv / "index.html").write_text(priv_redirect_html, encoding="utf-8")
 
     if (root / "license.md").exists():
         lic_body = f"""

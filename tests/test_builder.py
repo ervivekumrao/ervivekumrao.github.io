@@ -153,7 +153,7 @@ class TestSiteRendering(unittest.TestCase):
 
     def test_get_project_category_badge(self):
         self.assertEqual(get_project_category_badge({"type": "app"}), "📱 Android App")
-        self.assertEqual(get_project_category_badge({"type": "library"}), "📦 Android SDK")
+        self.assertEqual(get_project_category_badge({"type": "library"}), "📦 Android Library")
         self.assertEqual(get_project_category_badge({"id": "agenticinventory", "category_badge": "⚡ Microservices & AI"}), "⚡ Microservices & AI")
         self.assertEqual(get_project_category_badge({"category_badge": "Custom Badge"}), "Custom Badge")
 
