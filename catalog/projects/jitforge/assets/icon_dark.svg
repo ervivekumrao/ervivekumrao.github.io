@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 240" width="100%" height="100%">
+  <title>JitForge Horizontal Lockup (Dark)</title>
+  <defs>
+    <linearGradient id="hAnvilGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="hBoltGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="40%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+    <linearGradient id="hTextGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+    <filter id="hGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Left Icon Mark (translate x=25, y=10, scale=0.92) -->
+  <g transform="translate(25, 10) scale(0.92)">
+    <!-- Anvil Silhouette in Background -->
+    <path d="M 36 102 C 56 92, 76 86, 96 86 L 214 86 L 214 110 L 184 110 C 166 120, 158 130, 156 142 C 154 160, 168 178, 194 190 L 194 206 L 156 206 C 146 192, 137 186, 128 186 C 119 186, 110 192, 100 206 L 62 206 L 62 190 C 88 178, 102 160, 100 142 C 98 130, 90 120, 72 114 C 56 110, 44 106, 36 102 Z" 
+          fill="url(#hAnvilGrad)" stroke="#38BDF8" stroke-width="2.4" stroke-linejoin="round" />
+    <!-- Knockout Border -->
+    <polygon points="158,22 92,126 138,126 104,234 168,112 122,112" 
+             fill="none" stroke="#0B0F19" stroke-width="7.5" stroke-linejoin="miter" />
+    <!-- High-Voltage Lightning Bolt in Foreground -->
+    <polygon points="158,22 92,126 138,126 104,234 168,112 122,112" 
+             fill="url(#hBoltGrad)" filter="url(#hGlow)" />
+    <!-- Dimensional Highlight Facet -->
+    <polygon points="158,22 92,126 138,126 104,234 134,126 138,118" 
+             fill="#FFFFFF" opacity="0.35" />
+    <polygon points="158,22 92,126 138,126 104,234 168,112 122,112" 
+             fill="none" stroke="#FFFFFF" stroke-width="1.0" stroke-linejoin="miter" opacity="0.9" />
+  </g>
+
+  <!-- Subtle Vertical Divider -->
+  <line x1="255" y1="42" x2="255" y2="198" stroke="#334155" stroke-width="1.8" stroke-linecap="round" opacity="0.7" />
+
+  <!-- Typography & Subtitle (translate x=285) -->
+  <g transform="translate(285, 0)">
+    <!-- Brand Wordmark -->
+    <text x="0" y="125" 
+          font-family="system-ui, -apple-system, 'SF Pro Display', 'Segoe UI', Roboto, 'Inter', sans-serif" 
+          font-size="82" font-weight="900" letter-spacing="-1.5">
+      <tspan fill="#FFFFFF">Jit</tspan><tspan fill="url(#hTextGrad)">Forge</tspan>
+    </text>
+    <!-- Subtitle (font-size 13.5, letter-spacing 2.8, plenty of breathing room) -->
+    <text x="4" y="164" 
+          font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Inter', monospace, sans-serif" 
+          font-size="13.5" font-weight="700" letter-spacing="2.8" fill="#38BDF8">
+      ENTERPRISE IN-MEMORY JIT &amp; BYTECODE ENGINE
+    </text>
+    <!-- Tech Badges -->
+    <g transform="translate(4, 184)">
+      <rect x="0" y="0" width="82" height="22" rx="4" fill="#0F172A" stroke="#0284C7" stroke-width="1" />
+      <text x="41" y="15" font-family="monospace" font-size="10" font-weight="700" fill="#38BDF8" text-anchor="middle">JAVA 21+</text>
+      <rect x="90" y="0" width="80" height="22" rx="4" fill="#0F172A" stroke="#D97706" stroke-width="1" />
+      <text x="130" y="15" font-family="monospace" font-size="10" font-weight="700" fill="#FCD34D" text-anchor="middle">SUB-MS</text>
+      <rect x="178" y="0" width="116" height="22" rx="4" fill="#0F172A" stroke="#059669" stroke-width="1" />
+      <text x="236" y="15" font-family="monospace" font-size="10" font-weight="700" fill="#34D399" text-anchor="middle">ZERO DISK I/O</text>
+    </g>
+  </g>
+</svg>

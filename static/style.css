@@ -82,8 +82,8 @@ a.ribbon-item.ribbon-section.ribbon-active:hover{background:#1d4ed8;color:#fffff
 .app-card{padding:1.25rem;display:flex;flex-direction:column;justify-content:space-between;height:100%}
 .app-card-top{display:flex;flex-direction:column;gap:0.65rem}
 .app-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem}
-.app-icon-wrapper{width:44px;height:44px;border-radius:12px;background:var(--tag-bg);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
-.app-icon-wrapper img{width:32px;height:32px;object-fit:contain;border-radius:6px}
+.app-icon-wrapper{width:44px;height:44px;border-radius:12px;background:var(--tag-bg);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,0.04);overflow:hidden}
+.app-icon-wrapper img{width:100%;height:100%;object-fit:cover;border-radius:10px}
 .app-badges{display:flex;flex-direction:column;align-items:flex-end;gap:0.3rem}
 .app-badge-cat{font-size:0.72rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:20px;background:var(--tag-bg);color:var(--tag-fg);border:1px solid var(--card-border);white-space:nowrap}
 .app-badge-dpm{font-size:0.7rem;font-weight:600;padding:0.18rem 0.5rem;border-radius:20px;background:rgba(37,99,235,0.1);color:var(--acc);border:1px solid rgba(37,99,235,0.25);white-space:nowrap}
@@ -195,15 +195,29 @@ code{background:var(--tag-bg);padding:.15rem .4rem;border-radius:4px;color:var(-
 .dot-green{background:#10b981}
 .code-content{margin:0;padding:1.25rem;background:#0f172a;color:#f8fafc;font-family:'JetBrains Mono','Fira Code',SFMono-Regular,Consolas,monospace;font-size:.88rem;line-height:1.6;overflow-x:auto;border:none}
 
-/* Syntax Highlighting (IDE Colors) */
-.hl-kw{color:#c678dd;font-weight:600}
-.hl-str{color:#98c379}
-.hl-num{color:#d19a66}
-.hl-com{color:#5c6370;font-style:italic}
-.hl-type{color:#e5c07b;font-weight:600}
-.hl-func{color:#61afef}
-.hl-tag{color:#e06c75;font-weight:600}
-.hl-attr{color:#d19a66}
+/* Syntax Highlighting (IDE Colors - Light Theme Default) */
+.hl-kw{color:#cf222e;font-weight:600}
+.hl-str{color:#0a3069}
+.hl-num{color:#0550ae}
+.hl-com,.hl-cm{color:#6e7781;font-style:italic}
+.hl-type,.hl-ty{color:#0550ae;font-weight:600}
+.hl-func,.hl-fn{color:#8250df}
+.hl-tag{color:#cf222e;font-weight:600}
+.hl-attr{color:#0550ae}
+.hl-ann{color:#8250df;font-weight:600}
+.hl-yk{color:#116329;font-weight:600}
+
+/* Syntax Highlighting (IDE Colors - Dark Theme) */
+[data-theme="dark"] .hl-kw{color:#ff7b72;font-weight:600}
+[data-theme="dark"] .hl-str{color:#a5d6ff}
+[data-theme="dark"] .hl-num{color:#79c0ff}
+[data-theme="dark"] .hl-com,[data-theme="dark"] .hl-cm{color:#8b949e;font-style:italic}
+[data-theme="dark"] .hl-type,[data-theme="dark"] .hl-ty{color:#79c0ff;font-weight:600}
+[data-theme="dark"] .hl-func,[data-theme="dark"] .hl-fn{color:#d2a8ff}
+[data-theme="dark"] .hl-tag{color:#ff7b72;font-weight:600}
+[data-theme="dark"] .hl-attr{color:#79c0ff}
+[data-theme="dark"] .hl-ann{color:#d2a8ff;font-weight:600}
+[data-theme="dark"] .hl-yk{color:#7ee787;font-weight:600}
 
 /* Copy Code Button */
 .copy-btn{background:rgba(255,255,255,0.08);color:#94a3b8;border:1px solid #334155;border-radius:6px;padding:.2rem .6rem;font-size:.75rem;font-family:inherit;font-weight:600;cursor:pointer;transition:all .15s ease;display:inline-flex;align-items:center;gap:.3rem;user-select:none}

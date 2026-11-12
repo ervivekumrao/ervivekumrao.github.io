@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <title>JitForge Dark Theme App Tile</title>
+  <defs>
+    <!-- Background Dark Radial Gradient -->
+    <radialGradient id="darkTileBg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#131B2A" />
+      <stop offset="60%" stop-color="#0B0F19" />
+      <stop offset="100%" stop-color="#04060A" />
+    </radialGradient>
+
+    <!-- Anvil Slate Gradient -->
+    <linearGradient id="dAnvilGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#090D16" />
+    </linearGradient>
+
+    <!-- Anvil Cyan Rim -->
+    <linearGradient id="dCyanRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+
+    <!-- Lightning Bolt Gradient -->
+    <linearGradient id="dBoltGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="40%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+
+    <!-- Text Orange Gradient -->
+    <linearGradient id="dTextGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+
+    <!-- Ambient Glow Filter -->
+    <filter id="dGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Squircle Canvas Tile (1024x1024, rx=224) -->
+  <rect width="1024" height="1024" rx="224" fill="url(#darkTileBg)" />
+  <rect width="1016" height="1016" x="4" y="4" rx="220" fill="none" stroke="#1E293B" stroke-width="4" />
+
+  <!-- Centered Logo Group (Scaled 3.3x, centered) -->
+  <g transform="translate(85, 30) scale(3.3)">
+    <!-- Anvil Silhouette in Background -->
+    <path d="M 36 102 C 56 92, 76 86, 96 86 L 214 86 L 214 110 L 184 110 C 166 120, 158 130, 156 142 C 154 160, 168 178, 194 190 L 194 206 L 156 206 C 146 192, 137 186, 128 186 C 119 186, 110 192, 100 206 L 62 206 L 62 190 C 88 178, 102 160, 100 142 C 98 130, 90 120, 72 114 C 56 110, 44 106, 36 102 Z"
+          fill="url(#dAnvilGrad)" stroke="url(#dCyanRim)" stroke-width="2.6" stroke-linejoin="round" />
+
+    <!-- Knockout Gap around Lightning -->
+    <polygon points="158,22 92,126 138,126 104,234 168,112 122,112"
+             fill="none" stroke="#0B0F19" stroke-width="8" stroke-linejoin="miter" />
+
+    <!-- Primary Lightning Bolt in Foreground -->
+    <polygon points="158,22 92,126 138,126 104,234 168,112 122,112"
+             fill="url(#dBoltGrad)" filter="url(#dGlow)" />
+
+    <!-- Dimensional Energy Facet -->
+    <polygon points="158,22 92,126 138,126 104,234 134,126 138,118"
+             fill="#FFFFFF" opacity="0.35" />
+
+    <!-- Sharp Needle Rim -->
+    <polygon points="158,22 92,126 138,126 104,234 168,112 122,112"
+             fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="miter" opacity="0.9" />
+  </g>
+
+  <!-- Wordmark 'JitForge' -->
+  <text x="512" y="880"
+        font-family="system-ui, -apple-system, 'SF Pro Display', 'Segoe UI', Roboto, 'Inter', sans-serif"
+        font-size="124" font-weight="900" letter-spacing="-3" text-anchor="middle">
+    <tspan fill="#FFFFFF">Jit</tspan><tspan fill="url(#dTextGrad)">Forge</tspan>
+  </text>
+</svg>

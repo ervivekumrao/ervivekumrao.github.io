@@ -1,12 +1,29 @@
-<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="120" height="120" rx="26" fill="url(#bg-jf-apple)"/>
-    <path d="M32 78H88L80 64H40L32 78Z" fill="white" opacity="0.95"/>
-    <path d="M24 64H96C96 64 90 52 84 52H36C30 52 24 64 24 64Z" fill="white"/>
-    <path d="M68 22L44 52H64L52 84L80 46H60L68 22Z" fill="white"/>
-    <defs>
-        <linearGradient id="bg-jf-apple" x1="0" y1="0" x2="120" y2="120">
-            <stop offset="0%" stop-color="#f43f5e"/>
-            <stop offset="100%" stop-color="#881337"/>
-        </linearGradient>
-    </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
+  <title>JitForge Symbol</title>
+  <defs>
+    <linearGradient id="dAnvil" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="dBolt" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="40%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+  </defs>
+
+  <!-- Anvil Silhouette -->
+  <path d="M 36 102 C 56 92, 76 86, 96 86 L 214 86 L 214 110 L 184 110 C 166 120, 158 130, 156 142 C 154 160, 168 178, 194 190 L 194 206 L 156 206 C 146 192, 137 186, 128 186 C 119 186, 110 192, 100 206 L 62 206 L 62 190 C 88 178, 102 160, 100 142 C 98 130, 90 120, 72 114 C 56 110, 44 106, 36 102 Z"
+        fill="url(#dAnvil)" stroke="#38BDF8" stroke-width="2.4" stroke-linejoin="round" />
+  <!-- Knockout Gap -->
+  <polygon points="158,22 92,126 138,126 104,234 168,112 122,112"
+           fill="none" stroke="#0B0F19" stroke-width="7" stroke-linejoin="miter" />
+  <!-- Lightning Bolt -->
+  <polygon points="158,22 92,126 138,126 104,234 168,112 122,112"
+           fill="url(#dBolt)" />
+  <!-- Highlight -->
+  <polygon points="158,22 92,126 138,126 104,234 134,126 138,118"
+           fill="#FFFFFF" opacity="0.35" />
+  <polygon points="158,22 92,126 138,126 104,234 168,112 122,112"
+           fill="none" stroke="#FFFFFF" stroke-width="1.0" stroke-linejoin="miter" opacity="0.9" />
 </svg>
