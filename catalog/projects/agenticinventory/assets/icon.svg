@@ -1,16 +1,23 @@
-<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="120" height="120" rx="26" fill="url(#bg-ai-apple)"/>
-    <path d="M60 22L94 40V78L60 96L26 78V40L60 22Z" fill="none" stroke="white" stroke-width="6" stroke-linejoin="round"/>
-    <path d="M26 40L60 58L94 40" stroke="white" stroke-width="5.5" stroke-linejoin="round"/>
-    <path d="M60 58V96" stroke="white" stroke-width="5.5" stroke-linejoin="round"/>
-    <polygon points="60,34 74,42 60,50 46,42" fill="white"/>
-    <circle cx="26" cy="40" r="4" fill="white"/>
-    <circle cx="94" cy="40" r="4" fill="white"/>
-    <circle cx="60" cy="22" r="4" fill="white"/>
-    <defs>
-        <linearGradient id="bg-ai-apple" x1="0" y1="0" x2="120" y2="120">
-            <stop offset="0%" stop-color="#10b981"/>
-            <stop offset="100%" stop-color="#064e3b"/>
-        </linearGradient>
-    </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="title">
+  <title id="title">Agentic Inventory - Brand Symbol</title>
+  <defs>
+    <linearGradient id="leg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+    <linearGradient id="pencil-shaft" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0, 0)">
+    <path fill="url(#leg-grad)" fill-rule="evenodd" d="M 128 24 L 216 212 L 168 212 L 148 164 L 108 164 L 88 212 L 40 212 Z M 128 68 L 144 104 L 112 104 Z"/>
+    <rect x="114" y="98" width="28" height="114" rx="4" fill="url(#pencil-shaft)"/>
+    <polygon points="128,52 142,98 114,98" fill="#FFFFFF"/>
+    <polygon points="128,52 133,68 123,68" fill="#000000"/>
+    <line x1="104" y1="134" x2="152" y2="134" stroke="#0B0F19" stroke-width="4"/>
+  </g>
 </svg>

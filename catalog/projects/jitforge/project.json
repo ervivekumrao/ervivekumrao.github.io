@@ -1,7 +1,7 @@
 {
   "id": "jitforge",
   "name": "JitForge",
-  "subtitle": "Official Website \u2014 Enterprise In-Memory Java JIT & Bytecode Microservice",
+  "subtitle": "Enterprise In-Memory Java JIT & Bytecode Microservice",
   "category_badge": "\u26a1 JVM JIT Engine",
   "type": "other",
   "order": 2,

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <style>
+      .bg-rect { fill: #0B0F19; rx: 56px; }
+      .leg-color { fill: #38BDF8; }
+      .shaft-color { fill: #6366F1; }
+      .tip-color { fill: #FFFFFF; }
+      .point-color { fill: #000000; }
+
+      @media (prefers-color-scheme: light) {
+        .bg-rect { fill: #F8FAFC; rx: 56px; }
+        .leg-color { fill: #0284C7; }
+        .shaft-color { fill: #4F46E5; }
+        .tip-color { fill: #F1F5F9; }
+        .point-color { fill: #000000; }
+      }
+    </style>
+  </defs>
+
+  <rect width="256" height="256" class="bg-rect"/>
+
+  <g transform="translate(0, 0)">
+    <path class="leg-color" fill-rule="evenodd" d="M 128 24 L 216 212 L 168 212 L 148 164 L 108 164 L 88 212 L 40 212 Z M 128 68 L 144 104 L 112 104 Z"/>
+    <rect x="114" y="98" width="28" height="114" rx="4" class="shaft-color"/>
+    <polygon points="128,52 142,98 114,98" class="tip-color"/>
+    <polygon points="128,52 133,68 123,68" class="point-color"/>
+  </g>
+</svg>
