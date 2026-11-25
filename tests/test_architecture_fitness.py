@@ -1,5 +1,6 @@
 """Architecture Fitness Functions & Invariant Enforcers for the App Hub SSG."""
 from __future__ import annotations
+import json
 import re
 import unittest
 from pathlib import Path
@@ -41,6 +42,26 @@ class TestArchitectureFitness(unittest.TestCase):
     def test_github_api_header_sanitization(self):
         with self.assertRaises(ValueError):
             http_json("https://example.com/api", token="secret_token")
+
+    def test_catalog_project_ids_and_assets_exist(self):
+        """Invariant: Project IDs must be lowercase and referenced assets must exist on disk."""
+        for p_json in (ROOT / "catalog" / "projects").glob("*/project.json"):
+            p = json.loads(p_json.read_text(encoding="utf-8"))
+            pid = p["id"]
+            self.assertEqual(pid, pid.lower(), f"Project ID '{pid}' must be lowercase.")
+            self.assertTrue(pid.isalnum() or "-" in pid or "_" in pid, f"Project ID '{pid}' contains invalid characters.")
+
+            p_dir = p_json.parent
+            assets_dir = p_dir / "assets"
+            self.assertTrue(assets_dir.is_dir(), f"Assets folder missing for project '{pid}'")
+
+            if p.get("icon_dark"):
+                self.assertTrue((assets_dir / p["icon_dark"]).exists(), f"Icon {p['icon_dark']} missing in {pid}")
+            if p.get("icon_light"):
+                self.assertTrue((assets_dir / p["icon_light"]).exists(), f"Icon {p['icon_light']} missing in {pid}")
+
+            for shot in p.get("screenshots", []):
+                self.assertTrue((assets_dir / shot).exists(), f"Screenshot {shot} missing in {pid}")
 
 
 if __name__ == "__main__":

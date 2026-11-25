@@ -42,7 +42,16 @@ const server = http.createServer((req, res) => {
       'Content-Type': contentType,
       'Access-Control-Allow-Origin': '*'
     });
-    fs.createReadStream(filePath).pipe(res);
+
+    const stream = fs.createReadStream(filePath);
+    stream.on('error', (streamErr) => {
+      console.error(`Stream error serving ${filePath}:`, streamErr);
+      if (!res.headersSent) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+      }
+      res.end('500 Internal Server Error');
+    });
+    stream.pipe(res);
   });
 });
 

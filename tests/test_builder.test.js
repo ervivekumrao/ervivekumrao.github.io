@@ -47,18 +47,18 @@ try {
   assert.ok(indexContent.includes('Child Safe'), 'Missing project title in index.html');
   assert.ok(indexContent.includes('⚡ Microservices &amp; AI') || indexContent.includes('⚡ Microservices & AI'), 'Missing category badge');
 
-  // Test 5: Verify Ribbon Active Highlighting
-  console.log('✔ Test 5: Ribbon Active Highlighting Verification');
+  // Test 5: Verify Independent Project Navigation & Active Link Highlighting
+  console.log('✔ Test 5: Standalone Project Navigation Verification');
 
   // App overview page (Child Safe)
   const childsafeIndex = fs.readFileSync(path.join(tempDist, 'childsafe', 'index.html'), 'utf8');
-  assert.ok(childsafeIndex.includes("class='ribbon-item ribbon-first ribbon-current'><span>Child Safe</span>"), 'Child Safe ribbon item should be ribbon-current on overview');
-  assert.ok(childsafeIndex.includes("class='ribbon-item ribbon-last ribbon-sublink'><span>Privacy Policy</span>"), 'Privacy Policy should be ribbon-sublink on overview');
+  assert.ok(childsafeIndex.includes('project-header'), 'Child Safe page should use independent project header');
+  assert.ok(childsafeIndex.includes('class="project-nav-link nav-active"'), 'Overview link should be nav-active on overview page');
 
   // Privacy Policy page (Child Safe Privacy)
   const childsafePrivacy = fs.readFileSync(path.join(tempDist, 'childsafe', 'privacy', 'index.html'), 'utf8');
-  assert.ok(childsafePrivacy.includes("class='ribbon-item ribbon-first ribbon-current'><span>Child Safe</span>"), 'Child Safe ribbon item should be ribbon-current on Privacy Policy page');
-  assert.ok(childsafePrivacy.includes("class='ribbon-item ribbon-last ribbon-current'><span>Privacy Policy</span>"), 'Privacy Policy ribbon item should be ribbon-current on Privacy Policy page');
+  assert.ok(childsafePrivacy.includes('project-header'), 'Privacy page should use independent project header');
+  assert.ok(childsafePrivacy.includes("class='project-nav-link nav-active'"), 'Privacy Policy link should be nav-active on Privacy page');
 
 } finally {
   if (fs.existsSync(tempDist)) {

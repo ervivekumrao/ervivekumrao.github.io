@@ -112,30 +112,34 @@ def main() -> int:
         footer_right = []
         if p.get("visibility") == "public" and p.get("repo"):
             footer_right.append(f"<a href='https://github.com/{esc(p['repo'])}' target='_blank' class='btn-source'>GitHub &nearr;</a>")
-        footer_right.append(f"<a href='{proj_url}' class='btn-details'>Details &rarr;</a>")
+        footer_right.append(f"<a href='{proj_url}' class='btn-details'>Explore Product &rarr;</a>")
 
         subtitle_html = f"<div class='app-subtitle'>{esc(sub_title)}</div>" if sub_title else ""
 
+        search_terms = f"{main_title} {sub_title} {p.get('tagline', '')} {' '.join(p.get('tags', []))}".lower()
+
         card_markup = (
-            f"<div class='card app-card'>"
-            f"  <div class='app-card-top'>"
-            f"    <div class='app-card-header'>"
-            f"      <div class='app-icon-wrapper'>{icon_card}</div>"
-            f"      <div class='app-badges'>"
-            f"        <span class='app-badge-cat'>{esc(cat_badge)}</span>"
-            f"        {dpm_badge_html}"
+            f"<div class='app-card-wrapper' data-category='{ptype}' data-search='{esc(search_terms)}'>"
+            f"  <div class='card app-card'>"
+            f"    <div class='app-card-top'>"
+            f"      <div class='app-card-header'>"
+            f"        <div class='app-icon-wrapper'>{icon_card}</div>"
+            f"        <div class='app-badges'>"
+            f"          <span class='app-badge-cat'>{esc(cat_badge)}</span>"
+            f"          {dpm_badge_html}"
+            f"        </div>"
             f"      </div>"
+            f"      <div class='app-title-group'>"
+            f"        <h3 class='app-main-title'><a href='{proj_url}'>{esc(main_title)}</a></h3>"
+            f"        {subtitle_html}"
+            f"      </div>"
+            f"      <p class='app-description'>{esc(p.get('tagline'))}</p>"
+            f"      <div class='app-chips'>{chips_html}</div>"
             f"    </div>"
-            f"    <div class='app-title-group'>"
-            f"      <h3 class='app-main-title'><a href='{proj_url}'>{esc(main_title)}</a></h3>"
-            f"      {subtitle_html}"
+            f"    <div class='app-card-footer'>"
+            f"      <div class='app-footer-left'>{''.join(footer_left)}</div>"
+            f"      <div class='app-footer-right'>{''.join(footer_right)}</div>"
             f"    </div>"
-            f"    <p class='app-description'>{esc(p.get('tagline'))}</p>"
-            f"    <div class='app-chips'>{chips_html}</div>"
-            f"  </div>"
-            f"  <div class='app-card-footer'>"
-            f"    <div class='app-footer-left'>{''.join(footer_left)}</div>"
-            f"    <div class='app-footer-right'>{''.join(footer_right)}</div>"
             f"  </div>"
             f"</div>"
         )
@@ -146,10 +150,31 @@ def main() -> int:
     experience = json.loads((CATALOG / "experience.json").read_text(encoding="utf-8")) if (CATALOG / "experience.json").exists() else {}
 
     body = render_profile_sections(site, profile, experience)
-    body += "<section id='projects' style='margin-top:3rem'><h2 style='font-size:1.75rem;margin-bottom:0.25rem'>Featured Software & Open Source Projects</h2><p class='mut' style='margin-top:0;margin-bottom:1.5rem'>A portfolio of apps, open-source libraries, and tools built to solve specific platform engineering bottlenecks.</p>"
+    body += (
+        "<section id='projects' style='margin-top:3.5rem'>"
+        "<h2 style='font-size:1.85rem;font-weight:800;margin-bottom:0.25rem;letter-spacing:-0.02em'>Featured Software &amp; Open Source Projects</h2>"
+        "<p class='mut' style='margin-top:0;margin-bottom:1.5rem'>A portfolio of standalone Android applications, open-source libraries, and platform tools engineered by Vivek Umrao.</p>"
+        "<div class='project-controls'>"
+        "  <div class='search-wrapper'>"
+        "    <span class='search-icon'>🔍</span>"
+        "    <input type='text' id='project-search' class='search-input' placeholder='Search projects by name, keyword, or tech tag...' aria-label='Search projects'>"
+        "  </div>"
+        "  <div class='filter-tabs' role='tablist' aria-label='Filter Projects'>"
+        "    <button class='filter-tab active' data-filter='all' type='button'>All Projects</button>"
+        "    <button class='filter-tab' data-filter='app' type='button'>📱 Android Apps</button>"
+        "    <button class='filter-tab' data-filter='library' type='button'>📦 Libraries &amp; SDKs</button>"
+        "    <button class='filter-tab' data-filter='other' type='button'>⚙️ Systems &amp; Tools</button>"
+        "  </div>"
+        "</div>"
+    )
     for key, title in (("app", "Android Applications"), ("library", "Libraries & SDKs"), ("other", "Enterprise Systems & Tools")):
         if sections[key]:
-            body += f"<h3 style='margin-top:2rem;font-size:1.35rem'>{title}</h3><div class='grid'>{''.join(sections[key])}</div>"
+            body += (
+                f"<div class='project-section-wrapper' data-sec-category='{key}'>"
+                f"  <h3 style='margin-top:2.25rem;font-size:1.35rem;font-weight:700'>{title}</h3>"
+                f"  <div class='grid'>{''.join(sections[key])}</div>"
+                f"</div>"
+            )
     body += "</section>"
 
     site.write("index.html", site.page(cfg.get("name", "Home"), body, cfg.get("tagline", ""), show_home_brand=True))

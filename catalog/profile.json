@@ -1,9 +1,8 @@
 {
   "name": "Vivek Umrao",
-  "status_badge": "Available for new opportunities",
   "headline": "Hi, I'm Vivek Umrao.",
   "quote": "\"Most software engineers build on top of platforms. I build the platforms themselves.\"",
-  "summary": "As a Principal Software Engineer and Systems Architect with 15+ years of experience, I specialize in JVM internals, enterprise scale, and device-level security.",
+  "summary": "As a System Architect with 15+ years of experience, I specialize in JVM internals, enterprise scale, and device-level security.",
   "profile_image": "profile.jpg",
   "social_links": [
     { "label": "Connect on LinkedIn", "url": "https://www.linkedin.com/in/ervivekumrao/", "primary": true },
